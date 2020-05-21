@@ -34,6 +34,7 @@ public class TelaAcesso extends javax.swing.JFrame {
             lblConexao.setText("Desconectado");
         }
     }
+     
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -154,7 +155,7 @@ public class TelaAcesso extends javax.swing.JFrame {
         loginUsuarios.setSenhaUsuario(txtSenha.getText());
 
         LoginUsuarioDB login = new LoginUsuarioDB();
-        login.logar(loginUsuarios);
+        login.logar(loginUsuarios);       
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAcessarActionPerformed
 

@@ -41,15 +41,11 @@ public class LoginUsuarioDB {
                     TelaInical inicial = new TelaInical();
                     inicial.setVisible(true);
                     TelaInical.menuUsuarios.setEnabled(true);
-                    TelaAcesso acesso = new TelaAcesso();
-                    acesso.dispose();                    
                     conexao.close();
                     pst.close();
                 } else {
                     TelaInical inicial = new TelaInical();
                     inicial.setVisible(true);
-                    TelaAcesso acesso = new TelaAcesso();
-                    acesso.dispose();  
                     conexao.close();
                     pst.close();
                 }

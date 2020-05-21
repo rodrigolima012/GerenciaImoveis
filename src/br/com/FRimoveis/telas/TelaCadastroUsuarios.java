@@ -230,9 +230,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         cadastroUsuarios.setPerfilUsuario(cbPerfilUsuario.getSelectedItem().toString());
         cadastroUsuarios.setNomeUsuario(txtNomeUsuario.getText());
         cadastroUsuarios.setLoginUsuario(txtLoginUsuario.getText());
-        cadastroUsuarios.setSenhaUsuario(txtSenhaUsuario.getText());       
-        
-
+        cadastroUsuarios.setSenhaUsuario(txtSenhaUsuario.getText());  
         // fazendo a validação dos dados
         if ((cbPerfilUsuario.getSelectedItem().toString().isEmpty()) || (txtNomeUsuario.getText().isEmpty()) || (txtLoginUsuario.getText().isEmpty()) || (txtSenhaUsuario.getText().isEmpty())) {
             JOptionPane.showMessageDialog(null, "Os campos não podem retornar vazios");
