@@ -28,10 +28,20 @@ public class TelaAcesso extends javax.swing.JFrame {
             rs = pst.executeQuery();
 
             if (rs.next()) {
-                TelaInical inicial = new TelaInical();
-                inicial.setVisible(true);
-                this.dispose();
-                conexao.close();
+
+                String perfil = rs.getString(2);
+                if (perfil.equalsIgnoreCase("ADMIN")) {
+                    TelaInical inicial = new TelaInical();
+                    inicial.setVisible(true);
+                    TelaInical.menuUsuarios.setEnabled(true);
+                    this.dispose();
+                    conexao.close();
+                } else {
+                    TelaInical inicial = new TelaInical();
+                    inicial.setVisible(true);
+                    this.dispose();
+                    conexao.close();
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario/Senha Invalido!");
             }
@@ -46,7 +56,6 @@ public class TelaAcesso extends javax.swing.JFrame {
     public TelaAcesso() {
         initComponents();
         conexao = ConexaoBD.conectar();
-        System.out.println(conexao);
         if (conexao != null) {
             lblConexao.setText("Conectado");
         } else {
