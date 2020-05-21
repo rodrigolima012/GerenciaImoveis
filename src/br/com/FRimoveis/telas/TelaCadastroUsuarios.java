@@ -103,6 +103,11 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         btnExcluirUsuario.setText("Excluir");
 
         btnConsutarUsuario.setText("Consultar");
+        btnConsutarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsutarUsuarioActionPerformed(evt);
+            }
+        });
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/FRimoveis/icones/IconeMenor.JPG"))); // NOI18N
 
@@ -225,7 +230,8 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         cadastroUsuarios.setPerfilUsuario(cbPerfilUsuario.getSelectedItem().toString());
         cadastroUsuarios.setNomeUsuario(txtNomeUsuario.getText());
         cadastroUsuarios.setLoginUsuario(txtLoginUsuario.getText());
-        cadastroUsuarios.setSenhaUsuario(txtSenhaUsuario.getText());
+        cadastroUsuarios.setSenhaUsuario(txtSenhaUsuario.getText());       
+        
 
         // fazendo a validação dos dados
         if ((cbPerfilUsuario.getSelectedItem().toString().isEmpty()) || (txtNomeUsuario.getText().isEmpty()) || (txtLoginUsuario.getText().isEmpty()) || (txtSenhaUsuario.getText().isEmpty())) {
@@ -244,6 +250,12 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCadastrarUsuarioActionPerformed
+
+    private void btnConsutarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsutarUsuarioActionPerformed
+        
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnConsutarUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -280,6 +292,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         });
     }
 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrarUsuario;
     private javax.swing.JButton btnConsutarUsuario;
@@ -299,4 +312,5 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
     private javax.swing.JTextField txtNomeUsuario;
     private javax.swing.JPasswordField txtSenhaUsuario;
     // End of variables declaration//GEN-END:variables
+
 }

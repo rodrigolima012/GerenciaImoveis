@@ -11,11 +11,13 @@ package br.com.FRimoveis.Desenvolvimento;
  */
 public class CadastroUsuarios {
 
+    private String idUsuario;
     private String perfilUsuario;
     private String nomeUsuario;
     private String loginUsuario;
     private String senhaUsuario;
 
+    
     public String getPerfilUsuario() {
         return perfilUsuario;
     }
@@ -46,6 +48,14 @@ public class CadastroUsuarios {
 
     public void setLoginUsuario(String loginUsuario) {
         this.loginUsuario = loginUsuario;
+    }
+
+    public String getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(String idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
 }

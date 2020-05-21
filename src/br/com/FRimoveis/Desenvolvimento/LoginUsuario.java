@@ -27,8 +27,5 @@ public class LoginUsuario {
 
     public void setSenhaUsuario(String senhaUsuario) {
         this.senhaUsuario = senhaUsuario;
-    }
-    
-    
-    
+    }   
 }

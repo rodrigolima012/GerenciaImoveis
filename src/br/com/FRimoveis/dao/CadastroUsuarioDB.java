@@ -6,8 +6,10 @@
 package br.com.FRimoveis.dao;
 
 import br.com.FRimoveis.Desenvolvimento.CadastroUsuarios;
+import br.com.FRimoveis.telas.TelaCadastroUsuarios;
 import java.sql.*;
 import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -34,6 +36,7 @@ public class CadastroUsuarioDB {
 
             pst.execute();
             pst.close();
+            conexao.close();
         } catch (SQLException u) {
             throw new RuntimeException(u);
         }
