@@ -5,8 +5,11 @@
  */
 package br.com.FRimoveis.telas;
 
+import br.com.FRimoveis.Desenvolvimento.CadastroUsuarios;
+import br.com.FRimoveis.Desenvolvimento.LoginUsuario;
 import java.sql.*;
 import br.com.FRimoveis.dao.ConexaoBD;
+import br.com.FRimoveis.dao.LoginUsuarioDB;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,37 +21,6 @@ public class TelaAcesso extends javax.swing.JFrame {
     Connection conexao = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
-
-    public void logar() {
-        String sql = "select * from tbusuarios where login = ? and senha = ?";
-        try {
-            pst = conexao.prepareStatement(sql);
-            pst.setString(1, txtUsuario.getText());
-            pst.setString(2, txtSenha.getText());
-            rs = pst.executeQuery();
-
-            if (rs.next()) {
-
-                String perfil = rs.getString(2);
-                if (perfil.equalsIgnoreCase("ADMIN")) {
-                    TelaInical inicial = new TelaInical();
-                    inicial.setVisible(true);
-                    TelaInical.menuUsuarios.setEnabled(true);
-                    this.dispose();
-                    conexao.close();
-                } else {
-                    TelaInical inicial = new TelaInical();
-                    inicial.setVisible(true);
-                    this.dispose();
-                    conexao.close();
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Usuario/Senha Invalido!");
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-    }
 
     /**
      * Creates new form TelaAcesso
@@ -172,7 +144,12 @@ public class TelaAcesso extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAcessarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcessarActionPerformed
-        logar();
+        LoginUsuario loginUsuarios = new LoginUsuario();
+        loginUsuarios.setLoginUsuario(txtUsuario.getText());
+        loginUsuarios.setSenhaUsuario(txtSenha.getText());
+
+        LoginUsuarioDB login = new LoginUsuarioDB();
+        login.logar(loginUsuarios);
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAcessarActionPerformed
 
