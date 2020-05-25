@@ -16,6 +16,7 @@ public class CadastroUsuarios {
     private String nomeUsuario;
     private String loginUsuario;
     private String senhaUsuario;
+    private String pesquisa;
 
     
     public String getPerfilUsuario() {
@@ -56,6 +57,14 @@ public class CadastroUsuarios {
 
     public void setIdUsuario(String idUsuario) {
         this.idUsuario = idUsuario;
+    }
+
+    public String getPesquisa() {
+        return pesquisa;
+    }
+
+    public void setPesquisa(String pesquisa) {
+        this.pesquisa = pesquisa;
     }
 
 }

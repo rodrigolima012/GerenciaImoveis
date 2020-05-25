@@ -5,8 +5,10 @@
  */
 package br.com.FRimoveis.dao;
 
+import br.com.FRimoveis.Conexao.ConexaoBD;
+import br.com.FRimoveis.Desenvolvimento.CadastroUsuarios;
 import br.com.FRimoveis.Desenvolvimento.LoginUsuario;
-import br.com.FRimoveis.telas.TelaAcesso;
+import br.com.FRimoveis.telas.TelaLogin;
 import br.com.FRimoveis.telas.TelaInical;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,34 +21,30 @@ import javax.swing.JOptionPane;
  */
 public class LoginUsuarioDB {
 
-    Connection conexao = null;
-    PreparedStatement pst = null;
-    ResultSet rs = null;
+    ConexaoBD connectarBanco = new ConexaoBD();
+    CadastroUsuarios usuario = new CadastroUsuarios();
 
-    public LoginUsuarioDB() {
-        conexao = ConexaoBD.conectar();
-    }
 
     public void logar(LoginUsuario login) {
-        String sql = "select * from tbusuarios where login = ? and senha = ?";
+        connectarBanco.conectar();
         try {
-            pst = conexao.prepareStatement(sql);
+            PreparedStatement pst = connectarBanco.con.prepareStatement("select * from tbusuarios where login = ? and senha = ?");
             pst.setString(1, login.getLoginUsuario());
             pst.setString(2, login.getSenhaUsuario());
-            rs = pst.executeQuery();
+            connectarBanco.rs = pst.executeQuery();
 
-            if (rs.next()) {
-                String perfil = rs.getString(2);
+            if (connectarBanco.rs.next()) {
+                String perfil = connectarBanco.rs.getString(2);
                 if (perfil.equalsIgnoreCase("ADMIN")) {
                     TelaInical inicial = new TelaInical();
                     inicial.setVisible(true);
                     TelaInical.menuUsuarios.setEnabled(true);
-                    conexao.close();
+                    connectarBanco.desconectar();
                     pst.close();
                 } else {
                     TelaInical inicial = new TelaInical();
                     inicial.setVisible(true);
-                    conexao.close();
+                    connectarBanco.desconectar();
                     pst.close();
                 }
             } else {

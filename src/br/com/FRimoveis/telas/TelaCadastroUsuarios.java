@@ -14,6 +14,8 @@ import javax.swing.JOptionPane;
  * @author rodrigolima
  */
 public class TelaCadastroUsuarios extends javax.swing.JFrame {
+    CadastroUsuarios cadastroUsuarios = new CadastroUsuarios();
+    CadastroUsuarioDB cadastroUsuariosDB = new CadastroUsuarioDB();
 
     /**
      * Creates new form TelaCadastroUsuarios
@@ -43,11 +45,12 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtIDUsuario = new javax.swing.JTextField();
         btnCadastrarUsuario = new javax.swing.JButton();
-        btnEditarUsuario = new javax.swing.JButton();
+        btnProximoUsuario = new javax.swing.JButton();
         btnExcluirUsuario = new javax.swing.JButton();
-        btnConsutarUsuario = new javax.swing.JButton();
+        btnEditarUsuario = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         txtSenhaUsuario = new javax.swing.JPasswordField();
+        btnAnteriorUsuario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("FR - Gerenciador de Imoveis - Cadastro de Usuarios");
@@ -98,18 +101,25 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
             }
         });
 
-        btnEditarUsuario.setText("Editar");
+        btnProximoUsuario.setText("Proximo");
+        btnProximoUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProximoUsuarioActionPerformed(evt);
+            }
+        });
 
         btnExcluirUsuario.setText("Excluir");
 
-        btnConsutarUsuario.setText("Consultar");
-        btnConsutarUsuario.addActionListener(new java.awt.event.ActionListener() {
+        btnEditarUsuario.setText("Editar");
+        btnEditarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsutarUsuarioActionPerformed(evt);
+                btnEditarUsuarioActionPerformed(evt);
             }
         });
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/FRimoveis/icones/IconeMenor.JPG"))); // NOI18N
+
+        btnAnteriorUsuario.setText("Anterior");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -121,8 +131,8 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(20, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel4)
@@ -141,19 +151,24 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
                                 .addGap(10, 10, 10)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtIDUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbPerfilUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(100, 100, 100)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(cbPerfilUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnCadastrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnEditarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnProximoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addComponent(btnAnteriorUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnExcluirUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnConsutarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(207, 207, 207))))
+                        .addComponent(btnEditarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,9 +203,10 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
                 .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCadastrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEditarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnProximoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnExcluirUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnConsutarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEditarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAnteriorUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(55, 55, 55))
         );
 
@@ -219,6 +235,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         cbPerfilUsuario.removeAllItems();
+        cbPerfilUsuario.addItem("");
         cbPerfilUsuario.addItem("ADMIN");
         cbPerfilUsuario.addItem("USER");
         // TODO add your handling code here:
@@ -226,16 +243,14 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
 
     private void btnCadastrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarUsuarioActionPerformed
         // instanciando a classe Usuario do pacote modelo e criando seu objeto usuarios
-        CadastroUsuarios cadastroUsuarios = new CadastroUsuarios();
         cadastroUsuarios.setPerfilUsuario(cbPerfilUsuario.getSelectedItem().toString());
         cadastroUsuarios.setNomeUsuario(txtNomeUsuario.getText());
         cadastroUsuarios.setLoginUsuario(txtLoginUsuario.getText());
-        cadastroUsuarios.setSenhaUsuario(txtSenhaUsuario.getText());  
+        cadastroUsuarios.setSenhaUsuario(txtSenhaUsuario.getText());
         // fazendo a validação dos dados
         if ((cbPerfilUsuario.getSelectedItem().toString().isEmpty()) || (txtNomeUsuario.getText().isEmpty()) || (txtLoginUsuario.getText().isEmpty()) || (txtSenhaUsuario.getText().isEmpty())) {
             JOptionPane.showMessageDialog(null, "Os campos não podem retornar vazios");
         } else {
-
             // instanciando a classe UsuarioDAO do pacote dao e criando seu objeto dao
             CadastroUsuarioDB dao = new CadastroUsuarioDB();
             dao.adiciona(cadastroUsuarios);
@@ -249,16 +264,29 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCadastrarUsuarioActionPerformed
 
-    private void btnConsutarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsutarUsuarioActionPerformed
-        
-        
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnConsutarUsuarioActionPerformed
+    private void btnEditarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarUsuarioActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditarUsuarioActionPerformed
+
+    private void btnProximoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProximoUsuarioActionPerformed
+        // TODO add your handling code here:
+        cadastroUsuarios.setNomeUsuario(txtNomeUsuario.getText());
+        CadastroUsuarios model = cadastroUsuariosDB.pesquisaUsuario(cadastroUsuarios);
+        cbPerfilUsuario.getModel().setSelectedItem(model.getPerfilUsuario());
+        System.out.println(model.getPerfilUsuario());
+        txtNomeUsuario.setText(model.getNomeUsuario());
+        txtLoginUsuario.setText(model.getLoginUsuario());
+        txtSenhaUsuario.setText(model.getSenhaUsuario());
+        
+        
+        
+    }//GEN-LAST:event_btnProximoUsuarioActionPerformed
+
+/**
+ * @param args the command line arguments
+ */
+public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -269,16 +297,28 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }
+                
+
+}
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroUsuarios.class
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        
+
+} catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(TelaCadastroUsuarios.class
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        
+
+} catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(TelaCadastroUsuarios.class
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        
+
+} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(TelaCadastroUsuarios.class
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -292,10 +332,11 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAnteriorUsuario;
     private javax.swing.JButton btnCadastrarUsuario;
-    private javax.swing.JButton btnConsutarUsuario;
     private javax.swing.JButton btnEditarUsuario;
     private javax.swing.JButton btnExcluirUsuario;
+    private javax.swing.JButton btnProximoUsuario;
     private javax.swing.JComboBox<String> cbPerfilUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

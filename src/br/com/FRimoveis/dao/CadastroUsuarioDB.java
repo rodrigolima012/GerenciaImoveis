@@ -5,8 +5,8 @@
  */
 package br.com.FRimoveis.dao;
 
+import br.com.FRimoveis.Conexao.ConexaoBD;
 import br.com.FRimoveis.Desenvolvimento.CadastroUsuarios;
-import br.com.FRimoveis.telas.TelaCadastroUsuarios;
 import java.sql.*;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
@@ -17,28 +17,43 @@ import javax.swing.JOptionPane;
  */
 public class CadastroUsuarioDB {
 
-    Connection conexao = null;
-    PreparedStatement pst = null;
-    ResultSet rs = null;
+   
+    ConexaoBD connectarBanco = new ConexaoBD();
+    CadastroUsuarios usuario = new CadastroUsuarios();
 
-    public CadastroUsuarioDB() {
-        conexao = ConexaoBD.conectar();
-    }
+   
 
     public void adiciona(CadastroUsuarios usuario) {
-        String sql = "INSERT INTO tbusuarios(perfilUser, nomeUsuario, login, senha) VALUES (?,?,?,?)";
+        connectarBanco.conectar();
         try {
-            pst = conexao.prepareStatement(sql);
+            PreparedStatement pst = connectarBanco.con.prepareStatement("INSERT INTO tbusuarios(perfilUser, nomeUsuario, login, senha) VALUES (?,?,?,?)");
             pst.setString(1, usuario.getPerfilUsuario());
             pst.setString(2, usuario.getNomeUsuario());
             pst.setString(3, usuario.getLoginUsuario());
             pst.setString(4, usuario.getSenhaUsuario());
-
             pst.execute();
             pst.close();
-            conexao.close();
+            connectarBanco.desconectar();
         } catch (SQLException u) {
-            throw new RuntimeException(u);
+            JOptionPane.showMessageDialog(null, "Erro ao adicionar o usuario! \n" + u.getMessage());
         }
+    }
+    
+    public CadastroUsuarios pesquisaUsuario(CadastroUsuarios usuario){
+        connectarBanco.conectar();
+        connectarBanco.executaSql("select * from tbusuarios where nomeUsuario like '%"+usuario.getNomeUsuario()+"%'");
+        System.out.println(usuario.getIdUsuario());
+        try {
+            connectarBanco.rs.first();
+            usuario.setIdUsuario(connectarBanco.rs.getString("idusuarios"));
+            usuario.setPerfilUsuario(connectarBanco.rs.getString("perfilUser"));
+            usuario.setNomeUsuario(connectarBanco.rs.getString("nomeUsuario"));
+            usuario.setLoginUsuario(connectarBanco.rs.getString("login"));
+            usuario.setSenhaUsuario(connectarBanco.rs.getString("senha"));            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao pesquisar o usuario! \n" + e.getMessage());
+        }       
+        connectarBanco.desconectar();
+        return usuario;
     }
 }

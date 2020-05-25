@@ -8,7 +8,7 @@ package br.com.FRimoveis.telas;
 import br.com.FRimoveis.Desenvolvimento.CadastroUsuarios;
 import br.com.FRimoveis.Desenvolvimento.LoginUsuario;
 import java.sql.*;
-import br.com.FRimoveis.dao.ConexaoBD;
+import br.com.FRimoveis.Conexao.ConexaoBD;
 import br.com.FRimoveis.dao.LoginUsuarioDB;
 import javax.swing.JOptionPane;
 
@@ -16,19 +16,17 @@ import javax.swing.JOptionPane;
  *
  * @author rodrigolima
  */
-public class TelaAcesso extends javax.swing.JFrame {
+public class TelaLogin extends javax.swing.JFrame {
 
-    Connection conexao = null;
-    PreparedStatement pst = null;
-    ResultSet rs = null;
+    ConexaoBD connectarBanco = new ConexaoBD();
 
     /**
      * Creates new form TelaAcesso
      */
-    public TelaAcesso() {
+    public TelaLogin() {
         initComponents();
-        conexao = ConexaoBD.conectar();
-        if (conexao != null) {
+        connectarBanco.conectar();
+        if (connectarBanco != null) {
             lblConexao.setText("Conectado");
         } else {
             lblConexao.setText("Desconectado");
@@ -184,20 +182,21 @@ public class TelaAcesso extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaAcesso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaAcesso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaAcesso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaAcesso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaAcesso().setVisible(true);
+                new TelaLogin().setVisible(true);
             }
         });
     }
