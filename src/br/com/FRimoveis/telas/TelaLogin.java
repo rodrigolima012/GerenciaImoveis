@@ -5,9 +5,7 @@
  */
 package br.com.FRimoveis.telas;
 
-import br.com.FRimoveis.Desenvolvimento.CadastroUsuarios;
 import br.com.FRimoveis.Desenvolvimento.LoginUsuario;
-import java.sql.*;
 import br.com.FRimoveis.Conexao.ConexaoBD;
 import br.com.FRimoveis.dao.LoginUsuarioDB;
 import javax.swing.JOptionPane;
@@ -32,7 +30,6 @@ public class TelaLogin extends javax.swing.JFrame {
             lblConexao.setText("Desconectado");
         }
     }
-     
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -153,7 +150,7 @@ public class TelaLogin extends javax.swing.JFrame {
         loginUsuarios.setSenhaUsuario(txtSenha.getText());
 
         LoginUsuarioDB login = new LoginUsuarioDB();
-        login.logar(loginUsuarios);       
+        login.logar(loginUsuarios);
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAcessarActionPerformed
 
@@ -162,12 +159,12 @@ public class TelaLogin extends javax.swing.JFrame {
         if (sair == JOptionPane.YES_OPTION) {
             System.exit(0);
         }
-            // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
-         * @param args the command line arguments
-         */
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
  * @author rodrigolima
  */
 public class TelaCadastroUsuarios extends javax.swing.JFrame {
+
     CadastroUsuarios cadastroUsuarios = new CadastroUsuarios();
     CadastroUsuarioDB cadastroUsuariosDB = new CadastroUsuarioDB();
 
@@ -45,12 +46,11 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtIDUsuario = new javax.swing.JTextField();
         btnCadastrarUsuario = new javax.swing.JButton();
-        btnProximoUsuario = new javax.swing.JButton();
+        btnPesquisarUsuario = new javax.swing.JButton();
         btnExcluirUsuario = new javax.swing.JButton();
         btnEditarUsuario = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         txtSenhaUsuario = new javax.swing.JPasswordField();
-        btnAnteriorUsuario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("FR - Gerenciador de Imoveis - Cadastro de Usuarios");
@@ -101,10 +101,10 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
             }
         });
 
-        btnProximoUsuario.setText("Proximo");
-        btnProximoUsuario.addActionListener(new java.awt.event.ActionListener() {
+        btnPesquisarUsuario.setText("Pesquisar");
+        btnPesquisarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProximoUsuarioActionPerformed(evt);
+                btnPesquisarUsuarioActionPerformed(evt);
             }
         });
 
@@ -119,20 +119,14 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/FRimoveis/icones/IconeMenor.JPG"))); // NOI18N
 
-        btnAnteriorUsuario.setText("Anterior");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(284, 284, 284)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(30, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel4)
@@ -151,24 +145,25 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
                                 .addGap(10, 10, 10)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtIDUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbPerfilUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnCadastrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnProximoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(cbPerfilUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(100, 100, 100)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(btnAnteriorUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnExcluirUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEditarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(284, 284, 284)
+                                .addComponent(jLabel1))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(191, 191, 191)
+                                .addComponent(btnCadastrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnPesquisarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnExcluirUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnEditarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(0, 0, 0))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,14 +195,13 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(42, 42, 42)
+                .addGap(52, 52, 52)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCadastrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnProximoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPesquisarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnExcluirUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEditarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAnteriorUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(55, 55, 55))
+                    .addComponent(btnEditarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(45, 45, 45))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -235,7 +229,6 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         cbPerfilUsuario.removeAllItems();
-        cbPerfilUsuario.addItem("");
         cbPerfilUsuario.addItem("ADMIN");
         cbPerfilUsuario.addItem("USER");
         // TODO add your handling code here:
@@ -269,24 +262,22 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEditarUsuarioActionPerformed
 
-    private void btnProximoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProximoUsuarioActionPerformed
+    private void btnPesquisarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarUsuarioActionPerformed
         // TODO add your handling code here:
-        cadastroUsuarios.setNomeUsuario(txtNomeUsuario.getText());
+        cadastroUsuarios.setIdUsuario(txtIDUsuario.getText());
         CadastroUsuarios model = cadastroUsuariosDB.pesquisaUsuario(cadastroUsuarios);
         cbPerfilUsuario.getModel().setSelectedItem(model.getPerfilUsuario());
-        System.out.println(model.getPerfilUsuario());
         txtNomeUsuario.setText(model.getNomeUsuario());
         txtLoginUsuario.setText(model.getLoginUsuario());
         txtSenhaUsuario.setText(model.getSenhaUsuario());
-        
-        
-        
-    }//GEN-LAST:event_btnProximoUsuarioActionPerformed
 
-/**
- * @param args the command line arguments
- */
-public static void main(String args[]) {
+
+    }//GEN-LAST:event_btnPesquisarUsuarioActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -297,28 +288,24 @@ public static void main(String args[]) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                
 
-}
+                }
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(TelaCadastroUsuarios.class
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-} catch (InstantiationException ex) {
+        } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(TelaCadastroUsuarios.class
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-} catch (IllegalAccessException ex) {
+        } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(TelaCadastroUsuarios.class
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(TelaCadastroUsuarios.class
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -332,11 +319,10 @@ public static void main(String args[]) {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAnteriorUsuario;
     private javax.swing.JButton btnCadastrarUsuario;
     private javax.swing.JButton btnEditarUsuario;
     private javax.swing.JButton btnExcluirUsuario;
-    private javax.swing.JButton btnProximoUsuario;
+    private javax.swing.JButton btnPesquisarUsuario;
     private javax.swing.JComboBox<String> cbPerfilUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

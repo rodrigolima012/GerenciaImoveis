@@ -24,7 +24,6 @@ public class LoginUsuarioDB {
     ConexaoBD connectarBanco = new ConexaoBD();
     CadastroUsuarios usuario = new CadastroUsuarios();
 
-
     public void logar(LoginUsuario login) {
         connectarBanco.conectar();
         try {
@@ -51,7 +50,7 @@ public class LoginUsuarioDB {
                 JOptionPane.showMessageDialog(null, "Usuario/Senha Invalido!");
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+            JOptionPane.showMessageDialog(null, "Erro! \n" + e.getMessage());
         }
     }
 
