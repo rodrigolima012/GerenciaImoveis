@@ -2,13 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/rodrigolima/Documents/NetBeansProjects/GerenciaImoveis/src/br/com/FRimoveis/telas/TelaLogin.java</file>
-            <file>file:/C:/Users/rodrigolima/Documents/NetBeansProjects/GerenciaImoveis/src/br/com/FRimoveis/dao/LoginUsuarioDB.java</file>
-            <file>file:/C:/Users/rodrigolima/Documents/NetBeansProjects/GerenciaImoveis/src/br/com/FRimoveis/telas/TelaInical.java</file>
-            <file>file:/C:/Users/rodrigolima/Documents/NetBeansProjects/GerenciaImoveis/src/br/com/FRimoveis/dao/CadastroUsuarioDB.java</file>
-            <file>file:/C:/Users/rodrigolima/Documents/NetBeansProjects/GerenciaImoveis/src/br/com/FRimoveis/telas/TelaCadastroUsuarios.java</file>
-            <file>file:/C:/Users/rodrigolima/Documents/NetBeansProjects/GerenciaImoveis/src/br/com/FRimoveis/Conexao/ConexaoBD.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
