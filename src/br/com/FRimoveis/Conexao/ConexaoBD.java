@@ -20,13 +20,14 @@ public class ConexaoBD {
     private String usuario = "root";
     private String senha = "";
     public Connection con;
-
+ 
     public void conectar() {
         try {
             System.setProperty("jdbc.Drivers", driver);
             con = DriverManager.getConnection(caminho, usuario, senha);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Conexão DONW \n" + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Conexão com o Banco DONW \n" + e.getMessage());
+            System.exit(0);
         }
     }
     
