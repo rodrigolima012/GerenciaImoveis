@@ -11,12 +11,12 @@ import javax.swing.JOptionPane;
  *
  * @author rodrigolima
  */
-public class TelaInical extends javax.swing.JFrame {
+public class TelaPrincipal extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaInical
      */
-    public TelaInical() {
+    public TelaPrincipal() {
         initComponents();
     }
    
@@ -33,14 +33,14 @@ public class TelaInical extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        menuCadastro = new javax.swing.JMenu();
+        menuPessoas = new javax.swing.JMenuItem();
+        menuImoveis = new javax.swing.JMenuItem();
         menuUsuarios = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        menuConsultas = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
+        menuRelatorios = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
@@ -76,20 +76,25 @@ public class TelaInical extends javax.swing.JFrame {
 
         jMenuBar1.setBackground(new java.awt.Color(153, 255, 255));
 
-        jMenu1.setText("Cadastro");
+        menuCadastro.setText("Cadastro");
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK));
-        jMenuItem1.setText("Pessoas");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        menuPessoas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK));
+        menuPessoas.setText("Pessoas");
+        menuPessoas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                menuPessoasActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        menuCadastro.add(menuPessoas);
 
-        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.ALT_MASK));
-        jMenuItem2.setText("Imoveis");
-        jMenu1.add(jMenuItem2);
+        menuImoveis.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.ALT_MASK));
+        menuImoveis.setText("Imoveis");
+        menuImoveis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuImoveisActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(menuImoveis);
 
         menuUsuarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.ALT_MASK));
         menuUsuarios.setText("Usuarios");
@@ -99,11 +104,11 @@ public class TelaInical extends javax.swing.JFrame {
                 menuUsuariosActionPerformed(evt);
             }
         });
-        jMenu1.add(menuUsuarios);
+        menuCadastro.add(menuUsuarios);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(menuCadastro);
 
-        jMenu2.setText("Consultas");
+        menuConsultas.setText("Consultas");
 
         jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.ALT_MASK));
         jMenuItem4.setText("Pessoas");
@@ -112,29 +117,29 @@ public class TelaInical extends javax.swing.JFrame {
                 jMenuItem4ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem4);
+        menuConsultas.add(jMenuItem4);
 
         jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.ALT_MASK));
         jMenuItem5.setText("Imoveis");
-        jMenu2.add(jMenuItem5);
+        menuConsultas.add(jMenuItem5);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(menuConsultas);
 
-        jMenu3.setText("Relatorios");
+        menuRelatorios.setText("Relatorios");
 
         jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_MASK));
         jMenuItem6.setText("Pessoas");
-        jMenu3.add(jMenuItem6);
+        menuRelatorios.add(jMenuItem6);
 
         jMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.ALT_MASK));
         jMenuItem7.setText("Imoveis");
-        jMenu3.add(jMenuItem7);
+        menuRelatorios.add(jMenuItem7);
 
         jMenuItem8.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
         jMenuItem8.setText("Contratos");
-        jMenu3.add(jMenuItem8);
+        menuRelatorios.add(jMenuItem8);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(menuRelatorios);
 
         jMenu4.setText("Opções");
 
@@ -173,9 +178,9 @@ public class TelaInical extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void menuPessoasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPessoasActionPerformed
                 // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_menuPessoasActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
@@ -195,6 +200,10 @@ public class TelaInical extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_menuUsuariosActionPerformed
 
+    private void menuImoveisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuImoveisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuImoveisActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -212,20 +221,21 @@ public class TelaInical extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaInical.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaInical.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaInical.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaInical.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaInical().setVisible(true);
+                new TelaPrincipal().setVisible(true);
             }
         });
     }
@@ -233,14 +243,9 @@ public class TelaInical extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem MenuSair;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
@@ -248,6 +253,11 @@ public class TelaInical extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JMenu menuCadastro;
+    public static javax.swing.JMenu menuConsultas;
+    public static javax.swing.JMenuItem menuImoveis;
+    public static javax.swing.JMenuItem menuPessoas;
+    public static javax.swing.JMenu menuRelatorios;
     public static javax.swing.JMenuItem menuUsuarios;
     // End of variables declaration//GEN-END:variables
 }

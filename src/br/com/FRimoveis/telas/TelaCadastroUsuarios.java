@@ -5,9 +5,16 @@
  */
 package br.com.FRimoveis.telas;
 
+import br.com.FRimoveis.Conexao.ConexaoBD;
+import br.com.FRimoveis.Desenvolvimento.CadastroUsuarioTabela;
 import br.com.FRimoveis.Desenvolvimento.CadastroUsuarios;
 import br.com.FRimoveis.dao.CadastroUsuarioDB;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 
 /**
  *
@@ -17,6 +24,8 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
 
     CadastroUsuarios cadastroUsuarios = new CadastroUsuarios();
     CadastroUsuarioDB cadastroUsuariosDB = new CadastroUsuarioDB();
+    ConexaoBD conexao = new ConexaoBD();
+    int update_sel = 0;
 
     /**
      * Creates new form TelaCadastroUsuarios
@@ -32,7 +41,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         btnEditarUsuario.setEnabled(false);
         btnExcluirUsuario.setEnabled(false);
         btnSalvarUsuario.setEnabled(false);
-
+        dadosTabela("select * from tbusuarios order by idusuarios");
     }
 
     /**
@@ -132,6 +141,11 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         });
 
         btnExcluirUsuario.setText("Excluir");
+        btnExcluirUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirUsuarioActionPerformed(evt);
+            }
+        });
 
         btnEditarUsuario.setText("Editar");
         btnEditarUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -154,7 +168,6 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
             }
         });
 
-        jTUsuarios.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jTUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -169,6 +182,11 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+        });
+        jTUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTUsuariosMouseClicked(evt);
             }
         });
         jScrollPane2.setViewportView(jTUsuarios);
@@ -285,6 +303,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         cbPerfilUsuario.removeAllItems();
+        cbPerfilUsuario.addItem("");
         cbPerfilUsuario.addItem("ADMINISTRADOR");
         cbPerfilUsuario.addItem("USUARIO");
         // TODO add your handling code here:
@@ -292,48 +311,78 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
 
     private void btnSalvarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarUsuarioActionPerformed
         // instanciando a classe Usuario do pacote modelo e criando seu objeto usuarios
-        cadastroUsuarios.setPerfilUsuario(cbPerfilUsuario.getSelectedItem().toString());
-        cadastroUsuarios.setNomeUsuario(txtNomeUsuario.getText());
-        cadastroUsuarios.setLoginUsuario(txtLoginUsuario.getText());
-        cadastroUsuarios.setSenhaUsuario(txtSenhaUsuario.getText());
-        // fazendo a validação dos dados
-        if ((cbPerfilUsuario.getSelectedItem().toString().isEmpty()) || (txtNomeUsuario.getText().isEmpty()) || (txtLoginUsuario.getText().isEmpty()) || (txtSenhaUsuario.getText().isEmpty())) {
-            JOptionPane.showMessageDialog(null, "Os campos não podem retornar vazios");
+        if (update_sel == 1) {
+            cadastroUsuarios.setPerfilUsuario(cbPerfilUsuario.getSelectedItem().toString());
+            cadastroUsuarios.setNomeUsuario(txtNomeUsuario.getText());
+            cadastroUsuarios.setLoginUsuario(txtLoginUsuario.getText());
+            cadastroUsuarios.setSenhaUsuario(txtSenhaUsuario.getText());
+            // fazendo a validação dos dados
+            if ((cbPerfilUsuario.getSelectedItem().toString().isEmpty()) || (txtNomeUsuario.getText().isEmpty()) || (txtLoginUsuario.getText().isEmpty()) || (txtSenhaUsuario.getText().isEmpty())) {
+                JOptionPane.showMessageDialog(null, "Os campos não podem retornar vazios");
+            } else {
+                // instanciando a classe UsuarioDAO do pacote dao e criando seu objeto dao
+                CadastroUsuarioDB dao = new CadastroUsuarioDB();
+                dao.adiciona(cadastroUsuarios);
+                JOptionPane.showMessageDialog(null, "Usuário " + txtNomeUsuario.getText() + " inserido com sucesso! ");
+            }
+            cbPerfilUsuario.setSelectedItem("");
+            txtNomeUsuario.setText("");
+            txtLoginUsuario.setText("");
+            txtSenhaUsuario.setText("");
         } else {
-            // instanciando a classe UsuarioDAO do pacote dao e criando seu objeto dao
-            CadastroUsuarioDB dao = new CadastroUsuarioDB();
-            dao.adiciona(cadastroUsuarios);
-            JOptionPane.showMessageDialog(null, "Usuário " + txtNomeUsuario.getText() + " inserido com sucesso! ");
+            cadastroUsuarios.setIdUsuario(txtIDUsuario.getText());
+            cadastroUsuarios.setPerfilUsuario(cbPerfilUsuario.getSelectedItem().toString());
+            cadastroUsuarios.setNomeUsuario(txtNomeUsuario.getText());
+            cadastroUsuarios.setLoginUsuario(txtLoginUsuario.getText());
+            cadastroUsuarios.setSenhaUsuario(txtSenhaUsuario.getText());
+            cadastroUsuariosDB.editarUsuario(cadastroUsuarios);
+            txtIDUsuario.setText("");
+            txtNomeUsuario.setText("");
+            txtLoginUsuario.setText("");
+            txtSenhaUsuario.setText("");
+            txtBuscarUsuario.setText("");
+            cbPerfilUsuario.setSelectedItem("");
+            txtIDUsuario.setEnabled(false);
+            txtLoginUsuario.setEnabled(false);
+            txtNomeUsuario.setEnabled(false);
+            txtSenhaUsuario.setEnabled(false);
+            cbPerfilUsuario.setEnabled(false);
+            txtBuscarUsuario.setEnabled(true);
+            btnCancelarUsuario.setEnabled(false);
+            btnEditarUsuario.setEnabled(false);
+            btnExcluirUsuario.setEnabled(false);
+            btnSalvarUsuario.setEnabled(false);
+            btnNovoUsuario.setEnabled(true);
+            btnPesquisarUsuario.setEnabled(true);
         }
-
-        txtNomeUsuario.setText("");
-        txtLoginUsuario.setText("");
-        txtSenhaUsuario.setText("");
-        txtLoginUsuario.setEnabled(false);
-        txtNomeUsuario.setEnabled(false);
-        txtSenhaUsuario.setEnabled(false);
-        cbPerfilUsuario.setEnabled(false);
-        txtBuscarUsuario.setEnabled(true);
-        btnPesquisarUsuario.setEnabled(true);
-        btnCancelarUsuario.setEnabled(false);
-        btnEditarUsuario.setEnabled(false);
-        btnExcluirUsuario.setEnabled(false);
-        btnSalvarUsuario.setEnabled(false);
-        btnNovoUsuario.setEnabled(true);
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSalvarUsuarioActionPerformed
 
     private void btnEditarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarUsuarioActionPerformed
-
+        update_sel = 2;
+        txtBuscarUsuario.setEnabled(false);
+        txtLoginUsuario.setEnabled(true);
+        txtNomeUsuario.setEnabled(true);
+        txtSenhaUsuario.setEnabled(true);
+        cbPerfilUsuario.setEnabled(true);
+        btnCancelarUsuario.setEnabled(true);
+        btnPesquisarUsuario.setEnabled(false);
+        btnEditarUsuario.setEnabled(false);
+        btnExcluirUsuario.setEnabled(false);
+        btnSalvarUsuario.setEnabled(true);
+        btnNovoUsuario.setEnabled(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEditarUsuarioActionPerformed
 
     private void btnCancelarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarUsuarioActionPerformed
         // TODO add your handling code here:
+        txtIDUsuario.setText("");
         txtNomeUsuario.setText("");
         txtLoginUsuario.setText("");
         txtSenhaUsuario.setText("");
+        cbPerfilUsuario.setSelectedItem("");
+        txtBuscarUsuario.setText("");
         txtLoginUsuario.setEnabled(false);
         txtNomeUsuario.setEnabled(false);
         txtSenhaUsuario.setEnabled(false);
@@ -356,11 +405,12 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         txtNomeUsuario.setText(model.getNomeUsuario());
         txtLoginUsuario.setText(model.getLoginUsuario());
         txtSenhaUsuario.setText(model.getSenhaUsuario());
-        
-        txtLoginUsuario.setEnabled(true);
-        txtNomeUsuario.setEnabled(true);
-        txtSenhaUsuario.setEnabled(true);
-        cbPerfilUsuario.setEnabled(true);
+
+        txtIDUsuario.setEnabled(false);
+        txtLoginUsuario.setEnabled(false);
+        txtNomeUsuario.setEnabled(false);
+        txtSenhaUsuario.setEnabled(false);
+        cbPerfilUsuario.setEnabled(false);
         btnCancelarUsuario.setEnabled(true);
         btnEditarUsuario.setEnabled(true);
         btnExcluirUsuario.setEnabled(true);
@@ -378,6 +428,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
 
     private void btnNovoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoUsuarioActionPerformed
         // TODO add your handling code here:
+        update_sel = 1;
         btnCancelarUsuario.setEnabled(true);
         btnEditarUsuario.setEnabled(false);
         btnExcluirUsuario.setEnabled(false);
@@ -390,6 +441,94 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         txtSenhaUsuario.setEnabled(true);
         cbPerfilUsuario.setEnabled(true);
     }//GEN-LAST:event_btnNovoUsuarioActionPerformed
+
+    private void btnExcluirUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirUsuarioActionPerformed
+        int res = 0;
+        res = JOptionPane.showConfirmDialog(rootPane, "Deseja Remover o usuarios?");
+        if (res == JOptionPane.YES_OPTION) {
+            cadastroUsuarios.setIdUsuario(txtIDUsuario.getText());
+            cadastroUsuariosDB.excluirUsuario(cadastroUsuarios);
+            txtIDUsuario.setText("");
+            txtNomeUsuario.setText("");
+            txtLoginUsuario.setText("");
+            txtSenhaUsuario.setText("");
+            txtBuscarUsuario.setText("");
+            cbPerfilUsuario.setSelectedItem("");
+            txtIDUsuario.setEnabled(false);
+            txtLoginUsuario.setEnabled(false);
+            txtNomeUsuario.setEnabled(false);
+            txtSenhaUsuario.setEnabled(false);
+            cbPerfilUsuario.setEnabled(false);
+            txtBuscarUsuario.setEnabled(true);
+            btnCancelarUsuario.setEnabled(false);
+            btnEditarUsuario.setEnabled(false);
+            btnExcluirUsuario.setEnabled(false);
+            btnSalvarUsuario.setEnabled(false);
+            btnNovoUsuario.setEnabled(true);
+            btnPesquisarUsuario.setEnabled(true);
+        }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExcluirUsuarioActionPerformed
+
+    private void jTUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTUsuariosMouseClicked
+        String nome_usuario = "" + jTUsuarios.getValueAt(jTUsuarios.getSelectedRow(), 0);
+        conexao.conectar();
+        conexao.executaSql("select * from tbusuarios where idusuarios = '"+nome_usuario+"'");
+        try {
+            conexao.rs.first();
+            txtIDUsuario.setText(conexao.rs.getString("idusuarios"));
+            cbPerfilUsuario.setSelectedItem(conexao.rs.getString("perfilUser"));
+            txtNomeUsuario.setText(conexao.rs.getString("nomeUsuario"));
+            txtLoginUsuario.setText(conexao.rs.getString("login"));
+            txtSenhaUsuario.setText(conexao.rs.getString("senha"));
+            
+            btnCancelarUsuario.setEnabled(true);
+            btnEditarUsuario.setEnabled(true);
+            btnExcluirUsuario.setEnabled(true);
+            btnPesquisarUsuario.setEnabled(true);
+            txtBuscarUsuario.setEnabled(true);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Erro ao Selecionar o usuario"+ ex.getMessage());
+        }       
+        conexao.desconectar();
+    }//GEN-LAST:event_jTUsuariosMouseClicked
+
+    public void dadosTabela(String sql) {
+        ArrayList dados = new ArrayList();
+        String[] colunas = new String[]{"ID Usuario", "Nome Usuario", "Login Usuario", "Perfil Usuario"};
+        conexao.conectar();
+        conexao.executaSql(sql);
+        try {
+            conexao.rs.first();
+            do {
+                dados.add(new Object[]{conexao.rs.getString("idusuarios"), conexao.rs.getString("nomeUsuario"), conexao.rs.getString("login"), conexao.rs.getString("perfilUser")});
+
+            } while (conexao.rs.next());
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(rootPane, "Erro ao preencher as tabelas! \n" + e.getMessage());
+        }
+        CadastroUsuarioTabela tabela = new CadastroUsuarioTabela(dados, colunas);
+
+        jTUsuarios.setModel(tabela);
+        jTUsuarios.getColumnModel().getColumn(0).setPreferredWidth(100);
+        jTUsuarios.getColumnModel().getColumn(0).setResizable(false);
+
+        jTUsuarios.getColumnModel().getColumn(1).setPreferredWidth(400);
+        jTUsuarios.getColumnModel().getColumn(1).setResizable(false);
+
+        jTUsuarios.getColumnModel().getColumn(2).setPreferredWidth(250);
+        jTUsuarios.getColumnModel().getColumn(2).setResizable(false);
+
+        jTUsuarios.getColumnModel().getColumn(3).setPreferredWidth(240);
+        jTUsuarios.getColumnModel().getColumn(3).setResizable(false);
+
+        jTUsuarios.getTableHeader().setReorderingAllowed(false);
+        jTUsuarios.setAutoResizeMode(jTUsuarios.AUTO_RESIZE_OFF);
+        jTUsuarios.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+        conexao.desconectar();
+    }
 
     /**
      * @param args the command line arguments

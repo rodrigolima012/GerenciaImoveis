@@ -9,6 +9,8 @@ import br.com.FRimoveis.Conexao.ConexaoBD;
 import br.com.FRimoveis.Desenvolvimento.CadastroUsuarios;
 import java.sql.*;
 import java.sql.PreparedStatement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,11 +19,8 @@ import javax.swing.JOptionPane;
  */
 public class CadastroUsuarioDB {
 
-   
     ConexaoBD connectarBanco = new ConexaoBD();
     CadastroUsuarios usuario = new CadastroUsuarios();
-
-   
 
     public void adiciona(CadastroUsuarios usuario) {
         connectarBanco.conectar();
@@ -38,21 +37,53 @@ public class CadastroUsuarioDB {
             JOptionPane.showMessageDialog(null, "Erro ao adicionar o usuario! \n" + u.getMessage());
         }
     }
-    
-    public CadastroUsuarios pesquisaUsuario(CadastroUsuarios usuario){
+
+    public CadastroUsuarios pesquisaUsuario(CadastroUsuarios usuario) {
         connectarBanco.conectar();
-        connectarBanco.executaSql("select * from tbusuarios where nomeUsuario like '%"+usuario.getPesquisa()+"%'");
+        connectarBanco.executaSql("select * from tbusuarios where nomeUsuario like '%" + usuario.getPesquisa() + "%'");
         try {
             connectarBanco.rs.first();
             usuario.setIdUsuario(connectarBanco.rs.getString("idusuarios"));
             usuario.setPerfilUsuario(connectarBanco.rs.getString("perfilUser"));
             usuario.setNomeUsuario(connectarBanco.rs.getString("nomeUsuario"));
             usuario.setLoginUsuario(connectarBanco.rs.getString("login"));
-            usuario.setSenhaUsuario(connectarBanco.rs.getString("senha"));            
+            usuario.setSenhaUsuario(connectarBanco.rs.getString("senha"));
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao pesquisar o usuario! \n" + e.getMessage());
-        }       
+        }
         connectarBanco.desconectar();
         return usuario;
+    }
+
+    public void editarUsuario(CadastroUsuarios usuario) {
+        connectarBanco.conectar();
+        try {
+            PreparedStatement pst = connectarBanco.con.prepareStatement("update tbusuarios set perfilUser = ?, nomeUsuario = ?, login = ?, senha = ? where idusuarios = ?");
+            pst.setString(1, usuario.getPerfilUsuario());
+            pst.setString(2, usuario.getNomeUsuario());
+            pst.setString(3, usuario.getLoginUsuario());
+            pst.setString(4, usuario.getSenhaUsuario());
+            pst.setString(5, usuario.getIdUsuario());
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Usuarios Atualizado com Sucesso!!");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao editar o usuario! \n" + e.getMessage());
+        }
+        connectarBanco.desconectar();
+    }
+
+    public void excluirUsuario(CadastroUsuarios usuario) {
+        connectarBanco.conectar();
+        try {
+            PreparedStatement pst = connectarBanco.con.prepareStatement("delete from tbusuarios where idusuarios = ?");
+            pst.setString(1, usuario.getIdUsuario());
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Usuarios deletado com Sucesso!!");
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao deletar o usuario! \n" + e.getMessage());
+        }
+
+        connectarBanco.desconectar();
     }
 }
