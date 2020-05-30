@@ -75,6 +75,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         btnNovoUsuario = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTUsuarios = new javax.swing.JTable();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("FR - Gerenciador de Imoveis - Cadastro de Usuarios");
@@ -191,6 +192,9 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTUsuarios);
 
+        jLabel8.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel8.setText("TODOS OS CAMPOS SÃO OBRIGATORIOS!");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -236,7 +240,9 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtSenhaUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel7)))
                 .addGap(20, 20, 20))
@@ -244,14 +250,14 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(25, 25, 25))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel8)))
+                .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cbPerfilUsuario)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
@@ -277,9 +283,9 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
                     .addComponent(txtBuscarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPesquisarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNovoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -290,10 +296,10 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(1042, 547));
+        setSize(new java.awt.Dimension(1042, 472));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -324,6 +330,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
                 CadastroUsuarioDB dao = new CadastroUsuarioDB();
                 dao.adiciona(cadastroUsuarios);
                 JOptionPane.showMessageDialog(null, "Usuário " + txtNomeUsuario.getText() + " inserido com sucesso! ");
+                dadosTabela("select * from tbusuarios order by idusuarios");
             }
             cbPerfilUsuario.setSelectedItem("");
             txtNomeUsuario.setText("");
@@ -354,6 +361,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
             btnSalvarUsuario.setEnabled(false);
             btnNovoUsuario.setEnabled(true);
             btnPesquisarUsuario.setEnabled(true);
+            dadosTabela("select * from tbusuarios order by idusuarios");
         }
 
         // TODO add your handling code here:
@@ -398,24 +406,29 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
 
     private void btnPesquisarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarUsuarioActionPerformed
         // TODO add your handling code here:
-        cadastroUsuarios.setPesquisa(txtBuscarUsuario.getText());
-        CadastroUsuarios model = cadastroUsuariosDB.pesquisaUsuario(cadastroUsuarios);
-        txtIDUsuario.setText(model.getIdUsuario());
-        cbPerfilUsuario.getModel().setSelectedItem(model.getPerfilUsuario());
-        txtNomeUsuario.setText(model.getNomeUsuario());
-        txtLoginUsuario.setText(model.getLoginUsuario());
-        txtSenhaUsuario.setText(model.getSenhaUsuario());
 
-        txtIDUsuario.setEnabled(false);
-        txtLoginUsuario.setEnabled(false);
-        txtNomeUsuario.setEnabled(false);
-        txtSenhaUsuario.setEnabled(false);
-        cbPerfilUsuario.setEnabled(false);
-        btnCancelarUsuario.setEnabled(true);
-        btnEditarUsuario.setEnabled(true);
-        btnExcluirUsuario.setEnabled(true);
-        btnSalvarUsuario.setEnabled(false);
-        btnNovoUsuario.setEnabled(false);
+        if (txtBuscarUsuario.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Favor inserir dados para a pesquisa!");
+        } else {
+            cadastroUsuarios.setPesquisa(txtBuscarUsuario.getText());
+            CadastroUsuarios model = cadastroUsuariosDB.pesquisaUsuario(cadastroUsuarios);
+            txtIDUsuario.setText(model.getIdUsuario());
+            cbPerfilUsuario.getModel().setSelectedItem(model.getPerfilUsuario());
+            txtNomeUsuario.setText(model.getNomeUsuario());
+            txtLoginUsuario.setText(model.getLoginUsuario());
+            txtSenhaUsuario.setText(model.getSenhaUsuario());
+
+            txtIDUsuario.setEnabled(false);
+            txtLoginUsuario.setEnabled(false);
+            txtNomeUsuario.setEnabled(false);
+            txtSenhaUsuario.setEnabled(false);
+            cbPerfilUsuario.setEnabled(false);
+            btnCancelarUsuario.setEnabled(true);
+            btnEditarUsuario.setEnabled(false);
+            btnExcluirUsuario.setEnabled(false);
+            btnSalvarUsuario.setEnabled(false);
+            btnNovoUsuario.setEnabled(true);
+        }
     }//GEN-LAST:event_btnPesquisarUsuarioActionPerformed
 
     private void txtIDUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDUsuarioActionPerformed
@@ -429,6 +442,11 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
     private void btnNovoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoUsuarioActionPerformed
         // TODO add your handling code here:
         update_sel = 1;
+        txtIDUsuario.setText("");
+        cbPerfilUsuario.setSelectedItem("");
+        txtNomeUsuario.setText("");
+        txtLoginUsuario.setText("");
+        txtSenhaUsuario.setText("");
         btnCancelarUsuario.setEnabled(true);
         btnEditarUsuario.setEnabled(false);
         btnExcluirUsuario.setEnabled(false);
@@ -466,6 +484,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
             btnSalvarUsuario.setEnabled(false);
             btnNovoUsuario.setEnabled(true);
             btnPesquisarUsuario.setEnabled(true);
+            dadosTabela("select * from tbusuarios order by idusuarios");
         }
 
         // TODO add your handling code here:
@@ -474,7 +493,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
     private void jTUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTUsuariosMouseClicked
         String nome_usuario = "" + jTUsuarios.getValueAt(jTUsuarios.getSelectedRow(), 0);
         conexao.conectar();
-        conexao.executaSql("select * from tbusuarios where idusuarios = '"+nome_usuario+"'");
+        conexao.executaSql("select * from tbusuarios where idusuarios = '" + nome_usuario + "'");
         try {
             conexao.rs.first();
             txtIDUsuario.setText(conexao.rs.getString("idusuarios"));
@@ -482,15 +501,15 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
             txtNomeUsuario.setText(conexao.rs.getString("nomeUsuario"));
             txtLoginUsuario.setText(conexao.rs.getString("login"));
             txtSenhaUsuario.setText(conexao.rs.getString("senha"));
-            
+
             btnCancelarUsuario.setEnabled(true);
             btnEditarUsuario.setEnabled(true);
             btnExcluirUsuario.setEnabled(true);
             btnPesquisarUsuario.setEnabled(true);
             txtBuscarUsuario.setEnabled(true);
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Erro ao Selecionar o usuario"+ ex.getMessage());
-        }       
+            JOptionPane.showMessageDialog(null, "Erro ao Selecionar o usuario" + ex.getMessage());
+        }
         conexao.desconectar();
     }//GEN-LAST:event_jTUsuariosMouseClicked
 
@@ -589,6 +608,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTUsuarios;

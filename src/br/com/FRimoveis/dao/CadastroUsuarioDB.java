@@ -49,7 +49,7 @@ public class CadastroUsuarioDB {
             usuario.setLoginUsuario(connectarBanco.rs.getString("login"));
             usuario.setSenhaUsuario(connectarBanco.rs.getString("senha"));
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao pesquisar o usuario! \n" + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Usuario não Cadastrado!! \n Digite novamente!");
         }
         connectarBanco.desconectar();
         return usuario;

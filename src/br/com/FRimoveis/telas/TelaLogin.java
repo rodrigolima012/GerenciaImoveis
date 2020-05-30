@@ -24,6 +24,12 @@ public class TelaLogin extends javax.swing.JFrame {
     public TelaLogin() {
         initComponents();
     }
+    
+    public void fecharTela(){
+        dispose();
+        setVisible(false);
+        System.out.println("Teste ok");
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -130,12 +136,18 @@ public class TelaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAcessarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcessarActionPerformed
-        LoginUsuario loginUsuarios = new LoginUsuario();
-        loginUsuarios.setLoginUsuario(txtUsuario.getText());
-        loginUsuarios.setSenhaUsuario(txtSenha.getText());
+        if (txtSenha.getText().isEmpty() || txtUsuario.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campos de Usuarios e Senha são obrigatorios!!");
+        } else {
+            LoginUsuario loginUsuarios = new LoginUsuario();
+            loginUsuarios.setLoginUsuario(txtUsuario.getText());
+            loginUsuarios.setSenhaUsuario(txtSenha.getText());
 
-        LoginUsuarioDB login = new LoginUsuarioDB();
-        login.logar(loginUsuarios);
+            LoginUsuarioDB login = new LoginUsuarioDB();
+            login.logar(loginUsuarios);
+            
+        }
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAcessarActionPerformed
 
@@ -184,13 +196,13 @@ public class TelaLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAcessar;
-    private javax.swing.JButton btnCancelar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField txtSenha;
-    private javax.swing.JTextField txtUsuario;
+    public static javax.swing.JButton btnAcessar;
+    public static javax.swing.JButton btnCancelar;
+    public static javax.swing.JLabel jLabel1;
+    public static javax.swing.JLabel jLabel2;
+    public static javax.swing.JLabel jLabel3;
+    public static javax.swing.JPanel jPanel2;
+    public static javax.swing.JPasswordField txtSenha;
+    public static javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
