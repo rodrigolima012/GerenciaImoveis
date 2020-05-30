@@ -9,8 +9,6 @@ import br.com.FRimoveis.Conexao.ConexaoBD;
 import br.com.FRimoveis.Desenvolvimento.CadastroUsuarios;
 import java.sql.*;
 import java.sql.PreparedStatement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -77,8 +75,12 @@ public class CadastroUsuarioDB {
         try {
             PreparedStatement pst = connectarBanco.con.prepareStatement("delete from tbusuarios where idusuarios = ?");
             pst.setString(1, usuario.getIdUsuario());
-            pst.execute();
-            JOptionPane.showMessageDialog(null, "Usuarios deletado com Sucesso!!");
+            if (usuario.getIdUsuario().equalsIgnoreCase("1")) {
+                JOptionPane.showMessageDialog(null, "Usuario Administrador não pode ser removido!!!");
+            } else {
+                pst.execute();
+                JOptionPane.showMessageDialog(null, "Usuarios deletado com Sucesso!!");
+            }
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao deletar o usuario! \n" + e.getMessage());

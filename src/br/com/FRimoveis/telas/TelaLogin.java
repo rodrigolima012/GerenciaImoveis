@@ -24,12 +24,6 @@ public class TelaLogin extends javax.swing.JFrame {
     public TelaLogin() {
         initComponents();
     }
-    
-    public void fecharTela(){
-        dispose();
-        setVisible(false);
-        System.out.println("Teste ok");
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -145,9 +139,9 @@ public class TelaLogin extends javax.swing.JFrame {
 
             LoginUsuarioDB login = new LoginUsuarioDB();
             login.logar(loginUsuarios);
-            
+
         }
-        
+
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAcessarActionPerformed
 

@@ -8,7 +8,6 @@ package br.com.FRimoveis.dao;
 import br.com.FRimoveis.Conexao.ConexaoBD;
 import br.com.FRimoveis.Desenvolvimento.CadastroUsuarios;
 import br.com.FRimoveis.Desenvolvimento.LoginUsuario;
-import br.com.FRimoveis.telas.TelaLogin;
 import br.com.FRimoveis.telas.TelaPrincipal;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
@@ -21,10 +20,6 @@ public class LoginUsuarioDB {
 
     ConexaoBD connectarBanco = new ConexaoBD();
     CadastroUsuarios usuario = new CadastroUsuarios();
-    TelaLogin login = new TelaLogin();
-    
-    
-    
 
     public void logar(LoginUsuario login) {
         connectarBanco.conectar();
@@ -39,12 +34,9 @@ public class LoginUsuarioDB {
                 if (perfil.equalsIgnoreCase("ADMINISTRADOR")) {
                     TelaPrincipal inicial = new TelaPrincipal();
                     inicial.setVisible(true);
-                    this.login.fecharTela();
-                    this.login.dispose();
                     TelaPrincipal.menuUsuarios.setEnabled(true);
                     TelaPrincipal.menuImoveis.setEnabled(false);
                     TelaPrincipal.menuPessoas.setEnabled(false);
-                    TelaPrincipal.menuConsultas.setEnabled(false);
                     TelaPrincipal.menuRelatorios.setEnabled(false);
                     connectarBanco.desconectar();
                     pst.close();
