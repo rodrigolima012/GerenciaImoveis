@@ -58,7 +58,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         rbPessoaFisica = new javax.swing.JRadioButton();
         rbPessoaJuridica = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTPessoas = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         txtIDpessoa = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -134,7 +134,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTPessoas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -142,7 +142,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTPessoas);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel3.setText("ID Pessoa:");
@@ -692,7 +692,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTPessoas;
     private javax.swing.JRadioButton rbPessoaFisica;
     private javax.swing.JRadioButton rbPessoaJuridica;
     private javax.swing.JTextField txtBairroPessoa;
