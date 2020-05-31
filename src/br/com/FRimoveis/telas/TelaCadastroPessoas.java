@@ -151,7 +151,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         jLabel4.setText("*Nome:");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        jLabel5.setText("Nome Fantasia:");
+        jLabel5.setText("*Nome Fantasia:");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel6.setText("*Perfil:");
@@ -579,6 +579,8 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarPessoaActionPerformed
 
     private void rbPessoaFisicaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbPessoaFisicaMouseClicked
+        jLabel5.setEnabled(false);
+        jLabel10.setEnabled(false);
         cbPerfilPessoa.setEnabled(true);
         txtNomePessoa.setEnabled(true);
         txtNomeFantasia.setEnabled(false);
@@ -603,6 +605,8 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
     }//GEN-LAST:event_rbPessoaFisicaMouseClicked
 
     private void rbPessoaJuridicaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbPessoaJuridicaMouseClicked
+        jLabel5.setEnabled(true);
+        jLabel10.setEnabled(true);
         cbPerfilPessoa.setEnabled(true);
         txtNomePessoa.setEnabled(true);
         txtNomeFantasia.setEnabled(true);
