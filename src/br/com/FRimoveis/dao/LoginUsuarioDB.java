@@ -38,6 +38,8 @@ public class LoginUsuarioDB {
                     TelaPrincipal.menuImoveis.setEnabled(false);
                     TelaPrincipal.menuPessoas.setEnabled(false);
                     TelaPrincipal.menuRelatorios.setEnabled(false);
+                    TelaPrincipal.menuContratos.setEnabled(false);
+                    TelaPrincipal.menuRecibo.setEnabled(false);
                     connectarBanco.desconectar();
                     pst.close();
                 } else {

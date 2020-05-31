@@ -37,17 +37,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuPessoas = new javax.swing.JMenuItem();
         menuImoveis = new javax.swing.JMenuItem();
         menuUsuarios = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
+        menuContratos = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         menuRelatorios = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        menuRecibo = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
+        menuOpcoes = new javax.swing.JMenu();
         MenuSair = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
+        menuAjuda = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -110,12 +110,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(menuCadastro);
 
-        jMenu1.setText("Contratos");
+        menuContratos.setText("Contratos");
 
         jMenuItem1.setText("Gerar Contrato");
-        jMenu1.add(jMenuItem1);
+        menuContratos.add(jMenuItem1);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(menuContratos);
 
         menuRelatorios.setText("Relatorios");
 
@@ -133,14 +133,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(menuRelatorios);
 
-        jMenu2.setText("Recibo");
+        menuRecibo.setText("Recibo");
 
         jMenuItem2.setText("Gerar Recibo");
-        jMenu2.add(jMenuItem2);
+        menuRecibo.add(jMenuItem2);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(menuRecibo);
 
-        jMenu4.setText("Opções");
+        menuOpcoes.setText("Opções");
 
         MenuSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK));
         MenuSair.setText("Sair");
@@ -149,16 +149,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 MenuSairActionPerformed(evt);
             }
         });
-        jMenu4.add(MenuSair);
+        menuOpcoes.add(MenuSair);
 
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(menuOpcoes);
 
-        jMenu5.setText("Ajuda");
+        menuAjuda.setText("Ajuda");
 
         jMenuItem9.setText("Sobre");
-        jMenu5.add(jMenuItem9);
+        menuAjuda.add(jMenuItem9);
 
-        jMenuBar1.add(jMenu5);
+        jMenuBar1.add(menuAjuda);
 
         setJMenuBar(jMenuBar1);
 
@@ -238,10 +238,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem MenuSair;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
@@ -250,9 +246,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JMenu menuAjuda;
     private javax.swing.JMenu menuCadastro;
+    public static javax.swing.JMenu menuContratos;
     public static javax.swing.JMenuItem menuImoveis;
+    private javax.swing.JMenu menuOpcoes;
     public static javax.swing.JMenuItem menuPessoas;
+    public static javax.swing.JMenu menuRecibo;
     public static javax.swing.JMenu menuRelatorios;
     public static javax.swing.JMenuItem menuUsuarios;
     // End of variables declaration//GEN-END:variables
