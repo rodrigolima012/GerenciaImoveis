@@ -7,6 +7,7 @@ package br.com.FRimoveis.dao;
 
 import br.com.FRimoveis.Conexao.ConexaoBD;
 import br.com.FRimoveis.Desenvolvimento.CadastroUsuarios;
+import br.com.FRimoveis.telas.TelaCadastroUsuarios;
 import java.sql.*;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
@@ -47,7 +48,8 @@ public class CadastroUsuarioDB {
             usuario.setLoginUsuario(connectarBanco.rs.getString("login"));
             usuario.setSenhaUsuario(connectarBanco.rs.getString("senha"));
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Usuario não Cadastrado!! \n Digite novamente!");
+            JOptionPane.showMessageDialog(null, "Usuario não Cadastrado!!\n Digite novamente!");
+            
         }
         connectarBanco.desconectar();
         return usuario;

@@ -403,29 +403,57 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
 
     private void btnPesquisarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarUsuarioActionPerformed
         // TODO add your handling code here:
+        txtIDUsuario.setText("");
+        txtNomeUsuario.setText("");
+        txtLoginUsuario.setText("");
+        txtSenhaUsuario.setText("");
+        cbPerfilUsuario.setSelectedItem("");
+        cadastroUsuarios.setPesquisa(txtBuscarUsuario.getText());
+        CadastroUsuarios model = cadastroUsuariosDB.pesquisaUsuario(cadastroUsuarios);
 
         if (txtBuscarUsuario.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Favor inserir dados para a pesquisa!");
+        } else if (txtBuscarUsuario.getText().length() < 3) {
+            JOptionPane.showMessageDialog(null, "Informar pelo menos 3 caracteres\nPara a busca funcionar!");
         } else {
-            cadastroUsuarios.setPesquisa(txtBuscarUsuario.getText());
-            CadastroUsuarios model = cadastroUsuariosDB.pesquisaUsuario(cadastroUsuarios);
-            txtIDUsuario.setText(model.getIdUsuario());
-            cbPerfilUsuario.getModel().setSelectedItem(model.getPerfilUsuario());
-            txtNomeUsuario.setText(model.getNomeUsuario());
-            txtLoginUsuario.setText(model.getLoginUsuario());
-            txtSenhaUsuario.setText(model.getSenhaUsuario());
+            String teste = txtBuscarUsuario.getText().substring(0, 3);
+            String teste2 = model.getNomeUsuario().substring(0, 3);
 
-            txtIDUsuario.setEnabled(false);
-            txtLoginUsuario.setEnabled(false);
-            txtNomeUsuario.setEnabled(false);
-            txtSenhaUsuario.setEnabled(false);
-            cbPerfilUsuario.setEnabled(false);
-            btnCancelarUsuario.setEnabled(true);
-            btnEditarUsuario.setEnabled(false);
-            btnExcluirUsuario.setEnabled(false);
-            btnSalvarUsuario.setEnabled(false);
-            btnNovoUsuario.setEnabled(true);
+            if (model.getNomeUsuario() == null) {
+                txtIDUsuario.setText("");
+                txtNomeUsuario.setText("");
+                txtLoginUsuario.setText("");
+                txtSenhaUsuario.setText("");
+                cbPerfilUsuario.setSelectedItem("");
+                txtIDUsuario.setEnabled(false);
+                txtLoginUsuario.setEnabled(false);
+                txtNomeUsuario.setEnabled(false);
+                txtSenhaUsuario.setEnabled(false);
+                cbPerfilUsuario.setEnabled(false);
+                btnCancelarUsuario.setEnabled(true);
+                btnEditarUsuario.setEnabled(false);
+                btnExcluirUsuario.setEnabled(false);
+                btnSalvarUsuario.setEnabled(false);
+                btnNovoUsuario.setEnabled(true);
+            } else if (teste2.equalsIgnoreCase(teste)) {
+                txtIDUsuario.setText(model.getIdUsuario());
+                cbPerfilUsuario.getModel().setSelectedItem(model.getPerfilUsuario());
+                txtNomeUsuario.setText(model.getNomeUsuario());
+                txtLoginUsuario.setText(model.getLoginUsuario());
+                txtSenhaUsuario.setText(model.getSenhaUsuario());
+                txtIDUsuario.setEnabled(false);
+                txtLoginUsuario.setEnabled(false);
+                txtNomeUsuario.setEnabled(false);
+                txtSenhaUsuario.setEnabled(false);
+                cbPerfilUsuario.setEnabled(false);
+                btnCancelarUsuario.setEnabled(true);
+                btnEditarUsuario.setEnabled(true);
+                btnExcluirUsuario.setEnabled(true);
+                btnSalvarUsuario.setEnabled(false);
+                btnNovoUsuario.setEnabled(true);
+            }
         }
+
     }//GEN-LAST:event_btnPesquisarUsuarioActionPerformed
 
     private void txtIDUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDUsuarioActionPerformed
