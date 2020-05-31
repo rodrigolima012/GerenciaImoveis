@@ -16,6 +16,29 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
      */
     public TelaCadastroPessoas() {
         initComponents();
+        rbPessoaFisica.setEnabled(false);
+        rbPessoaJuridica.setEnabled(false);
+        txtIDpessoa.setEnabled(false);
+        cbPerfilPessoa.setEnabled(false);
+        txtNomePessoa.setEnabled(false);
+        txtNomeFantasia.setEnabled(false);
+        txtcpfcnpj.setEnabled(false);
+        txtInscricaoEstadual.setEnabled(false);
+        txtDataNasc.setEnabled(false);
+        txtEnderecoPessoa.setEnabled(false);
+        txtBairroPessoa.setEnabled(false);
+        txtNumeroCasaPessoa.setEnabled(false);
+        txtCepPessoa.setEnabled(false);
+        txtTelefonePessoa.setEnabled(false);
+        txtEmailPessoa.setEnabled(false);
+        txtReferencia1Nome.setEnabled(false);
+        txtReferencia1Telefone.setEnabled(false);
+        txtReferencia2Nome.setEnabled(false);
+        txtReferencia2Telefone.setEnabled(false);
+        btnSalvarPessoa.setEnabled(false);
+        btnCancelarPessoa.setEnabled(false);
+        btnExcluirPessoa.setEnabled(false);
+        btnEditarPessoa.setEnabled(false);
     }
 
     /**
@@ -37,39 +60,39 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtIDpessoa = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtNomePessoa = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtNomeFantasia = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbPerfilPessoa = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        txtcpfcnpj = new javax.swing.JFormattedTextField();
         jLabel9 = new javax.swing.JLabel();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
+        txtDataNasc = new javax.swing.JFormattedTextField();
         jLabel10 = new javax.swing.JLabel();
-        jFormattedTextField3 = new javax.swing.JFormattedTextField();
+        txtInscricaoEstadual = new javax.swing.JFormattedTextField();
         jLabel11 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txtEnderecoPessoa = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        txtBairroPessoa = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        txtNumeroCasaPessoa = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        jFormattedTextField4 = new javax.swing.JFormattedTextField();
+        txtCepPessoa = new javax.swing.JFormattedTextField();
         jLabel15 = new javax.swing.JLabel();
-        jFormattedTextField5 = new javax.swing.JFormattedTextField();
+        txtTelefonePessoa = new javax.swing.JFormattedTextField();
         jLabel16 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        txtEmailPessoa = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        txtReferencia1Nome = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
-        jFormattedTextField6 = new javax.swing.JFormattedTextField();
+        txtReferencia1Telefone = new javax.swing.JFormattedTextField();
         jLabel19 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        txtReferencia2Nome = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
-        jFormattedTextField7 = new javax.swing.JFormattedTextField();
+        txtReferencia2Telefone = new javax.swing.JFormattedTextField();
         btnPesquisarPessoa = new javax.swing.JButton();
         btnNovoPessoa = new javax.swing.JButton();
         btnSalvarPessoa = new javax.swing.JButton();
@@ -96,10 +119,20 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         bgPerfilPessoas.add(rbPessoaFisica);
         rbPessoaFisica.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         rbPessoaFisica.setText("Pessoa Fisica");
+        rbPessoaFisica.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rbPessoaFisicaMouseClicked(evt);
+            }
+        });
 
         bgPerfilPessoas.add(rbPessoaJuridica);
         rbPessoaJuridica.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         rbPessoaJuridica.setText("Pessoa Juridica");
+        rbPessoaJuridica.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rbPessoaJuridicaMouseClicked(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -123,87 +156,87 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel6.setText("*Perfil:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbPerfilPessoa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel8.setText("*CPF/CNPJ:");
 
-        jFormattedTextField1.setText("jFormattedTextField1");
+        txtcpfcnpj.setText("jFormattedTextField1");
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel9.setText("*Data Nascimento:");
 
-        jFormattedTextField2.setText("jFormattedTextField2");
+        txtDataNasc.setText("jFormattedTextField2");
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel10.setText("*Inscrição Estadual:");
 
-        jFormattedTextField3.setText("jFormattedTextField3");
+        txtInscricaoEstadual.setText("jFormattedTextField3");
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel11.setText("*Endereço:");
 
-        jTextField4.setText("jTextField4");
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        txtEnderecoPessoa.setText("jTextField4");
+        txtEnderecoPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                txtEnderecoPessoaActionPerformed(evt);
             }
         });
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel12.setText("*Bairro:");
 
-        jTextField5.setText("jTextField5");
+        txtBairroPessoa.setText("jTextField5");
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel13.setText("*Numero:");
 
-        jTextField6.setText("jTextField6");
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        txtNumeroCasaPessoa.setText("jTextField6");
+        txtNumeroCasaPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                txtNumeroCasaPessoaActionPerformed(evt);
             }
         });
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel14.setText("*CEP:");
 
-        jFormattedTextField4.setText("jFormattedTextField4");
+        txtCepPessoa.setText("jFormattedTextField4");
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel15.setText("*Telefone:");
 
-        jFormattedTextField5.setText("jFormattedTextField5");
+        txtTelefonePessoa.setText("jFormattedTextField5");
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel16.setText("*E-mail:");
 
-        jTextField7.setText("jTextField7");
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        txtEmailPessoa.setText("jTextField7");
+        txtEmailPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                txtEmailPessoaActionPerformed(evt);
             }
         });
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel17.setText("*Nome Referência:");
 
-        jTextField8.setText("jTextField8");
+        txtReferencia1Nome.setText("jTextField8");
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel18.setText("*Telefone Referência:");
 
-        jFormattedTextField6.setText("jFormattedTextField6");
+        txtReferencia1Telefone.setText("jFormattedTextField6");
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel19.setText("*Nome Referência:");
 
-        jTextField9.setText("jTextField8");
+        txtReferencia2Nome.setText("jTextField8");
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel20.setText("*Telefone Referência:");
 
-        jFormattedTextField7.setText("jFormattedTextField6");
+        txtReferencia2Telefone.setText("jFormattedTextField6");
 
         btnPesquisarPessoa.setText("Pesquisar");
         btnPesquisarPessoa.addActionListener(new java.awt.event.ActionListener() {
@@ -268,77 +301,77 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtNomePessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3))
+                        .addComponent(txtNomeFantasia))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtEnderecoPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jFormattedTextField1)
+                                .addComponent(txtcpfcnpj)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel10)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jFormattedTextField3)
+                                .addComponent(txtInscricaoEstadual)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel12)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtBairroPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel13)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))))
+                                .addComponent(txtNumeroCasaPessoa, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel14)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jFormattedTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtCepPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel15)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jFormattedTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtTelefonePessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel16))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtIDpessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(cbPerfilPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField7))
+                        .addComponent(txtEmailPessoa))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField8)
+                        .addComponent(txtReferencia1Nome)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel18)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFormattedTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtReferencia1Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel19)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField9)
+                        .addComponent(txtReferencia2Nome)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel20)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFormattedTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtReferencia2Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnNovoPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -374,59 +407,59 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
                 .addGap(11, 11, 11)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtIDpessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBox1))
+                    .addComponent(cbPerfilPessoa))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField2)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNomePessoa)
+                    .addComponent(txtNomeFantasia, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jFormattedTextField2, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtDataNasc, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtcpfcnpj, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jFormattedTextField3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
+                    .addComponent(txtInscricaoEstadual, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
+                        .addComponent(txtEnderecoPessoa, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField5)
+                            .addComponent(txtBairroPessoa)
                             .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtNumeroCasaPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
-                        .addComponent(jFormattedTextField4)
+                        .addComponent(txtCepPessoa)
                         .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jFormattedTextField5)
+                        .addComponent(txtTelefonePessoa)
                         .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEmailPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
-                        .addComponent(jTextField8)
+                        .addComponent(txtReferencia1Nome)
                         .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jFormattedTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtReferencia1Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField9)
+                        .addComponent(txtReferencia2Nome)
                         .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jFormattedTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtReferencia2Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvarPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -456,50 +489,142 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void txtEnderecoPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnderecoPessoaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_txtEnderecoPessoaActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void txtNumeroCasaPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroCasaPessoaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_txtNumeroCasaPessoaActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void txtEmailPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailPessoaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_txtEmailPessoaActionPerformed
 
     private void btnPesquisarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarPessoaActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_btnPesquisarPessoaActionPerformed
 
     private void btnNovoPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoPessoaActionPerformed
+        rbPessoaFisica.setEnabled(true);
+        rbPessoaJuridica.setEnabled(true);
+        txtIDpessoa.setEnabled(false);
+        cbPerfilPessoa.setEnabled(false);
+        txtNomePessoa.setEnabled(false);
+        txtNomeFantasia.setEnabled(false);
+        txtcpfcnpj.setEnabled(false);
+        txtInscricaoEstadual.setEnabled(false);
+        txtDataNasc.setEnabled(false);
+        txtEnderecoPessoa.setEnabled(false);
+        txtBairroPessoa.setEnabled(false);
+        txtNumeroCasaPessoa.setEnabled(false);
+        txtCepPessoa.setEnabled(false);
+        txtTelefonePessoa.setEnabled(false);
+        txtEmailPessoa.setEnabled(false);
+        txtReferencia1Nome.setEnabled(false);
+        txtReferencia1Telefone.setEnabled(false);
+        txtReferencia2Nome.setEnabled(false);
+        txtReferencia2Telefone.setEnabled(false);
+        btnSalvarPessoa.setEnabled(false);
+        btnCancelarPessoa.setEnabled(false);
+        btnExcluirPessoa.setEnabled(false);
+        btnEditarPessoa.setEnabled(false);
         // TODO add your handling code here:
- 
+
     }//GEN-LAST:event_btnNovoPessoaActionPerformed
 
     private void btnSalvarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarPessoaActionPerformed
         // instanciando a classe Usuario do pacote modelo e criando seu objeto usuarios
-       
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSalvarPessoaActionPerformed
 
     private void btnCancelarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarPessoaActionPerformed
+        rbPessoaFisica.setEnabled(false);
+        rbPessoaJuridica.setEnabled(false);
+        txtIDpessoa.setEnabled(false);
+        cbPerfilPessoa.setEnabled(false);
+        txtNomePessoa.setEnabled(false);
+        txtNomeFantasia.setEnabled(false);
+        txtcpfcnpj.setEnabled(false);
+        txtInscricaoEstadual.setEnabled(false);
+        txtDataNasc.setEnabled(false);
+        txtEnderecoPessoa.setEnabled(false);
+        txtBairroPessoa.setEnabled(false);
+        txtNumeroCasaPessoa.setEnabled(false);
+        txtCepPessoa.setEnabled(false);
+        txtTelefonePessoa.setEnabled(false);
+        txtEmailPessoa.setEnabled(false);
+        txtReferencia1Nome.setEnabled(false);
+        txtReferencia1Telefone.setEnabled(false);
+        txtReferencia2Nome.setEnabled(false);
+        txtReferencia2Telefone.setEnabled(false);
+        btnSalvarPessoa.setEnabled(false);
+        btnCancelarPessoa.setEnabled(false);
+        btnExcluirPessoa.setEnabled(false);
+        btnEditarPessoa.setEnabled(false);
         // TODO add your handling code here:
-      
+
     }//GEN-LAST:event_btnCancelarPessoaActionPerformed
 
     private void btnExcluirPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirPessoaActionPerformed
-        
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnExcluirPessoaActionPerformed
 
     private void btnEditarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPessoaActionPerformed
-  
+
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEditarPessoaActionPerformed
+
+    private void rbPessoaFisicaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbPessoaFisicaMouseClicked
+        cbPerfilPessoa.setEnabled(true);
+        txtNomePessoa.setEnabled(true);
+        txtNomeFantasia.setEnabled(false);
+        txtcpfcnpj.setEnabled(true);
+        txtInscricaoEstadual.setEnabled(false);
+        txtDataNasc.setEnabled(true);
+        txtEnderecoPessoa.setEnabled(true);
+        txtBairroPessoa.setEnabled(true);
+        txtNumeroCasaPessoa.setEnabled(true);
+        txtCepPessoa.setEnabled(true);
+        txtTelefonePessoa.setEnabled(true);
+        txtEmailPessoa.setEnabled(true);
+        txtReferencia1Nome.setEnabled(true);
+        txtReferencia1Telefone.setEnabled(true);
+        txtReferencia2Nome.setEnabled(true);
+        txtReferencia2Telefone.setEnabled(true);
+        btnSalvarPessoa.setEnabled(true);
+        btnCancelarPessoa.setEnabled(true);
+        btnExcluirPessoa.setEnabled(false);
+        btnEditarPessoa.setEnabled(false);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbPessoaFisicaMouseClicked
+
+    private void rbPessoaJuridicaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbPessoaJuridicaMouseClicked
+        cbPerfilPessoa.setEnabled(true);
+        txtNomePessoa.setEnabled(true);
+        txtNomeFantasia.setEnabled(true);
+        txtcpfcnpj.setEnabled(true);
+        txtInscricaoEstadual.setEnabled(true);
+        txtDataNasc.setEnabled(true);
+        txtEnderecoPessoa.setEnabled(true);
+        txtBairroPessoa.setEnabled(true);
+        txtNumeroCasaPessoa.setEnabled(true);
+        txtCepPessoa.setEnabled(true);
+        txtTelefonePessoa.setEnabled(true);
+        txtEmailPessoa.setEnabled(true);
+        txtReferencia1Nome.setEnabled(true);
+        txtReferencia1Telefone.setEnabled(true);
+        txtReferencia2Nome.setEnabled(true);
+        txtReferencia2Telefone.setEnabled(true);
+        btnSalvarPessoa.setEnabled(true);
+        btnCancelarPessoa.setEnabled(true);
+        btnExcluirPessoa.setEnabled(false);
+        btnEditarPessoa.setEnabled(false);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbPessoaJuridicaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -544,14 +669,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
     private javax.swing.JButton btnNovoPessoa;
     private javax.swing.JButton btnPesquisarPessoa;
     private javax.swing.JButton btnSalvarPessoa;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
-    private javax.swing.JFormattedTextField jFormattedTextField3;
-    private javax.swing.JFormattedTextField jFormattedTextField4;
-    private javax.swing.JFormattedTextField jFormattedTextField5;
-    private javax.swing.JFormattedTextField jFormattedTextField6;
-    private javax.swing.JFormattedTextField jFormattedTextField7;
+    private javax.swing.JComboBox<String> cbPerfilPessoa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -575,17 +693,24 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JRadioButton rbPessoaFisica;
     private javax.swing.JRadioButton rbPessoaJuridica;
+    private javax.swing.JTextField txtBairroPessoa;
     private javax.swing.JTextField txtBuscarPessoa;
+    private javax.swing.JFormattedTextField txtCepPessoa;
+    private javax.swing.JFormattedTextField txtDataNasc;
+    private javax.swing.JTextField txtEmailPessoa;
+    private javax.swing.JTextField txtEnderecoPessoa;
+    private javax.swing.JTextField txtIDpessoa;
+    private javax.swing.JFormattedTextField txtInscricaoEstadual;
+    private javax.swing.JTextField txtNomeFantasia;
+    private javax.swing.JTextField txtNomePessoa;
+    private javax.swing.JTextField txtNumeroCasaPessoa;
+    private javax.swing.JTextField txtReferencia1Nome;
+    private javax.swing.JFormattedTextField txtReferencia1Telefone;
+    private javax.swing.JTextField txtReferencia2Nome;
+    private javax.swing.JFormattedTextField txtReferencia2Telefone;
+    private javax.swing.JFormattedTextField txtTelefonePessoa;
+    private javax.swing.JFormattedTextField txtcpfcnpj;
     // End of variables declaration//GEN-END:variables
 }

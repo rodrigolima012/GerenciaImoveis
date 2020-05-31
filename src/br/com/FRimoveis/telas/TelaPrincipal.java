@@ -178,7 +178,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuPessoasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPessoasActionPerformed
-                // TODO add your handling code here:
+        TelaCadastroPessoas cadastropessoa = new TelaCadastroPessoas();
+        cadastropessoa.setVisible(true);
+        // TODO add your handling code here:
     }//GEN-LAST:event_menuPessoasActionPerformed
 
     private void MenuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSairActionPerformed
@@ -190,8 +192,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuSairActionPerformed
 
     private void menuUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuUsuariosActionPerformed
-        TelaCadastroUsuarios cadastro = new TelaCadastroUsuarios();
-        cadastro.setVisible(true);
+        TelaCadastroUsuarios cadastrousuario = new TelaCadastroUsuarios();
+        cadastrousuario.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_menuUsuariosActionPerformed
 

@@ -73,23 +73,23 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextField2" min="-2" pref="415" max="-2" attributes="0"/>
+                          <Component id="txtNomePessoa" min="-2" pref="415" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextField3" max="32767" attributes="0"/>
+                          <Component id="txtNomeFantasia" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace pref="36" max="32767" attributes="0"/>
-                                  <Component id="jTextField4" min="-2" pref="395" max="-2" attributes="0"/>
+                                  <Component id="txtEnderecoPessoa" min="-2" pref="395" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jFormattedTextField1" max="32767" attributes="0"/>
+                                  <Component id="txtcpfcnpj" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -97,20 +97,20 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="jFormattedTextField3" max="32767" attributes="0"/>
+                                  <Component id="txtInscricaoEstadual" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jFormattedTextField2" min="-2" pref="133" max="-2" attributes="0"/>
+                                  <Component id="txtDataNasc" min="-2" pref="133" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jTextField5" min="-2" pref="210" max="-2" attributes="0"/>
+                                  <Component id="txtBairroPessoa" min="-2" pref="210" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jTextField6" pref="70" max="32767" attributes="0"/>
+                                  <Component id="txtNumeroCasaPessoa" pref="70" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -119,44 +119,44 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jFormattedTextField4" min="-2" pref="141" max="-2" attributes="0"/>
+                                  <Component id="txtCepPessoa" min="-2" pref="141" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jFormattedTextField5" min="-2" pref="176" max="-2" attributes="0"/>
+                                  <Component id="txtTelefonePessoa" min="-2" pref="176" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jTextField1" min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Component id="txtIDpessoa" min="-2" pref="40" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jComboBox1" min="-2" pref="195" max="-2" attributes="0"/>
+                                  <Component id="cbPerfilPessoa" min="-2" pref="195" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextField7" max="32767" attributes="0"/>
+                          <Component id="txtEmailPessoa" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextField8" max="32767" attributes="0"/>
+                          <Component id="txtReferencia1Nome" max="32767" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jFormattedTextField6" min="-2" pref="176" max="-2" attributes="0"/>
+                          <Component id="txtReferencia1Telefone" min="-2" pref="176" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextField9" max="32767" attributes="0"/>
+                          <Component id="txtReferencia2Nome" max="32767" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jFormattedTextField7" min="-2" pref="176" max="-2" attributes="0"/>
+                          <Component id="txtReferencia2Telefone" min="-2" pref="176" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="btnNovoPessoa" min="-2" pref="130" max="-2" attributes="0"/>
@@ -201,39 +201,39 @@
                   <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel3" min="-2" pref="29" max="-2" attributes="0"/>
-                      <Component id="jTextField1" alignment="0" min="-2" pref="29" max="-2" attributes="0"/>
+                      <Component id="txtIDpessoa" alignment="0" min="-2" pref="29" max="-2" attributes="0"/>
                       <Component id="jLabel6" max="32767" attributes="0"/>
-                      <Component id="jComboBox1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="cbPerfilPessoa" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jLabel5" max="32767" attributes="0"/>
                       <Component id="jLabel4" max="32767" attributes="0"/>
-                      <Component id="jTextField2" max="32767" attributes="0"/>
-                      <Component id="jTextField3" alignment="0" min="-2" pref="29" max="-2" attributes="0"/>
+                      <Component id="txtNomePessoa" max="32767" attributes="0"/>
+                      <Component id="txtNomeFantasia" alignment="0" min="-2" pref="29" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="jFormattedTextField2" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtDataNasc" alignment="0" max="32767" attributes="0"/>
                       <Component id="jLabel8" alignment="0" max="32767" attributes="0"/>
                       <Component id="jLabel9" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jFormattedTextField1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtcpfcnpj" alignment="0" max="32767" attributes="0"/>
                       <Component id="jLabel10" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jFormattedTextField3" alignment="0" pref="29" max="32767" attributes="0"/>
+                      <Component id="txtInscricaoEstadual" alignment="0" pref="29" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jLabel11" pref="29" max="32767" attributes="0"/>
-                          <Component id="jTextField4" pref="29" max="32767" attributes="0"/>
+                          <Component id="txtEnderecoPessoa" pref="29" max="32767" attributes="0"/>
                       </Group>
                       <Component id="jLabel12" alignment="0" min="-2" pref="29" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jTextField5" max="32767" attributes="0"/>
+                              <Component id="txtBairroPessoa" max="32767" attributes="0"/>
                               <Component id="jLabel13" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jTextField6" min="-2" pref="29" max="-2" attributes="0"/>
+                                  <Component id="txtNumeroCasaPessoa" min="-2" pref="29" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -243,30 +243,30 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jLabel14" pref="29" max="32767" attributes="0"/>
-                          <Component id="jFormattedTextField4" max="32767" attributes="0"/>
+                          <Component id="txtCepPessoa" max="32767" attributes="0"/>
                           <Component id="jLabel15" max="32767" attributes="0"/>
-                          <Component id="jFormattedTextField5" max="32767" attributes="0"/>
+                          <Component id="txtTelefonePessoa" max="32767" attributes="0"/>
                           <Component id="jLabel16" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="jTextField7" alignment="0" min="-2" pref="29" max="-2" attributes="0"/>
+                      <Component id="txtEmailPessoa" alignment="0" min="-2" pref="29" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jLabel17" pref="29" max="32767" attributes="0"/>
-                          <Component id="jTextField8" max="32767" attributes="0"/>
+                          <Component id="txtReferencia1Nome" max="32767" attributes="0"/>
                           <Component id="jLabel18" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="jFormattedTextField6" alignment="0" min="-2" pref="29" max="-2" attributes="0"/>
+                      <Component id="txtReferencia1Telefone" alignment="0" min="-2" pref="29" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jLabel19" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextField9" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtReferencia2Nome" alignment="0" max="32767" attributes="0"/>
                           <Component id="jLabel20" alignment="0" min="-2" pref="29" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jFormattedTextField7" alignment="0" min="-2" pref="29" max="-2" attributes="0"/>
+                      <Component id="txtReferencia2Telefone" alignment="0" min="-2" pref="29" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -322,6 +322,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Pessoa Fisica"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rbPessoaFisicaMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rbPessoaJuridica">
           <Properties>
@@ -333,6 +336,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Pessoa Juridica"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rbPessoaJuridicaMouseClicked"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>
@@ -390,7 +396,7 @@
             <Property name="text" type="java.lang.String" value="ID Pessoa:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
+        <Component class="javax.swing.JTextField" name="txtIDpessoa">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
@@ -400,7 +406,7 @@
             <Property name="text" type="java.lang.String" value="*Nome:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField2">
+        <Component class="javax.swing.JTextField" name="txtNomePessoa">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
@@ -410,7 +416,7 @@
             <Property name="text" type="java.lang.String" value="Nome Fantasia:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField3">
+        <Component class="javax.swing.JTextField" name="txtNomeFantasia">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
@@ -420,7 +426,7 @@
             <Property name="text" type="java.lang.String" value="*Perfil:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="cbPerfilPessoa">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
@@ -443,7 +449,7 @@
             <Property name="text" type="java.lang.String" value="*CPF/CNPJ:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField1">
+        <Component class="javax.swing.JFormattedTextField" name="txtcpfcnpj">
           <Properties>
             <Property name="text" type="java.lang.String" value="jFormattedTextField1"/>
           </Properties>
@@ -456,7 +462,7 @@
             <Property name="text" type="java.lang.String" value="*Data Nascimento:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField2">
+        <Component class="javax.swing.JFormattedTextField" name="txtDataNasc">
           <Properties>
             <Property name="text" type="java.lang.String" value="jFormattedTextField2"/>
           </Properties>
@@ -469,7 +475,7 @@
             <Property name="text" type="java.lang.String" value="*Inscri&#xe7;&#xe3;o Estadual:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField3">
+        <Component class="javax.swing.JFormattedTextField" name="txtInscricaoEstadual">
           <Properties>
             <Property name="text" type="java.lang.String" value="jFormattedTextField3"/>
           </Properties>
@@ -482,12 +488,12 @@
             <Property name="text" type="java.lang.String" value="*Endere&#xe7;o:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField4">
+        <Component class="javax.swing.JTextField" name="txtEnderecoPessoa">
           <Properties>
             <Property name="text" type="java.lang.String" value="jTextField4"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField4ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEnderecoPessoaActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel12">
@@ -498,7 +504,7 @@
             <Property name="text" type="java.lang.String" value="*Bairro:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField5">
+        <Component class="javax.swing.JTextField" name="txtBairroPessoa">
           <Properties>
             <Property name="text" type="java.lang.String" value="jTextField5"/>
           </Properties>
@@ -511,12 +517,12 @@
             <Property name="text" type="java.lang.String" value="*Numero:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField6">
+        <Component class="javax.swing.JTextField" name="txtNumeroCasaPessoa">
           <Properties>
             <Property name="text" type="java.lang.String" value="jTextField6"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField6ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNumeroCasaPessoaActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel14">
@@ -527,7 +533,7 @@
             <Property name="text" type="java.lang.String" value="*CEP:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField4">
+        <Component class="javax.swing.JFormattedTextField" name="txtCepPessoa">
           <Properties>
             <Property name="text" type="java.lang.String" value="jFormattedTextField4"/>
           </Properties>
@@ -540,7 +546,7 @@
             <Property name="text" type="java.lang.String" value="*Telefone:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField5">
+        <Component class="javax.swing.JFormattedTextField" name="txtTelefonePessoa">
           <Properties>
             <Property name="text" type="java.lang.String" value="jFormattedTextField5"/>
           </Properties>
@@ -553,12 +559,12 @@
             <Property name="text" type="java.lang.String" value="*E-mail:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField7">
+        <Component class="javax.swing.JTextField" name="txtEmailPessoa">
           <Properties>
             <Property name="text" type="java.lang.String" value="jTextField7"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField7ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEmailPessoaActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel17">
@@ -569,7 +575,7 @@
             <Property name="text" type="java.lang.String" value="*Nome Refer&#xea;ncia:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField8">
+        <Component class="javax.swing.JTextField" name="txtReferencia1Nome">
           <Properties>
             <Property name="text" type="java.lang.String" value="jTextField8"/>
           </Properties>
@@ -582,7 +588,7 @@
             <Property name="text" type="java.lang.String" value="*Telefone Refer&#xea;ncia:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField6">
+        <Component class="javax.swing.JFormattedTextField" name="txtReferencia1Telefone">
           <Properties>
             <Property name="text" type="java.lang.String" value="jFormattedTextField6"/>
           </Properties>
@@ -595,7 +601,7 @@
             <Property name="text" type="java.lang.String" value="*Nome Refer&#xea;ncia:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField9">
+        <Component class="javax.swing.JTextField" name="txtReferencia2Nome">
           <Properties>
             <Property name="text" type="java.lang.String" value="jTextField8"/>
           </Properties>
@@ -608,7 +614,7 @@
             <Property name="text" type="java.lang.String" value="*Telefone Refer&#xea;ncia:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField7">
+        <Component class="javax.swing.JFormattedTextField" name="txtReferencia2Telefone">
           <Properties>
             <Property name="text" type="java.lang.String" value="jFormattedTextField6"/>
           </Properties>
