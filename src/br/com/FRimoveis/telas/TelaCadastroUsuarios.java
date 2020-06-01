@@ -408,6 +408,8 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         txtLoginUsuario.setText("");
         txtSenhaUsuario.setText("");
         cbPerfilUsuario.setSelectedItem("");
+        String teste = "";
+        String teste2 = "";
         cadastroUsuarios.setPesquisa(txtBuscarUsuario.getText());
         CadastroUsuarios model = cadastroUsuariosDB.pesquisaUsuario(cadastroUsuarios);
 
@@ -416,8 +418,12 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         } else if (txtBuscarUsuario.getText().length() < 3) {
             JOptionPane.showMessageDialog(null, "Informar pelo menos 3 caracteres\nPara a busca funcionar!");
         } else {
-            String teste = txtBuscarUsuario.getText().substring(0, 3);
-            String teste2 = model.getNomeUsuario().substring(0, 3);
+            try {
+                teste = txtBuscarUsuario.getText().substring(0, 3);
+                teste2 = model.getNomeUsuario().substring(0, 3);
+            } catch (Exception e) {
+                
+            }
 
             if (model.getNomeUsuario() == null) {
                 txtIDUsuario.setText("");

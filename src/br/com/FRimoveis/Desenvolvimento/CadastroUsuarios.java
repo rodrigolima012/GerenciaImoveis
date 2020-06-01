@@ -11,12 +11,12 @@ package br.com.FRimoveis.Desenvolvimento;
  */
 public class CadastroUsuarios {
 
-    private String idUsuario;
-    private String perfilUsuario;
-    private String nomeUsuario;
-    private String loginUsuario;
-    private String senhaUsuario;
-    private String pesquisa;
+    private String idUsuario = "";
+    private String perfilUsuario = "";
+    private String nomeUsuario = "";
+    private String loginUsuario = "";
+    private String senhaUsuario = "";
+    private String pesquisa = "";
 
     
     public String getPerfilUsuario() {
