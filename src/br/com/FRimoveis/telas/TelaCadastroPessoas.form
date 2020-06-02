@@ -18,6 +18,9 @@
     <SyntheticProperty name="generateSize" type="boolean" value="true"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowActivated" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowActivated"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -324,6 +327,7 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rbPessoaFisicaMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbPessoaFisicaActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rbPessoaJuridica">
@@ -450,9 +454,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="txtcpfcnpj">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jFormattedTextField1"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
@@ -463,9 +464,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="txtDataNasc">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jFormattedTextField2"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>
@@ -476,9 +474,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="txtInscricaoEstadual">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jFormattedTextField3"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
@@ -489,9 +484,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtEnderecoPessoa">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField4"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEnderecoPessoaActionPerformed"/>
           </Events>
@@ -505,9 +497,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtBairroPessoa">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField5"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel13">
           <Properties>
@@ -518,9 +507,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNumeroCasaPessoa">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField6"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNumeroCasaPessoaActionPerformed"/>
           </Events>
@@ -534,9 +520,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="txtCepPessoa">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jFormattedTextField4"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel15">
           <Properties>
@@ -547,9 +530,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="txtTelefonePessoa">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jFormattedTextField5"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel16">
           <Properties>
@@ -560,9 +540,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtEmailPessoa">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField7"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEmailPessoaActionPerformed"/>
           </Events>
@@ -576,9 +553,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtReferencia1Nome">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField8"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel18">
           <Properties>
@@ -589,9 +563,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="txtReferencia1Telefone">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jFormattedTextField6"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel19">
           <Properties>
@@ -602,9 +573,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtReferencia2Nome">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField8"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel20">
           <Properties>
@@ -615,9 +583,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="txtReferencia2Telefone">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jFormattedTextField6"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnPesquisarPessoa">
           <Properties>

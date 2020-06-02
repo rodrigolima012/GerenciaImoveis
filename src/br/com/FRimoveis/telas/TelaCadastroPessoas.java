@@ -5,6 +5,14 @@
  */
 package br.com.FRimoveis.telas;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.MaskFormatter;
+
 /**
  *
  * @author rodrigolima
@@ -39,6 +47,43 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         btnCancelarPessoa.setEnabled(false);
         btnExcluirPessoa.setEnabled(false);
         btnEditarPessoa.setEnabled(false);
+        
+        MaskFormatter dataNasc = null;
+        MaskFormatter cep = null;
+        MaskFormatter fone = null;
+        MaskFormatter foner1 = null;
+        MaskFormatter foner2 = null;
+        
+        try {
+            txtDataNasc.setValue(null);
+            txtCepPessoa.setValue(null);
+            txtTelefonePessoa.setValue(null);
+            txtReferencia1Telefone.setValue(null);
+            txtReferencia2Telefone.setValue(null);
+            
+            dataNasc = new MaskFormatter("##/##/####");
+            dataNasc.setPlaceholderCharacter(' ');
+            
+            cep = new MaskFormatter("#####-###");
+            cep.setPlaceholderCharacter(' ');
+            
+            fone = new MaskFormatter("(##)# ####-####");
+            fone.setPlaceholderCharacter(' ');
+            
+            foner1 = new MaskFormatter("(##)# ####-####");
+            foner1.setPlaceholderCharacter(' ');
+            
+            foner2 = new MaskFormatter("(##)# ####-####");
+            foner2.setPlaceholderCharacter(' ');
+            
+            txtDataNasc.setFormatterFactory(new DefaultFormatterFactory(dataNasc));
+            txtCepPessoa.setFormatterFactory(new DefaultFormatterFactory(cep));
+            txtTelefonePessoa.setFormatterFactory(new DefaultFormatterFactory(fone));
+            txtReferencia1Telefone.setFormatterFactory(new DefaultFormatterFactory(foner1));
+            txtReferencia2Telefone.setFormatterFactory(new DefaultFormatterFactory(foner2));
+            
+        } catch (ParseException ex) {
+        }
     }
 
     /**
@@ -104,6 +149,11 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("FR - Gerenciador de Imoveis - Cadastro de Pessoas");
         setPreferredSize(new java.awt.Dimension(1024, 720));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -122,6 +172,11 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         rbPessoaFisica.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 rbPessoaFisicaMouseClicked(evt);
+            }
+        });
+        rbPessoaFisica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbPessoaFisicaActionPerformed(evt);
             }
         });
 
@@ -161,22 +216,15 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel8.setText("*CPF/CNPJ:");
 
-        txtcpfcnpj.setText("jFormattedTextField1");
-
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel9.setText("*Data Nascimento:");
-
-        txtDataNasc.setText("jFormattedTextField2");
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel10.setText("*Inscrição Estadual:");
 
-        txtInscricaoEstadual.setText("jFormattedTextField3");
-
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel11.setText("*Endereço:");
 
-        txtEnderecoPessoa.setText("jTextField4");
         txtEnderecoPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEnderecoPessoaActionPerformed(evt);
@@ -186,12 +234,9 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel12.setText("*Bairro:");
 
-        txtBairroPessoa.setText("jTextField5");
-
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel13.setText("*Numero:");
 
-        txtNumeroCasaPessoa.setText("jTextField6");
         txtNumeroCasaPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNumeroCasaPessoaActionPerformed(evt);
@@ -201,17 +246,12 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel14.setText("*CEP:");
 
-        txtCepPessoa.setText("jFormattedTextField4");
-
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel15.setText("*Telefone:");
-
-        txtTelefonePessoa.setText("jFormattedTextField5");
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel16.setText("*E-mail:");
 
-        txtEmailPessoa.setText("jTextField7");
         txtEmailPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmailPessoaActionPerformed(evt);
@@ -221,22 +261,14 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         jLabel17.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel17.setText("*Nome Referência:");
 
-        txtReferencia1Nome.setText("jTextField8");
-
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel18.setText("*Telefone Referência:");
-
-        txtReferencia1Telefone.setText("jFormattedTextField6");
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel19.setText("*Nome Referência:");
 
-        txtReferencia2Nome.setText("jTextField8");
-
         jLabel20.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel20.setText("*Telefone Referência:");
-
-        txtReferencia2Telefone.setText("jFormattedTextField6");
 
         btnPesquisarPessoa.setText("Pesquisar");
         btnPesquisarPessoa.addActionListener(new java.awt.event.ActionListener() {
@@ -535,9 +567,16 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNovoPessoaActionPerformed
 
     private void btnSalvarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarPessoaActionPerformed
-        // instanciando a classe Usuario do pacote modelo e criando seu objeto usuarios
-
-        // TODO add your handling code here:
+        //Metodo para Converter Data para salvar no banco Mysql
+        try {
+            SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");  
+            String str = txtDataNasc.getText();  
+            Date data = formatador.parse(str);            
+            java.sql.Date teste = new java.sql.Date(data.getTime());
+            System.out.println(teste);           
+        } catch (ParseException ex) {
+            Logger.getLogger(TelaCadastroPessoas.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnSalvarPessoaActionPerformed
 
     private void btnCancelarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarPessoaActionPerformed
@@ -601,6 +640,18 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         btnCancelarPessoa.setEnabled(true);
         btnExcluirPessoa.setEnabled(false);
         btnEditarPessoa.setEnabled(false);
+        
+        MaskFormatter cpf = null;
+        
+        try {
+            txtcpfcnpj.setValue(null);
+            
+            cpf = new MaskFormatter("###.###.###-##");
+            cpf.setPlaceholderCharacter(' ');
+            txtcpfcnpj.setFormatterFactory(new DefaultFormatterFactory(cpf));
+            
+        } catch (ParseException ex) {
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_rbPessoaFisicaMouseClicked
 
@@ -627,8 +678,32 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         btnCancelarPessoa.setEnabled(true);
         btnExcluirPessoa.setEnabled(false);
         btnEditarPessoa.setEnabled(false);
+        
+        MaskFormatter cnpj = null;
+        
+        try {
+            txtcpfcnpj.setValue(null);
+            
+            cnpj = new MaskFormatter("##.###.###/####-##");
+            cnpj.setPlaceholderCharacter(' ');
+            txtcpfcnpj.setFormatterFactory(new DefaultFormatterFactory(cnpj));
+            
+        } catch (ParseException ex) {
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_rbPessoaJuridicaMouseClicked
+
+    private void rbPessoaFisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPessoaFisicaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbPessoaFisicaActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        cbPerfilPessoa.removeAllItems();
+        cbPerfilPessoa.addItem("");
+        cbPerfilPessoa.addItem("LOCATÁRIO");
+        cbPerfilPessoa.addItem("LOCADOR");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
