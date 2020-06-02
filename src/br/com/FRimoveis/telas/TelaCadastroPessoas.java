@@ -5,11 +5,15 @@
  */
 package br.com.FRimoveis.telas;
 
+import br.com.FRimoveis.Conexao.ConexaoBD;
+import br.com.FRimoveis.Desenvolvimento.CadastroPessoas;
+import br.com.FRimoveis.dao.CadastroPessoasDB;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 
@@ -18,6 +22,10 @@ import javax.swing.text.MaskFormatter;
  * @author rodrigolima
  */
 public class TelaCadastroPessoas extends javax.swing.JFrame {
+
+    CadastroPessoas cadastroPessoas = new CadastroPessoas();
+    CadastroPessoasDB cadastroPessoasDB = new CadastroPessoasDB();
+    ConexaoBD conexao = new ConexaoBD();
 
     /**
      * Creates new form TelaCadastroPessoas
@@ -47,41 +55,41 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         btnCancelarPessoa.setEnabled(false);
         btnExcluirPessoa.setEnabled(false);
         btnEditarPessoa.setEnabled(false);
-        
+
         MaskFormatter dataNasc = null;
         MaskFormatter cep = null;
         MaskFormatter fone = null;
         MaskFormatter foner1 = null;
         MaskFormatter foner2 = null;
-        
+
         try {
             txtDataNasc.setValue(null);
             txtCepPessoa.setValue(null);
             txtTelefonePessoa.setValue(null);
             txtReferencia1Telefone.setValue(null);
             txtReferencia2Telefone.setValue(null);
-            
+
             dataNasc = new MaskFormatter("##/##/####");
             dataNasc.setPlaceholderCharacter(' ');
-            
+
             cep = new MaskFormatter("#####-###");
             cep.setPlaceholderCharacter(' ');
-            
+
             fone = new MaskFormatter("(##)# ####-####");
             fone.setPlaceholderCharacter(' ');
-            
+
             foner1 = new MaskFormatter("(##)# ####-####");
             foner1.setPlaceholderCharacter(' ');
-            
+
             foner2 = new MaskFormatter("(##)# ####-####");
             foner2.setPlaceholderCharacter(' ');
-            
+
             txtDataNasc.setFormatterFactory(new DefaultFormatterFactory(dataNasc));
             txtCepPessoa.setFormatterFactory(new DefaultFormatterFactory(cep));
             txtTelefonePessoa.setFormatterFactory(new DefaultFormatterFactory(fone));
             txtReferencia1Telefone.setFormatterFactory(new DefaultFormatterFactory(foner1));
             txtReferencia2Telefone.setFormatterFactory(new DefaultFormatterFactory(foner2));
-            
+
         } catch (ParseException ex) {
         }
     }
@@ -568,15 +576,119 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
 
     private void btnSalvarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarPessoaActionPerformed
         //Metodo para Converter Data para salvar no banco Mysql
-        try {
-            SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");  
-            String str = txtDataNasc.getText();  
-            Date data = formatador.parse(str);            
-            java.sql.Date teste = new java.sql.Date(data.getTime());
-            System.out.println(teste);           
-        } catch (ParseException ex) {
-            Logger.getLogger(TelaCadastroPessoas.class.getName()).log(Level.SEVERE, null, ex);
+        if (rbPessoaFisica.isSelected()) {
+            if ((cbPerfilPessoa.getSelectedItem().toString().isEmpty()) || (txtNomePessoa.getText().isEmpty()) || (txtcpfcnpj.getText().isEmpty())
+                    || (txtDataNasc.getText().isEmpty()) || (txtEnderecoPessoa.getText().isEmpty()) || (txtBairroPessoa.getText().isEmpty()) || (txtNumeroCasaPessoa.getText().isEmpty())
+                    || (txtCepPessoa.getText().isEmpty()) || (txtTelefonePessoa.getText().isEmpty()) || (txtEmailPessoa.getText().isEmpty()) || (txtReferencia1Nome.getText().isEmpty())
+                    || (txtReferencia1Telefone.getText().isEmpty()) || (txtReferencia2Nome.getText().isEmpty()) || (txtReferencia2Telefone.getText().isEmpty())) {
+                JOptionPane.showMessageDialog(null, "Favor Preencher os campos Obrigatorios!");
+            } else {
+                cadastroPessoas.setPerfil(cbPerfilPessoa.getSelectedItem().toString());
+                cadastroPessoas.setNomeCliente(txtNomePessoa.getText());
+                cadastroPessoas.setCnpjcpf(txtcpfcnpj.getText());
+                try {
+                    SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+                    String str = txtDataNasc.getText();
+                    Date data = formatador.parse(str);
+                    java.sql.Date teste = new java.sql.Date(data.getTime());
+                    cadastroPessoas.setDataNasc(teste);
+                } catch (ParseException ex) {
+                    Logger.getLogger(TelaCadastroPessoas.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                cadastroPessoas.setEnderecoPessoa(txtEnderecoPessoa.getText());
+                cadastroPessoas.setBairroPessoa(txtBairroPessoa.getText());
+                cadastroPessoas.setNumeroCasa(txtNumeroCasaPessoa.getText());
+                cadastroPessoas.setCepPessoa(txtCepPessoa.getText());
+                cadastroPessoas.setTelefonePessoa(txtTelefonePessoa.getText());
+                cadastroPessoas.setEmailPessoa(txtEmailPessoa.getText());
+                cadastroPessoas.setReferencia01(txtReferencia1Nome.getText());
+                cadastroPessoas.setTelefonereferencia01(txtReferencia1Telefone.getText());
+                cadastroPessoas.setReferencia02(txtReferencia2Nome.getText());
+                cadastroPessoas.setTelefonereferencia02(txtReferencia2Telefone.getText());
+                
+                cadastroPessoasDB.adicionaFisica(cadastroPessoas);
+                JOptionPane.showMessageDialog(null, "Cliente, " + txtNomePessoa.getText() + " inserido com sucesso! ");
+            }
+
+        } else if (rbPessoaJuridica.isSelected()) {
+            if ((cbPerfilPessoa.getSelectedItem().toString().isEmpty()) || (txtNomePessoa.getText().isEmpty()) || (txtcpfcnpj.getText().isEmpty())
+                    || (txtDataNasc.getText().isEmpty()) || (txtEnderecoPessoa.getText().isEmpty()) || (txtBairroPessoa.getText().isEmpty()) || (txtNumeroCasaPessoa.getText().isEmpty())
+                    || (txtCepPessoa.getText().isEmpty()) || (txtTelefonePessoa.getText().isEmpty()) || (txtEmailPessoa.getText().isEmpty()) || (txtReferencia1Nome.getText().isEmpty())
+                    || (txtReferencia1Telefone.getText().isEmpty()) || (txtReferencia2Nome.getText().isEmpty()) || (txtReferencia2Telefone.getText().isEmpty()) || (txtNomeFantasia.getText().isEmpty())
+                    || (txtInscricaoEstadual.getText().isEmpty())) {
+                JOptionPane.showMessageDialog(null, "Favor Preencher os campos Obrigatorios!");
+            } else {
+                cadastroPessoas.setPerfil(cbPerfilPessoa.getSelectedItem().toString());
+                cadastroPessoas.setNomeCliente(txtNomePessoa.getText());
+                cadastroPessoas.setNomeFantasia(txtNomeFantasia.getText());
+                cadastroPessoas.setCnpjcpf(txtcpfcnpj.getText());
+                cadastroPessoas.setInscEstadual(txtInscricaoEstadual.getText());
+                try {
+                    SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+                    String str = txtDataNasc.getText();
+                    Date data = formatador.parse(str);
+                    java.sql.Date teste = new java.sql.Date(data.getTime());
+                    cadastroPessoas.setDataNasc(teste);
+                } catch (ParseException ex) {
+                    Logger.getLogger(TelaCadastroPessoas.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                cadastroPessoas.setEnderecoPessoa(txtEnderecoPessoa.getText());
+                cadastroPessoas.setBairroPessoa(txtBairroPessoa.getText());
+                cadastroPessoas.setNumeroCasa(txtNumeroCasaPessoa.getText());
+                cadastroPessoas.setCepPessoa(txtCepPessoa.getText());
+                cadastroPessoas.setTelefonePessoa(txtTelefonePessoa.getText());
+                cadastroPessoas.setEmailPessoa(txtEmailPessoa.getText());
+                cadastroPessoas.setReferencia01(txtReferencia1Nome.getText());
+                cadastroPessoas.setTelefonereferencia01(txtReferencia1Telefone.getText());
+                cadastroPessoas.setReferencia02(txtReferencia2Nome.getText());
+                cadastroPessoas.setTelefonereferencia02(txtReferencia2Telefone.getText());
+                
+                cadastroPessoasDB.adicionaJuridica(cadastroPessoas);
+                JOptionPane.showMessageDialog(null, "Cliente, " + txtNomePessoa.getText() + " inserido com sucesso! ");
+            }
+
         }
+        txtIDpessoa.setText("");
+        cbPerfilPessoa.setSelectedItem("");
+        txtNomePessoa.setText("");
+        txtNomeFantasia.setText("");
+        txtcpfcnpj.setText("");
+        txtInscricaoEstadual.setText("");
+        txtDataNasc.setText("");
+        txtEnderecoPessoa.setText("");
+        txtBairroPessoa.setText("");
+        txtNumeroCasaPessoa.setText("");
+        txtCepPessoa.setText("");
+        txtTelefonePessoa.setText("");
+        txtEmailPessoa.setText("");
+        txtReferencia1Nome.setText("");
+        txtReferencia1Telefone.setText("");
+        txtReferencia2Nome.setText("");
+        txtReferencia2Telefone.setText("");
+        
+        rbPessoaFisica.setEnabled(false);
+        rbPessoaJuridica.setEnabled(false);
+        txtIDpessoa.setEnabled(false);
+        cbPerfilPessoa.setEnabled(false);
+        txtNomePessoa.setEnabled(false);
+        txtNomeFantasia.setEnabled(false);
+        txtcpfcnpj.setEnabled(false);
+        txtInscricaoEstadual.setEnabled(false);
+        txtDataNasc.setEnabled(false);
+        txtEnderecoPessoa.setEnabled(false);
+        txtBairroPessoa.setEnabled(false);
+        txtNumeroCasaPessoa.setEnabled(false);
+        txtCepPessoa.setEnabled(false);
+        txtTelefonePessoa.setEnabled(false);
+        txtEmailPessoa.setEnabled(false);
+        txtReferencia1Nome.setEnabled(false);
+        txtReferencia1Telefone.setEnabled(false);
+        txtReferencia2Nome.setEnabled(false);
+        txtReferencia2Telefone.setEnabled(false);
+        btnSalvarPessoa.setEnabled(false);
+        btnCancelarPessoa.setEnabled(false);
+        btnExcluirPessoa.setEnabled(false);
+        btnEditarPessoa.setEnabled(false);
     }//GEN-LAST:event_btnSalvarPessoaActionPerformed
 
     private void btnCancelarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarPessoaActionPerformed
@@ -640,16 +752,16 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         btnCancelarPessoa.setEnabled(true);
         btnExcluirPessoa.setEnabled(false);
         btnEditarPessoa.setEnabled(false);
-        
+
         MaskFormatter cpf = null;
-        
+
         try {
             txtcpfcnpj.setValue(null);
-            
+
             cpf = new MaskFormatter("###.###.###-##");
             cpf.setPlaceholderCharacter(' ');
             txtcpfcnpj.setFormatterFactory(new DefaultFormatterFactory(cpf));
-            
+
         } catch (ParseException ex) {
         }
         // TODO add your handling code here:
@@ -678,16 +790,16 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         btnCancelarPessoa.setEnabled(true);
         btnExcluirPessoa.setEnabled(false);
         btnEditarPessoa.setEnabled(false);
-        
+
         MaskFormatter cnpj = null;
-        
+
         try {
             txtcpfcnpj.setValue(null);
-            
+
             cnpj = new MaskFormatter("##.###.###/####-##");
             cnpj.setPlaceholderCharacter(' ');
             txtcpfcnpj.setFormatterFactory(new DefaultFormatterFactory(cnpj));
-            
+
         } catch (ParseException ex) {
         }
         // TODO add your handling code here:
