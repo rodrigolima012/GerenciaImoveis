@@ -30,7 +30,10 @@ public class CadastroPessoas {
     private String telefonereferencia01 = "";
     private String referencia02 = "";
     private String telefonereferencia02 = "";
+    private String pesquisaPessoa = "";
 
+    
+    
     public String getIdpessoa() {
         return idpessoa;
     }
@@ -74,7 +77,7 @@ public class CadastroPessoas {
     public Date getDataNasc() {
         return dataNasc;
     }
-
+    
     public void setDataNasc(Date dataNasc) {
         this.dataNasc = dataNasc;
     }
@@ -165,6 +168,14 @@ public class CadastroPessoas {
 
     public void setTelefonereferencia02(String telefonereferencia02) {
         this.telefonereferencia02 = telefonereferencia02;
+    }
+
+    public String getPesquisaPessoa() {
+        return pesquisaPessoa;
+    }
+
+    public void setPesquisaPessoa(String pesquisaPessoa) {
+        this.pesquisaPessoa = pesquisaPessoa;
     }
     
     

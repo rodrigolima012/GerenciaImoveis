@@ -8,6 +8,7 @@ package br.com.FRimoveis.telas;
 import br.com.FRimoveis.Conexao.ConexaoBD;
 import br.com.FRimoveis.Desenvolvimento.CadastroPessoas;
 import br.com.FRimoveis.dao.CadastroPessoasDB;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -542,6 +543,169 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEmailPessoaActionPerformed
 
     private void btnPesquisarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarPessoaActionPerformed
+        txtIDpessoa.setText("");
+        cbPerfilPessoa.setSelectedItem("");
+        txtNomePessoa.setText("");
+        txtNomeFantasia.setText("");
+        txtcpfcnpj.setText("");
+        txtInscricaoEstadual.setText("");
+        txtDataNasc.setText("");
+        txtEnderecoPessoa.setText("");
+        txtBairroPessoa.setText("");
+        txtNumeroCasaPessoa.setText("");
+        txtCepPessoa.setText("");
+        txtTelefonePessoa.setText("");
+        txtEmailPessoa.setText("");
+        txtReferencia1Nome.setText("");
+        txtReferencia1Telefone.setText("");
+        txtReferencia2Nome.setText("");
+        txtReferencia2Telefone.setText("");
+        String teste = "";
+        String teste2 = "";
+        cadastroPessoas.setPesquisaPessoa(txtBuscarPessoa.getText());
+        CadastroPessoas model = cadastroPessoasDB.pesquisaUsuario(cadastroPessoas);
+
+        if (txtBuscarPessoa.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Favor inserir dados para a pesquisa!");
+            txtIDpessoa.setText("");
+            cbPerfilPessoa.setSelectedItem("");
+            txtNomePessoa.setText("");
+            txtNomeFantasia.setText("");
+            txtcpfcnpj.setText("");
+            txtInscricaoEstadual.setText("");
+            txtDataNasc.setText("");
+            txtEnderecoPessoa.setText("");
+            txtBairroPessoa.setText("");
+            txtNumeroCasaPessoa.setText("");
+            txtCepPessoa.setText("");
+            txtTelefonePessoa.setText("");
+            txtEmailPessoa.setText("");
+            txtReferencia1Nome.setText("");
+            txtReferencia1Telefone.setText("");
+            txtReferencia2Nome.setText("");
+            txtReferencia2Telefone.setText("");
+        } else if (txtBuscarPessoa.getText().length() < 3) {
+            JOptionPane.showMessageDialog(null, "Informar pelo menos 3 caracteres\nPara a busca funcionar!");
+            txtIDpessoa.setText("");
+            cbPerfilPessoa.setSelectedItem("");
+            txtNomePessoa.setText("");
+            txtNomeFantasia.setText("");
+            txtcpfcnpj.setText("");
+            txtInscricaoEstadual.setText("");
+            txtDataNasc.setText("");
+            txtEnderecoPessoa.setText("");
+            txtBairroPessoa.setText("");
+            txtNumeroCasaPessoa.setText("");
+            txtCepPessoa.setText("");
+            txtTelefonePessoa.setText("");
+            txtEmailPessoa.setText("");
+            txtReferencia1Nome.setText("");
+            txtReferencia1Telefone.setText("");
+            txtReferencia2Nome.setText("");
+            txtReferencia2Telefone.setText("");
+        } else {
+            try {
+                teste = txtBuscarPessoa.getText().substring(0, 3);
+                teste2 = model.getNomeCliente().substring(0, 3);
+            } catch (Exception e) {
+
+            }
+
+            if (model.getNomeCliente() == null) {
+                txtIDpessoa.setText("");
+                cbPerfilPessoa.setSelectedItem("");
+                txtNomePessoa.setText("");
+                txtNomeFantasia.setText("");
+                txtcpfcnpj.setText("");
+                txtInscricaoEstadual.setText("");
+                txtDataNasc.setText("");
+                txtEnderecoPessoa.setText("");
+                txtBairroPessoa.setText("");
+                txtNumeroCasaPessoa.setText("");
+                txtCepPessoa.setText("");
+                txtTelefonePessoa.setText("");
+                txtEmailPessoa.setText("");
+                txtReferencia1Nome.setText("");
+                txtReferencia1Telefone.setText("");
+                txtReferencia2Nome.setText("");
+                txtReferencia2Telefone.setText("");
+
+                rbPessoaFisica.setEnabled(false);
+                rbPessoaJuridica.setEnabled(false);
+                txtIDpessoa.setEnabled(false);
+                cbPerfilPessoa.setEnabled(false);
+                txtNomePessoa.setEnabled(false);
+                txtNomeFantasia.setEnabled(false);
+                txtcpfcnpj.setEnabled(false);
+                txtInscricaoEstadual.setEnabled(false);
+                txtDataNasc.setEnabled(false);
+                txtEnderecoPessoa.setEnabled(false);
+                txtBairroPessoa.setEnabled(false);
+                txtNumeroCasaPessoa.setEnabled(false);
+                txtCepPessoa.setEnabled(false);
+                txtTelefonePessoa.setEnabled(false);
+                txtEmailPessoa.setEnabled(false);
+                txtReferencia1Nome.setEnabled(false);
+                txtReferencia1Telefone.setEnabled(false);
+                txtReferencia2Nome.setEnabled(false);
+                txtReferencia2Telefone.setEnabled(false);
+                btnSalvarPessoa.setEnabled(false);
+                btnCancelarPessoa.setEnabled(false);
+                btnExcluirPessoa.setEnabled(false);
+                btnEditarPessoa.setEnabled(false);
+                btnNovoPessoa.setEnabled(false);
+            } else if (teste2.equalsIgnoreCase(teste)) {
+                txtIDpessoa.setText(model.getIdpessoa());
+                cbPerfilPessoa.getModel().setSelectedItem(model.getPerfil());
+                txtNomePessoa.setText(model.getNomeCliente());
+                txtNomeFantasia.setText(model.getNomeFantasia());
+                txtcpfcnpj.setText(model.getCnpjcpf());
+                SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
+                SimpleDateFormat out = new SimpleDateFormat("dd/MM/yyyy");
+                try {
+                    String result = out.format(in.parse(model.getDataNasc().toString()));
+                    txtDataNasc.setText(result);
+                } catch (ParseException ex) {
+                    Logger.getLogger(TelaCadastroPessoas.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                txtInscricaoEstadual.setText(model.getInscEstadual());
+                txtEnderecoPessoa.setText(model.getEnderecoPessoa());
+                txtNumeroCasaPessoa.setText(model.getNumeroCasa());
+                txtBairroPessoa.setText(model.getBairroPessoa());
+                txtCepPessoa.setText(model.getCepPessoa());
+                txtTelefonePessoa.setText(model.getTelefonePessoa());
+                txtEmailPessoa.setText(model.getEmailPessoa());
+                txtReferencia1Nome.setText(model.getReferencia01());
+                txtReferencia1Telefone.setText(model.getTelefonereferencia01());
+                txtReferencia2Nome.setText(model.getReferencia02());
+                txtReferencia2Telefone.setText(model.getTelefonereferencia02());
+
+                rbPessoaFisica.setEnabled(false);
+                rbPessoaJuridica.setEnabled(false);
+                txtIDpessoa.setEnabled(false);
+                cbPerfilPessoa.setEnabled(false);
+                txtNomePessoa.setEnabled(false);
+                txtNomeFantasia.setEnabled(false);
+                txtcpfcnpj.setEnabled(false);
+                txtInscricaoEstadual.setEnabled(false);
+                txtDataNasc.setEnabled(false);
+                txtEnderecoPessoa.setEnabled(false);
+                txtBairroPessoa.setEnabled(false);
+                txtNumeroCasaPessoa.setEnabled(false);
+                txtCepPessoa.setEnabled(false);
+                txtTelefonePessoa.setEnabled(false);
+                txtEmailPessoa.setEnabled(false);
+                txtReferencia1Nome.setEnabled(false);
+                txtReferencia1Telefone.setEnabled(false);
+                txtReferencia2Nome.setEnabled(false);
+                txtReferencia2Telefone.setEnabled(false);
+                btnSalvarPessoa.setEnabled(false);
+                btnCancelarPessoa.setEnabled(true);
+                btnExcluirPessoa.setEnabled(true);
+                btnEditarPessoa.setEnabled(true);
+                btnNovoPessoa.setEnabled(false);
+            }
+        }
         // TODO add your handling code here:
 
     }//GEN-LAST:event_btnPesquisarPessoaActionPerformed
@@ -605,7 +769,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
                 cadastroPessoas.setTelefonereferencia01(txtReferencia1Telefone.getText());
                 cadastroPessoas.setReferencia02(txtReferencia2Nome.getText());
                 cadastroPessoas.setTelefonereferencia02(txtReferencia2Telefone.getText());
-                
+
                 cadastroPessoasDB.adicionaFisica(cadastroPessoas);
                 JOptionPane.showMessageDialog(null, "Cliente, " + txtNomePessoa.getText() + " inserido com sucesso! ");
             }
@@ -642,7 +806,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
                 cadastroPessoas.setTelefonereferencia01(txtReferencia1Telefone.getText());
                 cadastroPessoas.setReferencia02(txtReferencia2Nome.getText());
                 cadastroPessoas.setTelefonereferencia02(txtReferencia2Telefone.getText());
-                
+
                 cadastroPessoasDB.adicionaJuridica(cadastroPessoas);
                 JOptionPane.showMessageDialog(null, "Cliente, " + txtNomePessoa.getText() + " inserido com sucesso! ");
             }
@@ -665,7 +829,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         txtReferencia1Telefone.setText("");
         txtReferencia2Nome.setText("");
         txtReferencia2Telefone.setText("");
-        
+
         rbPessoaFisica.setEnabled(false);
         rbPessoaJuridica.setEnabled(false);
         txtIDpessoa.setEnabled(false);
@@ -692,6 +856,25 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalvarPessoaActionPerformed
 
     private void btnCancelarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarPessoaActionPerformed
+        txtIDpessoa.setText("");
+        cbPerfilPessoa.setSelectedItem("");
+        txtNomePessoa.setText("");
+        txtNomeFantasia.setText("");
+        txtcpfcnpj.setText("");
+        txtInscricaoEstadual.setText("");
+        txtDataNasc.setText("");
+        txtEnderecoPessoa.setText("");
+        txtBairroPessoa.setText("");
+        txtNumeroCasaPessoa.setText("");
+        txtCepPessoa.setText("");
+        txtTelefonePessoa.setText("");
+        txtEmailPessoa.setText("");
+        txtReferencia1Nome.setText("");
+        txtReferencia1Telefone.setText("");
+        txtReferencia2Nome.setText("");
+        txtReferencia2Telefone.setText("");
+        txtBuscarPessoa.setText("");
+
         rbPessoaFisica.setEnabled(false);
         rbPessoaJuridica.setEnabled(false);
         txtIDpessoa.setEnabled(false);
@@ -715,6 +898,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         btnCancelarPessoa.setEnabled(false);
         btnExcluirPessoa.setEnabled(false);
         btnEditarPessoa.setEnabled(false);
+        btnNovoPessoa.setEnabled(true);
         // TODO add your handling code here:
 
     }//GEN-LAST:event_btnCancelarPessoaActionPerformed
@@ -725,7 +909,23 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirPessoaActionPerformed
 
     private void btnEditarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPessoaActionPerformed
-
+        txtIDpessoa.setEnabled(false);
+        cbPerfilPessoa.setEnabled(true);
+        txtNomePessoa.setEnabled(true);
+        txtNomeFantasia.setEnabled(true);
+        txtcpfcnpj.setEnabled(true);
+        txtInscricaoEstadual.setEnabled(true);
+        txtDataNasc.setEnabled(true);
+        txtEnderecoPessoa.setEnabled(true);
+        txtBairroPessoa.setEnabled(true);
+        txtNumeroCasaPessoa.setEnabled(true);
+        txtCepPessoa.setEnabled(true);
+        txtTelefonePessoa.setEnabled(true);
+        txtEmailPessoa.setEnabled(true);
+        txtReferencia1Nome.setEnabled(true);
+        txtReferencia1Telefone.setEnabled(true);
+        txtReferencia2Nome.setEnabled(true);
+        txtReferencia2Telefone.setEnabled(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEditarPessoaActionPerformed
 

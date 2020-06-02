@@ -46,7 +46,7 @@ public class CadastroPessoasDB {
             JOptionPane.showMessageDialog(null, "Erro ao adicionar o usuario! \n" + u.getMessage());
         }
     }
-    
+
     public void adicionaJuridica(CadastroPessoas pessoa) {
         connectarBanco.conectar();
         try {
@@ -73,6 +73,36 @@ public class CadastroPessoasDB {
         } catch (SQLException u) {
             JOptionPane.showMessageDialog(null, "Erro ao adicionar o usuario! \n" + u.getMessage());
         }
+    }
+
+    public CadastroPessoas pesquisaUsuario(CadastroPessoas pessoa) {
+        connectarBanco.conectar();
+        connectarBanco.executaSql("select * from tbpessoas where nomeCliente like '%" + pessoa.getPesquisaPessoa() + "%'");
+        try {
+            connectarBanco.rs.first();
+            pessoa.setIdpessoa(connectarBanco.rs.getString("idpessoa"));
+            pessoa.setNomeCliente(connectarBanco.rs.getString("nomeCliente"));
+            pessoa.setNomeFantasia(connectarBanco.rs.getString("nomeFantasia"));
+            pessoa.setPerfil(connectarBanco.rs.getString("perfil"));
+            pessoa.setCnpjcpf(connectarBanco.rs.getString("cnpjcpf"));
+            pessoa.setDataNasc(connectarBanco.rs.getDate("dataNasc"));
+            pessoa.setInscEstadual(connectarBanco.rs.getString("inscEstadual"));
+            pessoa.setEnderecoPessoa(connectarBanco.rs.getString("enderecoPessoa"));
+            pessoa.setNumeroCasa(connectarBanco.rs.getString("numeroCasa"));
+            pessoa.setBairroPessoa(connectarBanco.rs.getString("bairroPessoa"));
+            pessoa.setCepPessoa(connectarBanco.rs.getString("cepPessoa"));
+            pessoa.setTelefonePessoa(connectarBanco.rs.getString("telefonePessoa"));
+            pessoa.setEmailPessoa(connectarBanco.rs.getString("emailPessoa"));
+            pessoa.setReferencia01(connectarBanco.rs.getString("referencia01"));
+            pessoa.setTelefonereferencia01(connectarBanco.rs.getString("telefonereferencia01"));
+            pessoa.setReferencia02(connectarBanco.rs.getString("referencia02"));
+            pessoa.setTelefonereferencia02(connectarBanco.rs.getString("telefonereferencia02"));
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Usuario não Cadastrado!!\n Digite novamente!");
+        }
+        connectarBanco.desconectar();
+        return pessoa;
     }
 
 }
