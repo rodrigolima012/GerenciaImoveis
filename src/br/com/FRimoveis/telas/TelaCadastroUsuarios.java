@@ -553,7 +553,6 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
             conexao.rs.first();
             do {
                 dados.add(new Object[]{conexao.rs.getString("idusuarios"), conexao.rs.getString("nomeUsuario"), conexao.rs.getString("login"), conexao.rs.getString("perfilUser")});
-
             } while (conexao.rs.next());
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(rootPane, "Erro ao preencher as tabelas! \n" + e.getMessage());

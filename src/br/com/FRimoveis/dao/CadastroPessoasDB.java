@@ -127,7 +127,6 @@ public class CadastroPessoasDB {
             pst.setString(16, pessoa.getTelefonereferencia02());
             pst.setString(17, pessoa.getIdpessoa());
             pst.execute();
-            pst.close();
             JOptionPane.showMessageDialog(null, "Usuarios Atualizado com Sucesso!!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao editar o usuario! \n" + e.getMessage());
