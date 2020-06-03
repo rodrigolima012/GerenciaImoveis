@@ -105,4 +105,48 @@ public class CadastroPessoasDB {
         return pessoa;
     }
 
+    public void editarPessoas(CadastroPessoas pessoa) {
+        connectarBanco.conectar();
+        try {
+            PreparedStatement pst = connectarBanco.con.prepareStatement("update tbpessoas set nomeCliente = ?, nomeFantasia = ?, perfil = ?, cnpjcpf = ?, dataNasc = ?, inscEstadual = ?, enderecoPessoa = ?, numeroCasa = ?, bairroPessoa = ?, cepPessoa = ?, telefonePessoa = ?, emailPessoa = ?, referencia01 = ?, telefonereferencia01 = ?, referencia02 = ?, telefonereferencia02 = ? where idpessoa = ?");
+            pst.setString(1, pessoa.getNomeCliente());
+            pst.setString(2, pessoa.getNomeFantasia());
+            pst.setString(3, pessoa.getPerfil());
+            pst.setString(4, pessoa.getCnpjcpf());
+            pst.setDate(5, (Date) pessoa.getDataNasc());
+            pst.setString(6, pessoa.getInscEstadual());
+            pst.setString(7, pessoa.getEnderecoPessoa());
+            pst.setString(8, pessoa.getNumeroCasa());
+            pst.setString(9, pessoa.getBairroPessoa());
+            pst.setString(10, pessoa.getCepPessoa());
+            pst.setString(11, pessoa.getTelefonePessoa());
+            pst.setString(12, pessoa.getEmailPessoa());
+            pst.setString(13, pessoa.getReferencia01());
+            pst.setString(14, pessoa.getTelefonereferencia01());
+            pst.setString(15, pessoa.getReferencia02());
+            pst.setString(16, pessoa.getTelefonereferencia02());
+            pst.setString(17, pessoa.getIdpessoa());
+            pst.execute();
+            pst.close();
+            JOptionPane.showMessageDialog(null, "Usuarios Atualizado com Sucesso!!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao editar o usuario! \n" + e.getMessage());
+        }
+        connectarBanco.desconectar();
+    }
+
+    public void excluirPessoa(CadastroPessoas pessoa) {
+        connectarBanco.conectar();
+        try {
+            PreparedStatement pst = connectarBanco.con.prepareStatement("delete from tbpessoas where idpessoa = ?");
+            pst.setString(1, pessoa.getIdpessoa());
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Cliente deletado com Sucesso!!");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao deletar o Cliente! \n" + e.getMessage());
+        }
+
+        connectarBanco.desconectar();
+    }
+
 }
