@@ -1370,13 +1370,13 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
 
     public void dadosTabela(String sql) {
         ArrayList dados = new ArrayList();
-        String[] colunas = new String[]{"ID Cliente", "Nome Cliente", "Nome Fantasia", "Perfil", "CNPJ / CPF", "Telefone"};
+        String[] colunas = new String[]{"ID", "Nome Cliente", "Nome Fantasia", "Endereço Cliente", "Perfil", "CNPJ / CPF", "Telefone"};
         conexao.conectar();
         conexao.executaSql(sql);
         try {
             conexao.rs.first();
             do {
-                dados.add(new Object[]{conexao.rs.getString("idpessoa"), conexao.rs.getString("nomeCliente"), conexao.rs.getString("nomeFantasia"), conexao.rs.getString("perfil"), conexao.rs.getString("cnpjcpf"), conexao.rs.getString("telefonePessoa")});
+                dados.add(new Object[]{conexao.rs.getString("idpessoa"), conexao.rs.getString("nomeCliente"), conexao.rs.getString("nomeFantasia"), conexao.rs.getString("enderecoPessoa"), conexao.rs.getString("perfil"), conexao.rs.getString("cnpjcpf"), conexao.rs.getString("telefonePessoa")});
             } while (conexao.rs.next());
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(rootPane, "Erro ao preencher as tabelas! \n" + e.getMessage());
@@ -1384,23 +1384,26 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         CadastroPessoaTabela tabela = new CadastroPessoaTabela(dados, colunas);
 
         jTPessoas.setModel(tabela);
-        jTPessoas.getColumnModel().getColumn(0).setPreferredWidth(70);
+        jTPessoas.getColumnModel().getColumn(0).setPreferredWidth(30);
         jTPessoas.getColumnModel().getColumn(0).setResizable(false);
 
-        jTPessoas.getColumnModel().getColumn(1).setPreferredWidth(300);
+        jTPessoas.getColumnModel().getColumn(1).setPreferredWidth(200);
         jTPessoas.getColumnModel().getColumn(1).setResizable(false);
 
-        jTPessoas.getColumnModel().getColumn(2).setPreferredWidth(250);
+        jTPessoas.getColumnModel().getColumn(2).setPreferredWidth(220);
         jTPessoas.getColumnModel().getColumn(2).setResizable(false);
 
-        jTPessoas.getColumnModel().getColumn(3).setPreferredWidth(100);
+        jTPessoas.getColumnModel().getColumn(3).setPreferredWidth(150);
         jTPessoas.getColumnModel().getColumn(3).setResizable(false);
 
         jTPessoas.getColumnModel().getColumn(4).setPreferredWidth(150);
         jTPessoas.getColumnModel().getColumn(4).setResizable(false);
 
-        jTPessoas.getColumnModel().getColumn(5).setPreferredWidth(120);
+        jTPessoas.getColumnModel().getColumn(5).setPreferredWidth(130);
         jTPessoas.getColumnModel().getColumn(5).setResizable(false);
+        
+        jTPessoas.getColumnModel().getColumn(6).setPreferredWidth(120);
+        jTPessoas.getColumnModel().getColumn(6).setResizable(false);
 
         jTPessoas.getTableHeader().setReorderingAllowed(false);
         jTPessoas.setAutoResizeMode(jTPessoas.AUTO_RESIZE_OFF);
