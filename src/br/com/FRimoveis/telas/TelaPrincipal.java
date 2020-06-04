@@ -198,6 +198,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuUsuariosActionPerformed
 
     private void menuImoveisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuImoveisActionPerformed
+        TelaCadastroImoveis cadastroImoveis = new TelaCadastroImoveis();
+        cadastroImoveis.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_menuImoveisActionPerformed
 

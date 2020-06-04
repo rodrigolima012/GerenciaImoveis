@@ -35,7 +35,7 @@ public class CadastroPessoas {
     
     
     public String getIdpessoa() {
-        return idpessoa;
+        return idpessoa;        
     }
 
     public void setIdpessoa(String idpessoa) {
