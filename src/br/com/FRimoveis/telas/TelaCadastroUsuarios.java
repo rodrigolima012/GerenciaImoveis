@@ -39,7 +39,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         btnEditarUsuario.setEnabled(false);
         btnExcluirUsuario.setEnabled(false);
         btnSalvarUsuario.setEnabled(false);
-        dadosTabela("select * from tbusuarios order by idusuarios");
+        dadosTabela("select * from tbusuarios order by idusuario");
     }
 
     /**
@@ -307,7 +307,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         cbPerfilUsuario.removeAllItems();
         cbPerfilUsuario.addItem("");
-        cbPerfilUsuario.addItem("ADMINISTRADOR");
+        cbPerfilUsuario.addItem("ADMIN");
         cbPerfilUsuario.addItem("USUARIO");
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowActivated
@@ -358,7 +358,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
             btnSalvarUsuario.setEnabled(false);
             btnNovoUsuario.setEnabled(true);
             btnPesquisarUsuario.setEnabled(true);
-            dadosTabela("select * from tbusuarios order by idusuarios");
+            dadosTabela("select * from tbusuarios order by idusuario");
         }
 
         // TODO add your handling code here:
@@ -515,7 +515,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
             btnSalvarUsuario.setEnabled(false);
             btnNovoUsuario.setEnabled(true);
             btnPesquisarUsuario.setEnabled(true);
-            dadosTabela("select * from tbusuarios order by idusuarios");
+            dadosTabela("select * from tbusuarios order by idusuario");
         }
 
         // TODO add your handling code here:
@@ -524,10 +524,10 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
     private void jTUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTUsuariosMouseClicked
         String nome_usuario = "" + jTUsuarios.getValueAt(jTUsuarios.getSelectedRow(), 0);
         conexao.conectar();
-        conexao.executaSql("select * from tbusuarios where idusuarios = '" + nome_usuario + "'");
+        conexao.executaSql("select * from tbusuarios where idusuario = '" + nome_usuario + "'");
         try {
             conexao.rs.first();
-            txtIDUsuario.setText(conexao.rs.getString("idusuarios"));
+            txtIDUsuario.setText(conexao.rs.getString("idusuario"));
             cbPerfilUsuario.setSelectedItem(conexao.rs.getString("perfilUser"));
             txtNomeUsuario.setText(conexao.rs.getString("nomeUsuario"));
             txtLoginUsuario.setText(conexao.rs.getString("login"));
@@ -552,7 +552,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         try {
             conexao.rs.first();
             do {
-                dados.add(new Object[]{conexao.rs.getString("idusuarios"), conexao.rs.getString("nomeUsuario"), conexao.rs.getString("login"), conexao.rs.getString("perfilUser")});
+                dados.add(new Object[]{conexao.rs.getString("idusuario"), conexao.rs.getString("nomeUsuario"), conexao.rs.getString("login"), conexao.rs.getString("perfilUser")});
             } while (conexao.rs.next());
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(rootPane, "Erro ao preencher as tabelas! \n" + e.getMessage());

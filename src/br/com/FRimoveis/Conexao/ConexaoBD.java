@@ -16,7 +16,7 @@ public class ConexaoBD {
     public Statement stm;
     public ResultSet rs;
     private String driver = "com.mysql.jdbc.Driver";
-    private String caminho = "jdbc:mysql://localhost:3306/gerenciadorimoveis";
+    private String caminho = "jdbc:mysql://localhost:3306/imovelGerenciador";
     private String usuario = "root";
     private String senha = "";
     public Connection con;

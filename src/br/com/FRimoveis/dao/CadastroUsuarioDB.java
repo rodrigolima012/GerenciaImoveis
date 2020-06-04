@@ -56,7 +56,7 @@ public class CadastroUsuarioDB {
     public void editarUsuario(CadastroUsuarios usuario) {
         connectarBanco.conectar();
         try {
-            PreparedStatement pst = connectarBanco.con.prepareStatement("update tbusuarios set perfilUser = ?, nomeUsuario = ?, login = ?, senha = ? where idusuarios = ?");
+            PreparedStatement pst = connectarBanco.con.prepareStatement("update tbusuarios set perfilUser = ?, nomeUsuario = ?, login = ?, senha = ? where idusuario = ?");
             pst.setString(1, usuario.getPerfilUsuario());
             pst.setString(2, usuario.getNomeUsuario());
             pst.setString(3, usuario.getLoginUsuario());
@@ -73,7 +73,7 @@ public class CadastroUsuarioDB {
     public void excluirUsuario(CadastroUsuarios usuario) {
         connectarBanco.conectar();
         try {
-            PreparedStatement pst = connectarBanco.con.prepareStatement("delete from tbusuarios where idusuarios = ?");
+            PreparedStatement pst = connectarBanco.con.prepareStatement("delete from tbusuarios where idusuario = ?");
             pst.setString(1, usuario.getIdUsuario());
             if (usuario.getIdUsuario().equalsIgnoreCase("1")) {
                 JOptionPane.showMessageDialog(null, "Usuario Administrador não pode ser removido!!!");

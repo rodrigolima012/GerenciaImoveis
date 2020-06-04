@@ -31,7 +31,7 @@ public class LoginUsuarioDB {
 
             if (connectarBanco.rs.next()) {
                 String perfil = connectarBanco.rs.getString(2);
-                if (perfil.equalsIgnoreCase("ADMINISTRADOR")) {
+                if (perfil.equalsIgnoreCase("ADMIN")) {
                     TelaPrincipal inicial = new TelaPrincipal();
                     inicial.setVisible(true);
                     TelaPrincipal.menuUsuarios.setEnabled(true);

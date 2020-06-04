@@ -101,6 +101,26 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         dadosTabela("select * from tbpessoas order by idpessoa");
     }
 
+    public void limparCampos() {
+        txtIDpessoa.setText("");
+        cbPerfilPessoa.setSelectedItem("");
+        txtNomePessoa.setText("");
+        txtNomeFantasia.setText("");
+        txtcpfcnpj.setText("");
+        txtInscricaoEstadual.setText("");
+        txtDataNasc.setText("");
+        txtEnderecoPessoa.setText("");
+        txtBairroPessoa.setText("");
+        txtNumeroCasaPessoa.setText("");
+        txtCepPessoa.setText("");
+        txtTelefonePessoa.setText("");
+        txtEmailPessoa.setText("");
+        txtReferencia1Nome.setText("");
+        txtReferencia1Telefone.setText("");
+        txtReferencia2Nome.setText("");
+        txtReferencia2Telefone.setText("");
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -362,12 +382,12 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                                .addComponent(txtEnderecoPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtEnderecoPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(8, 8, 8)
                                 .addComponent(txtcpfcnpj)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel10)))
@@ -386,7 +406,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel13)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNumeroCasaPessoa, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))))
+                                .addComponent(txtNumeroCasaPessoa, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -436,7 +456,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnEditarPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtBuscarPessoa)
+                        .addComponent(txtBuscarPessoa, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnPesquisarPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -555,23 +575,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEmailPessoaActionPerformed
 
     private void btnPesquisarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarPessoaActionPerformed
-        txtIDpessoa.setText("");
-        cbPerfilPessoa.setSelectedItem("");
-        txtNomePessoa.setText("");
-        txtNomeFantasia.setText("");
-        txtcpfcnpj.setText("");
-        txtInscricaoEstadual.setText("");
-        txtDataNasc.setText("");
-        txtEnderecoPessoa.setText("");
-        txtBairroPessoa.setText("");
-        txtNumeroCasaPessoa.setText("");
-        txtCepPessoa.setText("");
-        txtTelefonePessoa.setText("");
-        txtEmailPessoa.setText("");
-        txtReferencia1Nome.setText("");
-        txtReferencia1Telefone.setText("");
-        txtReferencia2Nome.setText("");
-        txtReferencia2Telefone.setText("");
+        limparCampos();
         String teste = "";
         String teste2 = "";
         cadastroPessoas.setPesquisaPessoa(txtBuscarPessoa.getText());
@@ -579,43 +583,11 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
 
         if (txtBuscarPessoa.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Favor inserir dados para a pesquisa!");
-            txtIDpessoa.setText("");
-            cbPerfilPessoa.setSelectedItem("");
-            txtNomePessoa.setText("");
-            txtNomeFantasia.setText("");
-            txtcpfcnpj.setText("");
-            txtInscricaoEstadual.setText("");
-            txtDataNasc.setText("");
-            txtEnderecoPessoa.setText("");
-            txtBairroPessoa.setText("");
-            txtNumeroCasaPessoa.setText("");
-            txtCepPessoa.setText("");
-            txtTelefonePessoa.setText("");
-            txtEmailPessoa.setText("");
-            txtReferencia1Nome.setText("");
-            txtReferencia1Telefone.setText("");
-            txtReferencia2Nome.setText("");
-            txtReferencia2Telefone.setText("");
+            limparCampos();
             dadosTabela("select * from tbpessoas order by idpessoa");
         } else if (txtBuscarPessoa.getText().length() < 3) {
             JOptionPane.showMessageDialog(null, "Informar pelo menos 3 caracteres\nPara a busca funcionar!");
-            txtIDpessoa.setText("");
-            cbPerfilPessoa.setSelectedItem("");
-            txtNomePessoa.setText("");
-            txtNomeFantasia.setText("");
-            txtcpfcnpj.setText("");
-            txtInscricaoEstadual.setText("");
-            txtDataNasc.setText("");
-            txtEnderecoPessoa.setText("");
-            txtBairroPessoa.setText("");
-            txtNumeroCasaPessoa.setText("");
-            txtCepPessoa.setText("");
-            txtTelefonePessoa.setText("");
-            txtEmailPessoa.setText("");
-            txtReferencia1Nome.setText("");
-            txtReferencia1Telefone.setText("");
-            txtReferencia2Nome.setText("");
-            txtReferencia2Telefone.setText("");
+            limparCampos();
             dadosTabela("select * from tbpessoas order by idpessoa");
         } else {
             try {
@@ -626,23 +598,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
             }
 
             if (model.getNomeCliente() == null) {
-                txtIDpessoa.setText("");
-                cbPerfilPessoa.setSelectedItem("");
-                txtNomePessoa.setText("");
-                txtNomeFantasia.setText("");
-                txtcpfcnpj.setText("");
-                txtInscricaoEstadual.setText("");
-                txtDataNasc.setText("");
-                txtEnderecoPessoa.setText("");
-                txtBairroPessoa.setText("");
-                txtNumeroCasaPessoa.setText("");
-                txtCepPessoa.setText("");
-                txtTelefonePessoa.setText("");
-                txtEmailPessoa.setText("");
-                txtReferencia1Nome.setText("");
-                txtReferencia1Telefone.setText("");
-                txtReferencia2Nome.setText("");
-                txtReferencia2Telefone.setText("");
+                limparCampos();
 
                 rbPessoaFisica.setEnabled(false);
                 rbPessoaJuridica.setEnabled(false);
@@ -748,7 +704,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         txtReferencia2Nome.setEnabled(false);
         txtReferencia2Telefone.setEnabled(false);
         btnSalvarPessoa.setEnabled(false);
-        btnCancelarPessoa.setEnabled(false);
+        btnCancelarPessoa.setEnabled(true);
         btnExcluirPessoa.setEnabled(false);
         btnEditarPessoa.setEnabled(false);
         dadosTabela("select * from tbpessoas order by idpessoa");
@@ -758,7 +714,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
 
     private void btnSalvarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarPessoaActionPerformed
         //Metodo para Converter Data para salvar no banco Mysql
-        if (update_sel == 1) {
+        if (update_sel == 1) {            
             if (rbPessoaFisica.isSelected()) {
                 if ((cbPerfilPessoa.getSelectedItem().toString().isEmpty()) || (txtNomePessoa.getText().isEmpty()) || (txtcpfcnpj.getText().isEmpty())
                         || (txtDataNasc.getText().isEmpty()) || (txtEnderecoPessoa.getText().isEmpty()) || (txtBairroPessoa.getText().isEmpty()) || (txtNumeroCasaPessoa.getText().isEmpty())
@@ -791,23 +747,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
 
                     cadastroPessoasDB.adicionaFisica(cadastroPessoas);
                     JOptionPane.showMessageDialog(null, "Cliente, " + txtNomePessoa.getText() + " inserido com sucesso! ");
-                    txtIDpessoa.setText("");
-                    cbPerfilPessoa.setSelectedItem("");
-                    txtNomePessoa.setText("");
-                    txtNomeFantasia.setText("");
-                    txtcpfcnpj.setText("");
-                    txtInscricaoEstadual.setText("");
-                    txtDataNasc.setText("");
-                    txtEnderecoPessoa.setText("");
-                    txtBairroPessoa.setText("");
-                    txtNumeroCasaPessoa.setText("");
-                    txtCepPessoa.setText("");
-                    txtTelefonePessoa.setText("");
-                    txtEmailPessoa.setText("");
-                    txtReferencia1Nome.setText("");
-                    txtReferencia1Telefone.setText("");
-                    txtReferencia2Nome.setText("");
-                    txtReferencia2Telefone.setText("");
+                    limparCampos();
 
                     rbPessoaFisica.setEnabled(false);
                     rbPessoaJuridica.setEnabled(false);
@@ -870,23 +810,8 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
 
                     cadastroPessoasDB.adicionaJuridica(cadastroPessoas);
                     JOptionPane.showMessageDialog(null, "Cliente, " + txtNomePessoa.getText() + " inserido com sucesso! ");
-                    txtIDpessoa.setText("");
-                    cbPerfilPessoa.setSelectedItem("");
-                    txtNomePessoa.setText("");
-                    txtNomeFantasia.setText("");
-                    txtcpfcnpj.setText("");
-                    txtInscricaoEstadual.setText("");
-                    txtDataNasc.setText("");
-                    txtEnderecoPessoa.setText("");
-                    txtBairroPessoa.setText("");
-                    txtNumeroCasaPessoa.setText("");
-                    txtCepPessoa.setText("");
-                    txtTelefonePessoa.setText("");
-                    txtEmailPessoa.setText("");
-                    txtReferencia1Nome.setText("");
-                    txtReferencia1Telefone.setText("");
-                    txtReferencia2Nome.setText("");
-                    txtReferencia2Telefone.setText("");
+
+                    limparCampos();
 
                     rbPessoaFisica.setEnabled(false);
                     rbPessoaJuridica.setEnabled(false);
@@ -902,8 +827,8 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
                     txtNumeroCasaPessoa.setEnabled(false);
                     txtCepPessoa.setEnabled(false);
                     txtTelefonePessoa.setEnabled(false);
-                    txtEmailPessoa.setEnabled(false);
                     txtReferencia1Nome.setEnabled(false);
+                    txtEmailPessoa.setEnabled(false);
                     txtReferencia1Telefone.setEnabled(false);
                     txtReferencia2Nome.setEnabled(false);
                     txtReferencia2Telefone.setEnabled(false);
@@ -950,23 +875,8 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
 
                     cadastroPessoasDB.editarPessoas(cadastroPessoas);
                     JOptionPane.showMessageDialog(null, "Cliente, " + txtNomePessoa.getText() + " Atualizado com sucesso! ");
-                    txtIDpessoa.setText("");
-                    cbPerfilPessoa.setSelectedItem("");
-                    txtNomePessoa.setText("");
-                    txtNomeFantasia.setText("");
-                    txtcpfcnpj.setText("");
-                    txtInscricaoEstadual.setText("");
-                    txtDataNasc.setText("");
-                    txtEnderecoPessoa.setText("");
-                    txtBairroPessoa.setText("");
-                    txtNumeroCasaPessoa.setText("");
-                    txtCepPessoa.setText("");
-                    txtTelefonePessoa.setText("");
-                    txtEmailPessoa.setText("");
-                    txtReferencia1Nome.setText("");
-                    txtReferencia1Telefone.setText("");
-                    txtReferencia2Nome.setText("");
-                    txtReferencia2Telefone.setText("");
+
+                    limparCampos();
 
                     rbPessoaFisica.setEnabled(false);
                     rbPessoaJuridica.setEnabled(false);
@@ -1030,23 +940,8 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
 
                     cadastroPessoasDB.editarPessoas(cadastroPessoas);
                     JOptionPane.showMessageDialog(null, "Cliente, " + txtNomePessoa.getText() + " Atualizado com sucesso! ");
-                    txtIDpessoa.setText("");
-                    cbPerfilPessoa.setSelectedItem("");
-                    txtNomePessoa.setText("");
-                    txtNomeFantasia.setText("");
-                    txtcpfcnpj.setText("");
-                    txtInscricaoEstadual.setText("");
-                    txtDataNasc.setText("");
-                    txtEnderecoPessoa.setText("");
-                    txtBairroPessoa.setText("");
-                    txtNumeroCasaPessoa.setText("");
-                    txtCepPessoa.setText("");
-                    txtTelefonePessoa.setText("");
-                    txtEmailPessoa.setText("");
-                    txtReferencia1Nome.setText("");
-                    txtReferencia1Telefone.setText("");
-                    txtReferencia2Nome.setText("");
-                    txtReferencia2Telefone.setText("");
+
+                    limparCampos();
 
                     rbPessoaFisica.setEnabled(false);
                     rbPessoaJuridica.setEnabled(false);
@@ -1072,31 +967,14 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
                     btnExcluirPessoa.setEnabled(false);
                     btnEditarPessoa.setEnabled(false);
                     btnNovoPessoa.setEnabled(true);
-                    dadosTabela("select * from tbpessoas order by idpessoa");
+                   dadosTabela("select * from tbpessoas order by idpessoa");
                 }
             }
         }
     }//GEN-LAST:event_btnSalvarPessoaActionPerformed
 
     private void btnCancelarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarPessoaActionPerformed
-        txtIDpessoa.setText("");
-        cbPerfilPessoa.setSelectedItem("");
-        txtNomePessoa.setText("");
-        txtNomeFantasia.setText("");
-        txtcpfcnpj.setText("");
-        txtInscricaoEstadual.setText("");
-        txtDataNasc.setText("");
-        txtEnderecoPessoa.setText("");
-        txtBairroPessoa.setText("");
-        txtNumeroCasaPessoa.setText("");
-        txtCepPessoa.setText("");
-        txtTelefonePessoa.setText("");
-        txtEmailPessoa.setText("");
-        txtReferencia1Nome.setText("");
-        txtReferencia1Telefone.setText("");
-        txtReferencia2Nome.setText("");
-        txtReferencia2Telefone.setText("");
-        txtBuscarPessoa.setText("");
+        limparCampos();
 
         rbPessoaFisica.setEnabled(false);
         rbPessoaJuridica.setEnabled(false);
@@ -1134,24 +1012,8 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
             cadastroPessoas.setIdpessoa(txtIDpessoa.getText());
             cadastroPessoasDB.excluirPessoa(cadastroPessoas);
 
-            txtIDpessoa.setText("");
-            cbPerfilPessoa.setSelectedItem("");
-            txtNomePessoa.setText("");
-            txtNomeFantasia.setText("");
-            txtcpfcnpj.setText("");
-            txtInscricaoEstadual.setText("");
-            txtDataNasc.setText("");
-            txtEnderecoPessoa.setText("");
-            txtBairroPessoa.setText("");
-            txtNumeroCasaPessoa.setText("");
-            txtCepPessoa.setText("");
-            txtTelefonePessoa.setText("");
-            txtEmailPessoa.setText("");
-            txtReferencia1Nome.setText("");
-            txtReferencia1Telefone.setText("");
-            txtReferencia2Nome.setText("");
-            txtReferencia2Telefone.setText("");
-            txtBuscarPessoa.setText("");
+            limparCampos();
+
             rbPessoaFisica.setEnabled(false);
             rbPessoaJuridica.setEnabled(false);
             txtIDpessoa.setEnabled(false);
@@ -1229,8 +1091,6 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
             update_sel = 2;
             dadosTabela("select * from tbpessoas order by idpessoa");
         }
-        
-        System.out.println(update_sel);
     }//GEN-LAST:event_btnEditarPessoaActionPerformed
 
     private void rbPessoaFisicaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbPessoaFisicaMouseClicked
@@ -1256,6 +1116,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         btnCancelarPessoa.setEnabled(true);
         btnExcluirPessoa.setEnabled(false);
         btnEditarPessoa.setEnabled(false);
+        btnNovoPessoa.setEnabled(false);
         dadosTabela("select * from tbpessoas order by idpessoa");
 
         MaskFormatter cpf = null;
@@ -1295,6 +1156,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         btnCancelarPessoa.setEnabled(true);
         btnExcluirPessoa.setEnabled(false);
         btnEditarPessoa.setEnabled(false);
+        btnNovoPessoa.setEnabled(false);
         dadosTabela("select * from tbpessoas order by idpessoa");
 
         MaskFormatter cnpj = null;
@@ -1356,11 +1218,12 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
             txtReferencia1Telefone.setText(conexao.rs.getString("telefonereferencia01"));
             txtReferencia2Nome.setText(conexao.rs.getString("referencia02"));
             txtReferencia2Telefone.setText(conexao.rs.getString("telefonereferencia02"));
-            
+
             btnCancelarPessoa.setEnabled(true);
             btnEditarPessoa.setEnabled(true);
             btnExcluirPessoa.setEnabled(true);
-            
+            btnNovoPessoa.setEnabled(false);
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao Selecionar o Cliente" + ex.getMessage());
         }
@@ -1401,7 +1264,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
 
         jTPessoas.getColumnModel().getColumn(5).setPreferredWidth(130);
         jTPessoas.getColumnModel().getColumn(5).setResizable(false);
-        
+
         jTPessoas.getColumnModel().getColumn(6).setPreferredWidth(120);
         jTPessoas.getColumnModel().getColumn(6).setResizable(false);
 
