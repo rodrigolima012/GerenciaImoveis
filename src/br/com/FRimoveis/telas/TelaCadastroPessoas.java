@@ -675,11 +675,10 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
                 btnExcluirPessoa.setEnabled(true);
                 btnEditarPessoa.setEnabled(true);
                 btnNovoPessoa.setEnabled(false);
+                CadastroPessoas pessoa = new CadastroPessoas();
                 dadosTabela("select * from tbpessoas order by idpessoa");
             }
         }
-        // TODO add your handling code here:
-
     }//GEN-LAST:event_btnPesquisarPessoaActionPerformed
 
     private void btnNovoPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoPessoaActionPerformed
@@ -714,7 +713,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
 
     private void btnSalvarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarPessoaActionPerformed
         //Metodo para Converter Data para salvar no banco Mysql
-        if (update_sel == 1) {            
+        if (update_sel == 1) {
             if (rbPessoaFisica.isSelected()) {
                 if ((cbPerfilPessoa.getSelectedItem().toString().isEmpty()) || (txtNomePessoa.getText().isEmpty()) || (txtcpfcnpj.getText().isEmpty())
                         || (txtDataNasc.getText().isEmpty()) || (txtEnderecoPessoa.getText().isEmpty()) || (txtBairroPessoa.getText().isEmpty()) || (txtNumeroCasaPessoa.getText().isEmpty())
@@ -967,7 +966,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
                     btnExcluirPessoa.setEnabled(false);
                     btnEditarPessoa.setEnabled(false);
                     btnNovoPessoa.setEnabled(true);
-                   dadosTabela("select * from tbpessoas order by idpessoa");
+                    dadosTabela("select * from tbpessoas order by idpessoa");
                 }
             }
         }
@@ -1195,7 +1194,31 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
             txtNomePessoa.setText(conexao.rs.getString("nomeCliente"));
             txtNomeFantasia.setText(conexao.rs.getString("nomeFantasia"));
             cbPerfilPessoa.setSelectedItem(conexao.rs.getString("perfil"));
-            txtcpfcnpj.setText(conexao.rs.getString("cnpjcpf"));
+            if (txtNomeFantasia.getText().isEmpty()) {
+                MaskFormatter cpf = null;
+
+                try {
+                    txtcpfcnpj.setValue(null);
+
+                    cpf = new MaskFormatter("###.###.###-##");
+                    cpf.setPlaceholderCharacter(' ');
+                    txtcpfcnpj.setFormatterFactory(new DefaultFormatterFactory(cpf));
+                    txtcpfcnpj.setText(conexao.rs.getString("cnpjcpf"));
+                } catch (ParseException ex) {
+                }
+
+            } else {
+                MaskFormatter cnpj = null;
+                try {
+                    txtcpfcnpj.setValue(null);
+
+                    cnpj = new MaskFormatter("##.###.###/####-##");
+                    cnpj.setPlaceholderCharacter(' ');
+                    txtcpfcnpj.setFormatterFactory(new DefaultFormatterFactory(cnpj));
+                    txtcpfcnpj.setText(conexao.rs.getString("cnpjcpf"));
+                } catch (ParseException ex) {
+                }
+            }
 
             String dataNasc = conexao.rs.getString("dataNasc");
             SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
