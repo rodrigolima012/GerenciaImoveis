@@ -18,8 +18,11 @@ public class CadastroImoveis {
     private String cepImovel = "";
     private String numeroImovel = "";
     private String matriculaImovel = "";
+    private String imagensUrl = "";
     private double aluguelCasa;
-
+    private String pesquisar = "";
+    
+    
     public String getIdimovel() {
         return idimovel;
     }
@@ -82,6 +85,22 @@ public class CadastroImoveis {
 
     public void setAluguelCasa(double aluguelCasa) {
         this.aluguelCasa = aluguelCasa;
+    }
+
+    public String getImagensUrl() {
+        return imagensUrl;
+    }
+
+    public void setImagensUrl(String imagensUrl) {
+        this.imagensUrl = imagensUrl;
+    }
+
+    public String getPesquisar() {
+        return pesquisar;
+    }
+
+    public void setPesquisar(String pesquisar) {
+        this.pesquisar = pesquisar;
     }
 
 }
