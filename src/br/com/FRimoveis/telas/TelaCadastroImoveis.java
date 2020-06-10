@@ -7,9 +7,17 @@ package br.com.FRimoveis.telas;
 
 import br.com.FRimoveis.Conexao.ConexaoBD;
 import br.com.FRimoveis.Desenvolvimento.CadastroImoveis;
+import br.com.FRimoveis.Desenvolvimento.CadastroImoveisTabela;
 import br.com.FRimoveis.dao.CadastroImoveisDB;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 
@@ -43,7 +51,7 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         btnEditarImovel.setEnabled(false);
         btnExcluirImovel.setEnabled(false);
         btnAbrirImagens.setEnabled(false);
-
+        dadosTabela("select * from tbimoveis order by idimovel");
         MaskFormatter cep = null;
 
         try {
@@ -66,6 +74,7 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         txtNumeroImovel.setText("");
         txtValorAlugel.setText("");
         txtBuscarImovel.setText("");
+        dadosTabela("select * from tbimoveis order by idimovel");
     }
 
     /**
@@ -103,7 +112,7 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         txtBuscarImovel = new javax.swing.JTextField();
         btnEditarImovel = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTImoveis = new javax.swing.JTable();
         txtCepImovel = new javax.swing.JFormattedTextField();
         txtValorAlugel = new javax.swing.JFormattedTextField();
         jLabel12 = new javax.swing.JLabel();
@@ -205,7 +214,7 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTImoveis.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -213,7 +222,12 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Título 3"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jTImoveis.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTImoveisMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTImoveis);
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel12.setText("Imagens URL:");
@@ -381,6 +395,7 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
     }//GEN-LAST:event_txtBairroImovelActionPerformed
 
     private void btnNovoImovelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoImovelActionPerformed
+        update_sel = 1;
         btnSalvarImovel.setEnabled(true);
         btnCancelarImovel.setEnabled(true);
         btnNovoImovel.setEnabled(false);
@@ -392,6 +407,9 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         txtNumeroImovel.setEnabled(true);
         txtValorAlugel.setEnabled(true);
         txtUrlImagens.setEnabled(true);
+        txtBuscarImovel.setEnabled(false);
+        btnPesquisarImovel.setEnabled(false);
+        dadosTabela("select * from tbimoveis order by idimovel");
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnNovoImovelActionPerformed
@@ -410,7 +428,7 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
                 cadastroimoveis.setAluguelCasa(Double.parseDouble(txtValorAlugel.getText()));
                 cadastroimoveis.setMatriculaImovel(txtMatriculaImovel.getText());
                 cadastroimoveis.setImagensUrl(txtUrlImagens.getText());
-
+                dadosTabela("select * from tbimoveis order by idimovel");
                 LimparDados();
 
                 cadastroimoveisDB.adicionaImoveis(cadastroimoveis);
@@ -430,13 +448,13 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
                 cadastroimoveis.setAluguelCasa(Double.parseDouble(txtValorAlugel.getText()));
                 cadastroimoveis.setMatriculaImovel(txtMatriculaImovel.getText());
                 cadastroimoveis.setImagensUrl(txtUrlImagens.getText());
-
+                dadosTabela("select * from tbimoveis order by idimovel");
                 LimparDados();
 
                 cadastroimoveisDB.editarPessoas(cadastroimoveis);
                 JOptionPane.showMessageDialog(null, "Imovel inserido com sucesso! ");
             }
-            
+
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSalvarImovelActionPerformed
@@ -455,21 +473,31 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         btnEditarImovel.setEnabled(false);
         btnExcluirImovel.setEnabled(false);
         btnNovoImovel.setEnabled(true);
+        txtBuscarImovel.setEnabled(true);
+        btnPesquisarImovel.setEnabled(true);
+        dadosTabela("select * from tbimoveis order by idimovel");
         LimparDados();
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnCancelarImovelActionPerformed
 
     private void btnExcluirImovelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirImovelActionPerformed
+        int res = 0;
+        res = JOptionPane.showConfirmDialog(rootPane, "Deseja Remover o Imovel?");
+        if (res == JOptionPane.YES_OPTION) {
+            cadastroimoveis.setIdimovel(txtIDImovel.getText());
+            cadastroimoveisDB.excluirImovel(cadastroimoveis);
+            LimparDados();
+            dadosTabela("select * from tbimoveis order by idimovel");
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_btnExcluirImovelActionPerformed
 
     private void btnPesquisarImovelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarImovelActionPerformed
         String teste = "";
         String teste2 = "";
-        
+
         cadastroimoveis.setPesquisar(txtBuscarImovel.getText());
         CadastroImoveis model = cadastroimoveisDB.pesquisaImovel(cadastroimoveis);
-
+        dadosTabela("select * from tbimoveis order by idimovel");
         if (txtBuscarImovel.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Favor inserir dados para a pesquisa!");
         } else if (txtBuscarImovel.getText().length() < 3) {
@@ -494,12 +522,15 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
                 txtNumeroImovel.setText(model.getNumeroImovel());
                 txtValorAlugel.setText(String.valueOf(model.getAluguelCasa()));
                 txtUrlImagens.setText(model.getImagensUrl());
-                
+
                 btnCancelarImovel.setEnabled(true);
                 btnEditarImovel.setEnabled(true);
                 btnNovoImovel.setEnabled(false);
+                btnExcluirImovel.setEnabled(true);
+                btnAbrirImagens.setEnabled(true);
+                dadosTabela("select * from tbimoveis order by idimovel");
             } else {
-                JOptionPane.showMessageDialog(null, "Imovel não Cadastrado!!\n Digite novamente!");
+                LimparDados();
             }
         }
         // TODO add your handling code here:
@@ -509,8 +540,9 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         update_sel = 2;
         btnNovoImovel.setEnabled(false);
         btnSalvarImovel.setEnabled(true);
-        btnAbrirImagens.setEnabled(true);
+        btnAbrirImagens.setEnabled(false);
         btnCancelarImovel.setEnabled(true);
+        btnExcluirImovel.setEnabled(false);
         txtMatriculaImovel.setEnabled(true);
         cbStatusImovel.setEnabled(true);
         txtEnderecoImovel.setEnabled(true);
@@ -519,6 +551,7 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         txtNumeroImovel.setEnabled(true);
         txtValorAlugel.setEnabled(true);
         txtUrlImagens.setEnabled(true);
+        dadosTabela("select * from tbimoveis order by idimovel");
     }//GEN-LAST:event_btnEditarImovelActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
@@ -530,12 +563,87 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void btnAbrirImagensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirImagensActionPerformed
-        // TODO add your handling code here:
+        dadosTabela("select * from tbimoveis order by idimovel");
+        String url;
+        url = txtUrlImagens.getText();
+        try {
+            java.awt.Desktop.getDesktop().browse(new java.net.URI(url));
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(TelaCadastroImoveis.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(TelaCadastroImoveis.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnAbrirImagensActionPerformed
 
     private void txtUrlImagensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUrlImagensActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txtUrlImagensActionPerformed
+
+    private void jTImoveisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTImoveisMouseClicked
+        String nome_imovel = "" + jTImoveis.getValueAt(jTImoveis.getSelectedRow(), 0);
+        conexao.conectar();
+        conexao.executaSql("select * from tbimoveis where idimovel = '" + nome_imovel + "'");
+        try {
+            conexao.rs.first();
+            txtIDImovel.setText(conexao.rs.getString("idimovel"));
+            cbStatusImovel.setSelectedItem(conexao.rs.getString("statusImovel"));
+            txtEnderecoImovel.setText(conexao.rs.getString("enderecoimovel"));
+            txtBairroImovel.setText(conexao.rs.getString("bairroImovel"));
+            txtCepImovel.setText(conexao.rs.getString("cepImovel"));
+            txtNumeroImovel.setText(conexao.rs.getString("numeroCasa"));
+            txtValorAlugel.setText(conexao.rs.getString("aluguelImovel"));
+            txtMatriculaImovel.setText(conexao.rs.getString("matriculaImovel"));
+            txtUrlImagens.setText(conexao.rs.getString("urlImagens"));
+
+            btnCancelarImovel.setEnabled(true);
+            btnEditarImovel.setEnabled(true);
+            btnExcluirImovel.setEnabled(true);
+            btnPesquisarImovel.setEnabled(true);
+            txtBuscarImovel.setEnabled(true);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Selecionar o Imovel" + ex.getMessage());
+        }
+        conexao.desconectar();
+    }//GEN-LAST:event_jTImoveisMouseClicked
+    public void dadosTabela(String sql) {
+        ArrayList dados = new ArrayList();
+        String[] colunas = new String[]{"ID Imoveis", "Matricula Imovel", "Endereço Imovel", "Bairro Imovel", "Status do Imoveil", "Valor Aluguel"};
+        conexao.conectar();
+        conexao.executaSql(sql);
+        try {
+            conexao.rs.first();
+            do {
+                dados.add(new Object[]{conexao.rs.getString("idimovel"), conexao.rs.getString("matriculaImovel"), conexao.rs.getString("enderecoimovel"), conexao.rs.getString("bairroImovel"), conexao.rs.getString("statusImovel"), conexao.rs.getString("aluguelImovel")});
+            } while (conexao.rs.next());
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(rootPane, "Erro ao preencher as tabelas! \n" + e.getMessage());
+        }
+        CadastroImoveisTabela tabela = new CadastroImoveisTabela(dados, colunas);
+
+        jTImoveis.setModel(tabela);
+        jTImoveis.getColumnModel().getColumn(0).setPreferredWidth(70);
+        jTImoveis.getColumnModel().getColumn(0).setResizable(false);
+
+        jTImoveis.getColumnModel().getColumn(1).setPreferredWidth(150);
+        jTImoveis.getColumnModel().getColumn(1).setResizable(false);
+
+        jTImoveis.getColumnModel().getColumn(2).setPreferredWidth(250);
+        jTImoveis.getColumnModel().getColumn(2).setResizable(false);
+
+        jTImoveis.getColumnModel().getColumn(3).setPreferredWidth(164);
+        jTImoveis.getColumnModel().getColumn(3).setResizable(false);
+
+        jTImoveis.getColumnModel().getColumn(4).setPreferredWidth(130);
+        jTImoveis.getColumnModel().getColumn(4).setResizable(false);
+
+        jTImoveis.getColumnModel().getColumn(5).setPreferredWidth(100);
+        jTImoveis.getColumnModel().getColumn(5).setResizable(false);
+
+        jTImoveis.getTableHeader().setReorderingAllowed(false);
+        jTImoveis.setAutoResizeMode(jTImoveis.AUTO_RESIZE_OFF);
+        jTImoveis.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+        conexao.desconectar();
+    }
 
     /**
      * @param args the command line arguments
@@ -595,7 +703,7 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTImoveis;
     private javax.swing.JTextField txtBairroImovel;
     private javax.swing.JTextField txtBuscarImovel;
     private javax.swing.JFormattedTextField txtCepImovel;

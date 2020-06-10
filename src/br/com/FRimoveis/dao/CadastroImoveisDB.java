@@ -36,7 +36,7 @@ public class CadastroImoveisDB {
             pst.close();
             connectarBanco.desconectar();
         } catch (SQLException u) {
-            JOptionPane.showMessageDialog(null, "Erro ao adicionar o usuario! \n" + u.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao adicionar o Imovel! \n" + u.getMessage());
         }
     }
     
@@ -76,8 +76,22 @@ public class CadastroImoveisDB {
             pst.setString(9, imovel.getIdimovel());
             pst.execute();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao editar o usuario! \n" + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao editar o Imovel! \n" + e.getMessage());
         }
+        connectarBanco.desconectar();
+    }
+    
+     public void excluirImovel(CadastroImoveis imovel) {
+        connectarBanco.conectar();
+        try {
+            PreparedStatement pst = connectarBanco.con.prepareStatement("delete from tbimoveis where idimovel = ?");
+            pst.setString(1, imovel.getIdimovel());
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Imovel deletado com Sucesso!!");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao deletar o Cliente! \n" + e.getMessage());
+        }
+
         connectarBanco.desconectar();
     }
 
