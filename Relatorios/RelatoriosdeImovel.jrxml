@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Relatorios de Clientes" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d7eda670-2063-4496-a18a-1f8115112624">
+	<property name="ireport.zoom" value="1.771561000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select * from tbimoveis order by idimovel;]]>
+	</queryString>
+	<field name="idimovel" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="statusImovel" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="enderecoimovel" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="bairroImovel" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cepImovel" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numeroCasa" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="aluguelImovel" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="matriculaImovel" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="urlImagens" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="2" width="211" height="77" uuid="1f052a89-ebeb-4397-b201-415e88d6550b"/>
+				<imageExpression><![CDATA["C:\\Users\\rodrigolima\\Dropbox\\My PC (NBCATI002687)\\Desktop\\Faculdade\\Imegens Projeto\\Capturar.JPG"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="351" y="2" width="204" height="35" uuid="f7748aad-0bca-44b7-97f8-26b6570ac64d"/>
+				<textElement>
+					<font size="22"/>
+				</textElement>
+				<text><![CDATA[Relatorios de Imovel]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="429" y="59" width="136" height="20" uuid="3257e270-d43a-4268-a713-4772aabdaf44"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="6" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="de4fbad8-9a67-4b94-96bc-99a220793cb1"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="5" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="107" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="1" width="100" height="20" uuid="78e057bb-b548-4d1e-8af2-ccf287d403e5"/>
+				<textElement>
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Status do Imovel]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="330" y="0" width="100" height="20" uuid="ffb8c6fa-ea74-458c-b29e-25d313cb12a7"/>
+				<textElement>
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Matricula Imovel]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="0" width="100" height="20" uuid="16112578-b2c7-41ee-a795-68a1256fe387"/>
+				<textElement>
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Valor Aluguel]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="148" y="1" width="100" height="20" uuid="b8dd91e2-9e1e-443c-b603-ddfd297dd694"/>
+				<textElement>
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Endereço Imovel]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="41" width="100" height="20" uuid="4c13d106-54dd-4290-b50a-70655ee91781"/>
+				<textElement>
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Bairro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="330" y="42" width="100" height="20" uuid="bf5037a2-f4e5-4695-af8a-1e22439aff4f"/>
+				<textElement>
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Numero Casa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="148" y="42" width="100" height="20" uuid="fd51a532-5fa3-45f7-bb28-2ba666763e0a"/>
+				<textElement>
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[CEP]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="95" width="555" height="1" uuid="8327fe80-8d86-44c9-845b-3671104cedda"/>
+			</line>
+			<textField>
+				<reportElement x="0" y="21" width="100" height="20" uuid="37848af1-c3bd-47f1-bf9d-88dfeb6a8c4d"/>
+				<textFieldExpression><![CDATA[$F{statusImovel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="148" y="21" width="164" height="20" uuid="38799c07-c1c2-4d8a-8ed0-84af68d9d7f0"/>
+				<textFieldExpression><![CDATA[$F{enderecoimovel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="330" y="21" width="100" height="20" uuid="3d325623-4ac5-4cb9-8ed1-c5b552ebfe11"/>
+				<textFieldExpression><![CDATA[$F{matriculaImovel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="62" width="148" height="20" uuid="87ec2e77-4470-4cda-a285-72539b3232da"/>
+				<textFieldExpression><![CDATA[$F{bairroImovel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="330" y="63" width="100" height="20" uuid="13453250-1c80-474c-8d9c-c115ae11d458"/>
+				<textFieldExpression><![CDATA[$F{numeroCasa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="148" y="62" width="100" height="20" uuid="b99be76d-da29-4a03-a3f2-df9008b873a3"/>
+				<textFieldExpression><![CDATA[$F{cepImovel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="20" width="100" height="20" uuid="1cd6ffce-a1fa-40f4-9b55-6e5dda43d4e0"/>
+				<textFieldExpression><![CDATA[$F{aluguelImovel}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="92" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="543" y="34" width="22" height="20" uuid="764e1006-7be9-46dd-8618-bd308ce01a35"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="33" width="555" height="1" uuid="8399939e-93a3-4939-aa94-2b46ff5a07b5"/>
+			</line>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -5,7 +5,13 @@
  */
 package br.com.FRimoveis.telas;
 
+import br.com.FRimoveis.Conexao.ConexaoBD;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRResultSetDataSource;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -13,13 +19,15 @@ import javax.swing.JOptionPane;
  */
 public class TelaPrincipal extends javax.swing.JFrame {
 
+    ConexaoBD conexao = new ConexaoBD();
+
     /**
      * Creates new form TelaInical
      */
     public TelaPrincipal() {
         initComponents();
+
     }
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -82,7 +90,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuCadastro.setText("Cadastro");
 
         menuPessoas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK));
-        menuPessoas.setText("Pessoas");
+        menuPessoas.setText("Clientes");
         menuPessoas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuPessoasActionPerformed(evt);
@@ -129,11 +137,26 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuRelatorios.setText("Relatorios");
 
         jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_MASK));
-        jMenuItem6.setText("Pessoas");
+        jMenuItem6.setText("Clientes");
+        jMenuItem6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuItem6MouseClicked(evt);
+            }
+        });
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         menuRelatorios.add(jMenuItem6);
 
         jMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.ALT_MASK));
         jMenuItem7.setText("Imoveis");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         menuRelatorios.add(jMenuItem7);
 
         jMenuItem8.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
@@ -194,7 +217,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void MenuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSairActionPerformed
         int sair = JOptionPane.showConfirmDialog(null, "Quer Sair do Sistema?", "Atenção", JOptionPane.YES_NO_OPTION);
-        if(sair == JOptionPane.YES_OPTION){
+        if (sair == JOptionPane.YES_OPTION) {
             System.exit(0);
         }
         // TODO add your handling code here:
@@ -213,8 +236,42 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuImoveisActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem6MouseClicked
+    }//GEN-LAST:event_jMenuItem6MouseClicked
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        try {
+            conexao.conectar();
+            conexao.executaSql("select * from tbpessoas order by idpessoa");
+            JRResultSetDataSource relatClientes = new JRResultSetDataSource(conexao.rs);
+            JasperPrint jP = JasperFillManager.fillReport("Relatorios/RelatoriosdeClientes.jasper", new HashMap(), relatClientes);
+            JasperViewer jv = new JasperViewer(jP, false);
+            jv.setVisible(true);
+            jv.toFront();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao abrir o Relatorio de Cliente!\n" + e.getMessage());
+        }
+        conexao.desconectar();
+// TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        try {
+            conexao.conectar();
+            conexao.executaSql("select * from tbimoveis order by idimovel");
+            JRResultSetDataSource relatClientes = new JRResultSetDataSource(conexao.rs);
+            JasperPrint jP = JasperFillManager.fillReport("Relatorios/RelatoriosdeImovel.jasper", new HashMap(), relatClientes);
+            JasperViewer jv = new JasperViewer(jP, false);
+            jv.setVisible(true);
+            jv.toFront();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao abrir o Relatorio de Imovel!\n" + e.getMessage());
+        }
+        conexao.desconectar();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     /**
      * @param args the command line arguments
