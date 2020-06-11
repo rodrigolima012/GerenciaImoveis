@@ -122,6 +122,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuContratos.setText("Contratos");
 
         jMenuItem1.setText("Gerar Contrato");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         menuContratos.add(jMenuItem1);
 
         jMenuItem3.setText("Consultar Contrato");
@@ -272,6 +277,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         conexao.desconectar();
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        TelaGerarContrato contrato = new TelaGerarContrato();
+        contrato.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
