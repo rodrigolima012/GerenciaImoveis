@@ -41,7 +41,7 @@ public class CadastroUsuarioDB {
         connectarBanco.executaSql("select * from tbusuarios where nomeUsuario like '%" + usuario.getPesquisa() + "%'");
         try {
             connectarBanco.rs.first();
-            usuario.setIdUsuario(connectarBanco.rs.getString("idusuarios"));
+            usuario.setIdUsuario(connectarBanco.rs.getString("idusuario"));
             usuario.setPerfilUsuario(connectarBanco.rs.getString("perfilUser"));
             usuario.setNomeUsuario(connectarBanco.rs.getString("nomeUsuario"));
             usuario.setLoginUsuario(connectarBanco.rs.getString("login"));

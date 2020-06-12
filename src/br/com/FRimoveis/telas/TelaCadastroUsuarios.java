@@ -40,7 +40,6 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         btnEditarUsuario.setEnabled(false);
         btnExcluirUsuario.setEnabled(false);
         btnSalvarUsuario.setEnabled(false);
-        dadosTabela("select * from tbusuarios order by idusuario");
         setIcon();
     }
 
@@ -409,58 +408,17 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         txtLoginUsuario.setText("");
         txtSenhaUsuario.setText("");
         cbPerfilUsuario.setSelectedItem("");
-        String teste = "";
-        String teste2 = "";
-        cadastroUsuarios.setPesquisa(txtBuscarUsuario.getText());
-        CadastroUsuarios model = cadastroUsuariosDB.pesquisaUsuario(cadastroUsuarios);
 
         if (txtBuscarUsuario.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Favor inserir dados para a pesquisa!");
-        } else if (txtBuscarUsuario.getText().length() < 3) {
-            JOptionPane.showMessageDialog(null, "Informar pelo menos 3 caracteres\nPara a busca funcionar!");
+            dadosTabela("select * from tbusuarios order by idusuario");
         } else {
+            cadastroUsuarios.setPesquisa(txtBuscarUsuario.getText());
+            cadastroUsuariosDB.pesquisaUsuario(cadastroUsuarios);
             try {
-                teste = txtBuscarUsuario.getText().substring(0, 3);
-                teste2 = model.getNomeUsuario().substring(0, 3);
+                dadosTabela("select * from tbusuarios where nomeUsuario like '%" + cadastroUsuarios.getPesquisa() + "%'");
             } catch (Exception e) {
-                
-            }
-
-            if (model.getNomeUsuario() == null) {
-                txtIDUsuario.setText("");
-                txtNomeUsuario.setText("");
-                txtLoginUsuario.setText("");
-                txtSenhaUsuario.setText("");
-                cbPerfilUsuario.setSelectedItem("");
-                txtIDUsuario.setEnabled(false);
-                txtLoginUsuario.setEnabled(false);
-                txtNomeUsuario.setEnabled(false);
-                txtSenhaUsuario.setEnabled(false);
-                cbPerfilUsuario.setEnabled(false);
-                btnCancelarUsuario.setEnabled(true);
-                btnEditarUsuario.setEnabled(false);
-                btnExcluirUsuario.setEnabled(false);
-                btnSalvarUsuario.setEnabled(false);
-                btnNovoUsuario.setEnabled(true);
-            } else if (teste2.equalsIgnoreCase(teste)) {
-                txtIDUsuario.setText(model.getIdUsuario());
-                cbPerfilUsuario.getModel().setSelectedItem(model.getPerfilUsuario());
-                txtNomeUsuario.setText(model.getNomeUsuario());
-                txtLoginUsuario.setText(model.getLoginUsuario());
-                txtSenhaUsuario.setText(model.getSenhaUsuario());
-                txtIDUsuario.setEnabled(false);
-                txtLoginUsuario.setEnabled(false);
-                txtNomeUsuario.setEnabled(false);
-                txtSenhaUsuario.setEnabled(false);
-                cbPerfilUsuario.setEnabled(false);
-                btnCancelarUsuario.setEnabled(true);
-                btnEditarUsuario.setEnabled(true);
-                btnExcluirUsuario.setEnabled(true);
-                btnSalvarUsuario.setEnabled(false);
-                btnNovoUsuario.setEnabled(true);
             }
         }
-
     }//GEN-LAST:event_btnPesquisarUsuarioActionPerformed
 
     private void txtIDUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDUsuarioActionPerformed
@@ -579,10 +537,10 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
 
         conexao.desconectar();
     }
+
     public void setIcon() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/IconeSistema/IconeSistema.png")));
     }
-    
 
     /**
      * @param args the command line arguments

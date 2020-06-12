@@ -53,7 +53,6 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         btnEditarImovel.setEnabled(false);
         btnExcluirImovel.setEnabled(false);
         btnAbrirImagens.setEnabled(false);
-        dadosTabela("select * from tbimoveis order by idimovel");
         MaskFormatter cep = null;
 
         try {
@@ -430,10 +429,10 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
                 cadastroimoveis.setAluguelCasa(Double.parseDouble(txtValorAlugel.getText()));
                 cadastroimoveis.setMatriculaImovel(txtMatriculaImovel.getText());
                 cadastroimoveis.setImagensUrl(txtUrlImagens.getText());
-                dadosTabela("select * from tbimoveis order by idimovel");
-                LimparDados();
 
                 cadastroimoveisDB.adicionaImoveis(cadastroimoveis);
+                dadosTabela("select * from tbimoveis order by idimovel");
+                LimparDados();
                 JOptionPane.showMessageDialog(null, "Imovel inserido com sucesso! ");
             }
         } else if (update_sel == 2) {
@@ -450,13 +449,12 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
                 cadastroimoveis.setAluguelCasa(Double.parseDouble(txtValorAlugel.getText()));
                 cadastroimoveis.setMatriculaImovel(txtMatriculaImovel.getText());
                 cadastroimoveis.setImagensUrl(txtUrlImagens.getText());
-                dadosTabela("select * from tbimoveis order by idimovel");
-                LimparDados();
 
                 cadastroimoveisDB.editarPessoas(cadastroimoveis);
+                dadosTabela("select * from tbimoveis order by idimovel");
+                LimparDados();
                 JOptionPane.showMessageDialog(null, "Imovel inserido com sucesso! ");
             }
-
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSalvarImovelActionPerformed
@@ -494,45 +492,15 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirImovelActionPerformed
 
     private void btnPesquisarImovelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarImovelActionPerformed
-        String teste = "";
-        String teste2 = "";
-
-        cadastroimoveis.setPesquisar(txtBuscarImovel.getText());
-        CadastroImoveis model = cadastroimoveisDB.pesquisaImovel(cadastroimoveis);
-        dadosTabela("select * from tbimoveis order by idimovel");
         if (txtBuscarImovel.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Favor inserir dados para a pesquisa!");
-        } else if (txtBuscarImovel.getText().length() < 3) {
-            JOptionPane.showMessageDialog(null, "Informar pelo menos 3 caracteres\nPara a busca funcionar!");
+            dadosTabela("select * from tbimoveis order by idimovel");
         } else {
+            cadastroimoveis.setPesquisar(txtBuscarImovel.getText());
+            CadastroImoveis model = cadastroimoveisDB.pesquisaImovel(cadastroimoveis);
             try {
-                teste = txtBuscarImovel.getText().substring(0, 3);
-                teste2 = model.getMatriculaImovel().substring(0, 3);
+                dadosTabela("select * from tbimoveis where matriculaImovel like '%" + cadastroimoveis.getPesquisar()+ "%'");
             } catch (Exception e) {
 
-            }
-
-            if (model.getMatriculaImovel() == null) {
-
-            } else if (teste2.equalsIgnoreCase(teste)) {
-                txtIDImovel.setText(model.getIdimovel());
-                cbStatusImovel.getModel().setSelectedItem(model.getStatusImovel());
-                txtMatriculaImovel.setText(model.getMatriculaImovel());
-                txtEnderecoImovel.setText(model.getEnderecoImovel());
-                txtBairroImovel.setText(model.getBairroImovel());
-                txtCepImovel.setText(model.getCepImovel());
-                txtNumeroImovel.setText(model.getNumeroImovel());
-                txtValorAlugel.setText(String.valueOf(model.getAluguelCasa()));
-                txtUrlImagens.setText(model.getImagensUrl());
-
-                btnCancelarImovel.setEnabled(true);
-                btnEditarImovel.setEnabled(true);
-                btnNovoImovel.setEnabled(false);
-                btnExcluirImovel.setEnabled(true);
-                btnAbrirImagens.setEnabled(true);
-                dadosTabela("select * from tbimoveis order by idimovel");
-            } else {
-                LimparDados();
             }
         }
         // TODO add your handling code here:
@@ -558,9 +526,9 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         cbStatusImovel.removeAllItems();
-        cbStatusImovel.addItem("");
-        cbStatusImovel.addItem("ALUGADO");
         cbStatusImovel.addItem("LIVRE");
+        cbStatusImovel.addItem("ALUGADO");
+
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowActivated
 
@@ -646,7 +614,7 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
 
         conexao.desconectar();
     }
-    
+
     public void setIcon() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/IconeSistema/IconeSistema.png")));
     }

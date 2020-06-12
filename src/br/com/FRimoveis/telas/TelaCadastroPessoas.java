@@ -100,7 +100,6 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         } catch (ParseException ex) {
         }
 
-        dadosTabela("select * from tbpessoas order by idpessoa");
     }
 
     public void limparCampos() {
@@ -578,108 +577,17 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
 
     private void btnPesquisarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarPessoaActionPerformed
         limparCampos();
-        String teste = "";
-        String teste2 = "";
-        cadastroPessoas.setPesquisaPessoa(txtBuscarPessoa.getText());
-        CadastroPessoas model = cadastroPessoasDB.pesquisaUsuario(cadastroPessoas);
-
         if (txtBuscarPessoa.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Favor inserir dados para a pesquisa!");
-            limparCampos();
-            dadosTabela("select * from tbpessoas order by idpessoa");
-        } else if (txtBuscarPessoa.getText().length() < 3) {
-            JOptionPane.showMessageDialog(null, "Informar pelo menos 3 caracteres\nPara a busca funcionar!");
-            limparCampos();
             dadosTabela("select * from tbpessoas order by idpessoa");
         } else {
+            cadastroPessoas.setPesquisaPessoa(txtBuscarPessoa.getText());
+            CadastroPessoas model = cadastroPessoasDB.pesquisaUsuario(cadastroPessoas);
             try {
-                teste = txtBuscarPessoa.getText().substring(0, 3);
-                teste2 = model.getNomeCliente().substring(0, 3);
+                dadosTabela("select * from tbpessoas where nomeCliente like '%" + cadastroPessoas.getPesquisaPessoa() + "%'");
             } catch (Exception e) {
 
             }
-
-            if (model.getNomeCliente() == null) {
-                limparCampos();
-
-                rbPessoaFisica.setEnabled(false);
-                rbPessoaJuridica.setEnabled(false);
-                txtIDpessoa.setEnabled(false);
-                cbPerfilPessoa.setEnabled(false);
-                txtNomePessoa.setEnabled(false);
-                txtNomeFantasia.setEnabled(false);
-                txtcpfcnpj.setEnabled(false);
-                txtInscricaoEstadual.setEnabled(false);
-                txtDataNasc.setEnabled(false);
-                txtEnderecoPessoa.setEnabled(false);
-                txtBairroPessoa.setEnabled(false);
-                txtNumeroCasaPessoa.setEnabled(false);
-                txtCepPessoa.setEnabled(false);
-                txtTelefonePessoa.setEnabled(false);
-                txtEmailPessoa.setEnabled(false);
-                txtReferencia1Nome.setEnabled(false);
-                txtReferencia1Telefone.setEnabled(false);
-                txtReferencia2Nome.setEnabled(false);
-                txtReferencia2Telefone.setEnabled(false);
-                btnSalvarPessoa.setEnabled(false);
-                btnCancelarPessoa.setEnabled(false);
-                btnExcluirPessoa.setEnabled(false);
-                btnEditarPessoa.setEnabled(false);
-                btnNovoPessoa.setEnabled(false);
-                dadosTabela("select * from tbpessoas order by idpessoa");
-            } else if (teste2.equalsIgnoreCase(teste)) {
-                txtIDpessoa.setText(model.getIdpessoa());
-                cbPerfilPessoa.getModel().setSelectedItem(model.getPerfil());
-                txtNomePessoa.setText(model.getNomeCliente());
-                txtNomeFantasia.setText(model.getNomeFantasia());
-                txtcpfcnpj.setText(model.getCnpjcpf());
-                SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
-                SimpleDateFormat out = new SimpleDateFormat("dd/MM/yyyy");
-                try {
-                    String result = out.format(in.parse(model.getDataNasc().toString()));
-                    txtDataNasc.setText(result);
-                } catch (ParseException ex) {
-                    Logger.getLogger(TelaCadastroPessoas.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                txtInscricaoEstadual.setText(model.getInscEstadual());
-                txtEnderecoPessoa.setText(model.getEnderecoPessoa());
-                txtNumeroCasaPessoa.setText(model.getNumeroCasa());
-                txtBairroPessoa.setText(model.getBairroPessoa());
-                txtCepPessoa.setText(model.getCepPessoa());
-                txtTelefonePessoa.setText(model.getTelefonePessoa());
-                txtEmailPessoa.setText(model.getEmailPessoa());
-                txtReferencia1Nome.setText(model.getReferencia01());
-                txtReferencia1Telefone.setText(model.getTelefonereferencia01());
-                txtReferencia2Nome.setText(model.getReferencia02());
-                txtReferencia2Telefone.setText(model.getTelefonereferencia02());
-
-                rbPessoaFisica.setEnabled(false);
-                rbPessoaJuridica.setEnabled(false);
-                txtIDpessoa.setEnabled(false);
-                cbPerfilPessoa.setEnabled(false);
-                txtNomePessoa.setEnabled(false);
-                txtNomeFantasia.setEnabled(false);
-                txtcpfcnpj.setEnabled(false);
-                txtInscricaoEstadual.setEnabled(false);
-                txtDataNasc.setEnabled(false);
-                txtEnderecoPessoa.setEnabled(false);
-                txtBairroPessoa.setEnabled(false);
-                txtNumeroCasaPessoa.setEnabled(false);
-                txtCepPessoa.setEnabled(false);
-                txtTelefonePessoa.setEnabled(false);
-                txtEmailPessoa.setEnabled(false);
-                txtReferencia1Nome.setEnabled(false);
-                txtReferencia1Telefone.setEnabled(false);
-                txtReferencia2Nome.setEnabled(false);
-                txtReferencia2Telefone.setEnabled(false);
-                btnSalvarPessoa.setEnabled(false);
-                btnCancelarPessoa.setEnabled(true);
-                btnExcluirPessoa.setEnabled(true);
-                btnEditarPessoa.setEnabled(true);
-                btnNovoPessoa.setEnabled(false);
-                CadastroPessoas pessoa = new CadastroPessoas();
-                dadosTabela("select * from tbpessoas order by idpessoa");
-            }
+            
         }
     }//GEN-LAST:event_btnPesquisarPessoaActionPerformed
 

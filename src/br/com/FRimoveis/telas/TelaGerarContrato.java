@@ -21,7 +21,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -476,11 +475,15 @@ public class TelaGerarContrato extends javax.swing.JFrame {
 
     private void jTImovelContratoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTImovelContratoMouseClicked
         String nome_Imovel = "" + jTImovelContrato.getValueAt(jTImovelContrato.getSelectedRow(), 0);
-        conexao.conectar();
-        conexao.executaSql("select * from tbimoveis where idimovel = '" + nome_Imovel + "'");
+        conexao.conectar();        
+        conexao.executaSql("select * from tbimoveis where idimovel = '" + nome_Imovel + "' and statusImovel = 'LIVRE'");
+        
         try {
-            conexao.rs.first();
-            txtIDImovel.setText(conexao.rs.getString("idimovel"));
+            if(conexao.rs.first()){
+                txtIDImovel.setText(conexao.rs.getString("idimovel"));
+            }else{
+                JOptionPane.showMessageDialog(null, "Casa ja esta Alugada!\nFavor Escolher outro Imovel!");
+            }            
         } catch (SQLException ex) {
             Logger.getLogger(TelaGerarContrato.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception f) {
