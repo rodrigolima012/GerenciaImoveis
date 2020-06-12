@@ -9,6 +9,7 @@ import br.com.FRimoveis.Conexao.ConexaoBD;
 import br.com.FRimoveis.Desenvolvimento.CadastroUsuarios;
 import br.com.FRimoveis.Desenvolvimento.LoginUsuario;
 import br.com.FRimoveis.telas.TelaPrincipal;
+import groovy.ui.text.FindReplaceUtility;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
 
@@ -21,7 +22,7 @@ public class LoginUsuarioDB {
     ConexaoBD connectarBanco = new ConexaoBD();
     CadastroUsuarios usuario = new CadastroUsuarios();
 
-    public void logar(LoginUsuario login) {
+    public boolean logar(LoginUsuario login) {
         connectarBanco.conectar();
         try {
             PreparedStatement pst = connectarBanco.con.prepareStatement("select * from tbusuarios where login = ? and senha = ?");
@@ -33,27 +34,30 @@ public class LoginUsuarioDB {
                 String perfil = connectarBanco.rs.getString(2);
                 if (perfil.equalsIgnoreCase("ADMIN")) {
                     TelaPrincipal inicial = new TelaPrincipal();
-                    inicial.setVisible(true);
+                    inicial.setVisible(true);                    
                     TelaPrincipal.menuUsuarios.setEnabled(true);
                     TelaPrincipal.menuImoveis.setEnabled(false);
                     TelaPrincipal.menuPessoas.setEnabled(false);
                     TelaPrincipal.menuRelatorios.setEnabled(false);
                     TelaPrincipal.menuContratos.setEnabled(false);
-                    TelaPrincipal.menuRecibo.setEnabled(false);
+                    TelaPrincipal.menuRecibo.setEnabled(false);                    
                     connectarBanco.desconectar();
                     pst.close();
+                    return true;
                 } else {
                     TelaPrincipal inicial = new TelaPrincipal();
                     inicial.setVisible(true);
                     connectarBanco.desconectar();
                     pst.close();
+                    return true;
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario/Senha Invalido!");
             }
-        } catch (Exception e) {
+        } catch (Exception e) {            
             JOptionPane.showMessageDialog(null, "Erro! \n" + e.getMessage());
         }
+        return false;
     }
 
 }

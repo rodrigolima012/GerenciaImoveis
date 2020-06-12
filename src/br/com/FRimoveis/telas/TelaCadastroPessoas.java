@@ -9,6 +9,7 @@ import br.com.FRimoveis.Conexao.ConexaoBD;
 import br.com.FRimoveis.Desenvolvimento.CadastroPessoaTabela;
 import br.com.FRimoveis.Desenvolvimento.CadastroPessoas;
 import br.com.FRimoveis.dao.CadastroPessoasDB;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -36,6 +37,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
      * Creates new form TelaCadastroPessoas
      */
     public TelaCadastroPessoas() {
+        setIcon();
         initComponents();
         rbPessoaFisica.setEnabled(false);
         rbPessoaJuridica.setEnabled(false);
@@ -1296,6 +1298,10 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         jTPessoas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         conexao.desconectar();
+    }
+    
+    public void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/IconeSistema/IconeSistema.png")));
     }
 
     /**

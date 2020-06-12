@@ -9,6 +9,7 @@ import br.com.FRimoveis.Conexao.ConexaoBD;
 import br.com.FRimoveis.Desenvolvimento.CadastroImoveis;
 import br.com.FRimoveis.Desenvolvimento.CadastroImoveisTabela;
 import br.com.FRimoveis.dao.CadastroImoveisDB;
+import java.awt.Toolkit;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
@@ -36,6 +37,7 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
      * Creates new form TelaCadastroImoveis
      */
     public TelaCadastroImoveis() {
+        setIcon();
         initComponents();
         txtIDImovel.setEnabled(false);
         txtUrlImagens.setEnabled(false);
@@ -643,6 +645,10 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         jTImoveis.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         conexao.desconectar();
+    }
+    
+    public void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/IconeSistema/IconeSistema.png")));
     }
 
     /**

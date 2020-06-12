@@ -6,6 +6,7 @@
 package br.com.FRimoveis.telas;
 
 import br.com.FRimoveis.Conexao.ConexaoBD;
+import java.awt.Toolkit;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JRResultSetDataSource;
@@ -20,13 +21,15 @@ import net.sf.jasperreports.view.JasperViewer;
 public class TelaPrincipal extends javax.swing.JFrame {
 
     ConexaoBD conexao = new ConexaoBD();
+    TelaLogin login = new TelaLogin();
 
     /**
      * Creates new form TelaInical
      */
     public TelaPrincipal() {
         initComponents();
-
+        setIcon();
+        login.dispose();
     }
 
     /**
@@ -193,6 +196,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuAjuda.setText("Ajuda");
 
         jMenuItem9.setText("Sobre");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         menuAjuda.add(jMenuItem9);
 
         jMenuBar1.add(menuAjuda);
@@ -284,6 +292,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        TelaSobre sobre = new TelaSobre();
+        sobre.setVisible(true);
+            // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    public void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/IconeSistema/IconeSistema.png")));
+    }
     /**
      * @param args the command line arguments
      */

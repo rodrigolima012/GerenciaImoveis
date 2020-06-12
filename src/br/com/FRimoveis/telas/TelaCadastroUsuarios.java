@@ -9,6 +9,7 @@ import br.com.FRimoveis.Conexao.ConexaoBD;
 import br.com.FRimoveis.Desenvolvimento.CadastroUsuarioTabela;
 import br.com.FRimoveis.Desenvolvimento.CadastroUsuarios;
 import br.com.FRimoveis.dao.CadastroUsuarioDB;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -40,6 +41,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         btnExcluirUsuario.setEnabled(false);
         btnSalvarUsuario.setEnabled(false);
         dadosTabela("select * from tbusuarios order by idusuario");
+        setIcon();
     }
 
     /**
@@ -324,8 +326,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Os campos não podem retornar vazios");
             } else {
                 // instanciando a classe UsuarioDAO do pacote dao e criando seu objeto dao
-                CadastroUsuarioDB dao = new CadastroUsuarioDB();
-                dao.adiciona(cadastroUsuarios);
+                cadastroUsuariosDB.adiciona(cadastroUsuarios);
                 JOptionPane.showMessageDialog(null, "Usuário " + txtNomeUsuario.getText() + " inserido com sucesso! ");
                 dadosTabela("select * from tbusuarios order by idusuarios");
             }
@@ -578,6 +579,10 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
 
         conexao.desconectar();
     }
+    public void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/IconeSistema/IconeSistema.png")));
+    }
+    
 
     /**
      * @param args the command line arguments

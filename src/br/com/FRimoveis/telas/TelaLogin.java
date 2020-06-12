@@ -8,6 +8,7 @@ package br.com.FRimoveis.telas;
 import br.com.FRimoveis.Desenvolvimento.LoginUsuario;
 import br.com.FRimoveis.Conexao.ConexaoBD;
 import br.com.FRimoveis.dao.LoginUsuarioDB;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,6 +24,7 @@ public class TelaLogin extends javax.swing.JFrame {
      */
     public TelaLogin() {
         initComponents();
+        setIcon();
     }
 
     /**
@@ -138,11 +140,10 @@ public class TelaLogin extends javax.swing.JFrame {
             loginUsuarios.setSenhaUsuario(txtSenha.getText());
 
             LoginUsuarioDB login = new LoginUsuarioDB();
-            login.logar(loginUsuarios);
-
+            if(login.logar(loginUsuarios)){
+                dispose();
+            }
         }
-
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnAcessarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -152,6 +153,10 @@ public class TelaLogin extends javax.swing.JFrame {
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    public void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/IconeSistema/IconeSistema.png")));
+    }
 
     /**
      * @param args the command line arguments

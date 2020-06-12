@@ -13,6 +13,7 @@ import br.com.FRimoveis.Desenvolvimento.CadastroPessoas;
 import br.com.FRimoveis.dao.CadastroContratoDB;
 import br.com.FRimoveis.dao.CadastroImoveisDB;
 import br.com.FRimoveis.dao.CadastroPessoasDB;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -55,6 +56,7 @@ public class TelaGerarContrato extends javax.swing.JFrame {
         btnSalvarContrato.setEnabled(false);
         jDateContratoFinal.setEnabled(false);
         jDateContratoInical.setEnabled(false);
+        setIcon();
     }
 
     public void LimparTela() {
@@ -558,6 +560,10 @@ public class TelaGerarContrato extends javax.swing.JFrame {
         jTImovelContrato.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         conexao.desconectar();
+    }
+    
+    public void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/IconeSistema/IconeSistema.png")));
     }
 
     /**

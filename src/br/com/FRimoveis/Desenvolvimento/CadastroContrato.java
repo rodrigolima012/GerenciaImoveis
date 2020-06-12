@@ -58,7 +58,4 @@ public class CadastroContrato {
     public void setIdImovel(int idImovel) {
         this.idImovel = idImovel;
     }
-    
-    
-    
 }
