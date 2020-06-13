@@ -421,20 +421,12 @@ public class TelaGerarContrato extends javax.swing.JFrame {
     private void btnPesquisarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarClienteActionPerformed
         if (txtPesquisarCliente.getText().isEmpty()) {
             dadosTabelaCliente("select * from tbpessoas order by idpessoa");
-        } else if (txtPesquisarCliente.getText().length() > 0 & txtPesquisarCliente.getText().length() < 3) {
-            JOptionPane.showMessageDialog(null, "Informar pelo menos 3 caracteres\nPara a busca funcionar!");
         } else {
-            String teste = "";
-            String teste2 = "";
             cadastroPessoas.setPesquisaPessoa(txtPesquisarCliente.getText());
             CadastroPessoas model = cadastroPessoasDB.pesquisaUsuario(cadastroPessoas);
-
             try {
-                teste = txtPesquisarCliente.getText().substring(0, 3);
-                teste2 = model.getNomeCliente().substring(0, 3);
                 dadosTabelaCliente("select * from tbpessoas where nomeCliente like '%" + cadastroPessoas.getPesquisaPessoa() + "%'");
             } catch (Exception e) {
-
             }
         }
     }//GEN-LAST:event_btnPesquisarClienteActionPerformed
@@ -455,18 +447,11 @@ public class TelaGerarContrato extends javax.swing.JFrame {
     private void btnPesquisarImovelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarImovelActionPerformed
         if (txtPesquisarImovel.getText().isEmpty()) {
             dadosTabelaImovel("select * from tbimoveis order by idimovel");
-        } else if (txtPesquisarImovel.getText().length() > 0 & txtPesquisarImovel.getText().length() < 3) {
-            JOptionPane.showMessageDialog(null, "Informar pelo menos 3 caracteres\nPara a busca funcionar!");
         } else {
-            String teste = "";
-            String teste2 = "";
             cadastroimoveis.setPesquisar(txtPesquisarImovel.getText());
             CadastroImoveis model = cadastroimoveisDB.pesquisaImovel(cadastroimoveis);
-
             try {
-                teste = txtPesquisarImovel.getText().substring(0, 3);
-                teste2 = model.getMatriculaImovel().substring(0, 3);
-                dadosTabelaImovel("select * from tbimoveis where matriculaImovel like '%" + cadastroPessoas.getPesquisaPessoa() + "%'");
+                dadosTabelaImovel("select * from tbimoveis where matriculaImovel like '%" + cadastroimoveis.getPesquisar() + "%'");
             } catch (Exception e) {
 
             }
@@ -475,15 +460,15 @@ public class TelaGerarContrato extends javax.swing.JFrame {
 
     private void jTImovelContratoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTImovelContratoMouseClicked
         String nome_Imovel = "" + jTImovelContrato.getValueAt(jTImovelContrato.getSelectedRow(), 0);
-        conexao.conectar();        
+        conexao.conectar();
         conexao.executaSql("select * from tbimoveis where idimovel = '" + nome_Imovel + "' and statusImovel = 'LIVRE'");
-        
+
         try {
-            if(conexao.rs.first()){
+            if (conexao.rs.first()) {
                 txtIDImovel.setText(conexao.rs.getString("idimovel"));
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Casa ja esta Alugada!\nFavor Escolher outro Imovel!");
-            }            
+            }
         } catch (SQLException ex) {
             Logger.getLogger(TelaGerarContrato.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception f) {
@@ -564,7 +549,7 @@ public class TelaGerarContrato extends javax.swing.JFrame {
 
         conexao.desconectar();
     }
-    
+
     public void setIcon() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/IconeSistema/IconeSistema.png")));
     }
