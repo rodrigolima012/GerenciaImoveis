@@ -81,6 +81,19 @@ public class CadastroImoveisDB {
         connectarBanco.desconectar();
     }
     
+    public void editarStatus(CadastroImoveis imovel) {
+        connectarBanco.conectar();
+        try {
+            PreparedStatement pst = connectarBanco.con.prepareStatement("update tbimoveis set statusImovel = ? where idimovel = ?");
+            pst.setString(1, imovel.getStatusImovel());
+            pst.setString(2, imovel.getIdimovel());
+            pst.execute();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao editar o Imovel! \n" + e.getMessage());
+        }
+        connectarBanco.desconectar();
+    }
+    
      public void excluirImovel(CadastroImoveis imovel) {
         connectarBanco.conectar();
         try {

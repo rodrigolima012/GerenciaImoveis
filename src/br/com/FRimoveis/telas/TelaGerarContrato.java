@@ -406,6 +406,10 @@ public class TelaGerarContrato extends javax.swing.JFrame {
                 this.dataFinalFinal = formato.format(dataFinal);
                 java.sql.Date data1 = new java.sql.Date(formato.parse(dataFinalFinal).getTime());
                 cadastroContrato.setDataFinal(data1);
+                
+                cadastroimoveis.setIdimovel(txtIDImovel.getText());
+                cadastroimoveis.setStatusImovel("ALUGADO");
+                cadastroimoveisDB.editarStatus(cadastroimoveis);
             } catch (Exception e) {
             }
             cadastroContratoDB.adicionaContrato(cadastroContrato);

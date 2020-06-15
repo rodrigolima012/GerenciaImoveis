@@ -62,6 +62,10 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         btnCancelarPessoa.setEnabled(false);
         btnExcluirPessoa.setEnabled(false);
         btnEditarPessoa.setEnabled(false);
+        cbPerfilPessoa.removeAllItems();
+        cbPerfilPessoa.addItem("");
+        cbPerfilPessoa.addItem("LOCATARIO");
+        cbPerfilPessoa.addItem("LOCADOR");
 
         MaskFormatter dataNasc = null;
         MaskFormatter cep = null;
@@ -231,7 +235,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jTPessoas.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1087,11 +1091,6 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
     }//GEN-LAST:event_rbPessoaFisicaActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        cbPerfilPessoa.removeAllItems();
-        cbPerfilPessoa.addItem("");
-        cbPerfilPessoa.addItem("LOCATÁRIO");
-        cbPerfilPessoa.addItem("LOCADOR");
-        // TODO add your handling code here:
     }//GEN-LAST:event_formWindowActivated
 
     private void jTPessoasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTPessoasMouseClicked
@@ -1180,25 +1179,25 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         CadastroPessoaTabela tabela = new CadastroPessoaTabela(dados, colunas);
 
         jTPessoas.setModel(tabela);
-        jTPessoas.getColumnModel().getColumn(0).setPreferredWidth(30);
+        jTPessoas.getColumnModel().getColumn(0).setPreferredWidth(45);
         jTPessoas.getColumnModel().getColumn(0).setResizable(false);
 
         jTPessoas.getColumnModel().getColumn(1).setPreferredWidth(200);
         jTPessoas.getColumnModel().getColumn(1).setResizable(false);
 
-        jTPessoas.getColumnModel().getColumn(2).setPreferredWidth(220);
+        jTPessoas.getColumnModel().getColumn(2).setPreferredWidth(210);
         jTPessoas.getColumnModel().getColumn(2).setResizable(false);
 
-        jTPessoas.getColumnModel().getColumn(3).setPreferredWidth(150);
+        jTPessoas.getColumnModel().getColumn(3).setPreferredWidth(200);
         jTPessoas.getColumnModel().getColumn(3).setResizable(false);
 
-        jTPessoas.getColumnModel().getColumn(4).setPreferredWidth(150);
+        jTPessoas.getColumnModel().getColumn(4).setPreferredWidth(100);
         jTPessoas.getColumnModel().getColumn(4).setResizable(false);
 
-        jTPessoas.getColumnModel().getColumn(5).setPreferredWidth(130);
+        jTPessoas.getColumnModel().getColumn(5).setPreferredWidth(120);
         jTPessoas.getColumnModel().getColumn(5).setResizable(false);
 
-        jTPessoas.getColumnModel().getColumn(6).setPreferredWidth(120);
+        jTPessoas.getColumnModel().getColumn(6).setPreferredWidth(110);
         jTPessoas.getColumnModel().getColumn(6).setResizable(false);
 
         jTPessoas.getTableHeader().setReorderingAllowed(false);

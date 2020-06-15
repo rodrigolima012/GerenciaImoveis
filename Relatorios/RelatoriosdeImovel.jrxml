@@ -38,10 +38,6 @@
 	</background>
 	<title>
 		<band height="79" splitType="Stretch">
-			<image>
-				<reportElement x="0" y="2" width="211" height="77" uuid="1f052a89-ebeb-4397-b201-415e88d6550b"/>
-				<imageExpression><![CDATA["C:\\Users\\rodrigolima\\Dropbox\\My PC (NBCATI002687)\\Desktop\\Faculdade\\Imegens Projeto\\Capturar.JPG"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement x="351" y="2" width="204" height="35" uuid="f7748aad-0bca-44b7-97f8-26b6570ac64d"/>
 				<textElement>
@@ -53,6 +49,10 @@
 				<reportElement x="429" y="59" width="136" height="20" uuid="3257e270-d43a-4268-a713-4772aabdaf44"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
+			<image>
+				<reportElement x="0" y="0" width="131" height="79" uuid="2bfe7e0d-2906-419a-ba55-e64a7ed2ddd6"/>
+				<imageExpression><![CDATA["C:\\Users\\rodrigolima\\Dropbox\\My PC (NBCATI002687)\\Desktop\\Faculdade\\Imegens Projeto\\Logo.JPG"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>

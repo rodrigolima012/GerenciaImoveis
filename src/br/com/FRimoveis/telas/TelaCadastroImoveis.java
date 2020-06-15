@@ -53,6 +53,11 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         btnEditarImovel.setEnabled(false);
         btnExcluirImovel.setEnabled(false);
         btnAbrirImagens.setEnabled(false);
+        cbStatusImovel.removeAllItems();
+        cbStatusImovel.addItem("");
+        cbStatusImovel.addItem("LIVRE");
+        cbStatusImovel.addItem("ALUGADO");
+
         MaskFormatter cep = null;
 
         try {
@@ -220,7 +225,7 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Título 3"
+
             }
         ));
         jTImoveis.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -410,6 +415,7 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         txtUrlImagens.setEnabled(true);
         txtBuscarImovel.setEnabled(false);
         btnPesquisarImovel.setEnabled(false);
+        btnAbrirImagens.setEnabled(false);
         dadosTabela("select * from tbimoveis order by idimovel");
 
         // TODO add your handling code here:
@@ -475,6 +481,7 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         btnNovoImovel.setEnabled(true);
         txtBuscarImovel.setEnabled(true);
         btnPesquisarImovel.setEnabled(true);
+        btnAbrirImagens.setEnabled(false);
         dadosTabela("select * from tbimoveis order by idimovel");
         LimparDados();
     }//GEN-LAST:event_btnCancelarImovelActionPerformed
@@ -498,7 +505,7 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
             cadastroimoveis.setPesquisar(txtBuscarImovel.getText());
             CadastroImoveis model = cadastroimoveisDB.pesquisaImovel(cadastroimoveis);
             try {
-                dadosTabela("select * from tbimoveis where matriculaImovel like '%" + cadastroimoveis.getPesquisar()+ "%'");
+                dadosTabela("select * from tbimoveis where matriculaImovel like '%" + cadastroimoveis.getPesquisar() + "%'");
             } catch (Exception e) {
 
             }
@@ -525,9 +532,6 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarImovelActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        cbStatusImovel.removeAllItems();
-        cbStatusImovel.addItem("LIVRE");
-        cbStatusImovel.addItem("ALUGADO");
 
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowActivated
@@ -569,6 +573,7 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
             btnExcluirImovel.setEnabled(true);
             btnPesquisarImovel.setEnabled(true);
             txtBuscarImovel.setEnabled(true);
+            btnAbrirImagens.setEnabled(true);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao Selecionar o Imovel" + ex.getMessage());
         }

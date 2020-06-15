@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Relatorios de Clientes" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d7eda670-2063-4496-a18a-1f8115112624">
 	<property name="ireport.zoom" value="1.771561000000001"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="139"/>
+	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[select * from tbpessoas order by idpessoa;]]>
 	</queryString>
@@ -62,10 +62,6 @@
 	</background>
 	<title>
 		<band height="79" splitType="Stretch">
-			<image>
-				<reportElement x="0" y="2" width="211" height="77" uuid="1f052a89-ebeb-4397-b201-415e88d6550b"/>
-				<imageExpression><![CDATA["C:\\Users\\rodrigolima\\Dropbox\\My PC (NBCATI002687)\\Desktop\\Faculdade\\Imegens Projeto\\Capturar.JPG"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement x="332" y="2" width="223" height="35" uuid="f7748aad-0bca-44b7-97f8-26b6570ac64d"/>
 				<textElement>
@@ -77,6 +73,10 @@
 				<reportElement x="429" y="59" width="136" height="20" uuid="3257e270-d43a-4268-a713-4772aabdaf44"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
+			<image>
+				<reportElement x="0" y="0" width="153" height="77" uuid="ed781756-1e06-4b71-9e8e-bec852d3cc56"/>
+				<imageExpression><![CDATA["C:\\Users\\rodrigolima\\Dropbox\\My PC (NBCATI002687)\\Desktop\\Faculdade\\Imegens Projeto\\Logo.JPG"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
@@ -90,7 +90,7 @@
 		<band height="5" splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="219" splitType="Stretch">
+		<band height="213" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="1" width="100" height="20" uuid="78e057bb-b548-4d1e-8af2-ccf287d403e5"/>
 				<textElement>
@@ -273,7 +273,7 @@
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="92" splitType="Stretch"/>
+		<band height="17" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
 		<band height="54" splitType="Stretch">
@@ -281,9 +281,6 @@
 				<reportElement x="543" y="34" width="22" height="20" uuid="764e1006-7be9-46dd-8618-bd308ce01a35"/>
 				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
-			<line>
-				<reportElement x="0" y="33" width="555" height="1" uuid="8399939e-93a3-4939-aa94-2b46ff5a07b5"/>
-			</line>
 		</band>
 	</pageFooter>
 	<summary>

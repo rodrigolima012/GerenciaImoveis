@@ -12,9 +12,12 @@ import br.com.FRimoveis.Desenvolvimento.ConsultaContratoTela;
 import br.com.FRimoveis.dao.ConsultaContratoDB;
 import java.awt.Toolkit;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.text.MaskFormatter;
 
 /**
  *
@@ -39,7 +42,9 @@ public class TelaConsultarContrato extends javax.swing.JFrame {
         btnNovoConsultarContrato.setEnabled(true);
         btnCancelarConsultarContrato.setEnabled(false);
         btnInativarConsultarContrato.setEnabled(false);
+        btnImprimirConsultarContrato.setEnabled(false);
         jTConsultaContrato.setEnabled(true);
+        
     }
 
     public void setIcon() {
@@ -68,6 +73,7 @@ public class TelaConsultarContrato extends javax.swing.JFrame {
         btnNovoConsultarContrato = new javax.swing.JButton();
         btnCancelarConsultarContrato = new javax.swing.JButton();
         btnInativarConsultarContrato = new javax.swing.JButton();
+        btnImprimirConsultarContrato = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1008, 681));
@@ -118,6 +124,11 @@ public class TelaConsultarContrato extends javax.swing.JFrame {
 
             }
         ));
+        jTConsultaContrato.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTConsultaContratoMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTConsultaContrato);
 
         btnNovoConsultarContrato.setText("Novo");
@@ -136,6 +147,8 @@ public class TelaConsultarContrato extends javax.swing.JFrame {
 
         btnInativarConsultarContrato.setText("Inativar Contrato");
 
+        btnImprimirConsultarContrato.setText("Imprimir Contrato");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -146,7 +159,7 @@ public class TelaConsultarContrato extends javax.swing.JFrame {
                     .addComponent(jScrollPane1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 474, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -159,12 +172,14 @@ public class TelaConsultarContrato extends javax.swing.JFrame {
                         .addComponent(btnPesquisarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 450, Short.MAX_VALUE)
                         .addComponent(btnNovoConsultarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCancelarConsultarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnInativarConsultarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnInativarConsultarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnImprimirConsultarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -191,7 +206,8 @@ public class TelaConsultarContrato extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNovoConsultarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelarConsultarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnInativarConsultarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnInativarConsultarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnImprimirConsultarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
@@ -221,7 +237,8 @@ public class TelaConsultarContrato extends javax.swing.JFrame {
         btnPesquisarContrato.setEnabled(true);
         btnNovoConsultarContrato.setEnabled(false);
         btnCancelarConsultarContrato.setEnabled(true);
-        btnInativarConsultarContrato.setEnabled(true);
+        btnInativarConsultarContrato.setEnabled(false);
+        btnImprimirConsultarContrato.setEnabled(false);
         jTConsultaContrato.setEnabled(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_btnNovoConsultarContratoActionPerformed
@@ -249,38 +266,38 @@ public class TelaConsultarContrato extends javax.swing.JFrame {
     private void btnPesquisarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarContratoActionPerformed
         if (txtPesquisarContrato.getText().isEmpty()) {
             try {
-                dadosTabela("select DISTINCT tbcontratos.idcontrato, tbcontratos.statusContrato, tbpessoas.nomeCliente, tbpessoas.NomeFantasia, tbpessoas.cnpjcpf, tbpessoas.perfil, tbpessoas.telefonePessoa, tbpessoas.emailPessoa, tbimoveis.statusImovel, tbimoveis.enderecoimovel, tbimoveis.bairroImovel, tbimoveis.aluguelImovel, tbimoveis.matriculaImovel"
-                    + " from tbcontratos"
-                    + " inner join tbpessoas"
-                    + " on tbcontratos.tbpessoas_idpessoa = tbpessoas.idpessoa"
-                    + " inner join tbimoveis"
-                    + " on tbcontratos.tbimoveis_idimovel = tbimoveis.idimovel ");                
+                dadosTabela("select DISTINCT tbcontratos.idcontrato, tbcontratos.statusContrato, tbcontratos.datainicial, tbcontratos.datafinal, tbpessoas.nomeCliente, tbpessoas.NomeFantasia, tbpessoas.cnpjcpf, tbpessoas.perfil, tbpessoas.telefonePessoa, tbpessoas.emailPessoa, tbimoveis.statusImovel, tbimoveis.enderecoimovel, tbimoveis.bairroImovel, tbimoveis.aluguelImovel, tbimoveis.matriculaImovel"
+                        + " from tbcontratos"
+                        + " inner join tbpessoas"
+                        + " on tbcontratos.tbpessoas_idpessoa = tbpessoas.idpessoa"
+                        + " inner join tbimoveis"
+                        + " on tbcontratos.tbimoveis_idimovel = tbimoveis.idimovel");
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(rootPane, "Nenhum Contrato encontrado!!\nFavor tentar novamente!");
+                JOptionPane.showMessageDialog(rootPane, "Nenhum Contrato encontrado!!\nFavor tentar novamente!" + e.getMessage());
             }
-            
+
         } else if (rbNomeCliente.isSelected()) {
             try {
-                dadosTabela("select DISTINCTROW tbcontratos.idcontrato, tbcontratos.statusContrato, tbpessoas.nomeCliente, tbpessoas.NomeFantasia, tbpessoas.cnpjcpf, tbpessoas.perfil, tbpessoas.telefonePessoa, tbpessoas.emailPessoa, tbimoveis.statusImovel, tbimoveis.enderecoimovel, tbimoveis.bairroImovel, tbimoveis.aluguelImovel, tbimoveis.matriculaImovel"
-                    + " from tbcontratos "
-                    + " inner join tbimoveis"
-                    + " on tbcontratos.tbimoveis_idimovel = tbimoveis.idimovel"
-                    + " inner join tbpessoas"
-                    + " where tbpessoas.nomeCliente like '%" + txtPesquisarContrato.getText() + "%'"
-                    + " and tbcontratos.tbimoveis_idimovel = tbimoveis.idimovel and tbcontratos.tbpessoas_idpessoa = tbpessoas.idpessoa group by tbcontratos.idcontrato");
+                dadosTabela("select DISTINCT tbcontratos.idcontrato, tbcontratos.statusContrato, tbcontratos.datainicial, tbcontratos.datafinal, tbpessoas.nomeCliente, tbpessoas.NomeFantasia, tbpessoas.cnpjcpf, tbpessoas.perfil, tbpessoas.telefonePessoa, tbpessoas.emailPessoa, tbimoveis.statusImovel, tbimoveis.enderecoimovel, tbimoveis.bairroImovel, tbimoveis.aluguelImovel, tbimoveis.matriculaImovel"
+                        + " from tbcontratos "
+                        + " inner join tbimoveis"
+                        + " on tbcontratos.tbimoveis_idimovel = tbimoveis.idimovel"
+                        + " inner join tbpessoas"
+                        + " where tbpessoas.nomeCliente like '%" + txtPesquisarContrato.getText() + "%'"
+                        + " and tbcontratos.tbimoveis_idimovel = tbimoveis.idimovel and tbcontratos.tbpessoas_idpessoa = tbpessoas.idpessoa group by tbcontratos.idcontrato");
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(rootPane, "Cliente não encontrada!\nFavor tentar novamente!");
             }
-            
+
         } else if (rbMatriculaImovel.isSelected()) {
             try {
-                dadosTabela("select DISTINCT tbcontratos.idcontrato, tbcontratos.statusContrato, tbpessoas.nomeCliente, tbpessoas.NomeFantasia, tbpessoas.cnpjcpf, tbpessoas.perfil, tbpessoas.telefonePessoa, tbpessoas.emailPessoa, tbimoveis.statusImovel, tbimoveis.enderecoimovel, tbimoveis.bairroImovel, tbimoveis.aluguelImovel, tbimoveis.matriculaImovel"
-                    + " from tbcontratos "
-                    + " inner join tbpessoas"
-                    + " on tbcontratos.tbpessoas_idpessoa = tbpessoas.idpessoa"
-                    + " inner join tbimoveis"
-                    + " where tbimoveis.matriculaImovel like '%" + txtPesquisarContrato.getText() + "%'"
-                    + " and tbcontratos.tbimoveis_idimovel = tbimoveis.idimovel and tbcontratos.tbpessoas_idpessoa = tbpessoas.idpessoa group by tbcontratos.idcontrato");                
+                dadosTabela("select DISTINCT tbcontratos.idcontrato, tbcontratos.statusContrato, tbcontratos.datainicial, tbcontratos.datafinal, tbpessoas.nomeCliente, tbpessoas.NomeFantasia, tbpessoas.cnpjcpf, tbpessoas.perfil, tbpessoas.telefonePessoa, tbpessoas.emailPessoa, tbimoveis.statusImovel, tbimoveis.enderecoimovel, tbimoveis.bairroImovel, tbimoveis.aluguelImovel, tbimoveis.matriculaImovel"
+                        + " from tbcontratos "
+                        + " inner join tbpessoas"
+                        + " on tbcontratos.tbpessoas_idpessoa = tbpessoas.idpessoa"
+                        + " inner join tbimoveis"
+                        + " where tbimoveis.matriculaImovel like '%" + txtPesquisarContrato.getText() + "%'"
+                        + " and tbcontratos.tbimoveis_idimovel = tbimoveis.idimovel and tbcontratos.tbpessoas_idpessoa = tbpessoas.idpessoa group by tbcontratos.idcontrato");
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(rootPane, "Matricula não encontrada!\nFavor tentar novamente!");
             }
@@ -297,15 +314,30 @@ public class TelaConsultarContrato extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_rbMatriculaImovelMouseClicked
 
-    public void dadosTabela(String sql) {
+    private void jTConsultaContratoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTConsultaContratoMouseClicked
+        btnInativarConsultarContrato.setEnabled(true);
+        btnImprimirConsultarContrato.setEnabled(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTConsultaContratoMouseClicked
+
+    public void dadosTabela(String sql) throws ParseException {
         ArrayList dados = new ArrayList();
-        String[] colunas = new String[]{"Status Contrato", "Nome Cliente", "Nome Fantasia", "CPF / CNPJ", "Perfil", "Telefone", "E-mail", "Status Imovel", "Endereço Imovel", "Bairro Imovel", "Alugel Imovel", "Matricula"};
+        String[] colunas = new String[]{"Status Contrato", "Data Inicial", "Data Final", "Nome Cliente", "Nome Fantasia", "CPF / CNPJ", "Perfil", "Telefone", "E-mail", "Status Imovel", "Endereço Imovel", "Bairro Imovel", "Alugel Imovel", "Matricula"};
         conexao.conectar();
         conexao.executaSql(sql);
+        SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat out = new SimpleDateFormat("dd/MM/yyyy");
         try {
             conexao.rs.first();
+            String dataInicial = conexao.rs.getString("datainicial");
+            String dataFinal = conexao.rs.getString("datafinal");
             do {
-                dados.add(new Object[]{conexao.rs.getString("statusContrato"), conexao.rs.getString("nomeCliente"), conexao.rs.getString("NomeFantasia"), conexao.rs.getString("cnpjcpf"), conexao.rs.getString("perfil"), conexao.rs.getString("telefonePessoa"), conexao.rs.getString("emailPessoa"), conexao.rs.getString("statusImovel"), conexao.rs.getString("enderecoimovel"), conexao.rs.getString("bairroImovel"), conexao.rs.getString("aluguelImovel"), conexao.rs.getString("matriculaImovel")});
+                String result1 = out.format(in.parse(dataInicial));
+                String data01 = result1;
+                String result2 = out.format(in.parse(dataFinal));
+                String data02 = result2;
+
+                dados.add(new Object[]{conexao.rs.getString("statusContrato"), data01, data02, conexao.rs.getString("nomeCliente"), conexao.rs.getString("NomeFantasia"), conexao.rs.getString("cnpjcpf"), conexao.rs.getString("perfil"), conexao.rs.getString("telefonePessoa"), conexao.rs.getString("emailPessoa"), conexao.rs.getString("statusImovel"), conexao.rs.getString("enderecoimovel"), conexao.rs.getString("bairroImovel"), conexao.rs.getString("aluguelImovel"), conexao.rs.getString("matriculaImovel")});
             } while (conexao.rs.next());
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(rootPane, "Valor na busca Invalido!!\nFavor tentar novamente!");
@@ -317,38 +349,44 @@ public class TelaConsultarContrato extends javax.swing.JFrame {
         jTConsultaContrato.getColumnModel().getColumn(0).setPreferredWidth(100);
         jTConsultaContrato.getColumnModel().getColumn(0).setResizable(false);
 
-        jTConsultaContrato.getColumnModel().getColumn(1).setPreferredWidth(170);
+        jTConsultaContrato.getColumnModel().getColumn(1).setPreferredWidth(80);
         jTConsultaContrato.getColumnModel().getColumn(1).setResizable(false);
 
-        jTConsultaContrato.getColumnModel().getColumn(2).setPreferredWidth(170);
+        jTConsultaContrato.getColumnModel().getColumn(2).setPreferredWidth(80);
         jTConsultaContrato.getColumnModel().getColumn(2).setResizable(false);
 
-        jTConsultaContrato.getColumnModel().getColumn(3).setPreferredWidth(129);
+        jTConsultaContrato.getColumnModel().getColumn(3).setPreferredWidth(180);
         jTConsultaContrato.getColumnModel().getColumn(3).setResizable(false);
 
-        jTConsultaContrato.getColumnModel().getColumn(4).setPreferredWidth(80);
+        jTConsultaContrato.getColumnModel().getColumn(4).setPreferredWidth(180);
         jTConsultaContrato.getColumnModel().getColumn(4).setResizable(false);
 
         jTConsultaContrato.getColumnModel().getColumn(5).setPreferredWidth(110);
         jTConsultaContrato.getColumnModel().getColumn(5).setResizable(false);
 
-        jTConsultaContrato.getColumnModel().getColumn(6).setPreferredWidth(170);
+        jTConsultaContrato.getColumnModel().getColumn(6).setPreferredWidth(90);
         jTConsultaContrato.getColumnModel().getColumn(6).setResizable(false);
 
-        jTConsultaContrato.getColumnModel().getColumn(7).setPreferredWidth(100);
+        jTConsultaContrato.getColumnModel().getColumn(7).setPreferredWidth(110);
         jTConsultaContrato.getColumnModel().getColumn(7).setResizable(false);
 
-        jTConsultaContrato.getColumnModel().getColumn(8).setPreferredWidth(150);
+        jTConsultaContrato.getColumnModel().getColumn(8).setPreferredWidth(190);
         jTConsultaContrato.getColumnModel().getColumn(8).setResizable(false);
 
         jTConsultaContrato.getColumnModel().getColumn(9).setPreferredWidth(100);
         jTConsultaContrato.getColumnModel().getColumn(9).setResizable(false);
 
-        jTConsultaContrato.getColumnModel().getColumn(10).setPreferredWidth(100);
+        jTConsultaContrato.getColumnModel().getColumn(10).setPreferredWidth(140);
         jTConsultaContrato.getColumnModel().getColumn(10).setResizable(false);
 
-        jTConsultaContrato.getColumnModel().getColumn(11).setPreferredWidth(100);
+        jTConsultaContrato.getColumnModel().getColumn(11).setPreferredWidth(130);
         jTConsultaContrato.getColumnModel().getColumn(11).setResizable(false);
+
+        jTConsultaContrato.getColumnModel().getColumn(12).setPreferredWidth(90);
+        jTConsultaContrato.getColumnModel().getColumn(12).setResizable(false);
+
+        jTConsultaContrato.getColumnModel().getColumn(13).setPreferredWidth(80);
+        jTConsultaContrato.getColumnModel().getColumn(13).setResizable(false);
 
         jTConsultaContrato.getTableHeader().setReorderingAllowed(false);
         jTConsultaContrato.setAutoResizeMode(jTConsultaContrato.AUTO_RESIZE_OFF);
@@ -395,6 +433,7 @@ public class TelaConsultarContrato extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgEscolhaPesquisa;
     private javax.swing.JButton btnCancelarConsultarContrato;
+    private javax.swing.JButton btnImprimirConsultarContrato;
     private javax.swing.JButton btnInativarConsultarContrato;
     private javax.swing.JButton btnNovoConsultarContrato;
     private javax.swing.JButton btnPesquisarContrato;
