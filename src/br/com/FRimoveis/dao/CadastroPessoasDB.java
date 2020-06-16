@@ -145,5 +145,33 @@ public class CadastroPessoasDB {
 
         connectarBanco.desconectar();
     }
+    
+    public String atualizarTabela() {
+        connectarBanco.conectar();
+        String sql = ("select * from tbpessoas order by idpessoa");
+        connectarBanco.executaSql(sql);
+        try {
+            connectarBanco.rs.first();
+            return sql;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar a tabela!");
+        }
+        connectarBanco.desconectar();
+        return null;
+    }
+    
+     public String atualizarTabelaPesquisar(CadastroPessoas pessoa) {
+        connectarBanco.conectar();
+        String sql = ("select * from tbpessoas where nomeCliente like '%" + pessoa.getPesquisaPessoa() + "%'");
+        connectarBanco.executaSql(sql);
+        try {
+            connectarBanco.rs.first();
+            return sql;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar a tabela!");
+        }
+        connectarBanco.desconectar();
+        return null;
+    }
 
 }

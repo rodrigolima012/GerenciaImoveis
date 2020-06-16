@@ -47,7 +47,7 @@ public class CadastroUsuarioDB {
             usuario.setLoginUsuario(connectarBanco.rs.getString("login"));
             usuario.setSenhaUsuario(connectarBanco.rs.getString("senha"));
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Usuario não Cadastrado!!\n Digite novamente!");            
+            JOptionPane.showMessageDialog(null, "Usuario não Cadastrado!!\n Digite novamente!");
         }
         connectarBanco.desconectar();
         return usuario;
@@ -81,11 +81,60 @@ public class CadastroUsuarioDB {
                 pst.execute();
                 JOptionPane.showMessageDialog(null, "Usuarios deletado com Sucesso!!");
             }
-
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao deletar o usuario! \n" + e.getMessage());
         }
-
         connectarBanco.desconectar();
+    }
+
+    public String atualizarTabela() {
+        connectarBanco.conectar();
+        String sql = ("select * from tbusuarios order by idusuario");
+        connectarBanco.executaSql(sql);
+        try {
+            connectarBanco.rs.first();
+            return sql;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar a tabela!");
+        }
+        connectarBanco.desconectar();
+        return null;
+    }
+
+    public String atualizarTabelaPesquisar(CadastroUsuarios usuario) {
+        connectarBanco.conectar();
+        String sql = ("select * from tbusuarios where nomeUsuario like '%" + usuario.getPesquisa() + "%'");
+        connectarBanco.executaSql(sql);
+        try {
+            connectarBanco.rs.first();
+            return sql;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar a tabela!");
+        }
+        connectarBanco.desconectar();
+        return null;
+    }
+
+    public void setDadosUsuario(String dados) {
+        usuario = new CadastroUsuarios();
+        connectarBanco.conectar();
+        String sql = ("select * from tbusuarios where idusuario like '%" + dados + "%'");
+        connectarBanco.executaSql(sql);
+        try {
+            connectarBanco.rs.first();
+            usuario.setIdUsuario(connectarBanco.rs.getString("idusuario"));
+            usuario.setPerfilUsuario(connectarBanco.rs.getString("perfilUser"));
+            usuario.setNomeUsuario(connectarBanco.rs.getString("nomeUsuario"));
+            usuario.setLoginUsuario(connectarBanco.rs.getString("login"));
+            usuario.setSenhaUsuario(connectarBanco.rs.getString("senha"));
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao setar os dados!");
+        }
+        connectarBanco.desconectar();
+    }
+
+    public CadastroUsuarios getUsuarios() {
+        return this.usuario;
     }
 }

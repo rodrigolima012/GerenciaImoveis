@@ -80,7 +80,6 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         txtNumeroImovel.setText("");
         txtValorAlugel.setText("");
         txtBuscarImovel.setText("");
-        dadosTabela("select * from tbimoveis order by idimovel");
     }
 
     /**
@@ -397,7 +396,6 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtBairroImovelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBairroImovelActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txtBairroImovelActionPerformed
 
     private void btnNovoImovelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoImovelActionPerformed
@@ -416,7 +414,6 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         txtBuscarImovel.setEnabled(false);
         btnPesquisarImovel.setEnabled(false);
         btnAbrirImagens.setEnabled(false);
-        dadosTabela("select * from tbimoveis order by idimovel");
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnNovoImovelActionPerformed
@@ -437,7 +434,6 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
                 cadastroimoveis.setImagensUrl(txtUrlImagens.getText());
 
                 cadastroimoveisDB.adicionaImoveis(cadastroimoveis);
-                dadosTabela("select * from tbimoveis order by idimovel");
                 LimparDados();
                 JOptionPane.showMessageDialog(null, "Imovel inserido com sucesso! ");
             }
@@ -457,12 +453,12 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
                 cadastroimoveis.setImagensUrl(txtUrlImagens.getText());
 
                 cadastroimoveisDB.editarPessoas(cadastroimoveis);
-                dadosTabela("select * from tbimoveis order by idimovel");
                 LimparDados();
                 JOptionPane.showMessageDialog(null, "Imovel inserido com sucesso! ");
             }
         }
-        // TODO add your handling code here:
+        String sql = cadastroimoveisDB.atualizarTabela();
+        dadosTabela(sql);
     }//GEN-LAST:event_btnSalvarImovelActionPerformed
 
     private void btnCancelarImovelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarImovelActionPerformed
@@ -482,7 +478,6 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         txtBuscarImovel.setEnabled(true);
         btnPesquisarImovel.setEnabled(true);
         btnAbrirImagens.setEnabled(false);
-        dadosTabela("select * from tbimoveis order by idimovel");
         LimparDados();
     }//GEN-LAST:event_btnCancelarImovelActionPerformed
 
@@ -493,21 +488,24 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
             cadastroimoveis.setIdimovel(txtIDImovel.getText());
             cadastroimoveisDB.excluirImovel(cadastroimoveis);
             LimparDados();
-            dadosTabela("select * from tbimoveis order by idimovel");
         }
-        // TODO add your handling code here:
+        String sql = cadastroimoveisDB.atualizarTabela();
+        dadosTabela(sql);
     }//GEN-LAST:event_btnExcluirImovelActionPerformed
 
     private void btnPesquisarImovelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarImovelActionPerformed
         if (txtBuscarImovel.getText().isEmpty()) {
-            dadosTabela("select * from tbimoveis order by idimovel");
+            String sql = cadastroimoveisDB.atualizarTabela();
+            dadosTabela(sql);
         } else {
+            cadastroimoveis.setPesquisar(txtBuscarImovel.getText());
+            CadastroImoveis model = cadastroimoveisDB.pesquisaImovel(cadastroimoveis);
             try {
-                dadosTabela("select * from tbimoveis where matriculaImovel like '%" + cadastroimoveis.getPesquisar() + "%'");
+                String sql = cadastroimoveisDB.atualizarTabelaPesquisar(model);
+                dadosTabela(sql);
             } catch (Exception e) {
             }
         }
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnPesquisarImovelActionPerformed
 
     private void btnEditarImovelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarImovelActionPerformed
@@ -525,7 +523,8 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         txtNumeroImovel.setEnabled(true);
         txtValorAlugel.setEnabled(true);
         txtUrlImagens.setEnabled(true);
-        dadosTabela("select * from tbimoveis order by idimovel");
+        String sql = cadastroimoveisDB.atualizarTabela();
+        dadosTabela(sql);
     }//GEN-LAST:event_btnEditarImovelActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
@@ -534,7 +533,6 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void btnAbrirImagensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirImagensActionPerformed
-        dadosTabela("select * from tbimoveis order by idimovel");
         String url;
         url = txtUrlImagens.getText();
         try {

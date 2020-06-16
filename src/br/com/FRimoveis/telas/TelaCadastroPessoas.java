@@ -568,28 +568,27 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtEnderecoPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnderecoPessoaActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txtEnderecoPessoaActionPerformed
 
     private void txtNumeroCasaPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroCasaPessoaActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txtNumeroCasaPessoaActionPerformed
 
     private void txtEmailPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailPessoaActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailPessoaActionPerformed
 
     private void btnPesquisarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarPessoaActionPerformed
         limparCampos();
         if (txtBuscarPessoa.getText().isEmpty()) {
-            dadosTabela("select * from tbpessoas order by idpessoa");
+            String sql = cadastroPessoasDB.atualizarTabela();
+            dadosTabela(sql);
         } else {
+            cadastroPessoas.setPesquisaPessoa(txtBuscarPessoa.getText());
+            CadastroPessoas model = cadastroPessoasDB.pesquisaUsuario(cadastroPessoas);
             try {
-                dadosTabela("select * from tbpessoas where nomeCliente like '%" + cadastroPessoas.getPesquisaPessoa() + "%'");
+                String sql = cadastroPessoasDB.atualizarTabelaPesquisar(model);
+                dadosTabela(sql);
             } catch (Exception e) {
-
             }
-            
         }
     }//GEN-LAST:event_btnPesquisarPessoaActionPerformed
 
@@ -618,13 +617,9 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         btnCancelarPessoa.setEnabled(true);
         btnExcluirPessoa.setEnabled(false);
         btnEditarPessoa.setEnabled(false);
-        dadosTabela("select * from tbpessoas order by idpessoa");
-        // TODO add your handling code here:
-
     }//GEN-LAST:event_btnNovoPessoaActionPerformed
 
     private void btnSalvarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarPessoaActionPerformed
-        //Metodo para Converter Data para salvar no banco Mysql
         if (update_sel == 1) {
             if (rbPessoaFisica.isSelected()) {
                 if ((cbPerfilPessoa.getSelectedItem().toString().isEmpty()) || (txtNomePessoa.getText().isEmpty()) || (txtcpfcnpj.getText().isEmpty())
@@ -683,7 +678,6 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
                     btnCancelarPessoa.setEnabled(false);
                     btnExcluirPessoa.setEnabled(false);
                     btnEditarPessoa.setEnabled(false);
-                    dadosTabela("select * from tbpessoas order by idpessoa");
                 }
 
             } else if (rbPessoaJuridica.isSelected()) {
@@ -747,7 +741,6 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
                     btnCancelarPessoa.setEnabled(false);
                     btnExcluirPessoa.setEnabled(false);
                     btnEditarPessoa.setEnabled(false);
-                    dadosTabela("select * from tbpessoas order by idpessoa");
                 }
             }
         } else if (update_sel == 2) {
@@ -813,7 +806,6 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
                     btnExcluirPessoa.setEnabled(false);
                     btnEditarPessoa.setEnabled(false);
                     btnNovoPessoa.setEnabled(true);
-                    dadosTabela("select * from tbpessoas order by idpessoa");
                 }
             } else {
                 if ((cbPerfilPessoa.getSelectedItem().toString().isEmpty()) || (txtNomePessoa.getText().isEmpty()) || (txtcpfcnpj.getText().isEmpty())
@@ -878,10 +870,11 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
                     btnExcluirPessoa.setEnabled(false);
                     btnEditarPessoa.setEnabled(false);
                     btnNovoPessoa.setEnabled(true);
-                    dadosTabela("select * from tbpessoas order by idpessoa");
                 }
             }
         }
+        String sql = cadastroPessoasDB.atualizarTabela();
+        dadosTabela(sql);
     }//GEN-LAST:event_btnSalvarPessoaActionPerformed
 
     private void btnCancelarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarPessoaActionPerformed
@@ -911,9 +904,6 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         btnExcluirPessoa.setEnabled(false);
         btnEditarPessoa.setEnabled(false);
         btnNovoPessoa.setEnabled(true);
-        dadosTabela("select * from tbpessoas order by idpessoa");
-        // TODO add your handling code here:
-
     }//GEN-LAST:event_btnCancelarPessoaActionPerformed
 
     private void btnExcluirPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirPessoaActionPerformed
@@ -948,8 +938,9 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
             btnCancelarPessoa.setEnabled(false);
             btnExcluirPessoa.setEnabled(false);
             btnEditarPessoa.setEnabled(false);
-            dadosTabela("select * from tbpessoas order by idpessoa");
         }
+        String sql = cadastroPessoasDB.atualizarTabela();
+        dadosTabela(sql);
     }//GEN-LAST:event_btnExcluirPessoaActionPerformed
 
     private void btnEditarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPessoaActionPerformed
@@ -977,7 +968,6 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
             txtReferencia2Telefone.setEnabled(true);
             btnSalvarPessoa.setEnabled(true);
             update_sel = 2;
-            dadosTabela("select * from tbpessoas order by idpessoa");
         } else {
             jLabel5.setEnabled(true);
             jLabel10.setEnabled(true);
@@ -1000,8 +990,9 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
             txtReferencia2Telefone.setEnabled(true);
             btnSalvarPessoa.setEnabled(true);
             update_sel = 2;
-            dadosTabela("select * from tbpessoas order by idpessoa");
         }
+        String sql = cadastroPessoasDB.atualizarTabela();
+        dadosTabela(sql);
     }//GEN-LAST:event_btnEditarPessoaActionPerformed
 
     private void rbPessoaFisicaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbPessoaFisicaMouseClicked
@@ -1028,17 +1019,15 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         btnExcluirPessoa.setEnabled(false);
         btnEditarPessoa.setEnabled(false);
         btnNovoPessoa.setEnabled(false);
-        dadosTabela("select * from tbpessoas order by idpessoa");
+        String sql = cadastroPessoasDB.atualizarTabela();
+        dadosTabela(sql);
 
         MaskFormatter cpf = null;
-
         try {
             txtcpfcnpj.setValue(null);
-
             cpf = new MaskFormatter("###.###.###-##");
             cpf.setPlaceholderCharacter(' ');
             txtcpfcnpj.setFormatterFactory(new DefaultFormatterFactory(cpf));
-
         } catch (ParseException ex) {
         }
         // TODO add your handling code here:
@@ -1068,24 +1057,20 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         btnExcluirPessoa.setEnabled(false);
         btnEditarPessoa.setEnabled(false);
         btnNovoPessoa.setEnabled(false);
-        dadosTabela("select * from tbpessoas order by idpessoa");
+        String sql = cadastroPessoasDB.atualizarTabela();
+        dadosTabela(sql);
 
         MaskFormatter cnpj = null;
-
         try {
             txtcpfcnpj.setValue(null);
-
             cnpj = new MaskFormatter("##.###.###/####-##");
             cnpj.setPlaceholderCharacter(' ');
             txtcpfcnpj.setFormatterFactory(new DefaultFormatterFactory(cnpj));
-
         } catch (ParseException ex) {
         }
-        // TODO add your handling code here:
     }//GEN-LAST:event_rbPessoaJuridicaMouseClicked
 
     private void rbPessoaFisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPessoaFisicaActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_rbPessoaFisicaActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
@@ -1204,7 +1189,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
 
         conexao.desconectar();
     }
-    
+
     public void setIcon() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/IconeSistema/IconeSistema.png")));
     }

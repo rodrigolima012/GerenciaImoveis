@@ -107,5 +107,32 @@ public class CadastroImoveisDB {
 
         connectarBanco.desconectar();
     }
+     
+     public String atualizarTabela() {
+        connectarBanco.conectar();
+        String sql = ("select * from tbimoveis order by idimovel");
+        connectarBanco.executaSql(sql);
+        try {
+            connectarBanco.rs.first();
+            return sql;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar a tabela!");
+        }
+        connectarBanco.desconectar();
+        return null;
+    }
 
+     public String atualizarTabelaPesquisar(CadastroImoveis imovel) {
+        connectarBanco.conectar();
+        String sql = ("select * from tbimoveis where matriculaImovel like '%" + imovel.getPesquisar() + "%'");
+        connectarBanco.executaSql(sql);
+        try {
+            connectarBanco.rs.first();
+            return sql;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar a tabela!");
+        }
+        connectarBanco.desconectar();
+        return null;
+    }
 }

@@ -172,17 +172,9 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Nome do Usuario", "Login do Usuario"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-        });
+        ));
         jTUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTUsuariosMouseClicked(evt);
@@ -302,7 +294,6 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbPerfilUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbPerfilUsuarioActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_cbPerfilUsuarioActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
@@ -310,11 +301,9 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         cbPerfilUsuario.addItem("");
         cbPerfilUsuario.addItem("ADMIN");
         cbPerfilUsuario.addItem("USUARIO");
-        // TODO add your handling code here:
     }//GEN-LAST:event_formWindowActivated
 
     private void btnSalvarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarUsuarioActionPerformed
-        // instanciando a classe Usuario do pacote modelo e criando seu objeto usuarios
         if (update_sel == 1) {
             cadastroUsuarios.setPerfilUsuario(cbPerfilUsuario.getSelectedItem().toString());
             cadastroUsuarios.setNomeUsuario(txtNomeUsuario.getText());
@@ -327,7 +316,8 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
                 // instanciando a classe UsuarioDAO do pacote dao e criando seu objeto dao
                 cadastroUsuariosDB.adiciona(cadastroUsuarios);
                 JOptionPane.showMessageDialog(null, "Usuário " + txtNomeUsuario.getText() + " inserido com sucesso! ");
-                dadosTabela("select * from tbusuarios order by idusuarios");
+                String sql = cadastroUsuariosDB.atualizarTabela();
+                dadosTabela(sql);
             }
             cbPerfilUsuario.setSelectedItem("");
             txtNomeUsuario.setText("");
@@ -358,10 +348,9 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
             btnSalvarUsuario.setEnabled(false);
             btnNovoUsuario.setEnabled(true);
             btnPesquisarUsuario.setEnabled(true);
-            dadosTabela("select * from tbusuarios order by idusuario");
+            String sql = cadastroUsuariosDB.atualizarTabela();
+            dadosTabela(sql);
         }
-
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnSalvarUsuarioActionPerformed
 
     private void btnEditarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarUsuarioActionPerformed
@@ -377,11 +366,9 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         btnExcluirUsuario.setEnabled(false);
         btnSalvarUsuario.setEnabled(true);
         btnNovoUsuario.setEnabled(false);
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnEditarUsuarioActionPerformed
 
     private void btnCancelarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarUsuarioActionPerformed
-        // TODO add your handling code here:
         txtIDUsuario.setText("");
         txtNomeUsuario.setText("");
         txtLoginUsuario.setText("");
@@ -402,7 +389,6 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarUsuarioActionPerformed
 
     private void btnPesquisarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarUsuarioActionPerformed
-        // TODO add your handling code here:
         txtIDUsuario.setText("");
         txtNomeUsuario.setText("");
         txtLoginUsuario.setText("");
@@ -410,10 +396,14 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         cbPerfilUsuario.setSelectedItem("");
 
         if (txtBuscarUsuario.getText().isEmpty()) {
-            dadosTabela("select * from tbusuarios order by idusuario");
+            String sql = cadastroUsuariosDB.atualizarTabela();
+            dadosTabela(sql);
         } else {
+            cadastroUsuarios.setPesquisa(txtBuscarUsuario.getText());
+            CadastroUsuarios model = cadastroUsuariosDB.pesquisaUsuario(cadastroUsuarios);
             try {
-                dadosTabela("select * from tbusuarios where nomeUsuario like '%" + cadastroUsuarios.getPesquisa() + "%'");
+                String sql = cadastroUsuariosDB.atualizarTabelaPesquisar(model);
+                dadosTabela(sql);
             } catch (Exception e) {
             }
         }
@@ -428,7 +418,6 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNomeUsuarioActionPerformed
 
     private void btnNovoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoUsuarioActionPerformed
-        // TODO add your handling code here:
         update_sel = 1;
         txtIDUsuario.setText("");
         cbPerfilUsuario.setSelectedItem("");
@@ -472,33 +461,28 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
             btnSalvarUsuario.setEnabled(false);
             btnNovoUsuario.setEnabled(true);
             btnPesquisarUsuario.setEnabled(true);
-            dadosTabela("select * from tbusuarios order by idusuario");
+            String sql = cadastroUsuariosDB.atualizarTabela();
+            dadosTabela(sql);
         }
-
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnExcluirUsuarioActionPerformed
 
     private void jTUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTUsuariosMouseClicked
-        String nome_usuario = "" + jTUsuarios.getValueAt(jTUsuarios.getSelectedRow(), 0);
-        conexao.conectar();
-        conexao.executaSql("select * from tbusuarios where idusuario = '" + nome_usuario + "'");
-        try {
-            conexao.rs.first();
-            txtIDUsuario.setText(conexao.rs.getString("idusuario"));
-            cbPerfilUsuario.setSelectedItem(conexao.rs.getString("perfilUser"));
-            txtNomeUsuario.setText(conexao.rs.getString("nomeUsuario"));
-            txtLoginUsuario.setText(conexao.rs.getString("login"));
-            txtSenhaUsuario.setText(conexao.rs.getString("senha"));
+        String nome_usuario = "" + jTUsuarios.getValueAt(jTUsuarios.getSelectedRow(), 0);        
+        cadastroUsuariosDB.setDadosUsuario(nome_usuario);
+        
+        cadastroUsuarios = cadastroUsuariosDB.getUsuarios();
+        
+        txtIDUsuario.setText(cadastroUsuarios.getIdUsuario());
+        cbPerfilUsuario.setSelectedItem(cadastroUsuarios.getPerfilUsuario());
+        txtNomeUsuario.setText(cadastroUsuarios.getNomeUsuario());
+        txtLoginUsuario.setText(cadastroUsuarios.getLoginUsuario());
+        txtSenhaUsuario.setText(cadastroUsuarios.getSenhaUsuario());
 
-            btnCancelarUsuario.setEnabled(true);
-            btnEditarUsuario.setEnabled(true);
-            btnExcluirUsuario.setEnabled(true);
-            btnPesquisarUsuario.setEnabled(true);
-            txtBuscarUsuario.setEnabled(true);
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao Selecionar o usuario" + ex.getMessage());
-        }
-        conexao.desconectar();
+        btnCancelarUsuario.setEnabled(true);
+        btnEditarUsuario.setEnabled(true);
+        btnExcluirUsuario.setEnabled(true);
+        btnPesquisarUsuario.setEnabled(true);
+        txtBuscarUsuario.setEnabled(true);
     }//GEN-LAST:event_jTUsuariosMouseClicked
 
     public void dadosTabela(String sql) {

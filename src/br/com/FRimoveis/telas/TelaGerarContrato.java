@@ -17,8 +17,6 @@ import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 
@@ -406,7 +404,7 @@ public class TelaGerarContrato extends javax.swing.JFrame {
                 this.dataFinalFinal = formato.format(dataFinal);
                 java.sql.Date data1 = new java.sql.Date(formato.parse(dataFinalFinal).getTime());
                 cadastroContrato.setDataFinal(data1);
-                
+
                 cadastroimoveis.setIdimovel(txtIDImovel.getText());
                 cadastroimoveis.setStatusImovel("ALUGADO");
                 cadastroimoveisDB.editarStatus(cadastroimoveis);
@@ -424,12 +422,14 @@ public class TelaGerarContrato extends javax.swing.JFrame {
 
     private void btnPesquisarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarClienteActionPerformed
         if (txtPesquisarCliente.getText().isEmpty()) {
-            dadosTabelaCliente("select * from tbpessoas order by idpessoa");
+            String sql = cadastroContratoDB.atualizarTabelaCLI();
+            dadosTabelaCliente(sql);
         } else {
             cadastroPessoas.setPesquisaPessoa(txtPesquisarCliente.getText());
             CadastroPessoas model = cadastroPessoasDB.pesquisaUsuario(cadastroPessoas);
             try {
-                dadosTabelaCliente("select * from tbpessoas where nomeCliente like '%" + cadastroPessoas.getPesquisaPessoa() + "%'");
+                String sql = cadastroContratoDB.atualizarTabelaPessoa(model);
+                dadosTabelaCliente(sql);
             } catch (Exception e) {
             }
         }
@@ -437,46 +437,29 @@ public class TelaGerarContrato extends javax.swing.JFrame {
 
     private void jTClienteContratoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTClienteContratoMouseClicked
         String nome_pessoa = "" + jTClienteContrato.getValueAt(jTClienteContrato.getSelectedRow(), 0);
-        conexao.conectar();
-        conexao.executaSql("select * from tbpessoas where idpessoa = '" + nome_pessoa + "'");
-        try {
-            conexao.rs.first();
-            txtIDCliente.setText(conexao.rs.getString("idpessoa"));
-        } catch (SQLException ex) {
-            Logger.getLogger(TelaGerarContrato.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (Exception f) {
-        }
+        String dados = cadastroContratoDB.setarIDPessoa(nome_pessoa);
+        txtIDCliente.setText(dados);
     }//GEN-LAST:event_jTClienteContratoMouseClicked
 
     private void btnPesquisarImovelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarImovelActionPerformed
         if (txtPesquisarImovel.getText().isEmpty()) {
-            dadosTabelaImovel("select * from tbimoveis order by idimovel");
+            String sql = cadastroContratoDB.atualizarTabelaIMO();
+            dadosTabelaImovel(sql);
         } else {
             cadastroimoveis.setPesquisar(txtPesquisarImovel.getText());
             CadastroImoveis model = cadastroimoveisDB.pesquisaImovel(cadastroimoveis);
             try {
-                dadosTabelaImovel("select * from tbimoveis where matriculaImovel like '%" + cadastroimoveis.getPesquisar() + "%'");
+                String sql = cadastroContratoDB.atualizarTabelaImoveis(model);
+                dadosTabelaImovel(sql);
             } catch (Exception e) {
-
             }
         }
     }//GEN-LAST:event_btnPesquisarImovelActionPerformed
 
     private void jTImovelContratoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTImovelContratoMouseClicked
         String nome_Imovel = "" + jTImovelContrato.getValueAt(jTImovelContrato.getSelectedRow(), 0);
-        conexao.conectar();
-        conexao.executaSql("select * from tbimoveis where idimovel = '" + nome_Imovel + "' and statusImovel = 'LIVRE'");
-
-        try {
-            if (conexao.rs.first()) {
-                txtIDImovel.setText(conexao.rs.getString("idimovel"));
-            } else {
-                JOptionPane.showMessageDialog(null, "Casa ja esta Alugada!\nFavor Escolher outro Imovel!");
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(TelaGerarContrato.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (Exception f) {
-        }
+        String dados = cadastroContratoDB.setarIDImovel(nome_Imovel);
+        txtIDImovel.setText(dados);
     }//GEN-LAST:event_jTImovelContratoMouseClicked
     public void dadosTabelaCliente(String sql) {
         ArrayList dados = new ArrayList();
