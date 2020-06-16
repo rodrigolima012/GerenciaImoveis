@@ -15,9 +15,10 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
-import javax.swing.text.MaskFormatter;
 
 /**
  *
@@ -25,8 +26,8 @@ import javax.swing.text.MaskFormatter;
  */
 public class TelaConsultarContrato extends javax.swing.JFrame {
 
-    ConsultaContrato consultaimoveis = new ConsultaContrato();
-    ConsultaContratoDB consultaimoveisDB = new ConsultaContratoDB();
+    ConsultaContrato consultaContrato = new ConsultaContrato();
+    ConsultaContratoDB ConsultaContratoDB = new ConsultaContratoDB();
     ConexaoBD conexao = new ConexaoBD();
 
     /**
@@ -44,7 +45,7 @@ public class TelaConsultarContrato extends javax.swing.JFrame {
         btnInativarConsultarContrato.setEnabled(false);
         btnImprimirConsultarContrato.setEnabled(false);
         jTConsultaContrato.setEnabled(true);
-        
+
     }
 
     public void setIcon() {
@@ -265,41 +266,28 @@ public class TelaConsultarContrato extends javax.swing.JFrame {
 
     private void btnPesquisarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarContratoActionPerformed
         if (txtPesquisarContrato.getText().isEmpty()) {
+            String sql = ConsultaContratoDB.pesquisarTodos();
             try {
-                dadosTabela("select DISTINCT tbcontratos.idcontrato, tbcontratos.statusContrato, tbcontratos.datainicial, tbcontratos.datafinal, tbpessoas.nomeCliente, tbpessoas.NomeFantasia, tbpessoas.cnpjcpf, tbpessoas.perfil, tbpessoas.telefonePessoa, tbpessoas.emailPessoa, tbimoveis.statusImovel, tbimoveis.enderecoimovel, tbimoveis.bairroImovel, tbimoveis.aluguelImovel, tbimoveis.matriculaImovel"
-                        + " from tbcontratos"
-                        + " inner join tbpessoas"
-                        + " on tbcontratos.tbpessoas_idpessoa = tbpessoas.idpessoa"
-                        + " inner join tbimoveis"
-                        + " on tbcontratos.tbimoveis_idimovel = tbimoveis.idimovel");
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(rootPane, "Nenhum Contrato encontrado!!\nFavor tentar novamente!" + e.getMessage());
+                dadosTabela(sql);
+            } catch (ParseException ex) {
+                Logger.getLogger(TelaConsultarContrato.class.getName()).log(Level.SEVERE, null, ex);
             }
-
         } else if (rbNomeCliente.isSelected()) {
+            consultaContrato.setPesquisarContrato(txtPesquisarContrato.getText());
+            String sql = ConsultaContratoDB.pesquisaNomeCliente(consultaContrato);
             try {
-                dadosTabela("select DISTINCT tbcontratos.idcontrato, tbcontratos.statusContrato, tbcontratos.datainicial, tbcontratos.datafinal, tbpessoas.nomeCliente, tbpessoas.NomeFantasia, tbpessoas.cnpjcpf, tbpessoas.perfil, tbpessoas.telefonePessoa, tbpessoas.emailPessoa, tbimoveis.statusImovel, tbimoveis.enderecoimovel, tbimoveis.bairroImovel, tbimoveis.aluguelImovel, tbimoveis.matriculaImovel"
-                        + " from tbcontratos "
-                        + " inner join tbimoveis"
-                        + " on tbcontratos.tbimoveis_idimovel = tbimoveis.idimovel"
-                        + " inner join tbpessoas"
-                        + " where tbpessoas.nomeCliente like '%" + txtPesquisarContrato.getText() + "%'"
-                        + " and tbcontratos.tbimoveis_idimovel = tbimoveis.idimovel and tbcontratos.tbpessoas_idpessoa = tbpessoas.idpessoa group by tbcontratos.idcontrato");
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(rootPane, "Cliente não encontrada!\nFavor tentar novamente!");
+                dadosTabela(sql);
+            } catch (ParseException ex) {
+                Logger.getLogger(TelaConsultarContrato.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         } else if (rbMatriculaImovel.isSelected()) {
+            consultaContrato.setPesquisarContrato(txtPesquisarContrato.getText());
+            String sql = ConsultaContratoDB.pesquisaMatricula(consultaContrato);
             try {
-                dadosTabela("select DISTINCT tbcontratos.idcontrato, tbcontratos.statusContrato, tbcontratos.datainicial, tbcontratos.datafinal, tbpessoas.nomeCliente, tbpessoas.NomeFantasia, tbpessoas.cnpjcpf, tbpessoas.perfil, tbpessoas.telefonePessoa, tbpessoas.emailPessoa, tbimoveis.statusImovel, tbimoveis.enderecoimovel, tbimoveis.bairroImovel, tbimoveis.aluguelImovel, tbimoveis.matriculaImovel"
-                        + " from tbcontratos "
-                        + " inner join tbpessoas"
-                        + " on tbcontratos.tbpessoas_idpessoa = tbpessoas.idpessoa"
-                        + " inner join tbimoveis"
-                        + " where tbimoveis.matriculaImovel like '%" + txtPesquisarContrato.getText() + "%'"
-                        + " and tbcontratos.tbimoveis_idimovel = tbimoveis.idimovel and tbcontratos.tbpessoas_idpessoa = tbpessoas.idpessoa group by tbcontratos.idcontrato");
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(rootPane, "Matricula não encontrada!\nFavor tentar novamente!");
+                dadosTabela(sql);
+            } catch (ParseException ex) {
+                Logger.getLogger(TelaConsultarContrato.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_btnPesquisarContratoActionPerformed

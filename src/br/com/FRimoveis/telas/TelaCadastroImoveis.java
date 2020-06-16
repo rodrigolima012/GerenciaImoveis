@@ -502,12 +502,9 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         if (txtBuscarImovel.getText().isEmpty()) {
             dadosTabela("select * from tbimoveis order by idimovel");
         } else {
-            cadastroimoveis.setPesquisar(txtBuscarImovel.getText());
-            CadastroImoveis model = cadastroimoveisDB.pesquisaImovel(cadastroimoveis);
             try {
                 dadosTabela("select * from tbimoveis where matriculaImovel like '%" + cadastroimoveis.getPesquisar() + "%'");
             } catch (Exception e) {
-
             }
         }
         // TODO add your handling code here:

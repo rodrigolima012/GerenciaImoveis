@@ -412,8 +412,6 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         if (txtBuscarUsuario.getText().isEmpty()) {
             dadosTabela("select * from tbusuarios order by idusuario");
         } else {
-            cadastroUsuarios.setPesquisa(txtBuscarUsuario.getText());
-            cadastroUsuariosDB.pesquisaUsuario(cadastroUsuarios);
             try {
                 dadosTabela("select * from tbusuarios where nomeUsuario like '%" + cadastroUsuarios.getPesquisa() + "%'");
             } catch (Exception e) {
