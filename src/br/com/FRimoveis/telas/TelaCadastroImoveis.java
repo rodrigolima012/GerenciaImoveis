@@ -136,47 +136,61 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setToolTipText("");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 2, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SansSerif", 2, 36)); // NOI18N
         jLabel1.setText("Cadastro de Imoveis");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 0, 51));
         jLabel2.setText("* Campos Obrigatorios");
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/FRimoveis/icones/Capturar.JPG"))); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel4.setText("ID Imovel:");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        txtIDImovel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        txtIDImovel.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtIDImovel.setAlignmentX(0.9F);
+
+        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel5.setText("*Status do Imovel:");
 
+        cbStatusImovel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         cbStatusImovel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel6.setText("*Matricula Imovel:");
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        txtMatriculaImovel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+
+        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel7.setText("*Endereço:");
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        txtEnderecoImovel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+
+        jLabel8.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel8.setText("*Bairro:");
 
+        txtBairroImovel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         txtBairroImovel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtBairroImovelActionPerformed(evt);
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel9.setText("*CEP:");
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel10.setText("*Numero Imovel:");
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        txtNumeroImovel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+
+        jLabel11.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel11.setText("*Valor Aluguel:");
 
+        btnNovoImovel.setBackground(new java.awt.Color(204, 204, 204));
+        btnNovoImovel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnNovoImovel.setText("Novo");
         btnNovoImovel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -184,6 +198,8 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
             }
         });
 
+        btnSalvarImovel.setBackground(new java.awt.Color(204, 204, 204));
+        btnSalvarImovel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnSalvarImovel.setText("Salvar");
         btnSalvarImovel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -191,6 +207,8 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
             }
         });
 
+        btnCancelarImovel.setBackground(new java.awt.Color(204, 204, 204));
+        btnCancelarImovel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnCancelarImovel.setText("Cancelar");
         btnCancelarImovel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,6 +216,8 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
             }
         });
 
+        btnExcluirImovel.setBackground(new java.awt.Color(204, 204, 204));
+        btnExcluirImovel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnExcluirImovel.setText("Excluir");
         btnExcluirImovel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,6 +225,8 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
             }
         });
 
+        btnPesquisarImovel.setBackground(new java.awt.Color(204, 204, 204));
+        btnPesquisarImovel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnPesquisarImovel.setText("Pesquisar");
         btnPesquisarImovel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -212,6 +234,12 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
             }
         });
 
+        txtBuscarImovel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        txtBuscarImovel.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtBuscarImovel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+
+        btnEditarImovel.setBackground(new java.awt.Color(204, 204, 204));
+        btnEditarImovel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnEditarImovel.setText("Editar");
         btnEditarImovel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -234,15 +262,22 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTImoveis);
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        txtCepImovel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+
+        txtValorAlugel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+
+        jLabel12.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel12.setText("Imagens URL:");
 
+        txtUrlImagens.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         txtUrlImagens.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUrlImagensActionPerformed(evt);
             }
         });
 
+        btnAbrirImagens.setBackground(new java.awt.Color(204, 204, 204));
+        btnAbrirImagens.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnAbrirImagens.setText("Abrir Imagens");
         btnAbrirImagens.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -280,23 +315,22 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
                                 .addComponent(txtEnderecoImovel))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtIDImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                                .addGap(14, 14, 14)
+                                .addComponent(txtIDImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtMatriculaImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cbStatusImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbStatusImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtBairroImovel))))
+                                .addComponent(txtBairroImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -304,8 +338,8 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel3))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel12)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtUrlImagens))
@@ -316,13 +350,13 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNumeroImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtNumeroImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(24, 24, 24)
                                 .addComponent(jLabel11)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtValorAlugel)
-                            .addComponent(btnAbrirImagens, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnAbrirImagens, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtValorAlugel, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -337,15 +371,15 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtMatriculaImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbStatusImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtIDImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtIDImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -360,12 +394,12 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCepImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtValorAlugel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtUrlImagens, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAbrirImagens, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnPesquisarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)

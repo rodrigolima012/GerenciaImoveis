@@ -198,17 +198,17 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 2, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SansSerif", 2, 36)); // NOI18N
         jLabel1.setText("Cadastro de Pessoas");
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/FRimoveis/icones/Capturar.JPG"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 0, 51));
         jLabel2.setText("* Campos Obrigatorios");
 
         bgPerfilPessoas.add(rbPessoaFisica);
-        rbPessoaFisica.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        rbPessoaFisica.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         rbPessoaFisica.setText("Pessoa Fisica");
         rbPessoaFisica.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -222,7 +222,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         });
 
         bgPerfilPessoas.add(rbPessoaJuridica);
-        rbPessoaJuridica.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        rbPessoaJuridica.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         rbPessoaJuridica.setText("Pessoa Juridica");
         rbPessoaJuridica.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -245,77 +245,113 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTPessoas);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel3.setText("ID Pessoa:");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        txtIDpessoa.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        txtIDpessoa.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel4.setText("*Nome:");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        txtNomePessoa.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        txtNomePessoa.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+
+        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel5.setText("*Nome Fantasia:");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        txtNomeFantasia.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        txtNomeFantasia.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+
+        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel6.setText("*Perfil:");
 
+        cbPerfilPessoa.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         cbPerfilPessoa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel8.setText("*CPF/CNPJ:");
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        txtcpfcnpj.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+
+        jLabel9.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel9.setText("*Data Nascimento:");
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        txtDataNasc.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+
+        jLabel10.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel10.setText("*Inscrição Estadual:");
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        txtInscricaoEstadual.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+
+        jLabel11.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel11.setText("*Endereço:");
 
+        txtEnderecoPessoa.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         txtEnderecoPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEnderecoPessoaActionPerformed(evt);
             }
         });
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel12.setText("*Bairro:");
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        txtBairroPessoa.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel13.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel13.setText("*Numero:");
 
+        txtNumeroCasaPessoa.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         txtNumeroCasaPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNumeroCasaPessoaActionPerformed(evt);
             }
         });
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel14.setText("*CEP:");
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        txtCepPessoa.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+
+        jLabel15.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel15.setText("*Telefone:");
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        txtTelefonePessoa.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+
+        jLabel16.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel16.setText("*E-mail:");
 
+        txtEmailPessoa.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        txtEmailPessoa.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         txtEmailPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmailPessoaActionPerformed(evt);
             }
         });
 
-        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel17.setText("*Nome Referência:");
 
-        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        txtReferencia1Nome.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+
+        jLabel18.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel18.setText("*Telefone Referência:");
 
-        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        txtReferencia1Telefone.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+
+        jLabel19.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel19.setText("*Nome Referência:");
 
-        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        txtReferencia2Nome.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+
+        jLabel20.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel20.setText("*Telefone Referência:");
 
+        txtReferencia2Telefone.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+
+        btnPesquisarPessoa.setBackground(new java.awt.Color(204, 204, 204));
+        btnPesquisarPessoa.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnPesquisarPessoa.setText("Pesquisar");
         btnPesquisarPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -323,6 +359,8 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
             }
         });
 
+        btnNovoPessoa.setBackground(new java.awt.Color(204, 204, 204));
+        btnNovoPessoa.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnNovoPessoa.setText("Novo");
         btnNovoPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -330,6 +368,8 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
             }
         });
 
+        btnSalvarPessoa.setBackground(new java.awt.Color(204, 204, 204));
+        btnSalvarPessoa.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnSalvarPessoa.setText("Salvar");
         btnSalvarPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -337,6 +377,8 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
             }
         });
 
+        btnCancelarPessoa.setBackground(new java.awt.Color(204, 204, 204));
+        btnCancelarPessoa.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnCancelarPessoa.setText("Cancelar");
         btnCancelarPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -344,6 +386,8 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
             }
         });
 
+        btnExcluirPessoa.setBackground(new java.awt.Color(204, 204, 204));
+        btnExcluirPessoa.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnExcluirPessoa.setText("Excluir");
         btnExcluirPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -351,12 +395,18 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
             }
         });
 
+        btnEditarPessoa.setBackground(new java.awt.Color(204, 204, 204));
+        btnEditarPessoa.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnEditarPessoa.setText("Editar");
         btnEditarPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarPessoaActionPerformed(evt);
             }
         });
+
+        txtBuscarPessoa.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        txtBuscarPessoa.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtBuscarPessoa.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -411,7 +461,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel13)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNumeroCasaPessoa, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE))))
+                                .addComponent(txtNumeroCasaPessoa, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()

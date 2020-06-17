@@ -88,21 +88,22 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/FRimoveis/icones/Capturar.JPG"))); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 2, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SansSerif", 2, 36)); // NOI18N
         jLabel1.setText("Cadastro de Usuarios");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel2.setText("Perfil Usuario:");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel3.setText("Login:");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel4.setText("Nome Usuario:");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel5.setText("Senha:");
 
+        cbPerfilUsuario.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         cbPerfilUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbPerfilUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,21 +111,28 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
             }
         });
 
+        txtNomeUsuario.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         txtNomeUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNomeUsuarioActionPerformed(evt);
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        txtLoginUsuario.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+
+        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel6.setText("ID Usuario:");
 
+        txtIDUsuario.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        txtIDUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtIDUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIDUsuarioActionPerformed(evt);
             }
         });
 
+        btnSalvarUsuario.setBackground(new java.awt.Color(204, 204, 204));
+        btnSalvarUsuario.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnSalvarUsuario.setText("Salvar");
         btnSalvarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,6 +140,8 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
             }
         });
 
+        btnCancelarUsuario.setBackground(new java.awt.Color(204, 204, 204));
+        btnCancelarUsuario.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnCancelarUsuario.setText("Cancelar");
         btnCancelarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,6 +149,8 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
             }
         });
 
+        btnExcluirUsuario.setBackground(new java.awt.Color(204, 204, 204));
+        btnExcluirUsuario.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnExcluirUsuario.setText("Excluir");
         btnExcluirUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,6 +158,8 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
             }
         });
 
+        btnEditarUsuario.setBackground(new java.awt.Color(204, 204, 204));
+        btnEditarUsuario.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnEditarUsuario.setText("Editar");
         btnEditarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,6 +167,15 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
             }
         });
 
+        txtSenhaUsuario.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        txtSenhaUsuario.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+
+        txtBuscarUsuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtBuscarUsuario.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtBuscarUsuario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+
+        btnPesquisarUsuario.setBackground(new java.awt.Color(204, 204, 204));
+        btnPesquisarUsuario.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnPesquisarUsuario.setText("Pesquisar");
         btnPesquisarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,6 +183,8 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
             }
         });
 
+        btnNovoUsuario.setBackground(new java.awt.Color(204, 204, 204));
+        btnNovoUsuario.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnNovoUsuario.setText("Novo");
         btnNovoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -182,6 +207,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTUsuarios);
 
+        jLabel8.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 0, 51));
         jLabel8.setText("TODOS OS CAMPOS SÃO OBRIGATORIOS!");
 
@@ -190,7 +216,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -208,19 +234,22 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnPesquisarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtLoginUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34)
-                                .addComponent(txtIDUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtIDUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel2)
                                 .addGap(10, 10, 10)
@@ -228,14 +257,14 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtSenhaUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE))
+                        .addComponent(txtSenhaUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel7)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

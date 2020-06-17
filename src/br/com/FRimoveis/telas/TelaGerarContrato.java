@@ -126,15 +126,16 @@ public class TelaGerarContrato extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/FRimoveis/icones/Capturar.JPG"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 2, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("SansSerif", 2, 36)); // NOI18N
         jLabel2.setText("Gerar Contrato");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 0, 51));
         jLabel3.setText("* Campos Obrigatorios");
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Buscar Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 18))); // NOI18N
+        jPanel2.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
 
         jTClienteContrato.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -151,6 +152,10 @@ public class TelaGerarContrato extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTClienteContrato);
 
+        txtPesquisarCliente.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+
+        btnPesquisarCliente.setBackground(new java.awt.Color(204, 204, 204));
+        btnPesquisarCliente.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnPesquisarCliente.setText("Pesquisar");
         btnPesquisarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,6 +163,7 @@ public class TelaGerarContrato extends javax.swing.JFrame {
             }
         });
 
+        txtIDCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtIDCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIDClienteActionPerformed(evt);
@@ -192,6 +198,7 @@ public class TelaGerarContrato extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Buscar Imovel", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 18))); // NOI18N
+        jPanel3.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
 
         jTImovelContrato.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -208,12 +215,17 @@ public class TelaGerarContrato extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTImovelContrato);
 
+        txtPesquisarImovel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+
+        txtIDImovel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtIDImovel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIDImovelActionPerformed(evt);
             }
         });
 
+        btnPesquisarImovel.setBackground(new java.awt.Color(204, 204, 204));
+        btnPesquisarImovel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnPesquisarImovel.setText("Pesquisar");
         btnPesquisarImovel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -245,6 +257,8 @@ public class TelaGerarContrato extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))
         );
 
+        btnNovoContrato.setBackground(new java.awt.Color(204, 204, 204));
+        btnNovoContrato.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnNovoContrato.setText("Novo");
         btnNovoContrato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -252,6 +266,8 @@ public class TelaGerarContrato extends javax.swing.JFrame {
             }
         });
 
+        btnSalvarContrato.setBackground(new java.awt.Color(204, 204, 204));
+        btnSalvarContrato.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnSalvarContrato.setText("Salvar");
         btnSalvarContrato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -259,6 +275,8 @@ public class TelaGerarContrato extends javax.swing.JFrame {
             }
         });
 
+        btnCancelarContrato.setBackground(new java.awt.Color(204, 204, 204));
+        btnCancelarContrato.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnCancelarContrato.setText("Cancelar");
         btnCancelarContrato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -268,6 +286,8 @@ public class TelaGerarContrato extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Data Final"));
+
+        jDateContratoFinal.setBackground(new java.awt.Color(204, 204, 204));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -282,6 +302,8 @@ public class TelaGerarContrato extends javax.swing.JFrame {
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Data Inicial"));
+
+        jDateContratoInical.setBackground(new java.awt.Color(204, 204, 204));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
