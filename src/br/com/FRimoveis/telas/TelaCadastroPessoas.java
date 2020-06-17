@@ -255,13 +255,11 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         jLabel4.setText("*Nome:");
 
         txtNomePessoa.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        txtNomePessoa.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel5.setText("*Nome Fantasia:");
 
         txtNomeFantasia.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        txtNomeFantasia.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel6.setText("*Perfil:");
@@ -297,7 +295,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel12.setText("*Bairro:");
 
-        txtBairroPessoa.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtBairroPessoa.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
         jLabel13.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel13.setText("*Numero:");
@@ -323,7 +321,6 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         jLabel16.setText("*E-mail:");
 
         txtEmailPessoa.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        txtEmailPessoa.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         txtEmailPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmailPessoaActionPerformed(evt);

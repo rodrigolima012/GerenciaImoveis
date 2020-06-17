@@ -168,9 +168,8 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         });
 
         txtSenhaUsuario.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        txtSenhaUsuario.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
-        txtBuscarUsuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtBuscarUsuario.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         txtBuscarUsuario.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtBuscarUsuario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 

@@ -148,30 +148,30 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel4.setText("ID Imovel:");
 
-        txtIDImovel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        txtIDImovel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         txtIDImovel.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtIDImovel.setAlignmentX(0.9F);
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel5.setText("*Status do Imovel:");
 
-        cbStatusImovel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        cbStatusImovel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         cbStatusImovel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel6.setText("*Matricula Imovel:");
 
-        txtMatriculaImovel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        txtMatriculaImovel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel7.setText("*Endereço:");
 
-        txtEnderecoImovel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        txtEnderecoImovel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel8.setText("*Bairro:");
 
-        txtBairroImovel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        txtBairroImovel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         txtBairroImovel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtBairroImovelActionPerformed(evt);
@@ -184,7 +184,7 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel10.setText("*Numero Imovel:");
 
-        txtNumeroImovel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        txtNumeroImovel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
         jLabel11.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel11.setText("*Valor Aluguel:");
@@ -234,7 +234,7 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
             }
         });
 
-        txtBuscarImovel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        txtBuscarImovel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         txtBuscarImovel.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtBuscarImovel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
@@ -262,14 +262,14 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTImoveis);
 
-        txtCepImovel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        txtCepImovel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
-        txtValorAlugel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        txtValorAlugel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel12.setText("Imagens URL:");
 
-        txtUrlImagens.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        txtUrlImagens.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         txtUrlImagens.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUrlImagensActionPerformed(evt);
@@ -371,7 +371,7 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtMatriculaImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)

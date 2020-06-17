@@ -152,7 +152,7 @@
                   <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder/>
                   </Border>
-                  <Font PropertyName="font" name="Tahoma" size="18" style="0"/>
+                  <Font PropertyName="font" name="SansSerif" size="18" style="0"/>
                 </TitledBorder>
               </Border>
             </Property>
@@ -257,7 +257,7 @@
                   <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder/>
                   </Border>
-                  <Font PropertyName="font" name="Tahoma" size="18" style="0"/>
+                  <Font PropertyName="font" name="SansSerif" size="18" style="0"/>
                 </TitledBorder>
               </Border>
             </Property>
