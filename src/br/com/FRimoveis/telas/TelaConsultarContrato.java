@@ -118,6 +118,7 @@ public class TelaConsultarContrato extends javax.swing.JFrame {
         btnPesquisarContrato.setBackground(new java.awt.Color(204, 204, 204));
         btnPesquisarContrato.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnPesquisarContrato.setText("Pesquisar");
+        btnPesquisarContrato.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPesquisarContrato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPesquisarContratoActionPerformed(evt);
@@ -142,6 +143,7 @@ public class TelaConsultarContrato extends javax.swing.JFrame {
         btnNovoConsultarContrato.setBackground(new java.awt.Color(204, 204, 204));
         btnNovoConsultarContrato.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnNovoConsultarContrato.setText("Novo");
+        btnNovoConsultarContrato.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnNovoConsultarContrato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNovoConsultarContratoActionPerformed(evt);
@@ -151,6 +153,7 @@ public class TelaConsultarContrato extends javax.swing.JFrame {
         btnCancelarConsultarContrato.setBackground(new java.awt.Color(204, 204, 204));
         btnCancelarConsultarContrato.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnCancelarConsultarContrato.setText("Cancelar");
+        btnCancelarConsultarContrato.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancelarConsultarContrato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarConsultarContratoActionPerformed(evt);
@@ -160,10 +163,12 @@ public class TelaConsultarContrato extends javax.swing.JFrame {
         btnInativarConsultarContrato.setBackground(new java.awt.Color(204, 204, 204));
         btnInativarConsultarContrato.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnInativarConsultarContrato.setText("Inativar Contrato");
+        btnInativarConsultarContrato.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnImprimirConsultarContrato.setBackground(new java.awt.Color(204, 204, 204));
         btnImprimirConsultarContrato.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnImprimirConsultarContrato.setText("Imprimir Contrato");
+        btnImprimirConsultarContrato.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

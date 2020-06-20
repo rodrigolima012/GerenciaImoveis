@@ -14,7 +14,6 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -266,6 +265,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
 
         cbPerfilPessoa.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         cbPerfilPessoa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbPerfilPessoa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel8.setText("*CPF/CNPJ:");
@@ -350,6 +350,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         btnPesquisarPessoa.setBackground(new java.awt.Color(204, 204, 204));
         btnPesquisarPessoa.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnPesquisarPessoa.setText("Pesquisar");
+        btnPesquisarPessoa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPesquisarPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPesquisarPessoaActionPerformed(evt);
@@ -359,6 +360,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         btnNovoPessoa.setBackground(new java.awt.Color(204, 204, 204));
         btnNovoPessoa.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnNovoPessoa.setText("Novo");
+        btnNovoPessoa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnNovoPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNovoPessoaActionPerformed(evt);
@@ -368,6 +370,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         btnSalvarPessoa.setBackground(new java.awt.Color(204, 204, 204));
         btnSalvarPessoa.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnSalvarPessoa.setText("Salvar");
+        btnSalvarPessoa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSalvarPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarPessoaActionPerformed(evt);
@@ -377,6 +380,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         btnCancelarPessoa.setBackground(new java.awt.Color(204, 204, 204));
         btnCancelarPessoa.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnCancelarPessoa.setText("Cancelar");
+        btnCancelarPessoa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancelarPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarPessoaActionPerformed(evt);
@@ -386,6 +390,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         btnExcluirPessoa.setBackground(new java.awt.Color(204, 204, 204));
         btnExcluirPessoa.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnExcluirPessoa.setText("Excluir");
+        btnExcluirPessoa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnExcluirPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirPessoaActionPerformed(evt);
@@ -395,6 +400,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         btnEditarPessoa.setBackground(new java.awt.Color(204, 204, 204));
         btnEditarPessoa.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnEditarPessoa.setText("Editar");
+        btnEditarPessoa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEditarPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarPessoaActionPerformed(evt);
@@ -678,12 +684,13 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
                     cadastroPessoas.setPerfil(cbPerfilPessoa.getSelectedItem().toString());
                     cadastroPessoas.setNomeCliente(txtNomePessoa.getText());
                     cadastroPessoas.setCnpjcpf(txtcpfcnpj.getText());
+
+                    String dataNasc = txtDataNasc.getText();
+                    SimpleDateFormat out = new SimpleDateFormat("yyyy-MM-dd");
+                    SimpleDateFormat in = new SimpleDateFormat("dd/MM/yyyy");
                     try {
-                        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
-                        String str = txtDataNasc.getText();
-                        Date data = formatador.parse(str);
-                        java.sql.Date teste = new java.sql.Date(data.getTime());
-                        cadastroPessoas.setDataNasc(teste);
+                        String result = out.format(in.parse(dataNasc));
+                        cadastroPessoas.setDataNasc(result);
                     } catch (ParseException ex) {
                         Logger.getLogger(TelaCadastroPessoas.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -740,12 +747,13 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
                     cadastroPessoas.setNomeFantasia(txtNomeFantasia.getText());
                     cadastroPessoas.setCnpjcpf(txtcpfcnpj.getText());
                     cadastroPessoas.setInscEstadual(txtInscricaoEstadual.getText());
+                    
+                    String dataNasc = txtDataNasc.getText();
+                    SimpleDateFormat out = new SimpleDateFormat("yyyy-MM-dd");
+                    SimpleDateFormat in = new SimpleDateFormat("dd/MM/yyyy");
                     try {
-                        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
-                        String str = txtDataNasc.getText();
-                        Date data = formatador.parse(str);
-                        java.sql.Date teste = new java.sql.Date(data.getTime());
-                        cadastroPessoas.setDataNasc(teste);
+                        String result = out.format(in.parse(dataNasc));
+                        cadastroPessoas.setDataNasc(result);
                     } catch (ParseException ex) {
                         Logger.getLogger(TelaCadastroPessoas.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -804,12 +812,13 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
                     cadastroPessoas.setNomeFantasia(txtNomeFantasia.getText());
                     cadastroPessoas.setCnpjcpf(txtcpfcnpj.getText());
                     cadastroPessoas.setInscEstadual(txtInscricaoEstadual.getText());
+                    
+                    String dataNasc = txtDataNasc.getText();
+                    SimpleDateFormat out = new SimpleDateFormat("yyyy-MM-dd");
+                    SimpleDateFormat in = new SimpleDateFormat("dd/MM/yyyy");
                     try {
-                        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
-                        String str = txtDataNasc.getText();
-                        Date data = formatador.parse(str);
-                        java.sql.Date teste = new java.sql.Date(data.getTime());
-                        cadastroPessoas.setDataNasc(teste);
+                        String result = out.format(in.parse(dataNasc));
+                        cadastroPessoas.setDataNasc(result);
                     } catch (ParseException ex) {
                         Logger.getLogger(TelaCadastroPessoas.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -868,12 +877,13 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
                     cadastroPessoas.setNomeFantasia(txtNomeFantasia.getText());
                     cadastroPessoas.setCnpjcpf(txtcpfcnpj.getText());
                     cadastroPessoas.setInscEstadual(txtInscricaoEstadual.getText());
+                    
+                    String dataNasc = txtDataNasc.getText();
+                    SimpleDateFormat out = new SimpleDateFormat("yyyy-MM-dd");
+                    SimpleDateFormat in = new SimpleDateFormat("dd/MM/yyyy");
                     try {
-                        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
-                        String str = txtDataNasc.getText();
-                        Date data = formatador.parse(str);
-                        java.sql.Date teste = new java.sql.Date(data.getTime());
-                        cadastroPessoas.setDataNasc(teste);
+                        String result = out.format(in.parse(dataNasc));
+                        cadastroPessoas.setDataNasc(result);
                     } catch (ParseException ex) {
                         Logger.getLogger(TelaCadastroPessoas.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -1125,72 +1135,32 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
 
     private void jTPessoasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTPessoasMouseClicked
         String nome_pessoa = "" + jTPessoas.getValueAt(jTPessoas.getSelectedRow(), 0);
-        conexao.conectar();
-        conexao.executaSql("select * from tbpessoas where idpessoa = '" + nome_pessoa + "'");
-        try {
-            conexao.rs.first();
-            txtIDpessoa.setText(conexao.rs.getString("idpessoa"));
-            txtNomePessoa.setText(conexao.rs.getString("nomeCliente"));
-            txtNomeFantasia.setText(conexao.rs.getString("nomeFantasia"));
-            cbPerfilPessoa.setSelectedItem(conexao.rs.getString("perfil"));
-            if (txtNomeFantasia.getText().isEmpty()) {
-                MaskFormatter cpf = null;
+        cadastroPessoasDB.setClienteDados(nome_pessoa);
 
-                try {
-                    txtcpfcnpj.setValue(null);
+        cadastroPessoas = cadastroPessoasDB.getPessoas();
 
-                    cpf = new MaskFormatter("###.###.###-##");
-                    cpf.setPlaceholderCharacter(' ');
-                    txtcpfcnpj.setFormatterFactory(new DefaultFormatterFactory(cpf));
-                    txtcpfcnpj.setText(conexao.rs.getString("cnpjcpf"));
-                } catch (ParseException ex) {
-                }
+        txtIDpessoa.setText(cadastroPessoas.getIdpessoa());
+        cbPerfilPessoa.setSelectedItem(cadastroPessoas.getPerfil());
+        txtNomePessoa.setText(cadastroPessoas.getNomeCliente());
+        txtNomeFantasia.setText(cadastroPessoas.getNomeFantasia());
+        txtcpfcnpj.setText("");
+        txtcpfcnpj.setText(cadastroPessoas.getCnpjcpf());
+        txtInscricaoEstadual.setText(cadastroPessoas.getInscEstadual());
+        txtDataNasc.setText(cadastroPessoas.getDataNasc());
+        txtEnderecoPessoa.setText(cadastroPessoas.getEnderecoPessoa());
+        txtBairroPessoa.setText(cadastroPessoas.getBairroPessoa());
+        txtNumeroCasaPessoa.setText(cadastroPessoas.getNumeroCasa());
+        txtCepPessoa.setText(cadastroPessoas.getCepPessoa());
+        txtTelefonePessoa.setText(cadastroPessoas.getTelefonePessoa());
+        txtEmailPessoa.setText(cadastroPessoas.getEmailPessoa());
+        txtReferencia1Nome.setText(cadastroPessoas.getReferencia01());
+        txtReferencia1Telefone.setText(cadastroPessoas.getTelefonereferencia01());
+        txtReferencia2Nome.setText(cadastroPessoas.getReferencia02());
+        txtReferencia2Telefone.setText(cadastroPessoas.getTelefonereferencia02());
 
-            } else {
-                MaskFormatter cnpj = null;
-                try {
-                    txtcpfcnpj.setValue(null);
+        btnExcluirPessoa.setEnabled(true);
+        btnEditarPessoa.setEnabled(true);
 
-                    cnpj = new MaskFormatter("##.###.###/####-##");
-                    cnpj.setPlaceholderCharacter(' ');
-                    txtcpfcnpj.setFormatterFactory(new DefaultFormatterFactory(cnpj));
-                    txtcpfcnpj.setText(conexao.rs.getString("cnpjcpf"));
-                } catch (ParseException ex) {
-                }
-            }
-
-            String dataNasc = conexao.rs.getString("dataNasc");
-            SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
-            SimpleDateFormat out = new SimpleDateFormat("dd/MM/yyyy");
-            try {
-                String result = out.format(in.parse(dataNasc));
-                txtDataNasc.setText(result);
-            } catch (ParseException ex) {
-                Logger.getLogger(TelaCadastroPessoas.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            txtInscricaoEstadual.setText(conexao.rs.getString("inscEstadual"));
-            txtEnderecoPessoa.setText(conexao.rs.getString("enderecoPessoa"));
-            txtNumeroCasaPessoa.setText(conexao.rs.getString("numeroCasa"));
-            txtBairroPessoa.setText(conexao.rs.getString("bairroPessoa"));
-            txtCepPessoa.setText(conexao.rs.getString("cepPessoa"));
-            txtTelefonePessoa.setText(conexao.rs.getString("telefonePessoa"));
-            txtEmailPessoa.setText(conexao.rs.getString("emailPessoa"));
-            txtReferencia1Nome.setText(conexao.rs.getString("referencia01"));
-            txtReferencia1Telefone.setText(conexao.rs.getString("telefonereferencia01"));
-            txtReferencia2Nome.setText(conexao.rs.getString("referencia02"));
-            txtReferencia2Telefone.setText(conexao.rs.getString("telefonereferencia02"));
-
-            btnCancelarPessoa.setEnabled(true);
-            btnEditarPessoa.setEnabled(true);
-            btnExcluirPessoa.setEnabled(true);
-            btnNovoPessoa.setEnabled(false);
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao Selecionar o Cliente" + ex.getMessage());
-        }
-        conexao.desconectar();
-        // TODO add your handling code here:
     }//GEN-LAST:event_jTPessoasMouseClicked
 
     public void dadosTabela(String sql) {

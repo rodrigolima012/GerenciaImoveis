@@ -9,7 +9,6 @@ import br.com.FRimoveis.Conexao.ConexaoBD;
 import br.com.FRimoveis.Desenvolvimento.CadastroUsuarios;
 import br.com.FRimoveis.Desenvolvimento.LoginUsuario;
 import br.com.FRimoveis.telas.TelaPrincipal;
-import groovy.ui.text.FindReplaceUtility;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
 

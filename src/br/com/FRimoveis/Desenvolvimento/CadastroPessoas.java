@@ -5,7 +5,7 @@
  */
 package br.com.FRimoveis.Desenvolvimento;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  *
@@ -18,7 +18,7 @@ public class CadastroPessoas {
     private String nomeFantasia = "";
     private String perfil = "";
     private String cnpjcpf = "";
-    private Date dataNasc;    
+    private String dataNasc;    
     private String inscEstadual = "";
     private String enderecoPessoa = "";
     private String numeroCasa = "";
@@ -74,11 +74,12 @@ public class CadastroPessoas {
         this.cnpjcpf = cnpjcpf;
     }
 
-    public Date getDataNasc() {
+    public String getDataNasc() {
         return dataNasc;
+        
     }
     
-    public void setDataNasc(Date dataNasc) {
+    public void setDataNasc(String dataNasc) {
         this.dataNasc = dataNasc;
     }
 

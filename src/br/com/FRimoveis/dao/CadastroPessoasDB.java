@@ -7,9 +7,12 @@ package br.com.FRimoveis.dao;
 
 import br.com.FRimoveis.Conexao.ConexaoBD;
 import br.com.FRimoveis.Desenvolvimento.CadastroPessoas;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -28,7 +31,7 @@ public class CadastroPessoasDB {
             pst.setString(1, pessoa.getNomeCliente());
             pst.setString(2, pessoa.getPerfil());
             pst.setString(3, pessoa.getCnpjcpf());
-            pst.setDate(4, (Date) pessoa.getDataNasc());
+             pst.setString(4, pessoa.getDataNasc());
             pst.setString(5, pessoa.getEnderecoPessoa());
             pst.setString(6, pessoa.getNumeroCasa());
             pst.setString(7, pessoa.getBairroPessoa());
@@ -55,7 +58,7 @@ public class CadastroPessoasDB {
             pst.setString(2, pessoa.getNomeFantasia());
             pst.setString(3, pessoa.getPerfil());
             pst.setString(4, pessoa.getCnpjcpf());
-            pst.setDate(5, (Date) pessoa.getDataNasc());
+            pst.setString(5, pessoa.getDataNasc());
             pst.setString(6, pessoa.getInscEstadual());
             pst.setString(7, pessoa.getEnderecoPessoa());
             pst.setString(8, pessoa.getNumeroCasa());
@@ -85,7 +88,7 @@ public class CadastroPessoasDB {
             pessoa.setNomeFantasia(connectarBanco.rs.getString("nomeFantasia"));
             pessoa.setPerfil(connectarBanco.rs.getString("perfil"));
             pessoa.setCnpjcpf(connectarBanco.rs.getString("cnpjcpf"));
-            pessoa.setDataNasc(connectarBanco.rs.getDate("dataNasc"));
+            pessoa.setDataNasc(connectarBanco.rs.getString("dataNasc"));
             pessoa.setInscEstadual(connectarBanco.rs.getString("inscEstadual"));
             pessoa.setEnderecoPessoa(connectarBanco.rs.getString("enderecoPessoa"));
             pessoa.setNumeroCasa(connectarBanco.rs.getString("numeroCasa"));
@@ -112,7 +115,7 @@ public class CadastroPessoasDB {
             pst.setString(2, pessoa.getNomeFantasia());
             pst.setString(3, pessoa.getPerfil());
             pst.setString(4, pessoa.getCnpjcpf());
-            pst.setDate(5, (Date) pessoa.getDataNasc());
+            pst.setString(5, pessoa.getDataNasc());
             pst.setString(6, pessoa.getInscEstadual());
             pst.setString(7, pessoa.getEnderecoPessoa());
             pst.setString(8, pessoa.getNumeroCasa());
@@ -145,7 +148,7 @@ public class CadastroPessoasDB {
 
         connectarBanco.desconectar();
     }
-    
+
     public String atualizarTabela() {
         connectarBanco.conectar();
         String sql = ("select * from tbpessoas order by idpessoa");
@@ -159,8 +162,8 @@ public class CadastroPessoasDB {
         connectarBanco.desconectar();
         return null;
     }
-    
-     public String atualizarTabelaPesquisar(CadastroPessoas pessoa) {
+
+    public String atualizarTabelaPesquisar(CadastroPessoas pessoa) {
         connectarBanco.conectar();
         String sql = ("select * from tbpessoas where nomeCliente like '%" + pessoa.getPesquisaPessoa() + "%'");
         connectarBanco.executaSql(sql);
@@ -172,6 +175,52 @@ public class CadastroPessoasDB {
         }
         connectarBanco.desconectar();
         return null;
+    }
+
+    public void setClienteDados(String dados) {
+        pessoa = new CadastroPessoas();
+        connectarBanco.conectar();
+        String sql = ("select * from tbpessoas where idpessoa = '" + dados + "'");
+        connectarBanco.executaSql(sql);
+        try {
+            connectarBanco.rs.first();
+            pessoa.setIdpessoa(connectarBanco.rs.getString("idpessoa"));
+            pessoa.setNomeCliente(connectarBanco.rs.getString("nomeCliente"));
+            pessoa.setNomeFantasia(connectarBanco.rs.getString("nomeFantasia"));
+            pessoa.setPerfil(connectarBanco.rs.getString("perfil"));
+            pessoa.setCnpjcpf(connectarBanco.rs.getString("cnpjcpf"));
+            
+            String dataNasc = connectarBanco.rs.getString("dataNasc");
+            SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat out = new SimpleDateFormat("dd/MM/yyyy");
+            String result = null;            
+            try {
+                result = out.format(in.parse(dataNasc));
+            } catch (ParseException ex) {
+                Logger.getLogger(CadastroPessoasDB.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            pessoa.setDataNasc(result);
+            
+            pessoa.setInscEstadual(connectarBanco.rs.getString("inscEstadual"));
+            pessoa.setEnderecoPessoa(connectarBanco.rs.getString("enderecoPessoa"));
+            pessoa.setNumeroCasa(connectarBanco.rs.getString("numeroCasa"));
+            pessoa.setBairroPessoa(connectarBanco.rs.getString("bairroPessoa"));
+            pessoa.setCepPessoa(connectarBanco.rs.getString("cepPessoa"));
+            pessoa.setTelefonePessoa(connectarBanco.rs.getString("telefonePessoa"));
+            pessoa.setEmailPessoa(connectarBanco.rs.getString("emailPessoa"));
+            pessoa.setReferencia01(connectarBanco.rs.getString("referencia01"));
+            pessoa.setTelefonereferencia01(connectarBanco.rs.getString("telefonereferencia01"));
+            pessoa.setReferencia02(connectarBanco.rs.getString("referencia02"));
+            pessoa.setTelefonereferencia02(connectarBanco.rs.getString("telefonereferencia02"));
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Selecionar o Cliente" + ex.getMessage());
+        }
+        connectarBanco.desconectar();
+    }
+
+    public CadastroPessoas getPessoas() {
+        return this.pessoa;
     }
 
 }

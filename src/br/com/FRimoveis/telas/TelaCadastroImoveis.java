@@ -157,6 +157,7 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
 
         cbStatusImovel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         cbStatusImovel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbStatusImovel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel6.setText("*Matricula Imovel:");
@@ -192,6 +193,7 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         btnNovoImovel.setBackground(new java.awt.Color(204, 204, 204));
         btnNovoImovel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnNovoImovel.setText("Novo");
+        btnNovoImovel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnNovoImovel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNovoImovelActionPerformed(evt);
@@ -201,6 +203,7 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         btnSalvarImovel.setBackground(new java.awt.Color(204, 204, 204));
         btnSalvarImovel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnSalvarImovel.setText("Salvar");
+        btnSalvarImovel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSalvarImovel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarImovelActionPerformed(evt);
@@ -210,6 +213,7 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         btnCancelarImovel.setBackground(new java.awt.Color(204, 204, 204));
         btnCancelarImovel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnCancelarImovel.setText("Cancelar");
+        btnCancelarImovel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancelarImovel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarImovelActionPerformed(evt);
@@ -219,6 +223,7 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         btnExcluirImovel.setBackground(new java.awt.Color(204, 204, 204));
         btnExcluirImovel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnExcluirImovel.setText("Excluir");
+        btnExcluirImovel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnExcluirImovel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirImovelActionPerformed(evt);
@@ -228,6 +233,7 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         btnPesquisarImovel.setBackground(new java.awt.Color(204, 204, 204));
         btnPesquisarImovel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnPesquisarImovel.setText("Pesquisar");
+        btnPesquisarImovel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPesquisarImovel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPesquisarImovelActionPerformed(evt);
@@ -241,6 +247,7 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         btnEditarImovel.setBackground(new java.awt.Color(204, 204, 204));
         btnEditarImovel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnEditarImovel.setText("Editar");
+        btnEditarImovel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEditarImovel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarImovelActionPerformed(evt);
@@ -279,6 +286,7 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         btnAbrirImagens.setBackground(new java.awt.Color(204, 204, 204));
         btnAbrirImagens.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnAbrirImagens.setText("Abrir Imagens");
+        btnAbrirImagens.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAbrirImagens.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAbrirImagensActionPerformed(evt);

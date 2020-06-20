@@ -78,6 +78,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("FR - Gerenciador de Imoveis - Cadastro de Usuarios");
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -105,6 +106,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
 
         cbPerfilUsuario.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         cbPerfilUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbPerfilUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cbPerfilUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbPerfilUsuarioActionPerformed(evt);
@@ -134,6 +136,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         btnSalvarUsuario.setBackground(new java.awt.Color(204, 204, 204));
         btnSalvarUsuario.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnSalvarUsuario.setText("Salvar");
+        btnSalvarUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSalvarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarUsuarioActionPerformed(evt);
@@ -143,6 +146,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         btnCancelarUsuario.setBackground(new java.awt.Color(204, 204, 204));
         btnCancelarUsuario.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnCancelarUsuario.setText("Cancelar");
+        btnCancelarUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancelarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarUsuarioActionPerformed(evt);
@@ -152,6 +156,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         btnExcluirUsuario.setBackground(new java.awt.Color(204, 204, 204));
         btnExcluirUsuario.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnExcluirUsuario.setText("Excluir");
+        btnExcluirUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnExcluirUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirUsuarioActionPerformed(evt);
@@ -161,6 +166,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         btnEditarUsuario.setBackground(new java.awt.Color(204, 204, 204));
         btnEditarUsuario.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnEditarUsuario.setText("Editar");
+        btnEditarUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEditarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarUsuarioActionPerformed(evt);
@@ -176,6 +182,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         btnPesquisarUsuario.setBackground(new java.awt.Color(204, 204, 204));
         btnPesquisarUsuario.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnPesquisarUsuario.setText("Pesquisar");
+        btnPesquisarUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPesquisarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPesquisarUsuarioActionPerformed(evt);
@@ -185,6 +192,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         btnNovoUsuario.setBackground(new java.awt.Color(204, 204, 204));
         btnNovoUsuario.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnNovoUsuario.setText("Novo");
+        btnNovoUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnNovoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNovoUsuarioActionPerformed(evt);
@@ -275,7 +283,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel8)))
-                .addGap(25, 25, 25)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cbPerfilUsuario)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
@@ -292,7 +300,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtSenhaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(20, 20, 20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -303,7 +311,7 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
                     .addComponent(btnNovoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

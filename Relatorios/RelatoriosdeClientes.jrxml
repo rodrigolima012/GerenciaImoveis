@@ -61,36 +61,36 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="2" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="80" splitType="Stretch">
 			<staticText>
-				<reportElement x="332" y="2" width="223" height="35" uuid="f7748aad-0bca-44b7-97f8-26b6570ac64d"/>
+				<reportElement x="332" y="1" width="223" height="35" uuid="f7748aad-0bca-44b7-97f8-26b6570ac64d"/>
 				<textElement>
 					<font size="22"/>
 				</textElement>
 				<text><![CDATA[Relatorios de Clientes]]></text>
 			</staticText>
 			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement x="429" y="59" width="136" height="20" uuid="3257e270-d43a-4268-a713-4772aabdaf44"/>
+				<reportElement x="429" y="58" width="136" height="20" uuid="3257e270-d43a-4268-a713-4772aabdaf44"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<image>
-				<reportElement x="0" y="0" width="153" height="77" uuid="ed781756-1e06-4b71-9e8e-bec852d3cc56"/>
+				<reportElement x="0" y="1" width="153" height="77" uuid="ed781756-1e06-4b71-9e8e-bec852d3cc56"/>
 				<imageExpression><![CDATA["C:\\Users\\rodrigolima\\Dropbox\\My PC (NBCATI002687)\\Desktop\\Faculdade\\Imegens Projeto\\Logo.JPG"]]></imageExpression>
 			</image>
 		</band>
-	</title>
-	<pageHeader>
-		<band height="6" splitType="Stretch">
-			<line>
-				<reportElement x="0" y="0" width="555" height="1" uuid="de4fbad8-9a67-4b94-96bc-99a220793cb1"/>
-			</line>
-		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="5" splitType="Stretch"/>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="c3674790-46f1-478f-a4bd-dc64028fd251"/>
+			</line>
+		</band>
 	</columnHeader>
 	<detail>
-		<band height="213" splitType="Stretch">
+		<band height="212" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="1" width="100" height="20" uuid="78e057bb-b548-4d1e-8af2-ccf287d403e5"/>
 				<textElement>

@@ -121,6 +121,7 @@ public class TelaGerarContrato extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("FR - Gerenciador de Imoveis - Gerar Contrato");
         setPreferredSize(new java.awt.Dimension(872, 549));
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -157,6 +158,7 @@ public class TelaGerarContrato extends javax.swing.JFrame {
         btnPesquisarCliente.setBackground(new java.awt.Color(204, 204, 204));
         btnPesquisarCliente.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnPesquisarCliente.setText("Pesquisar");
+        btnPesquisarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPesquisarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPesquisarClienteActionPerformed(evt);
@@ -227,6 +229,7 @@ public class TelaGerarContrato extends javax.swing.JFrame {
         btnPesquisarImovel.setBackground(new java.awt.Color(204, 204, 204));
         btnPesquisarImovel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnPesquisarImovel.setText("Pesquisar");
+        btnPesquisarImovel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPesquisarImovel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPesquisarImovelActionPerformed(evt);
@@ -260,6 +263,7 @@ public class TelaGerarContrato extends javax.swing.JFrame {
         btnNovoContrato.setBackground(new java.awt.Color(204, 204, 204));
         btnNovoContrato.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnNovoContrato.setText("Novo");
+        btnNovoContrato.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnNovoContrato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNovoContratoActionPerformed(evt);
@@ -269,6 +273,7 @@ public class TelaGerarContrato extends javax.swing.JFrame {
         btnSalvarContrato.setBackground(new java.awt.Color(204, 204, 204));
         btnSalvarContrato.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnSalvarContrato.setText("Salvar");
+        btnSalvarContrato.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSalvarContrato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarContratoActionPerformed(evt);
@@ -278,6 +283,7 @@ public class TelaGerarContrato extends javax.swing.JFrame {
         btnCancelarContrato.setBackground(new java.awt.Color(204, 204, 204));
         btnCancelarContrato.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnCancelarContrato.setText("Cancelar");
+        btnCancelarContrato.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancelarContrato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarContratoActionPerformed(evt);

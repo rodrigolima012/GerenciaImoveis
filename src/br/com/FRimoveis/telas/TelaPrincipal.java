@@ -22,6 +22,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     ConexaoBD conexao = new ConexaoBD();
     TelaLogin login = new TelaLogin();
+    TelaCadastroImoveis cadastroImoveis = new TelaCadastroImoveis();
+    TelaCadastroPessoas cadastropessoa = new TelaCadastroPessoas();
+    TelaCadastroUsuarios cadastrousuario = new TelaCadastroUsuarios();
+    TelaConsultarContrato telaConsultar = new TelaConsultarContrato();
+    TelaGerarContrato contrato = new TelaGerarContrato();
+    TelaSobre sobre = new TelaSobre();
 
     /**
      * Creates new form TelaInical
@@ -30,6 +36,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         initComponents();
         setIcon();
         login.dispose();
+        setExtendedState(MAXIMIZED_BOTH);
     }
 
     /**
@@ -51,6 +58,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuContratos = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
         menuRelatorios = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
@@ -58,13 +66,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuRecibo = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         menuOpcoes = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
         MenuSair = new javax.swing.JMenuItem();
         menuAjuda = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("FR - Gerenciador de Imoveis - Inicial");
-        setResizable(false);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(24, 768));
@@ -76,24 +84,29 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(262, 262, 262)
+                .addContainerGap(254, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(262, Short.MAX_VALUE))
+                .addContainerGap(254, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(100, 100, 100)
+                .addContainerGap(80, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
-        jMenuBar1.setBackground(new java.awt.Color(153, 255, 255));
+        jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
+        jMenuBar1.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
         menuCadastro.setText("Cadastro");
+        menuCadastro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuCadastro.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
         menuPessoas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK));
+        menuPessoas.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         menuPessoas.setText("Clientes");
+        menuPessoas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuPessoas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuPessoasActionPerformed(evt);
@@ -102,7 +115,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuCadastro.add(menuPessoas);
 
         menuImoveis.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.ALT_MASK));
+        menuImoveis.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         menuImoveis.setText("Imoveis");
+        menuImoveis.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuImoveis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuImoveisActionPerformed(evt);
@@ -111,7 +126,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuCadastro.add(menuImoveis);
 
         menuUsuarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.ALT_MASK));
+        menuUsuarios.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         menuUsuarios.setText("Usuarios");
+        menuUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuUsuarios.setEnabled(false);
         menuUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,8 +140,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(menuCadastro);
 
         menuContratos.setText("Contratos");
+        menuContratos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuContratos.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItem1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jMenuItem1.setText("Gerar Contrato");
+        jMenuItem1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -132,7 +154,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         menuContratos.add(jMenuItem1);
 
+        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_W, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItem3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jMenuItem3.setText("Consultar Contrato");
+        jMenuItem3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem3ActionPerformed(evt);
@@ -142,10 +167,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(menuContratos);
 
+        jMenu1.setText("Financiero");
+        jMenu1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jMenuBar1.add(jMenu1);
+
         menuRelatorios.setText("Relatorios");
+        menuRelatorios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuRelatorios.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
         jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItem6.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jMenuItem6.setText("Clientes");
+        jMenuItem6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenuItem6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenuItem6MouseClicked(evt);
@@ -159,7 +192,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuRelatorios.add(jMenuItem6);
 
         jMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItem7.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jMenuItem7.setText("Imoveis");
+        jMenuItem7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem7ActionPerformed(evt);
@@ -168,22 +203,43 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuRelatorios.add(jMenuItem7);
 
         jMenuItem8.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItem8.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jMenuItem8.setText("Contratos");
+        jMenuItem8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuRelatorios.add(jMenuItem8);
 
         jMenuBar1.add(menuRelatorios);
 
         menuRecibo.setText("Recibo");
+        menuRecibo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuRecibo.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItem2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jMenuItem2.setText("Gerar Recibo");
+        jMenuItem2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuRecibo.add(jMenuItem2);
 
         jMenuBar1.add(menuRecibo);
 
         menuOpcoes.setText("Opções");
+        menuOpcoes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuOpcoes.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+
+        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItem4.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jMenuItem4.setText("Fale Conosco");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        menuOpcoes.add(jMenuItem4);
 
         MenuSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK));
+        MenuSair.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         MenuSair.setText("Sair");
+        MenuSair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         MenuSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuSairActionPerformed(evt);
@@ -194,8 +250,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(menuOpcoes);
 
         menuAjuda.setText("Ajuda");
+        menuAjuda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuAjuda.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
+        jMenuItem9.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItem9.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jMenuItem9.setText("Sobre");
+        jMenuItem9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem9ActionPerformed(evt);
@@ -223,9 +284,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuPessoasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPessoasActionPerformed
-        TelaCadastroPessoas cadastropessoa = new TelaCadastroPessoas();
-        cadastropessoa.setVisible(true);
-        // TODO add your handling code here:
+        if (!cadastropessoa.isVisible()) {
+            cadastropessoa.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Tela já esta aberta!");
+        }
     }//GEN-LAST:event_menuPessoasActionPerformed
 
     private void MenuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSairActionPerformed
@@ -237,20 +300,27 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuSairActionPerformed
 
     private void menuUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuUsuariosActionPerformed
-        TelaCadastroUsuarios cadastrousuario = new TelaCadastroUsuarios();
-        cadastrousuario.setVisible(true);
+        if (!cadastrousuario.isVisible()) {
+            cadastrousuario.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Tela já esta aberta!");
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_menuUsuariosActionPerformed
 
     private void menuImoveisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuImoveisActionPerformed
-        TelaCadastroImoveis cadastroImoveis = new TelaCadastroImoveis();
-        cadastroImoveis.setVisible(true);
-        // TODO add your handling code here:
+        if (!cadastroImoveis.isVisible()) {
+            cadastroImoveis.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Tela já esta aberta!");
+        }
     }//GEN-LAST:event_menuImoveisActionPerformed
-
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        TelaConsultarContrato telaConsultar = new TelaConsultarContrato();
-        telaConsultar.setVisible(true);
+        if (!telaConsultar.isVisible()) {
+            telaConsultar.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Tela já esta aberta!");
+        }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem6MouseClicked
@@ -269,7 +339,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Erro ao abrir o Relatorio de Cliente!\n" + e.getMessage());
         }
         conexao.desconectar();
-// TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
@@ -285,24 +354,32 @@ public class TelaPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Erro ao abrir o Relatorio de Imovel!\n" + e.getMessage());
         }
         conexao.desconectar();
-        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        TelaGerarContrato contrato = new TelaGerarContrato();
-        contrato.setVisible(true);
-        // TODO add your handling code here:
+        if (!contrato.isVisible()) {
+            contrato.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Tela já esta aberta!");
+        }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-        TelaSobre sobre = new TelaSobre();
-        sobre.setVisible(true);
-            // TODO add your handling code here:
+        if (!sobre.isVisible()) {
+            sobre.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Tela já esta aberta!");
+        }
     }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     public void setIcon() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/IconeSistema/IconeSistema.png")));
     }
+
     /**
      * @param args the command line arguments
      */
@@ -342,10 +419,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem MenuSair;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;

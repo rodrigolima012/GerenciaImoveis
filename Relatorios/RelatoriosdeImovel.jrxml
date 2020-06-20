@@ -37,16 +37,19 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="4" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="82" splitType="Stretch">
 			<staticText>
-				<reportElement x="351" y="2" width="204" height="35" uuid="f7748aad-0bca-44b7-97f8-26b6570ac64d"/>
+				<reportElement x="351" y="0" width="204" height="35" uuid="f7748aad-0bca-44b7-97f8-26b6570ac64d"/>
 				<textElement>
 					<font size="22"/>
 				</textElement>
 				<text><![CDATA[Relatorios de Imovel]]></text>
 			</staticText>
 			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement x="429" y="59" width="136" height="20" uuid="3257e270-d43a-4268-a713-4772aabdaf44"/>
+				<reportElement x="429" y="57" width="136" height="20" uuid="3257e270-d43a-4268-a713-4772aabdaf44"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<image>
@@ -54,16 +57,13 @@
 				<imageExpression><![CDATA["C:\\Users\\rodrigolima\\Dropbox\\My PC (NBCATI002687)\\Desktop\\Faculdade\\Imegens Projeto\\Logo.JPG"]]></imageExpression>
 			</image>
 		</band>
-	</title>
-	<pageHeader>
-		<band height="6" splitType="Stretch">
-			<line>
-				<reportElement x="0" y="0" width="555" height="1" uuid="de4fbad8-9a67-4b94-96bc-99a220793cb1"/>
-			</line>
-		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="5" splitType="Stretch"/>
+		<band height="5" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="b5d3e050-3209-4408-9752-fa4dec27a106"/>
+			</line>
+		</band>
 	</columnHeader>
 	<detail>
 		<band height="107" splitType="Stretch">
