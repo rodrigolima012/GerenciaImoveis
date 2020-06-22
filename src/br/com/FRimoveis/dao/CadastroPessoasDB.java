@@ -180,8 +180,7 @@ public class CadastroPessoasDB {
     public void setClienteDados(String dados) {
         pessoa = new CadastroPessoas();
         connectarBanco.conectar();
-        String sql = ("select * from tbpessoas where idpessoa = '" + dados + "'");
-        connectarBanco.executaSql(sql);
+        connectarBanco.executaSql("select * from tbpessoas where idpessoa = '" + dados + "'");
         try {
             connectarBanco.rs.first();
             pessoa.setIdpessoa(connectarBanco.rs.getString("idpessoa"));

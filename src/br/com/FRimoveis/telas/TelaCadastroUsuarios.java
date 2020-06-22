@@ -340,53 +340,54 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void btnSalvarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarUsuarioActionPerformed
-        if (update_sel == 1) {
-            cadastroUsuarios.setPerfilUsuario(cbPerfilUsuario.getSelectedItem().toString());
-            cadastroUsuarios.setNomeUsuario(txtNomeUsuario.getText());
-            cadastroUsuarios.setLoginUsuario(txtLoginUsuario.getText());
-            cadastroUsuarios.setSenhaUsuario(txtSenhaUsuario.getText());
-            // fazendo a validação dos dados
-            if ((cbPerfilUsuario.getSelectedItem().toString().isEmpty()) || (txtNomeUsuario.getText().isEmpty()) || (txtLoginUsuario.getText().isEmpty()) || (txtSenhaUsuario.getText().isEmpty())) {
-                JOptionPane.showMessageDialog(null, "Os campos não podem retornar vazios");
-            } else {
-                // instanciando a classe UsuarioDAO do pacote dao e criando seu objeto dao
-                cadastroUsuariosDB.adiciona(cadastroUsuarios);
-                JOptionPane.showMessageDialog(null, "Usuário " + txtNomeUsuario.getText() + " inserido com sucesso! ");
-                String sql = cadastroUsuariosDB.atualizarTabela();
-                dadosTabela(sql);
-            }
-            cbPerfilUsuario.setSelectedItem("");
-            txtNomeUsuario.setText("");
-            txtLoginUsuario.setText("");
-            txtSenhaUsuario.setText("");
-        } else {
-            cadastroUsuarios.setIdUsuario(txtIDUsuario.getText());
-            cadastroUsuarios.setPerfilUsuario(cbPerfilUsuario.getSelectedItem().toString());
-            cadastroUsuarios.setNomeUsuario(txtNomeUsuario.getText());
-            cadastroUsuarios.setLoginUsuario(txtLoginUsuario.getText());
-            cadastroUsuarios.setSenhaUsuario(txtSenhaUsuario.getText());
-            cadastroUsuariosDB.editarUsuario(cadastroUsuarios);
-            txtIDUsuario.setText("");
-            txtNomeUsuario.setText("");
-            txtLoginUsuario.setText("");
-            txtSenhaUsuario.setText("");
-            txtBuscarUsuario.setText("");
-            cbPerfilUsuario.setSelectedItem("");
-            txtIDUsuario.setEnabled(false);
-            txtLoginUsuario.setEnabled(false);
-            txtNomeUsuario.setEnabled(false);
-            txtSenhaUsuario.setEnabled(false);
-            cbPerfilUsuario.setEnabled(false);
-            txtBuscarUsuario.setEnabled(true);
-            btnCancelarUsuario.setEnabled(false);
-            btnEditarUsuario.setEnabled(false);
-            btnExcluirUsuario.setEnabled(false);
-            btnSalvarUsuario.setEnabled(false);
-            btnNovoUsuario.setEnabled(true);
-            btnPesquisarUsuario.setEnabled(true);
-            String sql = cadastroUsuariosDB.atualizarTabela();
-            dadosTabela(sql);
+        switch (update_sel) {
+            case 1:
+                cadastroUsuarios.setPerfilUsuario(cbPerfilUsuario.getSelectedItem().toString());
+                cadastroUsuarios.setNomeUsuario(txtNomeUsuario.getText());
+                cadastroUsuarios.setLoginUsuario(txtLoginUsuario.getText());
+                cadastroUsuarios.setSenhaUsuario(txtSenhaUsuario.getText());
+                if ((cbPerfilUsuario.getSelectedItem().toString().isEmpty()) || (txtNomeUsuario.getText().isEmpty()) || (txtLoginUsuario.getText().isEmpty()) || (txtSenhaUsuario.getText().isEmpty())) {
+                    JOptionPane.showMessageDialog(null, "Os campos não podem retornar vazios");
+                } else {
+                    cadastroUsuariosDB.adiciona(cadastroUsuarios);
+                    JOptionPane.showMessageDialog(null, "Usuário " + txtNomeUsuario.getText() + " inserido com sucesso! ");
+                }
+                cbPerfilUsuario.setSelectedItem("");
+                txtNomeUsuario.setText("");
+                txtLoginUsuario.setText("");
+                txtSenhaUsuario.setText("");
+
+                break;
+            case 2:
+                cadastroUsuarios.setIdUsuario(txtIDUsuario.getText());
+                cadastroUsuarios.setPerfilUsuario(cbPerfilUsuario.getSelectedItem().toString());
+                cadastroUsuarios.setNomeUsuario(txtNomeUsuario.getText());
+                cadastroUsuarios.setLoginUsuario(txtLoginUsuario.getText());
+                cadastroUsuarios.setSenhaUsuario(txtSenhaUsuario.getText());
+                cadastroUsuariosDB.editarUsuario(cadastroUsuarios);
+                txtIDUsuario.setText("");
+                txtNomeUsuario.setText("");
+                txtLoginUsuario.setText("");
+                txtSenhaUsuario.setText("");
+                txtBuscarUsuario.setText("");
+                cbPerfilUsuario.setSelectedItem("");
+                txtIDUsuario.setEnabled(false);
+                txtLoginUsuario.setEnabled(false);
+                txtNomeUsuario.setEnabled(false);
+                txtSenhaUsuario.setEnabled(false);
+                cbPerfilUsuario.setEnabled(false);
+                txtBuscarUsuario.setEnabled(true);
+                btnCancelarUsuario.setEnabled(false);
+                btnEditarUsuario.setEnabled(false);
+                btnExcluirUsuario.setEnabled(false);
+                btnSalvarUsuario.setEnabled(false);
+                btnNovoUsuario.setEnabled(true);
+                btnPesquisarUsuario.setEnabled(true);
+
+                break;
         }
+        String sql = cadastroUsuariosDB.atualizarTabela();
+        dadosTabela(sql);
     }//GEN-LAST:event_btnSalvarUsuarioActionPerformed
 
     private void btnEditarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarUsuarioActionPerformed
@@ -503,11 +504,11 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirUsuarioActionPerformed
 
     private void jTUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTUsuariosMouseClicked
-        String nome_usuario = "" + jTUsuarios.getValueAt(jTUsuarios.getSelectedRow(), 0);        
+        String nome_usuario = "" + jTUsuarios.getValueAt(jTUsuarios.getSelectedRow(), 0);
         cadastroUsuariosDB.setDadosUsuario(nome_usuario);
-        
+
         cadastroUsuarios = cadastroUsuariosDB.getUsuarios();
-        
+
         txtIDUsuario.setText(cadastroUsuarios.getIdUsuario());
         cbPerfilUsuario.setSelectedItem(cadastroUsuarios.getPerfilUsuario());
         txtNomeUsuario.setText(cadastroUsuarios.getNomeUsuario());

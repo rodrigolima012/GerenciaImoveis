@@ -66,11 +66,11 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         cbPerfilPessoa.addItem("LOCATARIO");
         cbPerfilPessoa.addItem("LOCADOR");
 
-        MaskFormatter dataNasc = null;
-        MaskFormatter cep = null;
-        MaskFormatter fone = null;
-        MaskFormatter foner1 = null;
-        MaskFormatter foner2 = null;
+        MaskFormatter dataNasc;
+        MaskFormatter cep;
+        MaskFormatter fone;
+        MaskFormatter foner1;
+        MaskFormatter foner2;
 
         try {
             txtDataNasc.setValue(null);
@@ -673,262 +673,265 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNovoPessoaActionPerformed
 
     private void btnSalvarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarPessoaActionPerformed
-        if (update_sel == 1) {
-            if (rbPessoaFisica.isSelected()) {
-                if ((cbPerfilPessoa.getSelectedItem().toString().isEmpty()) || (txtNomePessoa.getText().isEmpty()) || (txtcpfcnpj.getText().isEmpty())
-                        || (txtDataNasc.getText().isEmpty()) || (txtEnderecoPessoa.getText().isEmpty()) || (txtBairroPessoa.getText().isEmpty()) || (txtNumeroCasaPessoa.getText().isEmpty())
-                        || (txtCepPessoa.getText().isEmpty()) || (txtTelefonePessoa.getText().isEmpty()) || (txtEmailPessoa.getText().isEmpty()) || (txtReferencia1Nome.getText().isEmpty())
-                        || (txtReferencia1Telefone.getText().isEmpty()) || (txtReferencia2Nome.getText().isEmpty()) || (txtReferencia2Telefone.getText().isEmpty())) {
-                    JOptionPane.showMessageDialog(null, "Favor Preencher os campos Obrigatorios!");
-                } else {
-                    cadastroPessoas.setPerfil(cbPerfilPessoa.getSelectedItem().toString());
-                    cadastroPessoas.setNomeCliente(txtNomePessoa.getText());
-                    cadastroPessoas.setCnpjcpf(txtcpfcnpj.getText());
+        switch (update_sel) {
+            case 1:
+                if (rbPessoaFisica.isSelected()) {
+                    if ((cbPerfilPessoa.getSelectedItem().toString().isEmpty()) || (txtNomePessoa.getText().isEmpty()) || (txtcpfcnpj.getText().isEmpty())
+                            || (txtDataNasc.getText().isEmpty()) || (txtEnderecoPessoa.getText().isEmpty()) || (txtBairroPessoa.getText().isEmpty()) || (txtNumeroCasaPessoa.getText().isEmpty())
+                            || (txtCepPessoa.getText().isEmpty()) || (txtTelefonePessoa.getText().isEmpty()) || (txtEmailPessoa.getText().isEmpty()) || (txtReferencia1Nome.getText().isEmpty())
+                            || (txtReferencia1Telefone.getText().isEmpty()) || (txtReferencia2Nome.getText().isEmpty()) || (txtReferencia2Telefone.getText().isEmpty())) {
+                        JOptionPane.showMessageDialog(null, "Favor Preencher os campos Obrigatorios!");
+                    } else {
+                        cadastroPessoas.setPerfil(cbPerfilPessoa.getSelectedItem().toString());
+                        cadastroPessoas.setNomeCliente(txtNomePessoa.getText());
+                        cadastroPessoas.setCnpjcpf(txtcpfcnpj.getText());
 
-                    String dataNasc = txtDataNasc.getText();
-                    SimpleDateFormat out = new SimpleDateFormat("yyyy-MM-dd");
-                    SimpleDateFormat in = new SimpleDateFormat("dd/MM/yyyy");
-                    try {
-                        String result = out.format(in.parse(dataNasc));
-                        cadastroPessoas.setDataNasc(result);
-                    } catch (ParseException ex) {
-                        Logger.getLogger(TelaCadastroPessoas.class.getName()).log(Level.SEVERE, null, ex);
+                        String dataNasc = txtDataNasc.getText();
+                        SimpleDateFormat out = new SimpleDateFormat("yyyy-MM-dd");
+                        SimpleDateFormat in = new SimpleDateFormat("dd/MM/yyyy");
+                        try {
+                            String result = out.format(in.parse(dataNasc));
+                            cadastroPessoas.setDataNasc(result);
+                        } catch (ParseException ex) {
+                            Logger.getLogger(TelaCadastroPessoas.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        cadastroPessoas.setEnderecoPessoa(txtEnderecoPessoa.getText());
+                        cadastroPessoas.setBairroPessoa(txtBairroPessoa.getText());
+                        cadastroPessoas.setNumeroCasa(txtNumeroCasaPessoa.getText());
+                        cadastroPessoas.setCepPessoa(txtCepPessoa.getText());
+                        cadastroPessoas.setTelefonePessoa(txtTelefonePessoa.getText());
+                        cadastroPessoas.setEmailPessoa(txtEmailPessoa.getText());
+                        cadastroPessoas.setReferencia01(txtReferencia1Nome.getText());
+                        cadastroPessoas.setTelefonereferencia01(txtReferencia1Telefone.getText());
+                        cadastroPessoas.setReferencia02(txtReferencia2Nome.getText());
+                        cadastroPessoas.setTelefonereferencia02(txtReferencia2Telefone.getText());
+
+                        cadastroPessoasDB.adicionaFisica(cadastroPessoas);
+                        JOptionPane.showMessageDialog(null, "Cliente, " + txtNomePessoa.getText() + " inserido com sucesso! ");
+                        limparCampos();
+
+                        rbPessoaFisica.setEnabled(false);
+                        rbPessoaJuridica.setEnabled(false);
+                        txtIDpessoa.setEnabled(false);
+                        cbPerfilPessoa.setEnabled(false);
+                        txtNomePessoa.setEnabled(false);
+                        txtNomeFantasia.setEnabled(false);
+                        txtcpfcnpj.setEnabled(false);
+                        txtInscricaoEstadual.setEnabled(false);
+                        txtDataNasc.setEnabled(false);
+                        txtEnderecoPessoa.setEnabled(false);
+                        txtBairroPessoa.setEnabled(false);
+                        txtNumeroCasaPessoa.setEnabled(false);
+                        txtCepPessoa.setEnabled(false);
+                        txtTelefonePessoa.setEnabled(false);
+                        txtEmailPessoa.setEnabled(false);
+                        txtReferencia1Nome.setEnabled(false);
+                        txtReferencia1Telefone.setEnabled(false);
+                        txtReferencia2Nome.setEnabled(false);
+                        txtReferencia2Telefone.setEnabled(false);
+                        btnSalvarPessoa.setEnabled(false);
+                        btnCancelarPessoa.setEnabled(false);
+                        btnExcluirPessoa.setEnabled(false);
+                        btnEditarPessoa.setEnabled(false);
                     }
-                    cadastroPessoas.setEnderecoPessoa(txtEnderecoPessoa.getText());
-                    cadastroPessoas.setBairroPessoa(txtBairroPessoa.getText());
-                    cadastroPessoas.setNumeroCasa(txtNumeroCasaPessoa.getText());
-                    cadastroPessoas.setCepPessoa(txtCepPessoa.getText());
-                    cadastroPessoas.setTelefonePessoa(txtTelefonePessoa.getText());
-                    cadastroPessoas.setEmailPessoa(txtEmailPessoa.getText());
-                    cadastroPessoas.setReferencia01(txtReferencia1Nome.getText());
-                    cadastroPessoas.setTelefonereferencia01(txtReferencia1Telefone.getText());
-                    cadastroPessoas.setReferencia02(txtReferencia2Nome.getText());
-                    cadastroPessoas.setTelefonereferencia02(txtReferencia2Telefone.getText());
 
-                    cadastroPessoasDB.adicionaFisica(cadastroPessoas);
-                    JOptionPane.showMessageDialog(null, "Cliente, " + txtNomePessoa.getText() + " inserido com sucesso! ");
-                    limparCampos();
+                } else if (rbPessoaJuridica.isSelected()) {
+                    if ((cbPerfilPessoa.getSelectedItem().toString().isEmpty()) || (txtNomePessoa.getText().isEmpty()) || (txtcpfcnpj.getText().isEmpty())
+                            || (txtDataNasc.getText().isEmpty()) || (txtEnderecoPessoa.getText().isEmpty()) || (txtBairroPessoa.getText().isEmpty()) || (txtNumeroCasaPessoa.getText().isEmpty())
+                            || (txtCepPessoa.getText().isEmpty()) || (txtTelefonePessoa.getText().isEmpty()) || (txtEmailPessoa.getText().isEmpty()) || (txtReferencia1Nome.getText().isEmpty())
+                            || (txtReferencia1Telefone.getText().isEmpty()) || (txtReferencia2Nome.getText().isEmpty()) || (txtReferencia2Telefone.getText().isEmpty()) || (txtNomeFantasia.getText().isEmpty())
+                            || (txtInscricaoEstadual.getText().isEmpty())) {
+                        JOptionPane.showMessageDialog(null, "Favor Preencher os campos Obrigatorios!");
+                    } else {
+                        cadastroPessoas.setPerfil(cbPerfilPessoa.getSelectedItem().toString());
+                        cadastroPessoas.setNomeCliente(txtNomePessoa.getText());
+                        cadastroPessoas.setNomeFantasia(txtNomeFantasia.getText());
+                        cadastroPessoas.setCnpjcpf(txtcpfcnpj.getText());
+                        cadastroPessoas.setInscEstadual(txtInscricaoEstadual.getText());
 
-                    rbPessoaFisica.setEnabled(false);
-                    rbPessoaJuridica.setEnabled(false);
-                    txtIDpessoa.setEnabled(false);
-                    cbPerfilPessoa.setEnabled(false);
-                    txtNomePessoa.setEnabled(false);
-                    txtNomeFantasia.setEnabled(false);
-                    txtcpfcnpj.setEnabled(false);
-                    txtInscricaoEstadual.setEnabled(false);
-                    txtDataNasc.setEnabled(false);
-                    txtEnderecoPessoa.setEnabled(false);
-                    txtBairroPessoa.setEnabled(false);
-                    txtNumeroCasaPessoa.setEnabled(false);
-                    txtCepPessoa.setEnabled(false);
-                    txtTelefonePessoa.setEnabled(false);
-                    txtEmailPessoa.setEnabled(false);
-                    txtReferencia1Nome.setEnabled(false);
-                    txtReferencia1Telefone.setEnabled(false);
-                    txtReferencia2Nome.setEnabled(false);
-                    txtReferencia2Telefone.setEnabled(false);
-                    btnSalvarPessoa.setEnabled(false);
-                    btnCancelarPessoa.setEnabled(false);
-                    btnExcluirPessoa.setEnabled(false);
-                    btnEditarPessoa.setEnabled(false);
-                }
+                        String dataNasc = txtDataNasc.getText();
+                        SimpleDateFormat out = new SimpleDateFormat("yyyy-MM-dd");
+                        SimpleDateFormat in = new SimpleDateFormat("dd/MM/yyyy");
+                        try {
+                            String result = out.format(in.parse(dataNasc));
+                            cadastroPessoas.setDataNasc(result);
+                        } catch (ParseException ex) {
+                            Logger.getLogger(TelaCadastroPessoas.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        cadastroPessoas.setEnderecoPessoa(txtEnderecoPessoa.getText());
+                        cadastroPessoas.setBairroPessoa(txtBairroPessoa.getText());
+                        cadastroPessoas.setNumeroCasa(txtNumeroCasaPessoa.getText());
+                        cadastroPessoas.setCepPessoa(txtCepPessoa.getText());
+                        cadastroPessoas.setTelefonePessoa(txtTelefonePessoa.getText());
+                        cadastroPessoas.setEmailPessoa(txtEmailPessoa.getText());
+                        cadastroPessoas.setReferencia01(txtReferencia1Nome.getText());
+                        cadastroPessoas.setTelefonereferencia01(txtReferencia1Telefone.getText());
+                        cadastroPessoas.setReferencia02(txtReferencia2Nome.getText());
+                        cadastroPessoas.setTelefonereferencia02(txtReferencia2Telefone.getText());
 
-            } else if (rbPessoaJuridica.isSelected()) {
-                if ((cbPerfilPessoa.getSelectedItem().toString().isEmpty()) || (txtNomePessoa.getText().isEmpty()) || (txtcpfcnpj.getText().isEmpty())
-                        || (txtDataNasc.getText().isEmpty()) || (txtEnderecoPessoa.getText().isEmpty()) || (txtBairroPessoa.getText().isEmpty()) || (txtNumeroCasaPessoa.getText().isEmpty())
-                        || (txtCepPessoa.getText().isEmpty()) || (txtTelefonePessoa.getText().isEmpty()) || (txtEmailPessoa.getText().isEmpty()) || (txtReferencia1Nome.getText().isEmpty())
-                        || (txtReferencia1Telefone.getText().isEmpty()) || (txtReferencia2Nome.getText().isEmpty()) || (txtReferencia2Telefone.getText().isEmpty()) || (txtNomeFantasia.getText().isEmpty())
-                        || (txtInscricaoEstadual.getText().isEmpty())) {
-                    JOptionPane.showMessageDialog(null, "Favor Preencher os campos Obrigatorios!");
-                } else {
-                    cadastroPessoas.setPerfil(cbPerfilPessoa.getSelectedItem().toString());
-                    cadastroPessoas.setNomeCliente(txtNomePessoa.getText());
-                    cadastroPessoas.setNomeFantasia(txtNomeFantasia.getText());
-                    cadastroPessoas.setCnpjcpf(txtcpfcnpj.getText());
-                    cadastroPessoas.setInscEstadual(txtInscricaoEstadual.getText());
-                    
-                    String dataNasc = txtDataNasc.getText();
-                    SimpleDateFormat out = new SimpleDateFormat("yyyy-MM-dd");
-                    SimpleDateFormat in = new SimpleDateFormat("dd/MM/yyyy");
-                    try {
-                        String result = out.format(in.parse(dataNasc));
-                        cadastroPessoas.setDataNasc(result);
-                    } catch (ParseException ex) {
-                        Logger.getLogger(TelaCadastroPessoas.class.getName()).log(Level.SEVERE, null, ex);
+                        cadastroPessoasDB.adicionaJuridica(cadastroPessoas);
+                        JOptionPane.showMessageDialog(null, "Cliente, " + txtNomePessoa.getText() + " inserido com sucesso! ");
+
+                        limparCampos();
+
+                        rbPessoaFisica.setEnabled(false);
+                        rbPessoaJuridica.setEnabled(false);
+                        txtIDpessoa.setEnabled(false);
+                        cbPerfilPessoa.setEnabled(false);
+                        txtNomePessoa.setEnabled(false);
+                        txtNomeFantasia.setEnabled(false);
+                        txtcpfcnpj.setEnabled(false);
+                        txtInscricaoEstadual.setEnabled(false);
+                        txtDataNasc.setEnabled(false);
+                        txtEnderecoPessoa.setEnabled(false);
+                        txtBairroPessoa.setEnabled(false);
+                        txtNumeroCasaPessoa.setEnabled(false);
+                        txtCepPessoa.setEnabled(false);
+                        txtTelefonePessoa.setEnabled(false);
+                        txtReferencia1Nome.setEnabled(false);
+                        txtEmailPessoa.setEnabled(false);
+                        txtReferencia1Telefone.setEnabled(false);
+                        txtReferencia2Nome.setEnabled(false);
+                        txtReferencia2Telefone.setEnabled(false);
+                        btnSalvarPessoa.setEnabled(false);
+                        btnCancelarPessoa.setEnabled(false);
+                        btnExcluirPessoa.setEnabled(false);
+                        btnEditarPessoa.setEnabled(false);
                     }
-                    cadastroPessoas.setEnderecoPessoa(txtEnderecoPessoa.getText());
-                    cadastroPessoas.setBairroPessoa(txtBairroPessoa.getText());
-                    cadastroPessoas.setNumeroCasa(txtNumeroCasaPessoa.getText());
-                    cadastroPessoas.setCepPessoa(txtCepPessoa.getText());
-                    cadastroPessoas.setTelefonePessoa(txtTelefonePessoa.getText());
-                    cadastroPessoas.setEmailPessoa(txtEmailPessoa.getText());
-                    cadastroPessoas.setReferencia01(txtReferencia1Nome.getText());
-                    cadastroPessoas.setTelefonereferencia01(txtReferencia1Telefone.getText());
-                    cadastroPessoas.setReferencia02(txtReferencia2Nome.getText());
-                    cadastroPessoas.setTelefonereferencia02(txtReferencia2Telefone.getText());
-
-                    cadastroPessoasDB.adicionaJuridica(cadastroPessoas);
-                    JOptionPane.showMessageDialog(null, "Cliente, " + txtNomePessoa.getText() + " inserido com sucesso! ");
-
-                    limparCampos();
-
-                    rbPessoaFisica.setEnabled(false);
-                    rbPessoaJuridica.setEnabled(false);
-                    txtIDpessoa.setEnabled(false);
-                    cbPerfilPessoa.setEnabled(false);
-                    txtNomePessoa.setEnabled(false);
-                    txtNomeFantasia.setEnabled(false);
-                    txtcpfcnpj.setEnabled(false);
-                    txtInscricaoEstadual.setEnabled(false);
-                    txtDataNasc.setEnabled(false);
-                    txtEnderecoPessoa.setEnabled(false);
-                    txtBairroPessoa.setEnabled(false);
-                    txtNumeroCasaPessoa.setEnabled(false);
-                    txtCepPessoa.setEnabled(false);
-                    txtTelefonePessoa.setEnabled(false);
-                    txtReferencia1Nome.setEnabled(false);
-                    txtEmailPessoa.setEnabled(false);
-                    txtReferencia1Telefone.setEnabled(false);
-                    txtReferencia2Nome.setEnabled(false);
-                    txtReferencia2Telefone.setEnabled(false);
-                    btnSalvarPessoa.setEnabled(false);
-                    btnCancelarPessoa.setEnabled(false);
-                    btnExcluirPessoa.setEnabled(false);
-                    btnEditarPessoa.setEnabled(false);
                 }
-            }
-        } else if (update_sel == 2) {
-            if (txtNomeFantasia.getText().isEmpty() || txtInscricaoEstadual.getText().isEmpty()) {
-                if ((cbPerfilPessoa.getSelectedItem().toString().isEmpty()) || (txtNomePessoa.getText().isEmpty()) || (txtcpfcnpj.getText().isEmpty())
-                        || (txtDataNasc.getText().isEmpty()) || (txtEnderecoPessoa.getText().isEmpty()) || (txtBairroPessoa.getText().isEmpty()) || (txtNumeroCasaPessoa.getText().isEmpty())
-                        || (txtCepPessoa.getText().isEmpty()) || (txtTelefonePessoa.getText().isEmpty()) || (txtEmailPessoa.getText().isEmpty()) || (txtReferencia1Nome.getText().isEmpty())
-                        || (txtReferencia1Telefone.getText().isEmpty()) || (txtReferencia2Nome.getText().isEmpty()) || (txtReferencia2Telefone.getText().isEmpty())) {
-                    JOptionPane.showMessageDialog(null, "Favor Preencher os campos Obrigatorios!");
-                } else {
-                    cadastroPessoas.setIdpessoa(txtIDpessoa.getText());
-                    cadastroPessoas.setPerfil(cbPerfilPessoa.getSelectedItem().toString());
-                    cadastroPessoas.setNomeCliente(txtNomePessoa.getText());
-                    cadastroPessoas.setNomeFantasia(txtNomeFantasia.getText());
-                    cadastroPessoas.setCnpjcpf(txtcpfcnpj.getText());
-                    cadastroPessoas.setInscEstadual(txtInscricaoEstadual.getText());
-                    
-                    String dataNasc = txtDataNasc.getText();
-                    SimpleDateFormat out = new SimpleDateFormat("yyyy-MM-dd");
-                    SimpleDateFormat in = new SimpleDateFormat("dd/MM/yyyy");
-                    try {
-                        String result = out.format(in.parse(dataNasc));
-                        cadastroPessoas.setDataNasc(result);
-                    } catch (ParseException ex) {
-                        Logger.getLogger(TelaCadastroPessoas.class.getName()).log(Level.SEVERE, null, ex);
+                break;
+            case 2:
+                if (txtNomeFantasia.getText().isEmpty() || txtInscricaoEstadual.getText().isEmpty()) {
+                    if ((cbPerfilPessoa.getSelectedItem().toString().isEmpty()) || (txtNomePessoa.getText().isEmpty()) || (txtcpfcnpj.getText().isEmpty())
+                            || (txtDataNasc.getText().isEmpty()) || (txtEnderecoPessoa.getText().isEmpty()) || (txtBairroPessoa.getText().isEmpty()) || (txtNumeroCasaPessoa.getText().isEmpty())
+                            || (txtCepPessoa.getText().isEmpty()) || (txtTelefonePessoa.getText().isEmpty()) || (txtEmailPessoa.getText().isEmpty()) || (txtReferencia1Nome.getText().isEmpty())
+                            || (txtReferencia1Telefone.getText().isEmpty()) || (txtReferencia2Nome.getText().isEmpty()) || (txtReferencia2Telefone.getText().isEmpty())) {
+                        JOptionPane.showMessageDialog(null, "Favor Preencher os campos Obrigatorios!");
+                    } else {
+                        cadastroPessoas.setIdpessoa(txtIDpessoa.getText());
+                        cadastroPessoas.setPerfil(cbPerfilPessoa.getSelectedItem().toString());
+                        cadastroPessoas.setNomeCliente(txtNomePessoa.getText());
+                        cadastroPessoas.setNomeFantasia(txtNomeFantasia.getText());
+                        cadastroPessoas.setCnpjcpf(txtcpfcnpj.getText());
+                        cadastroPessoas.setInscEstadual(txtInscricaoEstadual.getText());
+
+                        String dataNasc = txtDataNasc.getText();
+                        SimpleDateFormat out = new SimpleDateFormat("yyyy-MM-dd");
+                        SimpleDateFormat in = new SimpleDateFormat("dd/MM/yyyy");
+                        try {
+                            String result = out.format(in.parse(dataNasc));
+                            cadastroPessoas.setDataNasc(result);
+                        } catch (ParseException ex) {
+                            Logger.getLogger(TelaCadastroPessoas.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        cadastroPessoas.setEnderecoPessoa(txtEnderecoPessoa.getText());
+                        cadastroPessoas.setBairroPessoa(txtBairroPessoa.getText());
+                        cadastroPessoas.setNumeroCasa(txtNumeroCasaPessoa.getText());
+                        cadastroPessoas.setCepPessoa(txtCepPessoa.getText());
+                        cadastroPessoas.setTelefonePessoa(txtTelefonePessoa.getText());
+                        cadastroPessoas.setEmailPessoa(txtEmailPessoa.getText());
+                        cadastroPessoas.setReferencia01(txtReferencia1Nome.getText());
+                        cadastroPessoas.setTelefonereferencia01(txtReferencia1Telefone.getText());
+                        cadastroPessoas.setReferencia02(txtReferencia2Nome.getText());
+                        cadastroPessoas.setTelefonereferencia02(txtReferencia2Telefone.getText());
+
+                        cadastroPessoasDB.editarPessoas(cadastroPessoas);
+                        JOptionPane.showMessageDialog(null, "Cliente, " + txtNomePessoa.getText() + " Atualizado com sucesso! ");
+
+                        limparCampos();
+
+                        rbPessoaFisica.setEnabled(false);
+                        rbPessoaJuridica.setEnabled(false);
+                        txtIDpessoa.setEnabled(false);
+                        cbPerfilPessoa.setEnabled(false);
+                        txtNomePessoa.setEnabled(false);
+                        txtNomeFantasia.setEnabled(false);
+                        txtcpfcnpj.setEnabled(false);
+                        txtInscricaoEstadual.setEnabled(false);
+                        txtDataNasc.setEnabled(false);
+                        txtEnderecoPessoa.setEnabled(false);
+                        txtBairroPessoa.setEnabled(false);
+                        txtNumeroCasaPessoa.setEnabled(false);
+                        txtCepPessoa.setEnabled(false);
+                        txtTelefonePessoa.setEnabled(false);
+                        txtEmailPessoa.setEnabled(false);
+                        txtReferencia1Nome.setEnabled(false);
+                        txtReferencia1Telefone.setEnabled(false);
+                        txtReferencia2Nome.setEnabled(false);
+                        txtReferencia2Telefone.setEnabled(false);
+                        btnSalvarPessoa.setEnabled(false);
+                        btnCancelarPessoa.setEnabled(false);
+                        btnExcluirPessoa.setEnabled(false);
+                        btnEditarPessoa.setEnabled(false);
+                        btnNovoPessoa.setEnabled(true);
                     }
-                    cadastroPessoas.setEnderecoPessoa(txtEnderecoPessoa.getText());
-                    cadastroPessoas.setBairroPessoa(txtBairroPessoa.getText());
-                    cadastroPessoas.setNumeroCasa(txtNumeroCasaPessoa.getText());
-                    cadastroPessoas.setCepPessoa(txtCepPessoa.getText());
-                    cadastroPessoas.setTelefonePessoa(txtTelefonePessoa.getText());
-                    cadastroPessoas.setEmailPessoa(txtEmailPessoa.getText());
-                    cadastroPessoas.setReferencia01(txtReferencia1Nome.getText());
-                    cadastroPessoas.setTelefonereferencia01(txtReferencia1Telefone.getText());
-                    cadastroPessoas.setReferencia02(txtReferencia2Nome.getText());
-                    cadastroPessoas.setTelefonereferencia02(txtReferencia2Telefone.getText());
-
-                    cadastroPessoasDB.editarPessoas(cadastroPessoas);
-                    JOptionPane.showMessageDialog(null, "Cliente, " + txtNomePessoa.getText() + " Atualizado com sucesso! ");
-
-                    limparCampos();
-
-                    rbPessoaFisica.setEnabled(false);
-                    rbPessoaJuridica.setEnabled(false);
-                    txtIDpessoa.setEnabled(false);
-                    cbPerfilPessoa.setEnabled(false);
-                    txtNomePessoa.setEnabled(false);
-                    txtNomeFantasia.setEnabled(false);
-                    txtcpfcnpj.setEnabled(false);
-                    txtInscricaoEstadual.setEnabled(false);
-                    txtDataNasc.setEnabled(false);
-                    txtEnderecoPessoa.setEnabled(false);
-                    txtBairroPessoa.setEnabled(false);
-                    txtNumeroCasaPessoa.setEnabled(false);
-                    txtCepPessoa.setEnabled(false);
-                    txtTelefonePessoa.setEnabled(false);
-                    txtEmailPessoa.setEnabled(false);
-                    txtReferencia1Nome.setEnabled(false);
-                    txtReferencia1Telefone.setEnabled(false);
-                    txtReferencia2Nome.setEnabled(false);
-                    txtReferencia2Telefone.setEnabled(false);
-                    btnSalvarPessoa.setEnabled(false);
-                    btnCancelarPessoa.setEnabled(false);
-                    btnExcluirPessoa.setEnabled(false);
-                    btnEditarPessoa.setEnabled(false);
-                    btnNovoPessoa.setEnabled(true);
-                }
-            } else {
-                if ((cbPerfilPessoa.getSelectedItem().toString().isEmpty()) || (txtNomePessoa.getText().isEmpty()) || (txtcpfcnpj.getText().isEmpty())
-                        || (txtDataNasc.getText().isEmpty()) || (txtEnderecoPessoa.getText().isEmpty()) || (txtBairroPessoa.getText().isEmpty()) || (txtNumeroCasaPessoa.getText().isEmpty())
-                        || (txtCepPessoa.getText().isEmpty()) || (txtTelefonePessoa.getText().isEmpty()) || (txtEmailPessoa.getText().isEmpty()) || (txtReferencia1Nome.getText().isEmpty())
-                        || (txtReferencia1Telefone.getText().isEmpty()) || (txtReferencia2Nome.getText().isEmpty()) || (txtReferencia2Telefone.getText().isEmpty()) || (txtNomeFantasia.getText().isEmpty())
-                        || (txtInscricaoEstadual.getText().isEmpty())) {
-                    JOptionPane.showMessageDialog(null, "Favor Preencher os campos Obrigatorios!");
                 } else {
-                    cadastroPessoas.setIdpessoa(txtIDpessoa.getText());
-                    cadastroPessoas.setPerfil(cbPerfilPessoa.getSelectedItem().toString());
-                    cadastroPessoas.setNomeCliente(txtNomePessoa.getText());
-                    cadastroPessoas.setNomeFantasia(txtNomeFantasia.getText());
-                    cadastroPessoas.setCnpjcpf(txtcpfcnpj.getText());
-                    cadastroPessoas.setInscEstadual(txtInscricaoEstadual.getText());
-                    
-                    String dataNasc = txtDataNasc.getText();
-                    SimpleDateFormat out = new SimpleDateFormat("yyyy-MM-dd");
-                    SimpleDateFormat in = new SimpleDateFormat("dd/MM/yyyy");
-                    try {
-                        String result = out.format(in.parse(dataNasc));
-                        cadastroPessoas.setDataNasc(result);
-                    } catch (ParseException ex) {
-                        Logger.getLogger(TelaCadastroPessoas.class.getName()).log(Level.SEVERE, null, ex);
+                    if ((cbPerfilPessoa.getSelectedItem().toString().isEmpty()) || (txtNomePessoa.getText().isEmpty()) || (txtcpfcnpj.getText().isEmpty())
+                            || (txtDataNasc.getText().isEmpty()) || (txtEnderecoPessoa.getText().isEmpty()) || (txtBairroPessoa.getText().isEmpty()) || (txtNumeroCasaPessoa.getText().isEmpty())
+                            || (txtCepPessoa.getText().isEmpty()) || (txtTelefonePessoa.getText().isEmpty()) || (txtEmailPessoa.getText().isEmpty()) || (txtReferencia1Nome.getText().isEmpty())
+                            || (txtReferencia1Telefone.getText().isEmpty()) || (txtReferencia2Nome.getText().isEmpty()) || (txtReferencia2Telefone.getText().isEmpty()) || (txtNomeFantasia.getText().isEmpty())
+                            || (txtInscricaoEstadual.getText().isEmpty())) {
+                        JOptionPane.showMessageDialog(null, "Favor Preencher os campos Obrigatorios!");
+                    } else {
+                        cadastroPessoas.setIdpessoa(txtIDpessoa.getText());
+                        cadastroPessoas.setPerfil(cbPerfilPessoa.getSelectedItem().toString());
+                        cadastroPessoas.setNomeCliente(txtNomePessoa.getText());
+                        cadastroPessoas.setNomeFantasia(txtNomeFantasia.getText());
+                        cadastroPessoas.setCnpjcpf(txtcpfcnpj.getText());
+                        cadastroPessoas.setInscEstadual(txtInscricaoEstadual.getText());
+
+                        String dataNasc = txtDataNasc.getText();
+                        SimpleDateFormat out = new SimpleDateFormat("yyyy-MM-dd");
+                        SimpleDateFormat in = new SimpleDateFormat("dd/MM/yyyy");
+                        try {
+                            String result = out.format(in.parse(dataNasc));
+                            cadastroPessoas.setDataNasc(result);
+                        } catch (ParseException ex) {
+                            Logger.getLogger(TelaCadastroPessoas.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        cadastroPessoas.setEnderecoPessoa(txtEnderecoPessoa.getText());
+                        cadastroPessoas.setBairroPessoa(txtBairroPessoa.getText());
+                        cadastroPessoas.setNumeroCasa(txtNumeroCasaPessoa.getText());
+                        cadastroPessoas.setCepPessoa(txtCepPessoa.getText());
+                        cadastroPessoas.setTelefonePessoa(txtTelefonePessoa.getText());
+                        cadastroPessoas.setEmailPessoa(txtEmailPessoa.getText());
+                        cadastroPessoas.setReferencia01(txtReferencia1Nome.getText());
+                        cadastroPessoas.setTelefonereferencia01(txtReferencia1Telefone.getText());
+                        cadastroPessoas.setReferencia02(txtReferencia2Nome.getText());
+                        cadastroPessoas.setTelefonereferencia02(txtReferencia2Telefone.getText());
+
+                        cadastroPessoasDB.editarPessoas(cadastroPessoas);
+                        JOptionPane.showMessageDialog(null, "Cliente, " + txtNomePessoa.getText() + " Atualizado com sucesso! ");
+
+                        limparCampos();
+
+                        rbPessoaFisica.setEnabled(false);
+                        rbPessoaJuridica.setEnabled(false);
+                        txtIDpessoa.setEnabled(false);
+                        cbPerfilPessoa.setEnabled(false);
+                        txtNomePessoa.setEnabled(false);
+                        txtNomeFantasia.setEnabled(false);
+                        txtcpfcnpj.setEnabled(false);
+                        txtInscricaoEstadual.setEnabled(false);
+                        txtDataNasc.setEnabled(false);
+                        txtEnderecoPessoa.setEnabled(false);
+                        txtBairroPessoa.setEnabled(false);
+                        txtNumeroCasaPessoa.setEnabled(false);
+                        txtCepPessoa.setEnabled(false);
+                        txtTelefonePessoa.setEnabled(false);
+                        txtEmailPessoa.setEnabled(false);
+                        txtReferencia1Nome.setEnabled(false);
+                        txtReferencia1Telefone.setEnabled(false);
+                        txtReferencia2Nome.setEnabled(false);
+                        txtReferencia2Telefone.setEnabled(false);
+                        btnSalvarPessoa.setEnabled(false);
+                        btnCancelarPessoa.setEnabled(false);
+                        btnExcluirPessoa.setEnabled(false);
+                        btnEditarPessoa.setEnabled(false);
+                        btnNovoPessoa.setEnabled(true);
                     }
-                    cadastroPessoas.setEnderecoPessoa(txtEnderecoPessoa.getText());
-                    cadastroPessoas.setBairroPessoa(txtBairroPessoa.getText());
-                    cadastroPessoas.setNumeroCasa(txtNumeroCasaPessoa.getText());
-                    cadastroPessoas.setCepPessoa(txtCepPessoa.getText());
-                    cadastroPessoas.setTelefonePessoa(txtTelefonePessoa.getText());
-                    cadastroPessoas.setEmailPessoa(txtEmailPessoa.getText());
-                    cadastroPessoas.setReferencia01(txtReferencia1Nome.getText());
-                    cadastroPessoas.setTelefonereferencia01(txtReferencia1Telefone.getText());
-                    cadastroPessoas.setReferencia02(txtReferencia2Nome.getText());
-                    cadastroPessoas.setTelefonereferencia02(txtReferencia2Telefone.getText());
-
-                    cadastroPessoasDB.editarPessoas(cadastroPessoas);
-                    JOptionPane.showMessageDialog(null, "Cliente, " + txtNomePessoa.getText() + " Atualizado com sucesso! ");
-
-                    limparCampos();
-
-                    rbPessoaFisica.setEnabled(false);
-                    rbPessoaJuridica.setEnabled(false);
-                    txtIDpessoa.setEnabled(false);
-                    cbPerfilPessoa.setEnabled(false);
-                    txtNomePessoa.setEnabled(false);
-                    txtNomeFantasia.setEnabled(false);
-                    txtcpfcnpj.setEnabled(false);
-                    txtInscricaoEstadual.setEnabled(false);
-                    txtDataNasc.setEnabled(false);
-                    txtEnderecoPessoa.setEnabled(false);
-                    txtBairroPessoa.setEnabled(false);
-                    txtNumeroCasaPessoa.setEnabled(false);
-                    txtCepPessoa.setEnabled(false);
-                    txtTelefonePessoa.setEnabled(false);
-                    txtEmailPessoa.setEnabled(false);
-                    txtReferencia1Nome.setEnabled(false);
-                    txtReferencia1Telefone.setEnabled(false);
-                    txtReferencia2Nome.setEnabled(false);
-                    txtReferencia2Telefone.setEnabled(false);
-                    btnSalvarPessoa.setEnabled(false);
-                    btnCancelarPessoa.setEnabled(false);
-                    btnExcluirPessoa.setEnabled(false);
-                    btnEditarPessoa.setEnabled(false);
-                    btnNovoPessoa.setEnabled(true);
                 }
-            }
+                break;
         }
         String sql = cadastroPessoasDB.atualizarTabela();
         dadosTabela(sql);
@@ -1024,7 +1027,6 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
             txtReferencia2Nome.setEnabled(true);
             txtReferencia2Telefone.setEnabled(true);
             btnSalvarPessoa.setEnabled(true);
-            update_sel = 2;
         } else {
             jLabel5.setEnabled(true);
             jLabel10.setEnabled(true);
@@ -1046,8 +1048,9 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
             txtReferencia2Nome.setEnabled(true);
             txtReferencia2Telefone.setEnabled(true);
             btnSalvarPessoa.setEnabled(true);
-            update_sel = 2;
         }
+        rbPessoaFisica.setEnabled(true);
+        rbPessoaJuridica.setEnabled(true);
         String sql = cadastroPessoasDB.atualizarTabela();
         dadosTabela(sql);
     }//GEN-LAST:event_btnEditarPessoaActionPerformed
@@ -1079,7 +1082,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         String sql = cadastroPessoasDB.atualizarTabela();
         dadosTabela(sql);
 
-        MaskFormatter cpf = null;
+        MaskFormatter cpf;
         try {
             txtcpfcnpj.setValue(null);
             cpf = new MaskFormatter("###.###.###-##");
@@ -1117,7 +1120,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         String sql = cadastroPessoasDB.atualizarTabela();
         dadosTabela(sql);
 
-        MaskFormatter cnpj = null;
+        MaskFormatter cnpj;
         try {
             txtcpfcnpj.setValue(null);
             cnpj = new MaskFormatter("##.###.###/####-##");
@@ -1143,8 +1146,30 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
         cbPerfilPessoa.setSelectedItem(cadastroPessoas.getPerfil());
         txtNomePessoa.setText(cadastroPessoas.getNomeCliente());
         txtNomeFantasia.setText(cadastroPessoas.getNomeFantasia());
-        txtcpfcnpj.setText("");
-        txtcpfcnpj.setText(cadastroPessoas.getCnpjcpf());
+
+        if (txtNomeFantasia.getText().isEmpty() || txtInscricaoEstadual.getText().isEmpty()) {
+            MaskFormatter cpf;
+            try {
+                txtcpfcnpj.setValue(null);
+                cpf = new MaskFormatter("###.###.###-##");
+                cpf.setPlaceholderCharacter(' ');
+                txtcpfcnpj.setFormatterFactory(new DefaultFormatterFactory(cpf));
+                txtcpfcnpj.setText(cadastroPessoas.getCnpjcpf());
+            } catch (ParseException ex) {
+            }
+
+        } else {
+            MaskFormatter cnpj;
+            try {
+                txtcpfcnpj.setValue(null);
+                cnpj = new MaskFormatter("##.###.###/####-##");
+                cnpj.setPlaceholderCharacter(' ');
+                txtcpfcnpj.setFormatterFactory(new DefaultFormatterFactory(cnpj));
+                txtcpfcnpj.setText(cadastroPessoas.getCnpjcpf());
+            } catch (ParseException ex) {
+            }
+        }
+
         txtInscricaoEstadual.setText(cadastroPessoas.getInscEstadual());
         txtDataNasc.setText(cadastroPessoas.getDataNasc());
         txtEnderecoPessoa.setText(cadastroPessoas.getEnderecoPessoa());
@@ -1160,6 +1185,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
 
         btnExcluirPessoa.setEnabled(true);
         btnEditarPessoa.setEnabled(true);
+
 
     }//GEN-LAST:event_jTPessoasMouseClicked
 

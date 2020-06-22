@@ -58,7 +58,7 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         cbStatusImovel.addItem("LIVRE");
         cbStatusImovel.addItem("ALUGADO");
 
-        MaskFormatter cep = null;
+        MaskFormatter cep;
 
         try {
             txtCepImovel.setValue(null);
@@ -456,48 +456,49 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         txtBuscarImovel.setEnabled(false);
         btnPesquisarImovel.setEnabled(false);
         btnAbrirImagens.setEnabled(false);
-
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnNovoImovelActionPerformed
 
     private void btnSalvarImovelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarImovelActionPerformed
-        if (update_sel == 1) {
-            if (cbStatusImovel.getSelectedItem().toString().isEmpty() || txtEnderecoImovel.getText().isEmpty() || txtBairroImovel.getText().isEmpty() || txtCepImovel.getText().isEmpty()
-                    || txtNumeroImovel.getText().isEmpty() || txtValorAlugel.getText().isEmpty() || txtMatriculaImovel.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Favor Preencher os campos Obrigatorios!");
-            } else {
-                cadastroimoveis.setStatusImovel(cbStatusImovel.getSelectedItem().toString());
-                cadastroimoveis.setEnderecoImovel(txtEnderecoImovel.getText());
-                cadastroimoveis.setBairroImovel(txtBairroImovel.getText());
-                cadastroimoveis.setCepImovel(txtCepImovel.getText());
-                cadastroimoveis.setNumeroImovel(txtNumeroImovel.getText());
-                cadastroimoveis.setAluguelCasa(Double.parseDouble(txtValorAlugel.getText()));
-                cadastroimoveis.setMatriculaImovel(txtMatriculaImovel.getText());
-                cadastroimoveis.setImagensUrl(txtUrlImagens.getText());
+        switch (update_sel) {
+            case 1:
+                if (cbStatusImovel.getSelectedItem().toString().isEmpty() || txtEnderecoImovel.getText().isEmpty() || txtBairroImovel.getText().isEmpty() || txtCepImovel.getText().isEmpty()
+                        || txtNumeroImovel.getText().isEmpty() || txtValorAlugel.getText().isEmpty() || txtMatriculaImovel.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Favor Preencher os campos Obrigatorios!");
+                } else {
+                    cadastroimoveis.setStatusImovel(cbStatusImovel.getSelectedItem().toString());
+                    cadastroimoveis.setEnderecoImovel(txtEnderecoImovel.getText());
+                    cadastroimoveis.setBairroImovel(txtBairroImovel.getText());
+                    cadastroimoveis.setCepImovel(txtCepImovel.getText());
+                    cadastroimoveis.setNumeroImovel(txtNumeroImovel.getText());
+                    cadastroimoveis.setAluguelCasa(Double.parseDouble(txtValorAlugel.getText()));
+                    cadastroimoveis.setMatriculaImovel(txtMatriculaImovel.getText());
+                    cadastroimoveis.setImagensUrl(txtUrlImagens.getText());
 
-                cadastroimoveisDB.adicionaImoveis(cadastroimoveis);
-                LimparDados();
-                JOptionPane.showMessageDialog(null, "Imovel inserido com sucesso! ");
-            }
-        } else if (update_sel == 2) {
-            if (cbStatusImovel.getSelectedItem().toString().isEmpty() || txtEnderecoImovel.getText().isEmpty() || txtBairroImovel.getText().isEmpty() || txtCepImovel.getText().isEmpty()
-                    || txtNumeroImovel.getText().isEmpty() || txtValorAlugel.getText().isEmpty() || txtMatriculaImovel.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Favor Preencher os campos Obrigatorios!");
-            } else {
-                cadastroimoveis.setIdimovel(txtIDImovel.getText());
-                cadastroimoveis.setStatusImovel(cbStatusImovel.getSelectedItem().toString());
-                cadastroimoveis.setEnderecoImovel(txtEnderecoImovel.getText());
-                cadastroimoveis.setBairroImovel(txtBairroImovel.getText());
-                cadastroimoveis.setCepImovel(txtCepImovel.getText());
-                cadastroimoveis.setNumeroImovel(txtNumeroImovel.getText());
-                cadastroimoveis.setAluguelCasa(Double.parseDouble(txtValorAlugel.getText()));
-                cadastroimoveis.setMatriculaImovel(txtMatriculaImovel.getText());
-                cadastroimoveis.setImagensUrl(txtUrlImagens.getText());
+                    cadastroimoveisDB.adicionaImoveis(cadastroimoveis);
+                    LimparDados();
+                    JOptionPane.showMessageDialog(null, "Imovel inserido com sucesso! ");
+                }
+                break;
+            case 2:
+                if (cbStatusImovel.getSelectedItem().toString().isEmpty() || txtEnderecoImovel.getText().isEmpty() || txtBairroImovel.getText().isEmpty() || txtCepImovel.getText().isEmpty()
+                        || txtNumeroImovel.getText().isEmpty() || txtValorAlugel.getText().isEmpty() || txtMatriculaImovel.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Favor Preencher os campos Obrigatorios!");
+                } else {
+                    cadastroimoveis.setIdimovel(txtIDImovel.getText());
+                    cadastroimoveis.setStatusImovel(cbStatusImovel.getSelectedItem().toString());
+                    cadastroimoveis.setEnderecoImovel(txtEnderecoImovel.getText());
+                    cadastroimoveis.setBairroImovel(txtBairroImovel.getText());
+                    cadastroimoveis.setCepImovel(txtCepImovel.getText());
+                    cadastroimoveis.setNumeroImovel(txtNumeroImovel.getText());
+                    cadastroimoveis.setAluguelCasa(Double.parseDouble(txtValorAlugel.getText()));
+                    cadastroimoveis.setMatriculaImovel(txtMatriculaImovel.getText());
+                    cadastroimoveis.setImagensUrl(txtUrlImagens.getText());
 
-                cadastroimoveisDB.editarPessoas(cadastroimoveis);
-                LimparDados();
-                JOptionPane.showMessageDialog(null, "Imovel inserido com sucesso! ");
-            }
+                    cadastroimoveisDB.editarPessoas(cadastroimoveis);
+                    LimparDados();
+                    JOptionPane.showMessageDialog(null, "Imovel inserido com sucesso! ");
+                }
+                break;
         }
         String sql = cadastroimoveisDB.atualizarTabela();
         dadosTabela(sql);
@@ -570,8 +571,6 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarImovelActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-
-        // TODO add your handling code here:
     }//GEN-LAST:event_formWindowActivated
 
     private void btnAbrirImagensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirImagensActionPerformed
@@ -591,30 +590,25 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
 
     private void jTImoveisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTImoveisMouseClicked
         String nome_imovel = "" + jTImoveis.getValueAt(jTImoveis.getSelectedRow(), 0);
-        conexao.conectar();
-        conexao.executaSql("select * from tbimoveis where idimovel = '" + nome_imovel + "'");
-        try {
-            conexao.rs.first();
-            txtIDImovel.setText(conexao.rs.getString("idimovel"));
-            cbStatusImovel.setSelectedItem(conexao.rs.getString("statusImovel"));
-            txtEnderecoImovel.setText(conexao.rs.getString("enderecoimovel"));
-            txtBairroImovel.setText(conexao.rs.getString("bairroImovel"));
-            txtCepImovel.setText(conexao.rs.getString("cepImovel"));
-            txtNumeroImovel.setText(conexao.rs.getString("numeroCasa"));
-            txtValorAlugel.setText(conexao.rs.getString("aluguelImovel"));
-            txtMatriculaImovel.setText(conexao.rs.getString("matriculaImovel"));
-            txtUrlImagens.setText(conexao.rs.getString("urlImagens"));
+        cadastroimoveisDB.setImoveisDados(nome_imovel);
 
-            btnCancelarImovel.setEnabled(true);
-            btnEditarImovel.setEnabled(true);
-            btnExcluirImovel.setEnabled(true);
-            btnPesquisarImovel.setEnabled(true);
-            txtBuscarImovel.setEnabled(true);
-            btnAbrirImagens.setEnabled(true);
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao Selecionar o Imovel" + ex.getMessage());
-        }
-        conexao.desconectar();
+        cadastroimoveis = cadastroimoveisDB.getImovel();
+
+        txtIDImovel.setText(cadastroimoveis.getIdimovel());
+        txtMatriculaImovel.setText(cadastroimoveis.getMatriculaImovel());
+        cbStatusImovel.setSelectedItem(cadastroimoveis.getStatusImovel());
+        txtEnderecoImovel.setText(cadastroimoveis.getEnderecoImovel());
+        txtBairroImovel.setText(cadastroimoveis.getBairroImovel());
+        txtCepImovel.setText(cadastroimoveis.getCepImovel());
+        txtNumeroImovel.setText(cadastroimoveis.getNumeroImovel());
+        txtValorAlugel.setText(String.valueOf(cadastroimoveis.getAluguelCasa()));
+        txtUrlImagens.setText(cadastroimoveis.getImagensUrl());
+
+        btnEditarImovel.setEnabled(true);
+        btnExcluirImovel.setEnabled(true);
+        btnCancelarImovel.setEnabled(true);
+
+
     }//GEN-LAST:event_jTImoveisMouseClicked
     public void dadosTabela(String sql) {
         ArrayList dados = new ArrayList();

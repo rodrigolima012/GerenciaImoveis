@@ -30,8 +30,8 @@ public class CadastroImoveisDB {
             pst.setString(4, imovel.getCepImovel());
             pst.setString(5, imovel.getNumeroImovel());
             pst.setDouble(6, imovel.getAluguelCasa());
-            pst.setString(7, imovel.getMatriculaImovel()); 
-            pst.setString(8, imovel.getImagensUrl()); 
+            pst.setString(7, imovel.getMatriculaImovel());
+            pst.setString(8, imovel.getImagensUrl());
             pst.execute();
             pst.close();
             connectarBanco.desconectar();
@@ -39,7 +39,7 @@ public class CadastroImoveisDB {
             JOptionPane.showMessageDialog(null, "Erro ao adicionar o Imovel! \n" + u.getMessage());
         }
     }
-    
+
     public CadastroImoveis pesquisaImovel(CadastroImoveis imovel) {
         connectarBanco.conectar();
         connectarBanco.executaSql("select * from tbimoveis where matriculaImovel like '%" + imovel.getPesquisar() + "%'");
@@ -60,7 +60,7 @@ public class CadastroImoveisDB {
         connectarBanco.desconectar();
         return imovel;
     }
-    
+
     public void editarPessoas(CadastroImoveis imovel) {
         connectarBanco.conectar();
         try {
@@ -80,7 +80,7 @@ public class CadastroImoveisDB {
         }
         connectarBanco.desconectar();
     }
-    
+
     public void editarStatus(CadastroImoveis imovel) {
         connectarBanco.conectar();
         try {
@@ -93,8 +93,8 @@ public class CadastroImoveisDB {
         }
         connectarBanco.desconectar();
     }
-    
-     public void excluirImovel(CadastroImoveis imovel) {
+
+    public void excluirImovel(CadastroImoveis imovel) {
         connectarBanco.conectar();
         try {
             PreparedStatement pst = connectarBanco.con.prepareStatement("delete from tbimoveis where idimovel = ?");
@@ -107,8 +107,8 @@ public class CadastroImoveisDB {
 
         connectarBanco.desconectar();
     }
-     
-     public String atualizarTabela() {
+
+    public String atualizarTabela() {
         connectarBanco.conectar();
         String sql = ("select * from tbimoveis order by idimovel");
         connectarBanco.executaSql(sql);
@@ -122,7 +122,7 @@ public class CadastroImoveisDB {
         return null;
     }
 
-     public String atualizarTabelaPesquisar(CadastroImoveis imovel) {
+    public String atualizarTabelaPesquisar(CadastroImoveis imovel) {
         connectarBanco.conectar();
         String sql = ("select * from tbimoveis where matriculaImovel like '%" + imovel.getPesquisar() + "%'");
         connectarBanco.executaSql(sql);
@@ -134,5 +134,32 @@ public class CadastroImoveisDB {
         }
         connectarBanco.desconectar();
         return null;
+    }
+
+    public void setImoveisDados(String dados) {
+        imovel = new CadastroImoveis();
+        connectarBanco.conectar();
+        connectarBanco.executaSql("select * from tbimoveis where idimovel = '" + dados + "'");
+        try {
+            
+            connectarBanco.rs.first();
+            imovel.setIdimovel(connectarBanco.rs.getString("idimovel"));
+            imovel.setStatusImovel(connectarBanco.rs.getString("statusImovel"));
+            imovel.setEnderecoImovel(connectarBanco.rs.getString("enderecoimovel"));
+            imovel.setBairroImovel(connectarBanco.rs.getString("bairroImovel"));
+            imovel.setCepImovel(connectarBanco.rs.getString("cepImovel"));
+            imovel.setNumeroImovel(connectarBanco.rs.getString("numeroCasa"));
+            imovel.setAluguelCasa(connectarBanco.rs.getDouble("aluguelImovel"));
+            imovel.setMatriculaImovel(connectarBanco.rs.getString("matriculaImovel"));
+            imovel.setImagensUrl(connectarBanco.rs.getString("urlImagens"));
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Selecionar o Imovel" + ex.getMessage());
+        }
+        connectarBanco.desconectar();
+    }
+    
+    public CadastroImoveis getImovel(){
+        return this.imovel;
     }
 }
