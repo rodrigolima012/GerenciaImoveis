@@ -811,9 +811,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
                         cadastroPessoas.setIdpessoa(txtIDpessoa.getText());
                         cadastroPessoas.setPerfil(cbPerfilPessoa.getSelectedItem().toString());
                         cadastroPessoas.setNomeCliente(txtNomePessoa.getText());
-                        cadastroPessoas.setNomeFantasia(txtNomeFantasia.getText());
                         cadastroPessoas.setCnpjcpf(txtcpfcnpj.getText());
-                        cadastroPessoas.setInscEstadual(txtInscricaoEstadual.getText());
 
                         String dataNasc = txtDataNasc.getText();
                         SimpleDateFormat out = new SimpleDateFormat("yyyy-MM-dd");
