@@ -6,7 +6,10 @@
 package br.com.FRimoveis.telas;
 
 import br.com.FRimoveis.Conexao.ConexaoBD;
+import br.com.FRimoveis.dao.ConsultaContratoDB;
 import java.awt.Toolkit;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JRResultSetDataSource;
@@ -18,7 +21,7 @@ import net.sf.jasperreports.view.JasperViewer;
  *
  * @author rodrigolima
  */
-public class TelaPrincipal extends javax.swing.JFrame {
+public final class TelaPrincipal extends javax.swing.JFrame {
 
     ConexaoBD conexao = new ConexaoBD();
     TelaLogin login = new TelaLogin();
@@ -37,6 +40,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setIcon();
         login.dispose();
         setExtendedState(MAXIMIZED_BOTH);
+        validarContratos();
+    }
+    
+    public void validarContratos(){
+        ConsultaContratoDB consultar = new ConsultaContratoDB();
+        Date data = new Date(System.currentTimeMillis());
+        SimpleDateFormat formatarDate = new SimpleDateFormat("yyyy-MM-dd");
+        consultar.verificarContratos(formatarDate.format(data));
     }
 
     /**

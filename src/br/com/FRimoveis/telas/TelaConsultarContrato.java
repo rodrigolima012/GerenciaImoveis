@@ -337,22 +337,33 @@ public class TelaConsultarContrato extends javax.swing.JFrame {
     private void btnInativarConsultarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInativarConsultarContratoActionPerformed
         int sair = JOptionPane.showConfirmDialog(null, "Quer Inativar esse Contrato?", "Atenção", JOptionPane.YES_NO_OPTION);
         String sql = ConsultaContratoDB.pesquisarTodos();
+        String valorID = "" + jTConsultaContrato.getValueAt(jTConsultaContrato.getSelectedRow(), 0);
+        int idValor = Integer.parseInt(valorID);
+        
+        
         if (sair == JOptionPane.YES_OPTION) {
             try {
                 conexao.conectar();
                 conexao.executaSql(sql);
                 conexao.rs.first();
-                String validar = conexao.rs.getString("statusContrato");
-                if (validar.equalsIgnoreCase("INATIVO")) {
-                    JOptionPane.showMessageDialog(null, "Contrato ja Inativo!");
-                } else {
-                    ConsultaContratoDB.inativarContrato(idContrato);
-                    try {
-                        dadosTabela(sql);
-                    } catch (ParseException ex) {
-                        Logger.getLogger(TelaConsultarContrato.class.getName()).log(Level.SEVERE, null, ex);
+                do {
+                    int valor = conexao.rs.getInt("idcontrato");
+                    String validar = conexao.rs.getString("statusContrato");
+                    if (valor == idValor) {
+                        if (validar.equalsIgnoreCase("INATIVO")) {
+                            JOptionPane.showMessageDialog(null, "Contrato ja Inativo!");
+                        } else {
+                            ConsultaContratoDB.inativarContrato(idContrato);
+                            try {
+                                dadosTabela(sql);
+                                break;
+                            } catch (ParseException ex) {
+                                Logger.getLogger(TelaConsultarContrato.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        }
                     }
-                }
+                } while (conexao.rs.next());
+
             } catch (SQLException ex) {
                 Logger.getLogger(TelaConsultarContrato.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -368,9 +379,9 @@ public class TelaConsultarContrato extends javax.swing.JFrame {
         SimpleDateFormat out = new SimpleDateFormat("dd/MM/yyyy");
         try {
             conexao.rs.first();
-            String dataInicial = conexao.rs.getString("datainicial");
-            String dataFinal = conexao.rs.getString("datafinal");
             do {
+                String dataInicial = conexao.rs.getString("datainicial");
+                String dataFinal = conexao.rs.getString("datafinal");
                 String result1 = out.format(in.parse(dataInicial));
                 String data01 = result1;
                 String result2 = out.format(in.parse(dataFinal));

@@ -8,6 +8,8 @@ package br.com.FRimoveis.dao;
 import br.com.FRimoveis.Conexao.ConexaoBD;
 import br.com.FRimoveis.Desenvolvimento.ConsultaContrato;
 import java.sql.PreparedStatement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,6 +20,37 @@ public class ConsultaContratoDB {
 
     ConexaoBD connectarBanco = new ConexaoBD();
     ConsultaContrato consultarContrato = new ConsultaContrato();
+    
+    public void verificarContratos(String data) {
+        String dtfinal, idcont;
+        connectarBanco.conectar();
+        String sql = ("select * from tbcontratos");
+
+        try {
+            connectarBanco.executaSql(sql);
+            connectarBanco.rs.first();
+            do {
+                idcont = connectarBanco.rs.getString("idcontrato");
+                dtfinal = connectarBanco.rs.getString("datafinal");
+                Date datadia, dataFinalContrato;
+
+                SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+                SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
+
+                datadia = sdf1.parse(data);
+                dataFinalContrato = sdf2.parse(dtfinal);
+
+                if (datadia.after(dataFinalContrato)) {
+                    inativarContrato(idcont);
+                    break;
+                }
+            } while (connectarBanco.rs.next());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERRO");
+        }
+        connectarBanco.desconectar();
+
+    }
 
     public void inativarContrato(String consulta) {
         connectarBanco.conectar();
