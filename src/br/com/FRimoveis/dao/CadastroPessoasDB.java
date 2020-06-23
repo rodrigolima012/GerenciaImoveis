@@ -100,7 +100,7 @@ public class CadastroPessoasDB {
             pessoa.setTelefonereferencia01(connectarBanco.rs.getString("telefonereferencia01"));
             pessoa.setReferencia02(connectarBanco.rs.getString("referencia02"));
             pessoa.setTelefonereferencia02(connectarBanco.rs.getString("telefonereferencia02"));
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Usuario não Cadastrado!!\n Digite novamente!");
         }
         connectarBanco.desconectar();
@@ -129,7 +129,7 @@ public class CadastroPessoasDB {
             pst.setString(16, pessoa.getTelefonereferencia02());
             pst.setString(17, pessoa.getIdpessoa());
             pst.execute();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao editar o usuario! \n" + e.getMessage());
         }
         connectarBanco.desconectar();
@@ -156,7 +156,7 @@ public class CadastroPessoasDB {
         try {
             connectarBanco.rs.first();
             return sql;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao atualizar a tabela!");
         }
         connectarBanco.desconectar();
@@ -170,7 +170,7 @@ public class CadastroPessoasDB {
         try {
             connectarBanco.rs.first();
             return sql;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao atualizar a tabela!");
         }
         connectarBanco.desconectar();

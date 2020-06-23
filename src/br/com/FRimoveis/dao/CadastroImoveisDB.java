@@ -54,7 +54,7 @@ public class CadastroImoveisDB {
             imovel.setAluguelCasa(connectarBanco.rs.getDouble("aluguelImovel"));
             imovel.setMatriculaImovel(connectarBanco.rs.getString("matriculaImovel"));
             imovel.setImagensUrl(connectarBanco.rs.getString("urlImagens"));
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Imovel não Cadastrado!!\n Digite novamente!");
         }
         connectarBanco.desconectar();
@@ -75,7 +75,7 @@ public class CadastroImoveisDB {
             pst.setString(8, imovel.getImagensUrl());
             pst.setString(9, imovel.getIdimovel());
             pst.execute();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao editar o Imovel! \n" + e.getMessage());
         }
         connectarBanco.desconectar();
@@ -88,7 +88,7 @@ public class CadastroImoveisDB {
             pst.setString(1, imovel.getStatusImovel());
             pst.setString(2, imovel.getIdimovel());
             pst.execute();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao editar o Imovel! \n" + e.getMessage());
         }
         connectarBanco.desconectar();
@@ -115,7 +115,7 @@ public class CadastroImoveisDB {
         try {
             connectarBanco.rs.first();
             return sql;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao atualizar a tabela!");
         }
         connectarBanco.desconectar();
@@ -129,7 +129,7 @@ public class CadastroImoveisDB {
         try {
             connectarBanco.rs.first();
             return sql;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao atualizar a tabela!");
         }
         connectarBanco.desconectar();

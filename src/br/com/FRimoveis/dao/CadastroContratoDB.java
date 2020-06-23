@@ -48,7 +48,7 @@ public class CadastroContratoDB {
         try {
             connectarBanco.rs.first();
             return sql;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Contrato não Cadastrado!!\n Digite novamente!");
         }
         connectarBanco.desconectar();
@@ -62,7 +62,7 @@ public class CadastroContratoDB {
         try {
             connectarBanco.rs.first();
             return sql;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Contrato não Cadastrado!!\n Digite novamente!");
         }
         connectarBanco.desconectar();
@@ -76,7 +76,7 @@ public class CadastroContratoDB {
         try {
             connectarBanco.rs.first();
             return sql;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Contrato não Cadastrado!!\n Digite novamente!");
         }
         connectarBanco.desconectar();
@@ -90,7 +90,7 @@ public class CadastroContratoDB {
         try {
             connectarBanco.rs.first();
             return sql;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Contrato não Cadastrado!!\n Digite novamente!");
         }
         connectarBanco.desconectar();
@@ -104,7 +104,7 @@ public class CadastroContratoDB {
         try {
             connectarBanco.rs.first();
             return (connectarBanco.rs.getString("idpessoa"));
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Contrato não Cadastrado!!\n Digite novamente!");
         }
         connectarBanco.desconectar();
@@ -118,7 +118,7 @@ public class CadastroContratoDB {
         try {
             connectarBanco.rs.first();
             return (connectarBanco.rs.getString("idimovel"));
-        } catch (Exception e) {
+        } catch (SQLException e) {
             TelaGerarContrato.txtMatriculaImovel.setText("");
             JOptionPane.showMessageDialog(null, "Casa ja esta Alugada!\nFavor Escolher outro Imovel!");
         }

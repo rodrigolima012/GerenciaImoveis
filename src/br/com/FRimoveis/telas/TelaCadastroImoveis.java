@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
@@ -26,7 +27,7 @@ import javax.swing.text.MaskFormatter;
  *
  * @author rodrigolima
  */
-public class TelaCadastroImoveis extends javax.swing.JFrame {
+public final class TelaCadastroImoveis extends javax.swing.JFrame {
 
     CadastroImoveis cadastroimoveis = new CadastroImoveis();
     CadastroImoveisDB cadastroimoveisDB = new CadastroImoveisDB();
@@ -113,7 +114,6 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         btnSalvarImovel = new javax.swing.JButton();
         btnCancelarImovel = new javax.swing.JButton();
         btnExcluirImovel = new javax.swing.JButton();
-        btnPesquisarImovel = new javax.swing.JButton();
         txtBuscarImovel = new javax.swing.JTextField();
         btnEditarImovel = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -123,6 +123,7 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         txtUrlImagens = new javax.swing.JTextField();
         btnAbrirImagens = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("FR - Gerenciador de Imoveis - Cadastro de Imoveis");
@@ -135,8 +136,9 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setToolTipText("");
+        jPanel1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 2, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
         jLabel1.setText("Cadastro de Imoveis");
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
@@ -230,19 +232,14 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
             }
         });
 
-        btnPesquisarImovel.setBackground(new java.awt.Color(204, 204, 204));
-        btnPesquisarImovel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        btnPesquisarImovel.setText("Pesquisar");
-        btnPesquisarImovel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnPesquisarImovel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesquisarImovelActionPerformed(evt);
-            }
-        });
-
         txtBuscarImovel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         txtBuscarImovel.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtBuscarImovel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        txtBuscarImovel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarImovelKeyReleased(evt);
+            }
+        });
 
         btnEditarImovel.setBackground(new java.awt.Color(204, 204, 204));
         btnEditarImovel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
@@ -293,6 +290,9 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
             }
         });
 
+        jLabel13.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel13.setText("Pesquisa por Matricula:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -301,20 +301,6 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnNovoImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSalvarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCancelarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnExcluirImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEditarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtBuscarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPesquisarImovel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
@@ -325,11 +311,11 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
                                 .addComponent(jLabel4)
                                 .addGap(14, 14, 14)
                                 .addComponent(txtIDImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtMatriculaImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 14, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
@@ -346,25 +332,44 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel3))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnNovoImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnSalvarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnCancelarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnExcluirImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnEditarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(74, 74, 74)
+                                .addComponent(btnAbrirImagens, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtBuscarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel13)
+                        .addGap(9, 9, 9))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel12)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(10, 10, 10)
                                 .addComponent(txtUrlImagens))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCepImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtCepImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNumeroImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(24, 24, 24)
+                                .addComponent(txtNumeroImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                                 .addComponent(jLabel11)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnAbrirImagens, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtValorAlugel, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(txtValorAlugel, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -379,7 +384,7 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtMatriculaImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -397,28 +402,29 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNumeroImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCepImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtValorAlugel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtCepImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtNumeroImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtValorAlugel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtUrlImagens, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAbrirImagens, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnPesquisarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnNovoImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnSalvarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnCancelarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnExcluirImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtBuscarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnEditarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel13)
+                .addGap(1, 1, 1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnNovoImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSalvarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancelarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExcluirImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBuscarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEditarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -454,7 +460,6 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         txtValorAlugel.setEnabled(true);
         txtUrlImagens.setEnabled(true);
         txtBuscarImovel.setEnabled(false);
-        btnPesquisarImovel.setEnabled(false);
         btnAbrirImagens.setEnabled(false);
     }//GEN-LAST:event_btnNovoImovelActionPerformed
 
@@ -519,13 +524,14 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         btnExcluirImovel.setEnabled(false);
         btnNovoImovel.setEnabled(true);
         txtBuscarImovel.setEnabled(true);
-        btnPesquisarImovel.setEnabled(true);
         btnAbrirImagens.setEnabled(false);
         LimparDados();
+        String sql = cadastroimoveisDB.atualizarTabela();
+        dadosTabela(sql);
     }//GEN-LAST:event_btnCancelarImovelActionPerformed
 
     private void btnExcluirImovelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirImovelActionPerformed
-        int res = 0;
+        int res;
         res = JOptionPane.showConfirmDialog(rootPane, "Deseja Remover o Imovel?");
         if (res == JOptionPane.YES_OPTION) {
             cadastroimoveis.setIdimovel(txtIDImovel.getText());
@@ -535,21 +541,6 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         String sql = cadastroimoveisDB.atualizarTabela();
         dadosTabela(sql);
     }//GEN-LAST:event_btnExcluirImovelActionPerformed
-
-    private void btnPesquisarImovelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarImovelActionPerformed
-        if (txtBuscarImovel.getText().isEmpty()) {
-            String sql = cadastroimoveisDB.atualizarTabela();
-            dadosTabela(sql);
-        } else {
-            cadastroimoveis.setPesquisar(txtBuscarImovel.getText());
-            CadastroImoveis model = cadastroimoveisDB.pesquisaImovel(cadastroimoveis);
-            try {
-                String sql = cadastroimoveisDB.atualizarTabelaPesquisar(model);
-                dadosTabela(sql);
-            } catch (Exception e) {
-            }
-        }
-    }//GEN-LAST:event_btnPesquisarImovelActionPerformed
 
     private void btnEditarImovelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarImovelActionPerformed
         update_sel = 2;
@@ -578,9 +569,7 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         url = txtUrlImagens.getText();
         try {
             java.awt.Desktop.getDesktop().browse(new java.net.URI(url));
-        } catch (URISyntaxException ex) {
-            Logger.getLogger(TelaCadastroImoveis.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
+        } catch (URISyntaxException | IOException ex) {
             Logger.getLogger(TelaCadastroImoveis.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnAbrirImagensActionPerformed
@@ -621,6 +610,38 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jTImoveisMouseClicked
+
+    private void txtBuscarImovelKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarImovelKeyReleased
+        if (txtBuscarImovel.getText().isEmpty()) {
+            String sql = cadastroimoveisDB.atualizarTabela();
+            dadosTabela(sql);
+        } else {
+            cadastroimoveis.setPesquisar(txtBuscarImovel.getText());
+            CadastroImoveis model = cadastroimoveisDB.pesquisaImovel(cadastroimoveis);
+            try {
+                String sql = cadastroimoveisDB.atualizarTabelaPesquisar(model);
+                dadosTabela(sql);
+            } catch (Exception e) {
+            }
+        }
+        txtIDImovel.setEnabled(false);
+        txtUrlImagens.setEnabled(false);
+        txtMatriculaImovel.setEnabled(false);
+        cbStatusImovel.setEnabled(false);
+        txtEnderecoImovel.setEnabled(false);
+        txtBairroImovel.setEnabled(false);
+        txtCepImovel.setEnabled(false);
+        txtNumeroImovel.setEnabled(false);
+        txtValorAlugel.setEnabled(false);
+
+        btnSalvarImovel.setEnabled(false);
+        btnCancelarImovel.setEnabled(true);
+        btnEditarImovel.setEnabled(false);
+        btnExcluirImovel.setEnabled(false);
+        btnAbrirImagens.setEnabled(false);
+        btnNovoImovel.setEnabled(true);
+
+    }//GEN-LAST:event_txtBuscarImovelKeyReleased
     public void dadosTabela(String sql) {
         ArrayList dados = new ArrayList();
         String[] colunas = new String[]{"ID Imoveis", "Matricula Imovel", "Endereço Imovel", "Bairro Imovel", "Status do Imoveil", "Valor Aluguel"};
@@ -632,7 +653,7 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
                 dados.add(new Object[]{conexao.rs.getString("idimovel"), conexao.rs.getString("matriculaImovel"), conexao.rs.getString("enderecoimovel"), conexao.rs.getString("bairroImovel"), conexao.rs.getString("statusImovel"), conexao.rs.getString("aluguelImovel")});
             } while (conexao.rs.next());
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(rootPane, "Erro ao preencher as tabelas! \n" + e.getMessage());
+            //JOptionPane.showMessageDialog(rootPane, "Erro ao preencher as tabelas! \n" + e.getMessage());
         }
         CadastroImoveisTabela tabela = new CadastroImoveisTabela(dados, colunas);
 
@@ -656,7 +677,7 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         jTImoveis.getColumnModel().getColumn(5).setResizable(false);
 
         jTImoveis.getTableHeader().setReorderingAllowed(false);
-        jTImoveis.setAutoResizeMode(jTImoveis.AUTO_RESIZE_OFF);
+        jTImoveis.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         jTImoveis.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         conexao.desconectar();
@@ -694,10 +715,8 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaCadastroImoveis().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new TelaCadastroImoveis().setVisible(true);
         });
     }
 
@@ -707,13 +726,13 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
     private javax.swing.JButton btnEditarImovel;
     private javax.swing.JButton btnExcluirImovel;
     private javax.swing.JButton btnNovoImovel;
-    private javax.swing.JButton btnPesquisarImovel;
     private javax.swing.JButton btnSalvarImovel;
     private javax.swing.JComboBox<String> cbStatusImovel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

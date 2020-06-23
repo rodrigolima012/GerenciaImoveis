@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRResultSetDataSource;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -347,7 +348,7 @@ public final class TelaPrincipal extends javax.swing.JFrame {
             JasperViewer jv = new JasperViewer(jP, false);
             jv.setVisible(true);
             jv.toFront();
-        } catch (Exception e) {
+        } catch (JRException e) {
             JOptionPane.showMessageDialog(null, "Erro ao abrir o Relatorio de Cliente!\n" + e.getMessage());
         }
         conexao.desconectar();
@@ -362,7 +363,7 @@ public final class TelaPrincipal extends javax.swing.JFrame {
             JasperViewer jv = new JasperViewer(jP, false);
             jv.setVisible(true);
             jv.toFront();
-        } catch (Exception e) {
+        } catch (JRException e) {
             JOptionPane.showMessageDialog(null, "Erro ao abrir o Relatorio de Imovel!\n" + e.getMessage());
         }
         conexao.desconectar();
@@ -421,10 +422,8 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaPrincipal().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new TelaPrincipal().setVisible(true);
         });
     }
 

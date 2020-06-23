@@ -11,7 +11,7 @@ import java.awt.Toolkit;
  *
  * @author rodrigolima
  */
-public class TelaSobre extends javax.swing.JFrame {
+public final class TelaSobre extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaSobre
@@ -134,10 +134,8 @@ public class TelaSobre extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaSobre().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new TelaSobre().setVisible(true);
         });
     }
 

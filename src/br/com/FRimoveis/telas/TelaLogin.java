@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  *
  * @author rodrigolima
  */
-public class TelaLogin extends javax.swing.JFrame {
+public final class TelaLogin extends javax.swing.JFrame {
 
     ConexaoBD connectarBanco = new ConexaoBD();
 
@@ -242,10 +242,8 @@ public class TelaLogin extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaLogin().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new TelaLogin().setVisible(true);
         });
     }
 

@@ -126,7 +126,7 @@
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="SansSerif" size="36" style="2"/>
+              <Font name="SansSerif" size="36" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Gerar Contrato"/>
           </Properties>
@@ -167,10 +167,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane2" pref="826" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="txtPesquisarCliente" min="-2" pref="148" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnPesquisarCliente" min="-2" pref="117" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="137" max="-2" attributes="0"/>
+                      <Component id="txtPesquisarCliente" min="-2" pref="200" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="208" max="-2" attributes="0"/>
                       <Component id="txtIDCliente" min="-2" pref="47" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="txtNomeCliente" min="-2" pref="152" max="-2" attributes="0"/>
@@ -187,7 +185,6 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="txtPesquisarCliente" min="-2" pref="29" max="-2" attributes="0"/>
-                                  <Component id="btnPesquisarCliente" min="-2" pref="29" max="-2" attributes="0"/>
                                   <Component id="txtNomeCliente" alignment="1" min="-2" pref="29" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -224,22 +221,8 @@
                   <Font name="SansSerif" size="14" style="0"/>
                 </Property>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnPesquisarCliente">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="11" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Pesquisar"/>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Cursor em Forma de M&#xe3;o"/>
-                </Property>
-              </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPesquisarClienteActionPerformed"/>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPesquisarClienteKeyReleased"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtIDCliente">
@@ -285,10 +268,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane1" pref="826" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="txtPesquisarImovel" min="-2" pref="148" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnPesquisarImovel" min="-2" pref="117" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="142" max="-2" attributes="0"/>
+                      <Component id="txtPesquisarImovel" min="-2" pref="200" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="207" max="-2" attributes="0"/>
                       <Component id="txtIDImovel" min="-2" pref="47" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="txtMatriculaImovel" min="-2" pref="144" max="-2" attributes="0"/>
@@ -305,7 +286,6 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="txtPesquisarImovel" alignment="0" min="-2" pref="29" max="-2" attributes="0"/>
-                                  <Component id="btnPesquisarImovel" alignment="0" min="-2" pref="29" max="-2" attributes="0"/>
                                   <Component id="txtMatriculaImovel" alignment="1" min="-2" pref="29" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -342,6 +322,9 @@
                   <Font name="SansSerif" size="14" style="0"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPesquisarImovelKeyReleased"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtIDImovel">
               <Properties>
@@ -352,23 +335,6 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtIDImovelActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnPesquisarImovel">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="SansSerif" size="11" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Pesquisar"/>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Cursor em Forma de M&#xe3;o"/>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPesquisarImovelActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="txtMatriculaImovel">

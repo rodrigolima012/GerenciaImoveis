@@ -8,6 +8,8 @@ package br.com.FRimoveis.dao;
 import br.com.FRimoveis.Conexao.ConexaoBD;
 import br.com.FRimoveis.Desenvolvimento.ConsultaContrato;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -23,6 +25,7 @@ public class ConsultaContratoDB {
     
     public void verificarContratos(String data) {
         String dtfinal, idcont;
+        Date datadia, dataFinalContrato;
         connectarBanco.conectar();
         String sql = ("select * from tbcontratos");
 
@@ -32,7 +35,6 @@ public class ConsultaContratoDB {
             do {
                 idcont = connectarBanco.rs.getString("idcontrato");
                 dtfinal = connectarBanco.rs.getString("datafinal");
-                Date datadia, dataFinalContrato;
 
                 SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
                 SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
@@ -45,7 +47,7 @@ public class ConsultaContratoDB {
                     break;
                 }
             } while (connectarBanco.rs.next());
-        } catch (Exception e) {
+        } catch (SQLException | ParseException e) {
             JOptionPane.showMessageDialog(null, "ERRO");
         }
         connectarBanco.desconectar();
@@ -57,7 +59,7 @@ public class ConsultaContratoDB {
         try {
             PreparedStatement pst = connectarBanco.con.prepareStatement("update tbcontratos set statusContrato = 'INATIVO' where statusContrato = 'ATIVO' and idcontrato like '%" + consulta + "%'");
             pst.execute();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao Inativar o Contrato!");
         }
         connectarBanco.desconectar();
@@ -76,7 +78,7 @@ public class ConsultaContratoDB {
         try {
             connectarBanco.rs.first();
             return sql;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Contrato não Cadastrado!!\n Digite novamente!");
         }
         connectarBanco.desconectar();
@@ -96,7 +98,7 @@ public class ConsultaContratoDB {
         try {
             connectarBanco.rs.first();
             return sql;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Contrato não Cadastrado!!\n Digite novamente!");
         }
         connectarBanco.desconectar();
@@ -116,7 +118,7 @@ public class ConsultaContratoDB {
         try {
             connectarBanco.rs.first();
             return sql;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Contrato não Cadastrado!!\n Digite novamente!");
         }
         connectarBanco.desconectar();

@@ -15,16 +15,18 @@ import br.com.FRimoveis.dao.CadastroImoveisDB;
 import br.com.FRimoveis.dao.CadastroPessoasDB;
 import java.awt.Toolkit;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 
 /**
  *
  * @author rodrigolima
  */
-public class TelaGerarContrato extends javax.swing.JFrame {
+public final class TelaGerarContrato extends javax.swing.JFrame {
 
     CadastroPessoas cadastroPessoas = new CadastroPessoas();
     CadastroPessoasDB cadastroPessoasDB = new CadastroPessoasDB();
@@ -48,8 +50,6 @@ public class TelaGerarContrato extends javax.swing.JFrame {
         jTClienteContrato.setEnabled(false);
         jTImovelContrato.setEnabled(false);
         btnCancelarContrato.setEnabled(false);
-        btnPesquisarCliente.setEnabled(false);
-        btnPesquisarImovel.setEnabled(false);
         btnSalvarContrato.setEnabled(false);
         jDateContratoFinal.setEnabled(false);
         jDateContratoInical.setEnabled(false);
@@ -78,8 +78,6 @@ public class TelaGerarContrato extends javax.swing.JFrame {
         jTClienteContrato.setEnabled(false);
         jTImovelContrato.setEnabled(false);
         btnCancelarContrato.setEnabled(false);
-        btnPesquisarCliente.setEnabled(false);
-        btnPesquisarImovel.setEnabled(false);
         btnSalvarContrato.setEnabled(false);
         jDateContratoFinal.setEnabled(false);
         jDateContratoInical.setEnabled(false);
@@ -102,7 +100,6 @@ public class TelaGerarContrato extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTClienteContrato = new javax.swing.JTable();
         txtPesquisarCliente = new javax.swing.JTextField();
-        btnPesquisarCliente = new javax.swing.JButton();
         txtIDCliente = new javax.swing.JTextField();
         txtNomeCliente = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -110,7 +107,6 @@ public class TelaGerarContrato extends javax.swing.JFrame {
         jTImovelContrato = new javax.swing.JTable();
         txtPesquisarImovel = new javax.swing.JTextField();
         txtIDImovel = new javax.swing.JTextField();
-        btnPesquisarImovel = new javax.swing.JButton();
         txtMatriculaImovel = new javax.swing.JLabel();
         btnNovoContrato = new javax.swing.JButton();
         btnSalvarContrato = new javax.swing.JButton();
@@ -129,7 +125,7 @@ public class TelaGerarContrato extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/FRimoveis/icones/Capturar.JPG"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("SansSerif", 2, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
         jLabel2.setText("Gerar Contrato");
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
@@ -156,14 +152,9 @@ public class TelaGerarContrato extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTClienteContrato);
 
         txtPesquisarCliente.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-
-        btnPesquisarCliente.setBackground(new java.awt.Color(204, 204, 204));
-        btnPesquisarCliente.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        btnPesquisarCliente.setText("Pesquisar");
-        btnPesquisarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnPesquisarCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesquisarClienteActionPerformed(evt);
+        txtPesquisarCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPesquisarClienteKeyReleased(evt);
             }
         });
 
@@ -183,10 +174,8 @@ public class TelaGerarContrato extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 826, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(txtPesquisarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnPesquisarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(137, 137, 137)
+                .addComponent(txtPesquisarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(208, 208, 208)
                 .addComponent(txtIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(txtNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -201,7 +190,6 @@ public class TelaGerarContrato extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtPesquisarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnPesquisarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtNomeCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -227,22 +215,17 @@ public class TelaGerarContrato extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTImovelContrato);
 
         txtPesquisarImovel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        txtPesquisarImovel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPesquisarImovelKeyReleased(evt);
+            }
+        });
 
         txtIDImovel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtIDImovel.setEnabled(false);
         txtIDImovel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIDImovelActionPerformed(evt);
-            }
-        });
-
-        btnPesquisarImovel.setBackground(new java.awt.Color(204, 204, 204));
-        btnPesquisarImovel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        btnPesquisarImovel.setText("Pesquisar");
-        btnPesquisarImovel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnPesquisarImovel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesquisarImovelActionPerformed(evt);
             }
         });
 
@@ -254,10 +237,8 @@ public class TelaGerarContrato extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 826, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(txtPesquisarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnPesquisarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(142, 142, 142)
+                .addComponent(txtPesquisarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(207, 207, 207)
                 .addComponent(txtIDImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(txtMatriculaImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -272,7 +253,6 @@ public class TelaGerarContrato extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtPesquisarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnPesquisarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtMatriculaImovel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))
@@ -424,8 +404,6 @@ public class TelaGerarContrato extends javax.swing.JFrame {
         jTClienteContrato.setEnabled(true);
         jTImovelContrato.setEnabled(true);
         btnCancelarContrato.setEnabled(true);
-        btnPesquisarCliente.setEnabled(true);
-        btnPesquisarImovel.setEnabled(true);
         btnSalvarContrato.setEnabled(true);
         jDateContratoFinal.setEnabled(true);
         jDateContratoInical.setEnabled(true);
@@ -454,7 +432,7 @@ public class TelaGerarContrato extends javax.swing.JFrame {
                 cadastroimoveis.setIdimovel(txtIDImovel.getText());
                 cadastroimoveis.setStatusImovel("ALUGADO");
                 cadastroimoveisDB.editarStatus(cadastroimoveis);
-            } catch (Exception e) {
+            } catch (ParseException e) {
             }
             cadastroContratoDB.adicionaContrato(cadastroContrato);
             JOptionPane.showMessageDialog(null, "Contrato inserido com Sucesso!");
@@ -466,7 +444,24 @@ public class TelaGerarContrato extends javax.swing.JFrame {
         LimparTela();
     }//GEN-LAST:event_btnCancelarContratoActionPerformed
 
-    private void btnPesquisarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarClienteActionPerformed
+    private void jTClienteContratoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTClienteContratoMouseClicked
+        String nome_pessoa = "" + jTClienteContrato.getValueAt(jTClienteContrato.getSelectedRow(), 0);
+        String nomeCliente = "" + jTClienteContrato.getValueAt(jTClienteContrato.getSelectedRow(), 1);
+        String dados = cadastroContratoDB.setarIDPessoa(nome_pessoa);
+        txtIDCliente.setText(dados);
+        txtNomeCliente.setText(nomeCliente);
+    }//GEN-LAST:event_jTClienteContratoMouseClicked
+
+    private void jTImovelContratoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTImovelContratoMouseClicked
+        String nome_Imovel = "" + jTImovelContrato.getValueAt(jTImovelContrato.getSelectedRow(), 0);
+        String matricula = "" + jTImovelContrato.getValueAt(jTImovelContrato.getSelectedRow(), 2);
+        txtMatriculaImovel.setText(matricula);
+        String dados = cadastroContratoDB.setarIDImovel(nome_Imovel);
+        txtIDImovel.setText(dados);
+        
+    }//GEN-LAST:event_jTImovelContratoMouseClicked
+
+    private void txtPesquisarClienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisarClienteKeyReleased
         if (txtPesquisarCliente.getText().isEmpty()) {
             String sql = cadastroContratoDB.atualizarTabelaCLI();
             dadosTabelaCliente(sql);
@@ -479,17 +474,10 @@ public class TelaGerarContrato extends javax.swing.JFrame {
             } catch (Exception e) {
             }
         }
-    }//GEN-LAST:event_btnPesquisarClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPesquisarClienteKeyReleased
 
-    private void jTClienteContratoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTClienteContratoMouseClicked
-        String nome_pessoa = "" + jTClienteContrato.getValueAt(jTClienteContrato.getSelectedRow(), 0);
-        String nomeCliente = "" + jTClienteContrato.getValueAt(jTClienteContrato.getSelectedRow(), 1);
-        String dados = cadastroContratoDB.setarIDPessoa(nome_pessoa);
-        txtIDCliente.setText(dados);
-        txtNomeCliente.setText(nomeCliente);
-    }//GEN-LAST:event_jTClienteContratoMouseClicked
-
-    private void btnPesquisarImovelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarImovelActionPerformed
+    private void txtPesquisarImovelKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisarImovelKeyReleased
         if (txtPesquisarImovel.getText().isEmpty()) {
             String sql = cadastroContratoDB.atualizarTabelaIMO();
             dadosTabelaImovel(sql);
@@ -502,16 +490,8 @@ public class TelaGerarContrato extends javax.swing.JFrame {
             } catch (Exception e) {
             }
         }
-    }//GEN-LAST:event_btnPesquisarImovelActionPerformed
-
-    private void jTImovelContratoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTImovelContratoMouseClicked
-        String nome_Imovel = "" + jTImovelContrato.getValueAt(jTImovelContrato.getSelectedRow(), 0);
-        String matricula = "" + jTImovelContrato.getValueAt(jTImovelContrato.getSelectedRow(), 2);
-        txtMatriculaImovel.setText(matricula);
-        String dados = cadastroContratoDB.setarIDImovel(nome_Imovel);
-        txtIDImovel.setText(dados);
-        
-    }//GEN-LAST:event_jTImovelContratoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPesquisarImovelKeyReleased
     public void dadosTabelaCliente(String sql) {
         ArrayList dados = new ArrayList();
         String[] colunas = new String[]{"ID Cliente", "Nome Cliente", "Nome Fantasia", "CNPJ / CPF", "Perfil Cliente"};
@@ -540,11 +520,11 @@ public class TelaGerarContrato extends javax.swing.JFrame {
         jTClienteContrato.getColumnModel().getColumn(3).setPreferredWidth(164);
         jTClienteContrato.getColumnModel().getColumn(3).setResizable(false);
 
-        jTClienteContrato.getColumnModel().getColumn(4).setPreferredWidth(100);
+        jTClienteContrato.getColumnModel().getColumn(4).setPreferredWidth(115);
         jTClienteContrato.getColumnModel().getColumn(4).setResizable(false);
 
         jTClienteContrato.getTableHeader().setReorderingAllowed(false);
-        jTClienteContrato.setAutoResizeMode(jTClienteContrato.AUTO_RESIZE_OFF);
+        jTClienteContrato.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         jTClienteContrato.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         conexao.desconectar();
@@ -578,11 +558,11 @@ public class TelaGerarContrato extends javax.swing.JFrame {
         jTImovelContrato.getColumnModel().getColumn(3).setPreferredWidth(168);
         jTImovelContrato.getColumnModel().getColumn(3).setResizable(false);
 
-        jTImovelContrato.getColumnModel().getColumn(4).setPreferredWidth(106);
+        jTImovelContrato.getColumnModel().getColumn(4).setPreferredWidth(113);
         jTImovelContrato.getColumnModel().getColumn(4).setResizable(false);
 
         jTImovelContrato.getTableHeader().setReorderingAllowed(false);
-        jTImovelContrato.setAutoResizeMode(jTImovelContrato.AUTO_RESIZE_OFF);
+        jTImovelContrato.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         jTImovelContrato.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         conexao.desconectar();
@@ -620,18 +600,14 @@ public class TelaGerarContrato extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaGerarContrato().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new TelaGerarContrato().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelarContrato;
     private javax.swing.JButton btnNovoContrato;
-    private javax.swing.JButton btnPesquisarCliente;
-    private javax.swing.JButton btnPesquisarImovel;
     private javax.swing.JButton btnSalvarContrato;
     private com.toedter.calendar.JDateChooser jDateContratoFinal;
     private com.toedter.calendar.JDateChooser jDateContratoInical;

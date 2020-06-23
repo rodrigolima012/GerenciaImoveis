@@ -9,7 +9,9 @@ import br.com.FRimoveis.Conexao.ConexaoBD;
 import br.com.FRimoveis.Desenvolvimento.CadastroUsuarios;
 import br.com.FRimoveis.Desenvolvimento.LoginUsuario;
 import br.com.FRimoveis.telas.TelaPrincipal;
+import java.awt.HeadlessException;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -53,7 +55,7 @@ public class LoginUsuarioDB {
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario/Senha Invalido!");
             }
-        } catch (Exception e) {            
+        } catch (HeadlessException | SQLException e) {            
             JOptionPane.showMessageDialog(null, "Erro! \n" + e.getMessage());
         }
         return false;

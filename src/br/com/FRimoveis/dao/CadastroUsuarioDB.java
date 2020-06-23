@@ -7,6 +7,7 @@ package br.com.FRimoveis.dao;
 
 import br.com.FRimoveis.Conexao.ConexaoBD;
 import br.com.FRimoveis.Desenvolvimento.CadastroUsuarios;
+import java.awt.HeadlessException;
 import java.sql.*;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
@@ -46,7 +47,7 @@ public class CadastroUsuarioDB {
             usuario.setNomeUsuario(connectarBanco.rs.getString("nomeUsuario"));
             usuario.setLoginUsuario(connectarBanco.rs.getString("login"));
             usuario.setSenhaUsuario(connectarBanco.rs.getString("senha"));
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Usuario não Cadastrado!!\n Digite novamente!");
         }
         connectarBanco.desconectar();
@@ -64,7 +65,7 @@ public class CadastroUsuarioDB {
             pst.setString(5, usuario.getIdUsuario());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Usuarios Atualizado com Sucesso!!");
-        } catch (Exception e) {
+        } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao editar o usuario! \n" + e.getMessage());
         }
         connectarBanco.desconectar();
@@ -94,7 +95,7 @@ public class CadastroUsuarioDB {
         try {
             connectarBanco.rs.first();
             return sql;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao atualizar a tabela!");
         }
         connectarBanco.desconectar();
@@ -108,7 +109,7 @@ public class CadastroUsuarioDB {
         try {
             connectarBanco.rs.first();
             return sql;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao atualizar a tabela!");
         }
         connectarBanco.desconectar();
@@ -128,7 +129,7 @@ public class CadastroUsuarioDB {
             usuario.setLoginUsuario(connectarBanco.rs.getString("login"));
             usuario.setSenhaUsuario(connectarBanco.rs.getString("senha"));
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao setar os dados!");
         }
         connectarBanco.desconectar();
