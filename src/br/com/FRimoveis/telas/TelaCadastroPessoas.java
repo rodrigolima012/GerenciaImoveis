@@ -631,6 +631,7 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
 
     private void btnPesquisarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarPessoaActionPerformed
         limparCampos();
+
         if (txtBuscarPessoa.getText().isEmpty()) {
             String sql = cadastroPessoasDB.atualizarTabela();
             dadosTabela(sql);
@@ -643,6 +644,30 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
             } catch (Exception e) {
             }
         }
+        rbPessoaFisica.setEnabled(false);
+        rbPessoaJuridica.setEnabled(false);
+        txtIDpessoa.setEnabled(false);
+        cbPerfilPessoa.setEnabled(false);
+        txtNomePessoa.setEnabled(false);
+        txtNomeFantasia.setEnabled(false);
+        txtcpfcnpj.setEnabled(false);
+        txtInscricaoEstadual.setEnabled(false);
+        txtDataNasc.setEnabled(false);
+        txtEnderecoPessoa.setEnabled(false);
+        txtBairroPessoa.setEnabled(false);
+        txtNumeroCasaPessoa.setEnabled(false);
+        txtCepPessoa.setEnabled(false);
+        txtTelefonePessoa.setEnabled(false);
+        txtEmailPessoa.setEnabled(false);
+        txtReferencia1Nome.setEnabled(false);
+        txtReferencia1Telefone.setEnabled(false);
+        txtReferencia2Nome.setEnabled(false);
+        txtReferencia2Telefone.setEnabled(false);
+        btnSalvarPessoa.setEnabled(false);
+        btnCancelarPessoa.setEnabled(false);
+        btnExcluirPessoa.setEnabled(false);
+        btnEditarPessoa.setEnabled(false);
+        btnNovoPessoa.setEnabled(true);
     }//GEN-LAST:event_btnPesquisarPessoaActionPerformed
 
     private void btnNovoPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoPessoaActionPerformed
@@ -1025,6 +1050,8 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
             txtReferencia2Nome.setEnabled(true);
             txtReferencia2Telefone.setEnabled(true);
             btnSalvarPessoa.setEnabled(true);
+            btnNovoPessoa.setEnabled(false);
+            btnCancelarPessoa.setEnabled(true);
         } else {
             jLabel5.setEnabled(true);
             jLabel10.setEnabled(true);
@@ -1046,6 +1073,8 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
             txtReferencia2Nome.setEnabled(true);
             txtReferencia2Telefone.setEnabled(true);
             btnSalvarPessoa.setEnabled(true);
+            btnNovoPessoa.setEnabled(false);
+            btnCancelarPessoa.setEnabled(true);
         }
         rbPessoaFisica.setEnabled(true);
         rbPessoaJuridica.setEnabled(true);
@@ -1183,6 +1212,29 @@ public class TelaCadastroPessoas extends javax.swing.JFrame {
 
         btnExcluirPessoa.setEnabled(true);
         btnEditarPessoa.setEnabled(true);
+        btnNovoPessoa.setEnabled(false);
+        btnCancelarPessoa.setEnabled(true);
+        btnSalvarPessoa.setEnabled(false);
+        
+        rbPessoaFisica.setEnabled(false);
+        rbPessoaJuridica.setEnabled(false);
+        txtIDpessoa.setEnabled(false);
+        cbPerfilPessoa.setEnabled(false);
+        txtNomePessoa.setEnabled(false);
+        txtNomeFantasia.setEnabled(false);
+        txtcpfcnpj.setEnabled(false);
+        txtInscricaoEstadual.setEnabled(false);
+        txtDataNasc.setEnabled(false);
+        txtEnderecoPessoa.setEnabled(false);
+        txtBairroPessoa.setEnabled(false);
+        txtNumeroCasaPessoa.setEnabled(false);
+        txtCepPessoa.setEnabled(false);
+        txtTelefonePessoa.setEnabled(false);
+        txtEmailPessoa.setEnabled(false);
+        txtReferencia1Nome.setEnabled(false);
+        txtReferencia1Telefone.setEnabled(false);
+        txtReferencia2Nome.setEnabled(false);
+        txtReferencia2Telefone.setEnabled(false);
 
 
     }//GEN-LAST:event_jTPessoasMouseClicked

@@ -41,8 +41,8 @@ public class TelaGerarContrato extends javax.swing.JFrame {
      */
     public TelaGerarContrato() {
         initComponents();
-        txtIDCliente.setEnabled(false);
-        txtIDImovel.setEnabled(false);
+        txtIDCliente.setVisible(false);
+        txtIDImovel.setVisible(false);
         txtPesquisarCliente.setEnabled(false);
         txtPesquisarImovel.setEnabled(false);
         jTClienteContrato.setEnabled(false);
@@ -104,12 +104,14 @@ public class TelaGerarContrato extends javax.swing.JFrame {
         txtPesquisarCliente = new javax.swing.JTextField();
         btnPesquisarCliente = new javax.swing.JButton();
         txtIDCliente = new javax.swing.JTextField();
+        txtNomeCliente = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTImovelContrato = new javax.swing.JTable();
         txtPesquisarImovel = new javax.swing.JTextField();
         txtIDImovel = new javax.swing.JTextField();
         btnPesquisarImovel = new javax.swing.JButton();
+        txtMatriculaImovel = new javax.swing.JLabel();
         btnNovoContrato = new javax.swing.JButton();
         btnSalvarContrato = new javax.swing.JButton();
         btnCancelarContrato = new javax.swing.JButton();
@@ -166,11 +168,14 @@ public class TelaGerarContrato extends javax.swing.JFrame {
         });
 
         txtIDCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtIDCliente.setEnabled(false);
         txtIDCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIDClienteActionPerformed(evt);
             }
         });
+
+        txtNomeCliente.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -181,19 +186,23 @@ public class TelaGerarContrato extends javax.swing.JFrame {
                 .addComponent(txtPesquisarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnPesquisarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(137, 137, 137)
+                .addComponent(txtIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(txtNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtPesquisarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnPesquisarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(txtIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnPesquisarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNomeCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -220,6 +229,7 @@ public class TelaGerarContrato extends javax.swing.JFrame {
         txtPesquisarImovel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
         txtIDImovel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtIDImovel.setEnabled(false);
         txtIDImovel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIDImovelActionPerformed(evt);
@@ -236,26 +246,34 @@ public class TelaGerarContrato extends javax.swing.JFrame {
             }
         });
 
+        txtMatriculaImovel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 826, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(txtPesquisarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnPesquisarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(142, 142, 142)
+                .addComponent(txtIDImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtIDImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(txtMatriculaImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtPesquisarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPesquisarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtIDImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIDImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPesquisarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnPesquisarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtMatriculaImovel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))
         );
@@ -465,8 +483,10 @@ public class TelaGerarContrato extends javax.swing.JFrame {
 
     private void jTClienteContratoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTClienteContratoMouseClicked
         String nome_pessoa = "" + jTClienteContrato.getValueAt(jTClienteContrato.getSelectedRow(), 0);
+        String nomeCliente = "" + jTClienteContrato.getValueAt(jTClienteContrato.getSelectedRow(), 1);
         String dados = cadastroContratoDB.setarIDPessoa(nome_pessoa);
         txtIDCliente.setText(dados);
+        txtNomeCliente.setText(nomeCliente);
     }//GEN-LAST:event_jTClienteContratoMouseClicked
 
     private void btnPesquisarImovelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarImovelActionPerformed
@@ -486,8 +506,11 @@ public class TelaGerarContrato extends javax.swing.JFrame {
 
     private void jTImovelContratoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTImovelContratoMouseClicked
         String nome_Imovel = "" + jTImovelContrato.getValueAt(jTImovelContrato.getSelectedRow(), 0);
+        String matricula = "" + jTImovelContrato.getValueAt(jTImovelContrato.getSelectedRow(), 2);
+        txtMatriculaImovel.setText(matricula);
         String dados = cadastroContratoDB.setarIDImovel(nome_Imovel);
         txtIDImovel.setText(dados);
+        
     }//GEN-LAST:event_jTImovelContratoMouseClicked
     public void dadosTabelaCliente(String sql) {
         ArrayList dados = new ArrayList();
@@ -508,10 +531,10 @@ public class TelaGerarContrato extends javax.swing.JFrame {
         jTClienteContrato.getColumnModel().getColumn(0).setPreferredWidth(70);
         jTClienteContrato.getColumnModel().getColumn(0).setResizable(false);
 
-        jTClienteContrato.getColumnModel().getColumn(1).setPreferredWidth(247);
+        jTClienteContrato.getColumnModel().getColumn(1).setPreferredWidth(245);
         jTClienteContrato.getColumnModel().getColumn(1).setResizable(false);
 
-        jTClienteContrato.getColumnModel().getColumn(2).setPreferredWidth(247);
+        jTClienteContrato.getColumnModel().getColumn(2).setPreferredWidth(244);
         jTClienteContrato.getColumnModel().getColumn(2).setResizable(false);
 
         jTClienteContrato.getColumnModel().getColumn(3).setPreferredWidth(164);
@@ -552,10 +575,10 @@ public class TelaGerarContrato extends javax.swing.JFrame {
         jTImovelContrato.getColumnModel().getColumn(2).setPreferredWidth(247);
         jTImovelContrato.getColumnModel().getColumn(2).setResizable(false);
 
-        jTImovelContrato.getColumnModel().getColumn(3).setPreferredWidth(164);
+        jTImovelContrato.getColumnModel().getColumn(3).setPreferredWidth(168);
         jTImovelContrato.getColumnModel().getColumn(3).setResizable(false);
 
-        jTImovelContrato.getColumnModel().getColumn(4).setPreferredWidth(100);
+        jTImovelContrato.getColumnModel().getColumn(4).setPreferredWidth(106);
         jTImovelContrato.getColumnModel().getColumn(4).setResizable(false);
 
         jTImovelContrato.getTableHeader().setReorderingAllowed(false);
@@ -626,6 +649,8 @@ public class TelaGerarContrato extends javax.swing.JFrame {
     private javax.swing.JTable jTImovelContrato;
     private javax.swing.JTextField txtIDCliente;
     private javax.swing.JTextField txtIDImovel;
+    public static javax.swing.JLabel txtMatriculaImovel;
+    private javax.swing.JLabel txtNomeCliente;
     private javax.swing.JTextField txtPesquisarCliente;
     private javax.swing.JTextField txtPesquisarImovel;
     // End of variables declaration//GEN-END:variables

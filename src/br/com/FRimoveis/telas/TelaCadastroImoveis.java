@@ -607,6 +607,17 @@ public class TelaCadastroImoveis extends javax.swing.JFrame {
         btnEditarImovel.setEnabled(true);
         btnExcluirImovel.setEnabled(true);
         btnCancelarImovel.setEnabled(true);
+        btnNovoImovel.setEnabled(false);
+        btnSalvarImovel.setEnabled(false);
+        txtIDImovel.setEnabled(false);
+        txtUrlImagens.setEnabled(false);
+        txtMatriculaImovel.setEnabled(false);
+        cbStatusImovel.setEnabled(false);
+        txtEnderecoImovel.setEnabled(false);
+        txtBairroImovel.setEnabled(false);
+        txtCepImovel.setEnabled(false);
+        txtNumeroImovel.setEnabled(false);
+        txtValorAlugel.setEnabled(false);
 
 
     }//GEN-LAST:event_jTImoveisMouseClicked

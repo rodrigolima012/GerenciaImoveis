@@ -97,6 +97,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
+        jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenuBar1.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
 
         menuCadastro.setText("Cadastro");

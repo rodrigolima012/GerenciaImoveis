@@ -7,6 +7,7 @@ package br.com.FRimoveis.dao;
 
 import br.com.FRimoveis.Conexao.ConexaoBD;
 import br.com.FRimoveis.Desenvolvimento.ConsultaContrato;
+import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,20 +19,20 @@ public class ConsultaContratoDB {
     ConexaoBD connectarBanco = new ConexaoBD();
     ConsultaContrato consultarContrato = new ConsultaContrato();
 
-    public void pesquisaUsuario(ConsultaContrato consulta) {
+    public void inativarContrato(String consulta) {
         connectarBanco.conectar();
-        connectarBanco.executaSql("select * from tbusuarios where nomeUsuario like '%" + consulta.getPesquisarContrato() + "%'");
         try {
-            connectarBanco.rs.first();
+            PreparedStatement pst = connectarBanco.con.prepareStatement("update tbcontratos set statusContrato = 'INATIVO' where statusContrato = 'ATIVO' and idcontrato like '%" + consulta + "%'");
+            pst.execute();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Usuario não Cadastrado!!\n Digite novamente!");
+            JOptionPane.showMessageDialog(null, "Erro ao Inativar o Contrato!");
         }
         connectarBanco.desconectar();
     }
 
     public String pesquisarTodos() {
         connectarBanco.conectar();
-        String sql = ("select tbcontratos.statusContrato, tbcontratos.datainicial, tbcontratos.datafinal, tbpessoas.nomeCliente, tbpessoas.NomeFantasia, tbpessoas.cnpjcpf, tbpessoas.perfil, tbpessoas.telefonePessoa, tbpessoas.emailPessoa, tbimoveis.statusImovel, tbimoveis.enderecoimovel, tbimoveis.bairroImovel, tbimoveis.aluguelImovel, tbimoveis.matriculaImovel"
+        String sql = ("select tbcontratos.idcontrato, tbcontratos.statusContrato, tbcontratos.datainicial, tbcontratos.datafinal, tbpessoas.nomeCliente, tbpessoas.NomeFantasia, tbpessoas.cnpjcpf, tbpessoas.perfil, tbpessoas.telefonePessoa, tbpessoas.emailPessoa, tbimoveis.statusImovel, tbimoveis.enderecoimovel, tbimoveis.bairroImovel, tbimoveis.aluguelImovel, tbimoveis.matriculaImovel"
                 + " from tbcontratos"
                 + " inner join tbpessoas"
                 + " on tbcontratos.tbpessoas_idpessoa = tbpessoas.idpessoa"
@@ -51,7 +52,7 @@ public class ConsultaContratoDB {
 
     public String pesquisaNomeCliente(ConsultaContrato consulta) {
         connectarBanco.conectar();
-        String sql = ("select tbcontratos.statusContrato, tbcontratos.datainicial, tbcontratos.datafinal, tbpessoas.nomeCliente, tbpessoas.NomeFantasia, tbpessoas.cnpjcpf, tbpessoas.perfil, tbpessoas.telefonePessoa, tbpessoas.emailPessoa, tbimoveis.statusImovel, tbimoveis.enderecoimovel, tbimoveis.bairroImovel, tbimoveis.aluguelImovel, tbimoveis.matriculaImovel"
+        String sql = ("select tbcontratos.idcontrato, tbcontratos.statusContrato, tbcontratos.datainicial, tbcontratos.datafinal, tbpessoas.nomeCliente, tbpessoas.NomeFantasia, tbpessoas.cnpjcpf, tbpessoas.perfil, tbpessoas.telefonePessoa, tbpessoas.emailPessoa, tbimoveis.statusImovel, tbimoveis.enderecoimovel, tbimoveis.bairroImovel, tbimoveis.aluguelImovel, tbimoveis.matriculaImovel"
                 + " from tbcontratos "
                 + " inner join tbimoveis"
                 + " on tbcontratos.tbimoveis_idimovel = tbimoveis.idimovel"
@@ -71,7 +72,7 @@ public class ConsultaContratoDB {
 
     public String pesquisaMatricula(ConsultaContrato consulta) {
         connectarBanco.conectar();
-        String sql = ("select tbcontratos.statusContrato, tbcontratos.datainicial, tbcontratos.datafinal, tbpessoas.nomeCliente, tbpessoas.NomeFantasia, tbpessoas.cnpjcpf, tbpessoas.perfil, tbpessoas.telefonePessoa, tbpessoas.emailPessoa, tbimoveis.statusImovel, tbimoveis.enderecoimovel, tbimoveis.bairroImovel, tbimoveis.aluguelImovel, tbimoveis.matriculaImovel"
+        String sql = ("select tbcontratos.idcontrato, tbcontratos.statusContrato, tbcontratos.datainicial, tbcontratos.datafinal, tbpessoas.nomeCliente, tbpessoas.NomeFantasia, tbpessoas.cnpjcpf, tbpessoas.perfil, tbpessoas.telefonePessoa, tbpessoas.emailPessoa, tbimoveis.statusImovel, tbimoveis.enderecoimovel, tbimoveis.bairroImovel, tbimoveis.aluguelImovel, tbimoveis.matriculaImovel"
                 + " from tbcontratos "
                 + " inner join tbpessoas"
                 + " on tbcontratos.tbpessoas_idpessoa = tbpessoas.idpessoa"

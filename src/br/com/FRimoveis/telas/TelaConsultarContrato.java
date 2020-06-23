@@ -29,6 +29,7 @@ public class TelaConsultarContrato extends javax.swing.JFrame {
     ConsultaContrato consultaContrato = new ConsultaContrato();
     ConsultaContratoDB ConsultaContratoDB = new ConsultaContratoDB();
     ConexaoBD conexao = new ConexaoBD();
+    String idContrato;
 
     /**
      * Creates new form TelaConsultarContrato
@@ -164,6 +165,11 @@ public class TelaConsultarContrato extends javax.swing.JFrame {
         btnInativarConsultarContrato.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnInativarConsultarContrato.setText("Inativar Contrato");
         btnInativarConsultarContrato.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnInativarConsultarContrato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInativarConsultarContratoActionPerformed(evt);
+            }
+        });
 
         btnImprimirConsultarContrato.setBackground(new java.awt.Color(204, 204, 204));
         btnImprimirConsultarContrato.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
@@ -272,6 +278,7 @@ public class TelaConsultarContrato extends javax.swing.JFrame {
         btnNovoConsultarContrato.setEnabled(true);
         btnCancelarConsultarContrato.setEnabled(false);
         btnInativarConsultarContrato.setEnabled(false);
+        btnImprimirConsultarContrato.setEnabled(false);
         jTConsultaContrato.setEnabled(false);
         txtPesquisarContrato.setText("");
 
@@ -314,23 +321,47 @@ public class TelaConsultarContrato extends javax.swing.JFrame {
 
     private void rbNomeClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbNomeClienteMouseClicked
         txtPesquisarContrato.setText("");
-        // TODO add your handling code here:
     }//GEN-LAST:event_rbNomeClienteMouseClicked
 
     private void rbMatriculaImovelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbMatriculaImovelMouseClicked
         txtPesquisarContrato.setText("");
-        // TODO add your handling code here:
     }//GEN-LAST:event_rbMatriculaImovelMouseClicked
 
     private void jTConsultaContratoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTConsultaContratoMouseClicked
         btnInativarConsultarContrato.setEnabled(true);
         btnImprimirConsultarContrato.setEnabled(true);
-        // TODO add your handling code here:
+
+        idContrato = "" + jTConsultaContrato.getValueAt(jTConsultaContrato.getSelectedRow(), 0);
     }//GEN-LAST:event_jTConsultaContratoMouseClicked
+
+    private void btnInativarConsultarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInativarConsultarContratoActionPerformed
+        int sair = JOptionPane.showConfirmDialog(null, "Quer Inativar esse Contrato?", "Atenção", JOptionPane.YES_NO_OPTION);
+        String sql = ConsultaContratoDB.pesquisarTodos();
+        if (sair == JOptionPane.YES_OPTION) {
+            try {
+                conexao.conectar();
+                conexao.executaSql(sql);
+                conexao.rs.first();
+                String validar = conexao.rs.getString("statusContrato");
+                if (validar.equalsIgnoreCase("INATIVO")) {
+                    JOptionPane.showMessageDialog(null, "Contrato ja Inativo!");
+                } else {
+                    ConsultaContratoDB.inativarContrato(idContrato);
+                    try {
+                        dadosTabela(sql);
+                    } catch (ParseException ex) {
+                        Logger.getLogger(TelaConsultarContrato.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(TelaConsultarContrato.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_btnInativarConsultarContratoActionPerformed
 
     public void dadosTabela(String sql) throws ParseException {
         ArrayList dados = new ArrayList();
-        String[] colunas = new String[]{"Status Contrato", "Data Inicial", "Data Final", "Nome Cliente", "Nome Fantasia", "CPF / CNPJ", "Perfil", "Telefone", "E-mail", "Status Imovel", "Endereço Imovel", "Bairro Imovel", "Alugel Imovel", "Matricula"};
+        String[] colunas = new String[]{"ID Contrato", "Status Contrato", "Data Inicial", "Data Final", "Nome Cliente", "Nome Fantasia", "CPF / CNPJ", "Perfil", "Telefone", "E-mail", "Status Imovel", "Endereço Imovel", "Bairro Imovel", "Alugel Imovel", "Matricula"};
         conexao.conectar();
         conexao.executaSql(sql);
         SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
@@ -345,7 +376,7 @@ public class TelaConsultarContrato extends javax.swing.JFrame {
                 String result2 = out.format(in.parse(dataFinal));
                 String data02 = result2;
 
-                dados.add(new Object[]{conexao.rs.getString("statusContrato"), data01, data02, conexao.rs.getString("nomeCliente"), conexao.rs.getString("NomeFantasia"), conexao.rs.getString("cnpjcpf"), conexao.rs.getString("perfil"), conexao.rs.getString("telefonePessoa"), conexao.rs.getString("emailPessoa"), conexao.rs.getString("statusImovel"), conexao.rs.getString("enderecoimovel"), conexao.rs.getString("bairroImovel"), conexao.rs.getString("aluguelImovel"), conexao.rs.getString("matriculaImovel")});
+                dados.add(new Object[]{conexao.rs.getString("idcontrato"), conexao.rs.getString("statusContrato"), data01, data02, conexao.rs.getString("nomeCliente"), conexao.rs.getString("NomeFantasia"), conexao.rs.getString("cnpjcpf"), conexao.rs.getString("perfil"), conexao.rs.getString("telefonePessoa"), conexao.rs.getString("emailPessoa"), conexao.rs.getString("statusImovel"), conexao.rs.getString("enderecoimovel"), conexao.rs.getString("bairroImovel"), "R$ " + conexao.rs.getString("aluguelImovel"), conexao.rs.getString("matriculaImovel")});
             } while (conexao.rs.next());
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(rootPane, "Valor na busca Invalido!!\nFavor tentar novamente!");
@@ -354,47 +385,50 @@ public class TelaConsultarContrato extends javax.swing.JFrame {
 
         jTConsultaContrato.setModel(tabela);
 
-        jTConsultaContrato.getColumnModel().getColumn(0).setPreferredWidth(100);
+        jTConsultaContrato.getColumnModel().getColumn(0).setPreferredWidth(80);
         jTConsultaContrato.getColumnModel().getColumn(0).setResizable(false);
 
-        jTConsultaContrato.getColumnModel().getColumn(1).setPreferredWidth(80);
+        jTConsultaContrato.getColumnModel().getColumn(1).setPreferredWidth(100);
         jTConsultaContrato.getColumnModel().getColumn(1).setResizable(false);
 
         jTConsultaContrato.getColumnModel().getColumn(2).setPreferredWidth(80);
         jTConsultaContrato.getColumnModel().getColumn(2).setResizable(false);
 
-        jTConsultaContrato.getColumnModel().getColumn(3).setPreferredWidth(180);
+        jTConsultaContrato.getColumnModel().getColumn(3).setPreferredWidth(80);
         jTConsultaContrato.getColumnModel().getColumn(3).setResizable(false);
 
         jTConsultaContrato.getColumnModel().getColumn(4).setPreferredWidth(180);
         jTConsultaContrato.getColumnModel().getColumn(4).setResizable(false);
 
-        jTConsultaContrato.getColumnModel().getColumn(5).setPreferredWidth(110);
+        jTConsultaContrato.getColumnModel().getColumn(5).setPreferredWidth(180);
         jTConsultaContrato.getColumnModel().getColumn(5).setResizable(false);
 
-        jTConsultaContrato.getColumnModel().getColumn(6).setPreferredWidth(90);
+        jTConsultaContrato.getColumnModel().getColumn(6).setPreferredWidth(120);
         jTConsultaContrato.getColumnModel().getColumn(6).setResizable(false);
 
-        jTConsultaContrato.getColumnModel().getColumn(7).setPreferredWidth(110);
+        jTConsultaContrato.getColumnModel().getColumn(7).setPreferredWidth(90);
         jTConsultaContrato.getColumnModel().getColumn(7).setResizable(false);
 
-        jTConsultaContrato.getColumnModel().getColumn(8).setPreferredWidth(190);
+        jTConsultaContrato.getColumnModel().getColumn(8).setPreferredWidth(110);
         jTConsultaContrato.getColumnModel().getColumn(8).setResizable(false);
 
-        jTConsultaContrato.getColumnModel().getColumn(9).setPreferredWidth(100);
+        jTConsultaContrato.getColumnModel().getColumn(9).setPreferredWidth(250);
         jTConsultaContrato.getColumnModel().getColumn(9).setResizable(false);
 
-        jTConsultaContrato.getColumnModel().getColumn(10).setPreferredWidth(140);
+        jTConsultaContrato.getColumnModel().getColumn(10).setPreferredWidth(90);
         jTConsultaContrato.getColumnModel().getColumn(10).setResizable(false);
 
-        jTConsultaContrato.getColumnModel().getColumn(11).setPreferredWidth(130);
+        jTConsultaContrato.getColumnModel().getColumn(11).setPreferredWidth(160);
         jTConsultaContrato.getColumnModel().getColumn(11).setResizable(false);
 
-        jTConsultaContrato.getColumnModel().getColumn(12).setPreferredWidth(90);
+        jTConsultaContrato.getColumnModel().getColumn(12).setPreferredWidth(160);
         jTConsultaContrato.getColumnModel().getColumn(12).setResizable(false);
 
-        jTConsultaContrato.getColumnModel().getColumn(13).setPreferredWidth(80);
+        jTConsultaContrato.getColumnModel().getColumn(13).setPreferredWidth(90);
         jTConsultaContrato.getColumnModel().getColumn(13).setResizable(false);
+
+        jTConsultaContrato.getColumnModel().getColumn(14).setPreferredWidth(80);
+        jTConsultaContrato.getColumnModel().getColumn(14).setResizable(false);
 
         jTConsultaContrato.getTableHeader().setReorderingAllowed(false);
         jTConsultaContrato.setAutoResizeMode(jTConsultaContrato.AUTO_RESIZE_OFF);

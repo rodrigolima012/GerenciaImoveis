@@ -431,6 +431,11 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         txtLoginUsuario.setText("");
         txtSenhaUsuario.setText("");
         cbPerfilUsuario.setSelectedItem("");
+        btnCancelarUsuario.setEnabled(false);
+        btnEditarUsuario.setEnabled(false);
+        btnExcluirUsuario.setEnabled(false);
+        btnSalvarUsuario.setEnabled(false);
+        btnNovoUsuario.setEnabled(true);
 
         if (txtBuscarUsuario.getText().isEmpty()) {
             String sql = cadastroUsuariosDB.atualizarTabela();
@@ -520,6 +525,14 @@ public class TelaCadastroUsuarios extends javax.swing.JFrame {
         btnExcluirUsuario.setEnabled(true);
         btnPesquisarUsuario.setEnabled(true);
         txtBuscarUsuario.setEnabled(true);
+        btnSalvarUsuario.setEnabled(false);
+        btnNovoUsuario.setEnabled(false);
+
+        txtIDUsuario.setEnabled(false);
+        txtLoginUsuario.setEnabled(false);
+        txtNomeUsuario.setEnabled(false);
+        txtSenhaUsuario.setEnabled(false);
+        cbPerfilUsuario.setEnabled(false);
     }//GEN-LAST:event_jTUsuariosMouseClicked
 
     public void dadosTabela(String sql) {
