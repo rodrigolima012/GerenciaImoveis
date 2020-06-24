@@ -43,14 +43,14 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         setExtendedState(MAXIMIZED_BOTH);
         validarContratos();
     }
-    
-    public void validarContratos(){
+
+    public void validarContratos() {
         ConsultaContratoDB consultar = new ConsultaContratoDB();
         Date data = new Date(System.currentTimeMillis());
         SimpleDateFormat formatarDate = new SimpleDateFormat("yyyy-MM-dd");
         consultar.verificarContratos(formatarDate.format(data));
     }
-
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -219,6 +219,11 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         jMenuItem8.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jMenuItem8.setText("Contratos");
         jMenuItem8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
         menuRelatorios.add(jMenuItem8);
 
         jMenuBar1.add(menuRelatorios);
@@ -309,7 +314,6 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         if (sair == JOptionPane.YES_OPTION) {
             System.exit(0);
         }
-        // TODO add your handling code here:
     }//GEN-LAST:event_MenuSairActionPerformed
 
     private void menuUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuUsuariosActionPerformed
@@ -318,7 +322,6 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Tela já esta aberta!");
         }
-        // TODO add your handling code here:
     }//GEN-LAST:event_menuUsuariosActionPerformed
 
     private void menuImoveisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuImoveisActionPerformed
@@ -388,6 +391,21 @@ public final class TelaPrincipal extends javax.swing.JFrame {
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        try {
+            conexao.conectar();
+            conexao.executaSql("select * from tbcontratos order by idcontrato");
+            JRResultSetDataSource relatClientes = new JRResultSetDataSource(conexao.rs);
+            JasperPrint jP = JasperFillManager.fillReport("Relatorios/RelatoriosdeContratos.jasper", new HashMap(), relatClientes);
+            JasperViewer jv = new JasperViewer(jP, false);
+            jv.setVisible(true);
+            jv.toFront();
+        } catch (JRException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao abrir o Relatorio de Cliente!\n" + e.getMessage());
+        }
+        conexao.desconectar();
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     public void setIcon() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/IconeSistema/IconeSistema.png")));

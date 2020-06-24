@@ -22,9 +22,9 @@ public class ConsultaContratoDB {
 
     ConexaoBD connectarBanco = new ConexaoBD();
     ConsultaContrato consultarContrato = new ConsultaContrato();
-    
+
     public void verificarContratos(String data) {
-        String dtfinal, idcont;
+        String dtfinal, idcont, statusContrato;
         Date datadia, dataFinalContrato;
         connectarBanco.conectar();
         String sql = ("select * from tbcontratos");
@@ -35,6 +35,7 @@ public class ConsultaContratoDB {
             do {
                 idcont = connectarBanco.rs.getString("idcontrato");
                 dtfinal = connectarBanco.rs.getString("datafinal");
+                statusContrato = connectarBanco.rs.getString("statusContrato");
 
                 SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
                 SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
@@ -42,7 +43,8 @@ public class ConsultaContratoDB {
                 datadia = sdf1.parse(data);
                 dataFinalContrato = sdf2.parse(dtfinal);
 
-                if (datadia.after(dataFinalContrato)) {
+                if (datadia.after(dataFinalContrato) & (statusContrato.equalsIgnoreCase("ATIVO"))) {
+                    JOptionPane.showMessageDialog(null, "O Contrato com o ID " + idcont + "\nVenceu e foi Encerrado!\nFavor Verificar a tela Consulta de Contratos!");
                     inativarContrato(idcont);
                     break;
                 }
@@ -51,13 +53,12 @@ public class ConsultaContratoDB {
             JOptionPane.showMessageDialog(null, "ERRO");
         }
         connectarBanco.desconectar();
-
     }
 
     public void inativarContrato(String consulta) {
         connectarBanco.conectar();
         try {
-            PreparedStatement pst = connectarBanco.con.prepareStatement("update tbcontratos set statusContrato = 'INATIVO' where statusContrato = 'ATIVO' and idcontrato like '%" + consulta + "%'");
+            PreparedStatement pst = connectarBanco.con.prepareStatement("update tbcontratos set statusContrato = 'ENCERRADO' where statusContrato = 'ATIVO' and idcontrato like '%" + consulta + "%'");
             pst.execute();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao Inativar o Contrato!");

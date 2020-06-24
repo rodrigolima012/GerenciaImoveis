@@ -26,7 +26,7 @@ public final class TelaLogin extends javax.swing.JFrame {
         initComponents();
         setIcon();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -66,7 +66,7 @@ public final class TelaLogin extends javax.swing.JFrame {
 
         txtUsuario.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         txtUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtUsuario.setToolTipText("");
+        txtUsuario.setToolTipText("Digite seu Usuario!");
         txtUsuario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         txtUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -82,7 +82,7 @@ public final class TelaLogin extends javax.swing.JFrame {
 
         txtSenha.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         txtSenha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtSenha.setToolTipText("");
+        txtSenha.setToolTipText("Digite sua senha!");
         txtSenha.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N

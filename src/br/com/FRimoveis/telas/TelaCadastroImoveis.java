@@ -234,6 +234,7 @@ public final class TelaCadastroImoveis extends javax.swing.JFrame {
 
         txtBuscarImovel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         txtBuscarImovel.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtBuscarImovel.setToolTipText("Informe a Matricula do Imovel!");
         txtBuscarImovel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         txtBuscarImovel.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {

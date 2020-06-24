@@ -178,6 +178,7 @@ public final class TelaCadastroUsuarios extends javax.swing.JFrame {
 
         txtBuscarUsuario.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         txtBuscarUsuario.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtBuscarUsuario.setToolTipText("Informe o nome do usuario!");
         txtBuscarUsuario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         txtBuscarUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {

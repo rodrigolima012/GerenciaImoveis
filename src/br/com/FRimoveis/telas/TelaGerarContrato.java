@@ -152,6 +152,7 @@ public final class TelaGerarContrato extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTClienteContrato);
 
         txtPesquisarCliente.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        txtPesquisarCliente.setToolTipText("Informe o Nome do Cliente!");
         txtPesquisarCliente.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtPesquisarClienteKeyReleased(evt);
@@ -215,6 +216,7 @@ public final class TelaGerarContrato extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTImovelContrato);
 
         txtPesquisarImovel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        txtPesquisarImovel.setToolTipText("Informe a Matricula do Imovel!");
         txtPesquisarImovel.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtPesquisarImovelKeyReleased(evt);

@@ -114,6 +114,7 @@ public final class TelaConsultarContrato extends javax.swing.JFrame {
 
         txtPesquisarContrato.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         txtPesquisarContrato.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtPesquisarContrato.setToolTipText("Selecione a Opção para Pesquisar!");
         txtPesquisarContrato.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtPesquisarContratoKeyReleased(evt);
@@ -157,7 +158,7 @@ public final class TelaConsultarContrato extends javax.swing.JFrame {
 
         btnInativarConsultarContrato.setBackground(new java.awt.Color(204, 204, 204));
         btnInativarConsultarContrato.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        btnInativarConsultarContrato.setText("Inativar Contrato");
+        btnInativarConsultarContrato.setText("Encerrar Contrato");
         btnInativarConsultarContrato.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnInativarConsultarContrato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -295,7 +296,7 @@ public final class TelaConsultarContrato extends javax.swing.JFrame {
     }//GEN-LAST:event_jTConsultaContratoMouseClicked
 
     private void btnInativarConsultarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInativarConsultarContratoActionPerformed
-        int sair = JOptionPane.showConfirmDialog(null, "Quer Inativar esse Contrato?", "Atenção", JOptionPane.YES_NO_OPTION);
+        int sair = JOptionPane.showConfirmDialog(null, "Quer Encerrar esse Contrato?", "Atenção", JOptionPane.YES_NO_OPTION);
         String sql = ConsultaContratoDB.pesquisarTodos();
         String valorID = "" + jTConsultaContrato.getValueAt(jTConsultaContrato.getSelectedRow(), 0);
         int idValor = Integer.parseInt(valorID);
@@ -310,8 +311,8 @@ public final class TelaConsultarContrato extends javax.swing.JFrame {
                     int valor = conexao.rs.getInt("idcontrato");
                     String validar = conexao.rs.getString("statusContrato");
                     if (valor == idValor) {
-                        if (validar.equalsIgnoreCase("INATIVO")) {
-                            JOptionPane.showMessageDialog(null, "Contrato ja Inativo!");
+                        if (validar.equalsIgnoreCase("ENCERRADO")) {
+                            JOptionPane.showMessageDialog(null, "Contrato ja Encerrado!");
                         } else {
                             ConsultaContratoDB.inativarContrato(idContrato);
                             try {
