@@ -31,6 +31,7 @@ public final class TelaPrincipal extends javax.swing.JFrame {
     TelaCadastroUsuarios cadastrousuario = new TelaCadastroUsuarios();
     TelaConsultarContrato telaConsultar = new TelaConsultarContrato();
     TelaGerarContrato contrato = new TelaGerarContrato();
+    TelaFaleConosco faleconosco = new TelaFaleConosco();
     TelaSobre sobre = new TelaSobre();
 
     /**
@@ -78,13 +79,13 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         menuRecibo = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         menuOpcoes = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        MenuFaleConosco = new javax.swing.JMenuItem();
         MenuSair = new javax.swing.JMenuItem();
         menuAjuda = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("FR - Gerenciador de Imoveis - Inicial");
+        setTitle("FR - Gerenciador de Imoveis");
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(24, 768));
@@ -244,15 +245,15 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         menuOpcoes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuOpcoes.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
-        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, java.awt.event.InputEvent.ALT_MASK));
-        jMenuItem4.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jMenuItem4.setText("Fale Conosco");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        MenuFaleConosco.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, java.awt.event.InputEvent.ALT_MASK));
+        MenuFaleConosco.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        MenuFaleConosco.setText("Fale Conosco");
+        MenuFaleConosco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                MenuFaleConoscoActionPerformed(evt);
             }
         });
-        menuOpcoes.add(jMenuItem4);
+        menuOpcoes.add(MenuFaleConosco);
 
         MenuSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK));
         MenuSair.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -388,9 +389,14 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void MenuFaleConoscoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuFaleConoscoActionPerformed
+        if (!faleconosco.isVisible()) {
+            faleconosco.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Tela já esta aberta!");
+        }
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_MenuFaleConoscoActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
         try {
@@ -446,6 +452,7 @@ public final class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem MenuFaleConosco;
     private javax.swing.JMenuItem MenuSair;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
@@ -453,7 +460,6 @@ public final class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
