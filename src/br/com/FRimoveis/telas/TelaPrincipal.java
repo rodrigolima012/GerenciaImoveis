@@ -41,7 +41,6 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         initComponents();
         setIcon();
         login.dispose();
-        setExtendedState(MAXIMIZED_BOTH);
         validarContratos();
     }
 
@@ -71,7 +70,7 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         menuContratos = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
+        menuFinanceiro = new javax.swing.JMenu();
         menuRelatorios = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
@@ -86,27 +85,24 @@ public final class TelaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("FR - Gerenciador de Imoveis");
+        setResizable(false);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(24, 768));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/FRimoveis/icones/FR (1).png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/FRimoveis/icones/Principal_1.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(254, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap(254, Short.MAX_VALUE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 954, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(80, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
@@ -181,9 +177,9 @@ public final class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(menuContratos);
 
-        jMenu1.setText("Financiero");
-        jMenu1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jMenuBar1.add(jMenu1);
+        menuFinanceiro.setText("Financiero");
+        menuFinanceiro.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jMenuBar1.add(menuFinanceiro);
 
         menuRelatorios.setText("Relatorios");
         menuRelatorios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -291,14 +287,14 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 1008, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 954, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(1024, 720));
+        setSize(new java.awt.Dimension(970, 720));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -455,7 +451,6 @@ public final class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem MenuFaleConosco;
     private javax.swing.JMenuItem MenuSair;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
@@ -468,6 +463,7 @@ public final class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu menuAjuda;
     private javax.swing.JMenu menuCadastro;
     public static javax.swing.JMenu menuContratos;
+    public static javax.swing.JMenu menuFinanceiro;
     public static javax.swing.JMenuItem menuImoveis;
     private javax.swing.JMenu menuOpcoes;
     public static javax.swing.JMenuItem menuPessoas;

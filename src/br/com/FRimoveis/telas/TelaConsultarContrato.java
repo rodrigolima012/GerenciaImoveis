@@ -324,8 +324,7 @@ public final class TelaConsultarContrato extends javax.swing.JFrame {
         String sql = ConsultaContratoDB.pesquisarTodos();
         String valorID = "" + jTConsultaContrato.getValueAt(jTConsultaContrato.getSelectedRow(), 0);
         int idValor = Integer.parseInt(valorID);
-        
-        
+
         if (sair == JOptionPane.YES_OPTION) {
             try {
                 conexao.conectar();
@@ -381,12 +380,14 @@ public final class TelaConsultarContrato extends javax.swing.JFrame {
                 Logger.getLogger(TelaConsultarContrato.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        // TODO add your handling code here:
     }//GEN-LAST:event_txtPesquisarContratoKeyReleased
 
     private void btnEmailConsultarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmailConsultarContratoActionPerformed
-        enviarEmail.setVisible(true);
-        // TODO add your handling code here:
+        if (!enviarEmail.isVisible()) {
+            enviarEmail.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Tela já esta aberta!");
+        }
     }//GEN-LAST:event_btnEmailConsultarContratoActionPerformed
 
     private void btnImprimirConsultarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirConsultarContratoActionPerformed

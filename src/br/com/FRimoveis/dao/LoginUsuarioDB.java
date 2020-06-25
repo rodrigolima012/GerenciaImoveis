@@ -41,7 +41,8 @@ public class LoginUsuarioDB {
                     TelaPrincipal.menuPessoas.setEnabled(false);
                     TelaPrincipal.menuRelatorios.setEnabled(false);
                     TelaPrincipal.menuContratos.setEnabled(false);
-                    TelaPrincipal.menuRecibo.setEnabled(false);                    
+                    TelaPrincipal.menuRecibo.setEnabled(false); 
+                    TelaPrincipal.menuFinanceiro.setEnabled(false);
                     connectarBanco.desconectar();
                     pst.close();
                     return true;
