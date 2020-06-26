@@ -6,17 +6,17 @@
 package br.com.FRimoveis.telas;
 
 import br.com.FRimoveis.Conexao.ConexaoBD;
+import br.com.FRimoveis.dao.CadastroContratoDB;
+import br.com.FRimoveis.dao.CadastroImoveisDB;
+import br.com.FRimoveis.dao.CadastroPessoasDB;
 import br.com.FRimoveis.dao.ConsultaContratoDB;
 import java.awt.Toolkit;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JRResultSetDataSource;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -25,6 +25,9 @@ import net.sf.jasperreports.view.JasperViewer;
 public final class TelaPrincipal extends javax.swing.JFrame {
 
     ConexaoBD conexao = new ConexaoBD();
+    CadastroImoveisDB cadastroImoveisDB = new CadastroImoveisDB();
+    CadastroPessoasDB cadastroPessoasDB = new CadastroPessoasDB();
+    CadastroContratoDB cadastroContratoDB = new CadastroContratoDB();
     TelaLogin login = new TelaLogin();
     TelaCadastroImoveis cadastroImoveis = new TelaCadastroImoveis();
     TelaCadastroPessoas cadastropessoa = new TelaCadastroPessoas();
@@ -50,7 +53,7 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         SimpleDateFormat formatarDate = new SimpleDateFormat("yyyy-MM-dd");
         consultar.verificarContratos(formatarDate.format(data));
     }
- 
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -72,9 +75,9 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         menuFinanceiro = new javax.swing.JMenu();
         menuRelatorios = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        menuRelClientes = new javax.swing.JMenuItem();
+        menuRelImoveis = new javax.swing.JMenuItem();
+        menuRelContratos = new javax.swing.JMenuItem();
         menuRecibo = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         menuOpcoes = new javax.swing.JMenu();
@@ -185,43 +188,43 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         menuRelatorios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuRelatorios.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
-        jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_MASK));
-        jMenuItem6.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jMenuItem6.setText("Clientes");
-        jMenuItem6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jMenuItem6.addMouseListener(new java.awt.event.MouseAdapter() {
+        menuRelClientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_MASK));
+        menuRelClientes.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        menuRelClientes.setText("Clientes");
+        menuRelClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuRelClientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenuItem6MouseClicked(evt);
+                menuRelClientesMouseClicked(evt);
             }
         });
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+        menuRelClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
+                menuRelClientesActionPerformed(evt);
             }
         });
-        menuRelatorios.add(jMenuItem6);
+        menuRelatorios.add(menuRelClientes);
 
-        jMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.ALT_MASK));
-        jMenuItem7.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jMenuItem7.setText("Imoveis");
-        jMenuItem7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+        menuRelImoveis.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.ALT_MASK));
+        menuRelImoveis.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        menuRelImoveis.setText("Imoveis");
+        menuRelImoveis.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuRelImoveis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
+                menuRelImoveisActionPerformed(evt);
             }
         });
-        menuRelatorios.add(jMenuItem7);
+        menuRelatorios.add(menuRelImoveis);
 
-        jMenuItem8.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
-        jMenuItem8.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jMenuItem8.setText("Contratos");
-        jMenuItem8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+        menuRelContratos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
+        menuRelContratos.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        menuRelContratos.setText("Contratos");
+        menuRelContratos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuRelContratos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
+                menuRelContratosActionPerformed(evt);
             }
         });
-        menuRelatorios.add(jMenuItem8);
+        menuRelatorios.add(menuRelContratos);
 
         jMenuBar1.add(menuRelatorios);
 
@@ -336,38 +339,24 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
-    private void jMenuItem6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem6MouseClicked
-    }//GEN-LAST:event_jMenuItem6MouseClicked
+    private void menuRelClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuRelClientesMouseClicked
+    }//GEN-LAST:event_menuRelClientesMouseClicked
 
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+    private void menuRelClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRelClientesActionPerformed
         try {
-            conexao.conectar();
-            conexao.executaSql("select * from tbpessoas order by idpessoa");
-            JRResultSetDataSource relatClientes = new JRResultSetDataSource(conexao.rs);
-            JasperPrint jP = JasperFillManager.fillReport("Relatorios/RelatoriosdeClientes.jasper", new HashMap(), relatClientes);
-            JasperViewer jv = new JasperViewer(jP, false);
-            jv.setVisible(true);
-            jv.toFront();
-        } catch (JRException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao abrir o Relatorio de Cliente!\n" + e.getMessage());
+            cadastroPessoasDB.imprimirRelatorio();
+        } catch (IOException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-        conexao.desconectar();
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
+    }//GEN-LAST:event_menuRelClientesActionPerformed
 
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+    private void menuRelImoveisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRelImoveisActionPerformed
         try {
-            conexao.conectar();
-            conexao.executaSql("select * from tbimoveis order by idimovel");
-            JRResultSetDataSource relatClientes = new JRResultSetDataSource(conexao.rs);
-            JasperPrint jP = JasperFillManager.fillReport("Relatorios/RelatoriosdeImovel.jasper", new HashMap(), relatClientes);
-            JasperViewer jv = new JasperViewer(jP, false);
-            jv.setVisible(true);
-            jv.toFront();
-        } catch (JRException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao abrir o Relatorio de Imovel!\n" + e.getMessage());
+            cadastroImoveisDB.imprimirRelatorio();
+        } catch (IOException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-        conexao.desconectar();
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
+    }//GEN-LAST:event_menuRelImoveisActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         if (!contrato.isVisible()) {
@@ -394,20 +383,13 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_MenuFaleConoscoActionPerformed
 
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+    private void menuRelContratosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRelContratosActionPerformed
         try {
-            conexao.conectar();
-            conexao.executaSql("select * from tbcontratos order by idcontrato");
-            JRResultSetDataSource relatClientes = new JRResultSetDataSource(conexao.rs);
-            JasperPrint jP = JasperFillManager.fillReport("Relatorios/RelatoriosdeContratos.jasper", new HashMap(), relatClientes);
-            JasperViewer jv = new JasperViewer(jP, false);
-            jv.setVisible(true);
-            jv.toFront();
-        } catch (JRException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao abrir o Relatorio de Cliente!\n" + e.getMessage());
+            cadastroContratoDB.imprimirRelatorio();
+        } catch (IOException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-        conexao.desconectar();
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
+    }//GEN-LAST:event_menuRelContratosActionPerformed
 
     public void setIcon() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/IconeSistema/IconeSistema.png")));
@@ -455,9 +437,6 @@ public final class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JMenu menuAjuda;
@@ -468,6 +447,9 @@ public final class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu menuOpcoes;
     public static javax.swing.JMenuItem menuPessoas;
     public static javax.swing.JMenu menuRecibo;
+    private javax.swing.JMenuItem menuRelClientes;
+    private javax.swing.JMenuItem menuRelContratos;
+    private javax.swing.JMenuItem menuRelImoveis;
     public static javax.swing.JMenu menuRelatorios;
     public static javax.swing.JMenuItem menuUsuarios;
     // End of variables declaration//GEN-END:variables

@@ -269,6 +269,7 @@ public final class TelaCadastroImoveis extends javax.swing.JFrame {
 
         txtCepImovel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
+        txtValorAlugel.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
         txtValorAlugel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N

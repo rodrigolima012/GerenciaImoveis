@@ -56,7 +56,7 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btnEnviarEmail" pref="139" max="32767" attributes="0"/>
+                              <Component id="btnEnviarEmail" pref="144" max="32767" attributes="0"/>
                               <Component id="btnAnexarArquivo" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -146,7 +146,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="SansSerif" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Anexado:"/>
+            <Property name="text" type="java.lang.String" value="Anexo:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtEnviarAssunto">

@@ -7,13 +7,27 @@ package br.com.FRimoveis.dao;
 
 import br.com.FRimoveis.Conexao.ConexaoBD;
 import br.com.FRimoveis.Desenvolvimento.CadastroPessoas;
+import br.com.FRimoveis.telas.TelaPrincipal;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRExporter;
+import net.sf.jasperreports.engine.JRExporterParameter;
+import net.sf.jasperreports.engine.JRResultSetDataSource;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.export.JRPdfExporter;
 
 /**
  *
@@ -215,6 +229,32 @@ public class CadastroPessoasDB {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao Selecionar o Cliente" + ex.getMessage());
         }
+        connectarBanco.desconectar();
+    }
+    
+     public void imprimirRelatorio() throws IOException{
+        try {
+            connectarBanco.conectar();
+            connectarBanco.executaSql("select * from tbpessoas order by idpessoa");
+            JRResultSetDataSource relatClientes = new JRResultSetDataSource(connectarBanco.rs);
+            OutputStream saida = new FileOutputStream("Relatorios/RelatoriosdeClientes.pdf");
+            
+            JasperPrint jP = JasperFillManager.fillReport("Relatorios/RelatoriosdeClientes.jasper", new HashMap(), relatClientes);
+            
+            JRExporter exporter = new JRPdfExporter();
+            exporter.setParameter(JRExporterParameter.JASPER_PRINT, jP);
+            exporter.setParameter(JRExporterParameter.OUTPUT_STREAM, saida);
+
+            exporter.exportReport();
+            saida.close();
+            java.awt.Desktop.getDesktop().open(new File("Relatorios/RelatoriosdeClientes.pdf"));
+            
+        } catch (JRException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao abrir o Relatorio de Clientes!\n" + e.getMessage());
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        
         connectarBanco.desconectar();
     }
 

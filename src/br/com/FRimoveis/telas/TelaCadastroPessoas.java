@@ -188,7 +188,6 @@ public final class TelaCadastroPessoas extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("FR - Gerenciador de Imoveis - Cadastro de Pessoas");
-        setPreferredSize(new java.awt.Dimension(1024, 720));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
@@ -471,7 +470,7 @@ public final class TelaCadastroPessoas extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel13)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNumeroCasaPessoa, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))))
+                                .addComponent(txtNumeroCasaPessoa, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -627,7 +626,7 @@ public final class TelaCadastroPessoas extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(1024, 720));
+        setSize(new java.awt.Dimension(970, 720));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1079,8 +1078,6 @@ public final class TelaCadastroPessoas extends javax.swing.JFrame {
         btnExcluirPessoa.setEnabled(false);
         btnEditarPessoa.setEnabled(false);
         btnNovoPessoa.setEnabled(false);
-        String sql = cadastroPessoasDB.atualizarTabela();
-        dadosTabela(sql);
 
         MaskFormatter cpf;
         try {
@@ -1117,8 +1114,6 @@ public final class TelaCadastroPessoas extends javax.swing.JFrame {
         btnExcluirPessoa.setEnabled(false);
         btnEditarPessoa.setEnabled(false);
         btnNovoPessoa.setEnabled(false);
-        String sql = cadastroPessoasDB.atualizarTabela();
-        dadosTabela(sql);
 
         MaskFormatter cnpj;
         try {

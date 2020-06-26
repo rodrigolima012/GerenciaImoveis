@@ -7,6 +7,7 @@ package br.com.FRimoveis.telas;
 
 import br.com.FRimoveis.Desenvolvimento.JavaEmail;
 import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -215,15 +216,23 @@ public final class TelaFaleConosco extends javax.swing.JFrame {
     }//GEN-LAST:event_cbAssuntoFaleConoscoActionPerformed
 
     private void btnEnviarMensagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarMensagemActionPerformed
-        emailFaleConosco.setNomePessoa(txtNomeFaleConosco.getText());
-        emailFaleConosco.setEmailPessoa(txtEmailFaleConosco.getText());
-        emailFaleConosco.setIdentificar(cbAssuntoFaleConosco.getSelectedItem().toString());
-        emailFaleConosco.setTextoemail(txtMensagemFaleConosco.getText());
-        if (emailFaleConosco.enviarEmail()) {
-            txtEmailFaleConosco.setText("");
-            txtMensagemFaleConosco.setText("");
-            txtNomeFaleConosco.setText("");
-            cbAssuntoFaleConosco.setSelectedItem("");
+        if (txtNomeFaleConosco.getText().isEmpty() || txtEmailFaleConosco.getText().isEmpty() || cbAssuntoFaleConosco.getSelectedItem().toString().isEmpty() || txtMensagemFaleConosco.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campos Obrigatorios!");
+        } else {
+            emailFaleConosco.setNomePessoa(txtNomeFaleConosco.getText());
+            emailFaleConosco.setEmailPessoa(txtEmailFaleConosco.getText());
+            emailFaleConosco.setIdentificar(cbAssuntoFaleConosco.getSelectedItem().toString());
+            emailFaleConosco.setTextoemail(txtMensagemFaleConosco.getText());
+            if (emailFaleConosco.enviarEmail()) {
+                txtEmailFaleConosco.setText("");
+                txtMensagemFaleConosco.setText("");
+                txtNomeFaleConosco.setText("");
+                cbAssuntoFaleConosco.setSelectedItem("");
+                int sair = JOptionPane.showConfirmDialog(null, "Email enviado com Sucesso!\nQuer mandar outra Mensagem?", "Atenção", JOptionPane.YES_NO_OPTION);
+                if (sair == JOptionPane.NO_OPTION) {
+                    this.dispose();
+                }
+            }
         }
     }//GEN-LAST:event_btnEnviarMensagemActionPerformed
 

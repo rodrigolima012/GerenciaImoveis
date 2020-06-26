@@ -70,7 +70,7 @@ public final class TelaEmailAnexo extends javax.swing.JFrame {
         jLabel1.setText("Assunto:");
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        jLabel2.setText("Anexado:");
+        jLabel2.setText("Anexo:");
 
         btnEnviarEmail.setBackground(new java.awt.Color(204, 204, 204));
         btnEnviarEmail.setText("Enviar!");
@@ -101,7 +101,7 @@ public final class TelaEmailAnexo extends javax.swing.JFrame {
                         .addComponent(jLabel4))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnEnviarEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                            .addComponent(btnEnviarEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
                             .addComponent(btnAnexarArquivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

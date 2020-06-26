@@ -91,7 +91,7 @@ public class JavaEmail {
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
-        JOptionPane.showMessageDialog(null, "Email Enviado com Sucesso!");
+        //JOptionPane.showMessageDialog(null, "Email Enviado com Sucesso!");
         return true;
     }
 

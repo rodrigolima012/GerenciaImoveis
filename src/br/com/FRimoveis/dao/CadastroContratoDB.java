@@ -10,10 +10,26 @@ import br.com.FRimoveis.Desenvolvimento.CadastroContrato;
 import br.com.FRimoveis.Desenvolvimento.CadastroImoveis;
 import br.com.FRimoveis.Desenvolvimento.CadastroPessoas;
 import br.com.FRimoveis.telas.TelaGerarContrato;
+import br.com.FRimoveis.telas.TelaPrincipal;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRExporter;
+import net.sf.jasperreports.engine.JRExporterParameter;
+import net.sf.jasperreports.engine.JRResultSetDataSource;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.export.JRPdfExporter;
 
 /**
  *
@@ -125,4 +141,31 @@ public class CadastroContratoDB {
         connectarBanco.desconectar();
         return null;
     }
+    
+    public void imprimirRelatorio() throws IOException{
+        try {
+            connectarBanco.conectar();
+            connectarBanco.executaSql("select * from tbcontratos order by idcontrato");
+            JRResultSetDataSource relatContratos = new JRResultSetDataSource(connectarBanco.rs);
+            OutputStream saida = new FileOutputStream("Relatorios/RelatoriosdeContratos.pdf");
+            
+            JasperPrint jP = JasperFillManager.fillReport("Relatorios/RelatoriosdeContratos.jasper", new HashMap(), relatContratos);
+            
+            JRExporter exporter = new JRPdfExporter();
+            exporter.setParameter(JRExporterParameter.JASPER_PRINT, jP);
+            exporter.setParameter(JRExporterParameter.OUTPUT_STREAM, saida);
+
+            exporter.exportReport();
+            saida.close();
+            java.awt.Desktop.getDesktop().open(new File("Relatorios/RelatoriosdeContratos.pdf"));
+            
+        } catch (JRException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao abrir o Relatorio de Contratos!\n" + e.getMessage());
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        
+        connectarBanco.desconectar();
+    }
+    
 }
