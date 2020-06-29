@@ -9,6 +9,7 @@ import br.com.FRimoveis.Desenvolvimento.JavaEmail;
 import java.awt.Toolkit;
 import java.io.File;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -172,15 +173,23 @@ public final class TelaEmailAnexo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAnexarArquivoActionPerformed
 
     private void btnEnviarEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarEmailActionPerformed
-        emailAnexo.setDestinatario(txtEnviarDestinatario.getText());
-        emailAnexo.setIdentificar(txtEnviarAssunto.getText());
-        emailAnexo.setAnexarArquivo(txtCaminhoAnexo.getText());
-
-        if (emailAnexo.enviarEmail()) {
-            txtEnviarDestinatario.setText("");
-            txtEnviarAssunto.setText("");
-            txtCaminhoAnexo.setText("");
+        if (txtEnviarAssunto.getText().isEmpty() || txtEnviarDestinatario.getText().isEmpty() || txtCaminhoAnexo.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campos Obrigatorios!");
+        } else {
+            emailAnexo.setDestinatario(txtEnviarDestinatario.getText());
+            emailAnexo.setIdentificar(txtEnviarAssunto.getText());
+            emailAnexo.setAnexarArquivo(txtCaminhoAnexo.getText());
+            if (emailAnexo.enviarEmail()) {
+                txtEnviarDestinatario.setText("");
+                txtEnviarAssunto.setText("");
+                txtCaminhoAnexo.setText("");
+                int sair = JOptionPane.showConfirmDialog(null, "Email enviado com Sucesso!\nQuer mandar outra Anexo?", "Atenção", JOptionPane.YES_NO_OPTION);
+                if (sair == JOptionPane.NO_OPTION) {
+                    this.dispose();
+                }
+            }
         }
+
 
     }//GEN-LAST:event_btnEnviarEmailActionPerformed
 

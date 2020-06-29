@@ -15,17 +15,18 @@ import javax.swing.JOptionPane;
 public class ConexaoBD {
     public Statement stm;
     public ResultSet rs;
-    private String driver = "com.mysql.jdbc.Driver";
-    private String caminho = "jdbc:mysql://localhost:3306/imovelGerenciador";
-    private String usuario = "root";
-    private String senha = "";
+    private final String driver = "com.mysql.jdbc.Driver";
+    private final String caminho = "jdbc:mysql://localhost:3306/imovelGerenciador";
+    private final String usuario = "root";
+    private final String senha = "";
     public Connection con;
  
     public void conectar() {
         try {
             System.setProperty("jdbc.Drivers", driver);
+            Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection(caminho, usuario, senha);
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | SQLException e) {
             JOptionPane.showMessageDialog(null, "Conexão com o Banco DONW \n" + e.getMessage());
             System.exit(0);
         }
@@ -34,7 +35,7 @@ public class ConexaoBD {
     public void desconectar(){
         try {
             con.close();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao Desconectar \n" + e.getMessage());
         }
     }
@@ -43,7 +44,7 @@ public class ConexaoBD {
         try {
             stm = con.createStatement(rs.TYPE_SCROLL_INSENSITIVE, rs.CONCUR_READ_ONLY);
             rs = stm.executeQuery(sql);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao Executa SQL \n" + e.getMessage());
         }
         

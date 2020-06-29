@@ -33,11 +33,11 @@ public class JavaEmail {
     private String destinatario;
     private String nomePessoa;
     private String anexarArquivo;
+    private final String assinaturasemAnexo = "FR Gerenciador de Imoveis\nObrigado pela Contato!";
 
     public boolean enviarEmail() {
         Properties props = new Properties();
 
-        //Parâmetros de conexão com servidor Gmail
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
         props.put("mail.smtp.auth", "true");
@@ -46,26 +46,23 @@ public class JavaEmail {
         Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("rodrigofernandes012@gmail.com", "gh7ol100");
+                return new PasswordAuthentication("frimoveisroo@gmail.com", "fr123123");
             }
         });
 
-        //Ativa Debug para sessão
         session.setDebug(true);
 
         try {
             if (anexarArquivo == null) {
                 Message message = new MimeMessage(session);
-                //Remetente
-                message.setFrom(new InternetAddress("rodrigofernandes012@gmail.com"));
+                
+                message.setFrom(new InternetAddress("frimoveisroo@gmail.com"));
 
-                //Endereço de destino!      
                 Address[] toUser = InternetAddress.parse("rodrigo_limafernandes@hotmail.com");
-                //Método para enviar a mensagem criada   
                 message.setRecipients(Message.RecipientType.TO, toUser);
 
-                message.setSubject(identificar + " - Email: " + emailPessoa);//Assunto
-                message.setText("De: " + nomePessoa + "\n" + textoemail);
+                message.setSubject(identificar + " - Email: " + emailPessoa);
+                message.setText("De: " + nomePessoa + "\n" + textoemail+"\n"+"\n"+assinaturasemAnexo);
 
                 Transport.send(message);
 
@@ -91,7 +88,6 @@ public class JavaEmail {
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
-        //JOptionPane.showMessageDialog(null, "Email Enviado com Sucesso!");
         return true;
     }
 

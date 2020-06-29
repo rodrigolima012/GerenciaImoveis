@@ -12,11 +12,11 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author rodrigolima
  */
-public class ConsultaContratoTela extends AbstractTableModel {
+public class ConsultaContratoTabela extends AbstractTableModel {
     private ArrayList linhas = null;
     private String[] colunas = null;
 
-    public ConsultaContratoTela(ArrayList linhas, String[] colunas) {
+    public ConsultaContratoTabela(ArrayList linhas, String[] colunas) {
         setLinhas(linhas);
         setColunas(colunas);
     }

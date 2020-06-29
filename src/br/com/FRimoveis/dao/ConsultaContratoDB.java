@@ -100,7 +100,7 @@ public class ConsultaContratoDB {
             connectarBanco.rs.first();
             return sql;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Contrato não Cadastrado!!\n Digite novamente!");
+            JOptionPane.showMessageDialog(null, "Cliente não tem Contrato Cadastrado!!\n Digite novamente!");
         }
         connectarBanco.desconectar();
         return null;
@@ -120,7 +120,7 @@ public class ConsultaContratoDB {
             connectarBanco.rs.first();
             return sql;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Contrato não Cadastrado!!\n Digite novamente!");
+            JOptionPane.showMessageDialog(null, "Matricula não tem Contrato Cadastrado!!\n Digite novamente!");
         }
         connectarBanco.desconectar();
         return null;
