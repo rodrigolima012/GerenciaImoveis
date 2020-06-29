@@ -167,10 +167,8 @@
                       <Component id="jLabel6" pref="29" max="32767" attributes="0"/>
                       <Component id="txtMatriculaImovel" pref="29" max="32767" attributes="0"/>
                       <Component id="cbStatusImovel" pref="29" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabel4" pref="29" max="32767" attributes="0"/>
-                          <Component id="txtIDImovel" pref="29" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="jLabel4" alignment="1" pref="29" max="32767" attributes="0"/>
+                      <Component id="txtIDImovel" alignment="1" pref="29" max="32767" attributes="0"/>
                       <Component id="jLabel5" alignment="1" pref="29" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>

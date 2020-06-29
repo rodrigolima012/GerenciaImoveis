@@ -54,18 +54,24 @@ public final class TelaCadastroImoveis extends javax.swing.JFrame {
         btnEditarImovel.setEnabled(false);
         btnExcluirImovel.setEnabled(false);
         btnAbrirImagens.setEnabled(false);
+
         cbStatusImovel.removeAllItems();
         cbStatusImovel.addItem("");
         cbStatusImovel.addItem("LIVRE");
         cbStatusImovel.addItem("ALUGADO");
 
         MaskFormatter cep;
+        MaskFormatter alugel;
 
         try {
             txtCepImovel.setValue(null);
+            txtValorAlugel.setValue(null);
             cep = new MaskFormatter("#####-###");
+            alugel = new MaskFormatter("#####");
             cep.setPlaceholderCharacter(' ');
+            alugel.setPlaceholderCharacter(' ');
             txtCepImovel.setFormatterFactory(new DefaultFormatterFactory(cep));
+            txtValorAlugel.setFormatterFactory(new DefaultFormatterFactory(alugel));
         } catch (ParseException ex) {
         }
     }
@@ -389,9 +395,8 @@ public final class TelaCadastroImoveis extends javax.swing.JFrame {
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
                     .addComponent(txtMatriculaImovel, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
                     .addComponent(cbStatusImovel, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
-                        .addComponent(txtIDImovel, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+                    .addComponent(txtIDImovel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

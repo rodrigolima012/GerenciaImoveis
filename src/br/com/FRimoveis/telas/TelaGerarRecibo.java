@@ -11,13 +11,14 @@ import br.com.FRimoveis.Desenvolvimento.ConsultaContratoTabela;
 import br.com.FRimoveis.dao.ConsultaContratoDB;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.MaskFormatter;
 
 /**
  *
@@ -35,7 +36,32 @@ public class TelaGerarRecibo extends javax.swing.JFrame {
      */
     public TelaGerarRecibo() {
         initComponents();
+        cbMesPagamento.addItem("");
+        cbMesPagamento.addItem("Janeiro");
+        cbMesPagamento.addItem("Fevereiro");
+        cbMesPagamento.addItem("Março");
+        cbMesPagamento.addItem("Abril");
+        cbMesPagamento.addItem("Maio");
+        cbMesPagamento.addItem("Junho");
+        cbMesPagamento.addItem("Julho");
+        cbMesPagamento.addItem("Agosto");
+        cbMesPagamento.addItem("Setembro");
+        cbMesPagamento.addItem("Outubro");
+        cbMesPagamento.addItem("Novembro");
+        cbMesPagamento.addItem("Dezembro");
+        
+        txtJuros.setEnabled(false);
+        
+        MaskFormatter juros;
+        try {
+            txtJuros.setValue(null);
+            juros = new MaskFormatter("###");
+            juros.setPlaceholderCharacter(' ');
+            txtJuros.setFormatterFactory(new DefaultFormatterFactory(juros));
+        } catch (ParseException ex) {
+        }
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -73,7 +99,9 @@ public class TelaGerarRecibo extends javax.swing.JFrame {
         btnEnviarEmail = new javax.swing.JButton();
         btnCancelarRecibo = new javax.swing.JButton();
         cbJuros = new javax.swing.JCheckBox();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        txtJuros = new javax.swing.JFormattedTextField();
+        jLabel11 = new javax.swing.JLabel();
+        cbMesPagamento = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("FR - Gerenciador de Imoveis - Gerar Recibo");
@@ -129,22 +157,22 @@ public class TelaGerarRecibo extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jtbPesquisarCliente);
 
-        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel5.setText("Nome:");
 
-        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel6.setText("Endereço:");
 
-        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel7.setText("Telefone:");
 
-        jLabel8.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel8.setText("Matricula Imovel:");
 
-        jLabel9.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel9.setText("Valor Aluguel:");
 
-        jLabel10.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel10.setText("Contrato:");
 
         txtNoneCliente.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
@@ -198,13 +226,23 @@ public class TelaGerarRecibo extends javax.swing.JFrame {
 
         cbJuros.setBackground(new java.awt.Color(255, 255, 255));
         cbJuros.setText("Juros?");
+        cbJuros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbJurosMouseClicked(evt);
+            }
+        });
         cbJuros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbJurosActionPerformed(evt);
             }
         });
 
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        txtJuros.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+
+        jLabel11.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel11.setText("Mês do Pagamento:");
+
+        cbMesPagamento.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -229,7 +267,7 @@ public class TelaGerarRecibo extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(cbJuros)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtJuros, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
@@ -263,7 +301,11 @@ public class TelaGerarRecibo extends javax.swing.JFrame {
                                     .addComponent(btnGerarRecibo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btnNovoRecibo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btnCancelarRecibo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnEnviarEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(btnEnviarEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel11)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cbMesPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)))
                 .addGap(17, 17, 17))
@@ -283,18 +325,22 @@ public class TelaGerarRecibo extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtPesquisarClienteRecibo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(cbJuros, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-                                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.Alignment.LEADING)))
+                                .addComponent(txtJuros, javax.swing.GroupLayout.Alignment.LEADING)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbMesPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
                                 .addComponent(btnNovoRecibo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnGerarRecibo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -302,8 +348,7 @@ public class TelaGerarRecibo extends javax.swing.JFrame {
                                 .addComponent(btnEnviarEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnCancelarRecibo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
                                     .addComponent(txtNoneCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -328,7 +373,7 @@ public class TelaGerarRecibo extends javax.swing.JFrame {
                                     .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
                                     .addComponent(txtAluguelRecibo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -342,7 +387,7 @@ public class TelaGerarRecibo extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(916, 651));
+        setSize(new java.awt.Dimension(916, 634));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -387,6 +432,14 @@ public class TelaGerarRecibo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtbPesquisarClienteMouseClicked
 
+    private void cbJurosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbJurosMouseClicked
+        if(cbJuros.isSelected()){
+            txtJuros.setEnabled(true);
+        }else{
+            txtJuros.setEnabled(false);
+        }
+    }//GEN-LAST:event_cbJurosMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -425,12 +478,9 @@ public class TelaGerarRecibo extends javax.swing.JFrame {
         String[] colunas = new String[]{"ID Contrato", "Status Contrato", "Nome Cliente", "CPF / CNPJ", "Telefone", "E-mail", "Endereço Imovel", "Bairro Imovel", "Alugel Imovel", "Matricula"};
         conexao.conectar();
         conexao.executaSql(sql);
-        SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
-        SimpleDateFormat out = new SimpleDateFormat("dd/MM/yyyy");
         try {
             conexao.rs.first();
             do {
-
                 dados.add(new Object[]{conexao.rs.getString("idcontrato"), conexao.rs.getString("statusContrato"), conexao.rs.getString("nomeCliente"), conexao.rs.getString("cnpjcpf"), conexao.rs.getString("telefonePessoa"), conexao.rs.getString("emailPessoa"), conexao.rs.getString("enderecoimovel"), conexao.rs.getString("bairroImovel"), "R$ " + conexao.rs.getString("aluguelImovel"), conexao.rs.getString("matriculaImovel")});
             } while (conexao.rs.next());
         } catch (SQLException e) {
@@ -484,9 +534,10 @@ public class TelaGerarRecibo extends javax.swing.JFrame {
     private javax.swing.JButton btnGerarRecibo;
     private javax.swing.JButton btnNovoRecibo;
     private javax.swing.JCheckBox cbJuros;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JComboBox<String> cbMesPagamento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -502,6 +553,7 @@ public class TelaGerarRecibo extends javax.swing.JFrame {
     private javax.swing.JLabel txtAluguelRecibo;
     private javax.swing.JLabel txtContratoCliente;
     private javax.swing.JLabel txtEnderecoliente;
+    private javax.swing.JFormattedTextField txtJuros;
     private javax.swing.JLabel txtMatriculaCliente;
     private javax.swing.JLabel txtNoneCliente;
     private javax.swing.JTextField txtPesquisarClienteRecibo;
