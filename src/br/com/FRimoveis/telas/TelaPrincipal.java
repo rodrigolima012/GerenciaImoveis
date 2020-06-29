@@ -252,7 +252,7 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         menuOpcoes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuOpcoes.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
-        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_5, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_5, java.awt.event.InputEvent.ALT_MASK));
         jMenuItem2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jMenuItem2.setText("Enviar Anexo");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
