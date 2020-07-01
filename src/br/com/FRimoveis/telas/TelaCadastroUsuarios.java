@@ -106,7 +106,6 @@ public final class TelaCadastroUsuarios extends javax.swing.JFrame {
         jLabel5.setText("Senha:");
 
         cbPerfilUsuario.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        cbPerfilUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbPerfilUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cbPerfilUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

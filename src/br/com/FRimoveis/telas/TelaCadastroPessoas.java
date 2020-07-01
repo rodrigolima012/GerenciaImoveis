@@ -306,6 +306,11 @@ public final class TelaCadastroPessoas extends javax.swing.JFrame {
                 txtNumeroCasaPessoaActionPerformed(evt);
             }
         });
+        txtNumeroCasaPessoa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNumeroCasaPessoaKeyReleased(evt);
+            }
+        });
 
         jLabel14.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         jLabel14.setText("*CEP:");
@@ -470,7 +475,7 @@ public final class TelaCadastroPessoas extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel13)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNumeroCasaPessoa, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE))))
+                                .addComponent(txtNumeroCasaPessoa))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -1255,6 +1260,17 @@ public final class TelaCadastroPessoas extends javax.swing.JFrame {
     private void txtBuscarPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarPessoaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscarPessoaActionPerformed
+
+    private void txtNumeroCasaPessoaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroCasaPessoaKeyReleased
+        Integer valor;
+        try{
+            valor = Integer.parseInt(txtNumeroCasaPessoa.getText());            
+        }catch(NumberFormatException ex){            
+            JOptionPane.showMessageDialog(null, "Só é permitido números inteiros!");
+            txtNumeroCasaPessoa.setText("");
+        } 
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNumeroCasaPessoaKeyReleased
 
     public void dadosTabela(String sql) {
         ArrayList dados = new ArrayList();

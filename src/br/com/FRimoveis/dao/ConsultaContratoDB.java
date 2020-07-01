@@ -7,12 +7,28 @@ package br.com.FRimoveis.dao;
 
 import br.com.FRimoveis.Conexao.ConexaoBD;
 import br.com.FRimoveis.Desenvolvimento.ConsultaContrato;
+import br.com.FRimoveis.telas.TelaPrincipal;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRExporter;
+import net.sf.jasperreports.engine.JRExporterParameter;
+import net.sf.jasperreports.engine.JRResultSetDataSource;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.export.JRPdfExporter;
 
 /**
  *
@@ -124,5 +140,38 @@ public class ConsultaContratoDB {
         }
         connectarBanco.desconectar();
         return null;
+    }
+
+    public void imprimirRecibo(int idContrato) throws IOException {
+        try {
+            connectarBanco.conectar();
+            String sql = ("select tbcontratos.idcontrato, tbcontratos.statusContrato, tbcontratos.datainicial, tbcontratos.datafinal, tbpessoas.nomeCliente, tbpessoas.NomeFantasia, tbpessoas.cnpjcpf, tbpessoas.perfil, tbpessoas.telefonePessoa, tbpessoas.emailPessoa, tbimoveis.statusImovel, tbimoveis.enderecoimovel, tbimoveis.bairroImovel, tbimoveis.aluguelImovel, tbimoveis.matriculaImovel"
+                + " from tbcontratos "
+                + " inner join tbimoveis"
+                + " on tbcontratos.tbimoveis_idimovel = tbimoveis.idimovel"
+                + " inner join tbpessoas"
+                + " on tbcontratos.tbpessoas_idpessoa = tbpessoas.idpessoa"
+                + " where tbcontratos.idcontrato like '%" + idContrato + "%'");
+        connectarBanco.executaSql(sql);
+            JRResultSetDataSource ReciboCliente = new JRResultSetDataSource(connectarBanco.rs);
+            try (OutputStream saida = new FileOutputStream("Relatorios/ReciboCliente.pdf")) {
+                HashMap id = new HashMap();
+                id.put("id", (idContrato));
+                
+                JasperPrint jP = JasperFillManager.fillReport("Relatorios/ReciboCliente.jasper", id, ReciboCliente);
+                
+                JRExporter exporter = new JRPdfExporter();
+                exporter.setParameter(JRExporterParameter.JASPER_PRINT, jP);
+                exporter.setParameter(JRExporterParameter.OUTPUT_STREAM, saida);
+                
+                exporter.exportReport();
+            }
+            java.awt.Desktop.getDesktop().open(new File("Relatorios/ReciboCliente.pdf"));
+        } catch (JRException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao abrir o Recibo de Clientes!\n" + e.getMessage());
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        connectarBanco.desconectar();
     }
 }

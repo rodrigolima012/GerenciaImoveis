@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReciboCliente" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="58322845-16d0-4d92-9098-f086859f535d">
+	<property name="ireport.zoom" value="1.7715610000000035"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="id" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select tbcontratos.statusContrato,
+		tbcontratos.datainicial,
+        tbcontratos.datafinal,
+        tbpessoas.nomeCliente,
+        tbpessoas.NomeFantasia,
+        tbpessoas.cnpjcpf,
+        tbpessoas.perfil,
+        tbpessoas.telefonePessoa,
+        tbpessoas.emailPessoa,
+        tbimoveis.statusImovel,
+        tbimoveis.enderecoimovel,
+        tbimoveis.bairroImovel,
+        tbimoveis.aluguelImovel,
+        tbimoveis.matriculaImovel
+from tbcontratos
+inner join tbimoveis
+on tbcontratos.tbimoveis_idimovel = tbimoveis.idimovel
+inner join tbpessoas
+where tbcontratos.idcontrato = $P{id};]]>
+	</queryString>
+	<field name="statusContrato" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="datainicial" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="datafinal" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomeCliente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NomeFantasia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cnpjcpf" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="perfil" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefonePessoa" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="emailPessoa" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="statusImovel" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="enderecoimovel" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="bairroImovel" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="aluguelImovel" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="matriculaImovel" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="datainicial_1" class="java.lang.Integer" resetType="Page" calculation="Count">
+		<variableExpression><![CDATA[$F{datainicial}]]></variableExpression>
+	</variable>
+	<variable name="cnpjcpf_1" class="java.lang.Integer" resetType="Page" calculation="DistinctCount">
+		<variableExpression><![CDATA[$F{cnpjcpf}]]></variableExpression>
+	</variable>
+	<variable name="DataDia" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="86" splitType="Stretch">
+			<image>
+				<reportElement x="377" y="0" width="178" height="86" uuid="0cca4494-4a1d-4d2a-9c0a-0d3dcaa12793"/>
+				<imageExpression><![CDATA["C:\\Users\\rodrigolima\\Dropbox\\My PC (NBCATI002687)\\Desktop\\Faculdade\\Imegens Projeto\\Logo.JPG"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="271" height="20" uuid="4070f49e-cf91-4957-aa0c-b0e3f6b514e0"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[RECIBO DE PAGAMENTO DE ALUGUEL]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="214" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="523" height="20" uuid="48ed3f4e-818b-4393-8aae-2e356363ab1c"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Eu, Fabia Avila dos Santos, Casado, Analista de TI, Inscrito(a) no CPF sob o nº 888.999.777.00,]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="57" y="20" width="85" height="20" uuid="04e9fd9d-0ef0-4af9-95f4-35c8e3ab1f77"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomeCliente}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="139" y="20" width="172" height="20" uuid="f3fce1da-e9de-4373-a0a1-923d575ead74"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[, inscrito(a) no CPF/CNPJ sob o nº]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="311" y="20" width="92" height="20" uuid="a1735c37-e672-4e41-b36e-8d1ae49709d0"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cnpjcpf}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="403" y="20" width="106" height="20" uuid="91ad26f2-d589-43c1-85c1-3b3687aeec59"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[, a importância de R$ ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="40" width="36" height="20" uuid="4ac37b9c-9d51-4427-ad7a-fd7f27bb6789"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{aluguelImovel}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="36" y="40" width="229" height="20" uuid="0036f32a-1c29-44d3-b6c8-405a0d6140a3"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[referente ao pagamento do aluguel do mês de, ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="330" y="40" width="204" height="20" uuid="84f35b86-d07e-4edf-b7ad-f9c33ba90df0"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[, concernente ao imóvel localizado à,]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="60" width="90" height="20" uuid="77e40f81-fd52-4653-812d-a9c9a131df07"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{enderecoimovel}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="90" y="60" width="39" height="20" uuid="af63ce00-d073-479b-836c-ec885888ef4f"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[,Bairro]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="129" y="60" width="87" height="20" uuid="f37e5065-cf2d-45ad-aa6b-52336bdcb820"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bairroImovel}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="193" width="182" height="1" uuid="5621571b-89f5-4ab9-8620-0662d6ec45ea"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="121" width="72" height="15" uuid="92596735-f496-41c6-b8e1-129fdf157c97"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Rondonópolis, ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="194" width="139" height="20" uuid="09782507-6d8f-4ea0-9d43-95cddc7b0e98"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Fabio Avila dos Santos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="226" y="60" width="0" height="20" uuid="affa364d-a085-4dcc-9afe-bcfa0932234a"/>
+				<text><![CDATA[.]]></text>
+			</staticText>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="72" y="121" width="100" height="15" uuid="8317e18b-a64f-4ff4-88ab-deb67f2ded45"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern=" MMMMM/yyyy">
+				<reportElement x="265" y="40" width="65" height="20" uuid="46207965-70e0-4ea2-9ff5-65194939236e"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="20" width="57" height="20" uuid="a23ad808-ec47-491e-b1c6-b0d2adcca954"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Recebi de]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="12" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="10" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="4" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="15" splitType="Stretch"/>
+	</summary>
+</jasperReport>

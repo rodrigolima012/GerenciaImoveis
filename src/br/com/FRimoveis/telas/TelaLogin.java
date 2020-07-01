@@ -113,6 +113,7 @@ public final class TelaLogin extends javax.swing.JFrame {
         jLabel4.setText("Versão 1.0");
 
         cbVersenha.setBackground(new java.awt.Color(255, 255, 255));
+        cbVersenha.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         cbVersenha.setText("Visualizar senha");
         cbVersenha.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

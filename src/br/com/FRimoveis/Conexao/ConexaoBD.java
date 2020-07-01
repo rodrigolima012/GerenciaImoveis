@@ -47,7 +47,5 @@ public class ConexaoBD {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao Executa SQL \n" + e.getMessage());
         }
-        
     }
-
 }
