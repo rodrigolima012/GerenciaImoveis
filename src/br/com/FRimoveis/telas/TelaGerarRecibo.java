@@ -19,8 +19,6 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
-import javax.swing.text.DefaultFormatterFactory;
-import javax.swing.text.MaskFormatter;
 
 /**
  *
@@ -39,6 +37,16 @@ public final class TelaGerarRecibo extends javax.swing.JFrame {
     public TelaGerarRecibo() {
         initComponents();
         setIcon();
+
+        txtPesquisarClienteRecibo.setEnabled(false);
+        jtbPesquisarCliente.setEnabled(false);
+        JtbParcelasRecibo.setEnabled(false);
+        cbMesPagamento.setEnabled(false);
+        cbJuros.setEnabled(false);
+        btnCancelarRecibo.setEnabled(false);
+        btnEnviarEmail.setEnabled(false);
+        btnGerarRecibo.setEnabled(false);
+
         cbMesPagamento.addItem("");
         cbMesPagamento.addItem("Janeiro");
         cbMesPagamento.addItem("Fevereiro");
@@ -55,14 +63,6 @@ public final class TelaGerarRecibo extends javax.swing.JFrame {
 
         txtJuros.setEnabled(false);
 
-        MaskFormatter juros;
-        try {
-            txtJuros.setValue(null);
-            juros = new MaskFormatter("###");
-            juros.setPlaceholderCharacter(' ');
-            txtJuros.setFormatterFactory(new DefaultFormatterFactory(juros));
-        } catch (ParseException ex) {
-        }
     }
 
     /**
@@ -93,7 +93,6 @@ public final class TelaGerarRecibo extends javax.swing.JFrame {
         btnEnviarEmail = new javax.swing.JButton();
         btnCancelarRecibo = new javax.swing.JButton();
         cbJuros = new javax.swing.JCheckBox();
-        txtJuros = new javax.swing.JFormattedTextField();
         jLabel11 = new javax.swing.JLabel();
         cbMesPagamento = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -105,6 +104,7 @@ public final class TelaGerarRecibo extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txtNoneCliente = new javax.swing.JLabel();
+        txtJuros = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("FR - Gerenciador de Imoveis - Gerar Recibo");
@@ -190,6 +190,11 @@ public final class TelaGerarRecibo extends javax.swing.JFrame {
         btnNovoRecibo.setBackground(new java.awt.Color(204, 204, 204));
         btnNovoRecibo.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         btnNovoRecibo.setText("Novo");
+        btnNovoRecibo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoReciboActionPerformed(evt);
+            }
+        });
 
         btnGerarRecibo.setBackground(new java.awt.Color(204, 204, 204));
         btnGerarRecibo.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
@@ -228,13 +233,6 @@ public final class TelaGerarRecibo extends javax.swing.JFrame {
         cbJuros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbJurosActionPerformed(evt);
-            }
-        });
-
-        txtJuros.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
-        txtJuros.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtJurosKeyReleased(evt);
             }
         });
 
@@ -278,6 +276,12 @@ public final class TelaGerarRecibo extends javax.swing.JFrame {
 
         txtNoneCliente.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         txtNoneCliente.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+
+        txtJuros.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtJurosKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -370,9 +374,9 @@ public final class TelaGerarRecibo extends javax.swing.JFrame {
                             .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cbMesPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(cbJuros, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtJuros, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cbJuros, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                            .addComponent(txtJuros))
                         .addGap(56, 56, 56)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
@@ -494,8 +498,29 @@ public final class TelaGerarRecibo extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cbJurosMouseClicked
 
-    private void txtJurosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtJurosKeyReleased
+    private void btnNovoReciboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoReciboActionPerformed
+        txtPesquisarClienteRecibo.setEnabled(true);
+        jtbPesquisarCliente.setEnabled(true);
+        JtbParcelasRecibo.setEnabled(true);
+        cbMesPagamento.setEnabled(true);
+        cbJuros.setEnabled(true);
+        btnCancelarRecibo.setEnabled(true);
+        btnEnviarEmail.setEnabled(false);
+        btnGerarRecibo.setEnabled(true);
+        btnNovoRecibo.setEnabled(false);
+        txtPesquisarClienteRecibo.requestFocus();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNovoReciboActionPerformed
 
+    private void txtJurosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtJurosKeyReleased
+        Integer valor;
+        try{
+            valor = Integer.parseInt(txtJuros.getText());            
+        }catch(NumberFormatException ex){            
+            JOptionPane.showMessageDialog(null, "Só é permitido números inteiros!");
+            txtJuros.setText("");
+        } 
+        // TODO add your handling code here:
     }//GEN-LAST:event_txtJurosKeyReleased
 
     public void setIcon() {
@@ -543,7 +568,7 @@ public final class TelaGerarRecibo extends javax.swing.JFrame {
         try {
             conexao.rs.first();
             do {
-                dados.add(new Object[]{conexao.rs.getString("idcontrato"), conexao.rs.getString("statusContrato"), conexao.rs.getString("nomeCliente"), conexao.rs.getString("cnpjcpf"), conexao.rs.getString("telefonePessoa"), conexao.rs.getString("emailPessoa"), conexao.rs.getString("enderecoimovel"), conexao.rs.getString("bairroImovel"), "R$ " + conexao.rs.getString("aluguelImovel"), conexao.rs.getString("matriculaImovel")});
+                dados.add(new Object[]{conexao.rs.getString("idcontrato"), conexao.rs.getString("statusContrato"), conexao.rs.getString("nomeCliente"), conexao.rs.getString("cnpjcpf"), conexao.rs.getString("telefonePessoa"), conexao.rs.getString("emailPessoa"), conexao.rs.getString("enderecoimovel"), conexao.rs.getString("bairroImovel"),  conexao.rs.getString("aluguelImovel"), conexao.rs.getString("matriculaImovel")});
             } while (conexao.rs.next());
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(rootPane, "Valor na busca Invalido!!\nFavor tentar novamente!");
@@ -616,7 +641,7 @@ public final class TelaGerarRecibo extends javax.swing.JFrame {
     private javax.swing.JLabel txtAluguelRecibo;
     private javax.swing.JLabel txtContratoCliente;
     private javax.swing.JLabel txtEnderecoliente;
-    private javax.swing.JFormattedTextField txtJuros;
+    private javax.swing.JTextField txtJuros;
     private javax.swing.JLabel txtMatriculaCliente;
     private javax.swing.JLabel txtNoneCliente;
     private javax.swing.JTextField txtPesquisarClienteRecibo;

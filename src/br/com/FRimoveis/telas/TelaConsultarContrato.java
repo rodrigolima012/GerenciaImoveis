@@ -38,8 +38,9 @@ public final class TelaConsultarContrato extends javax.swing.JFrame {
      */
     public TelaConsultarContrato() {
         initComponents();
+        txtPesquisarContrato.requestFocus();
         setIcon();
-        rbMatriculaImovel.setEnabled(false);
+        /*rbMatriculaImovel.setEnabled(false);
         rbNomeCliente.setEnabled(false);
         txtPesquisarContrato.setEnabled(false);
         btnNovoConsultarContrato.setEnabled(true);
@@ -47,7 +48,17 @@ public final class TelaConsultarContrato extends javax.swing.JFrame {
         btnInativarConsultarContrato.setEnabled(false);
         btnImprimirConsultarContrato.setEnabled(false);
         btnEmailConsultarContrato.setEnabled(false);
+        jTConsultaContrato.setEnabled(true);*/
+
+        rbMatriculaImovel.setEnabled(true);
+        rbNomeCliente.setEnabled(true);
+        txtPesquisarContrato.setEnabled(true);
+        btnCancelarConsultarContrato.setEnabled(true);
+        btnInativarConsultarContrato.setEnabled(false);
+        btnEmailConsultarContrato.setEnabled(false);
+        btnImprimirConsultarContrato.setEnabled(false);
         jTConsultaContrato.setEnabled(true);
+        btnEmailConsultarContrato.setEnabled(false);
 
     }
 
@@ -73,7 +84,6 @@ public final class TelaConsultarContrato extends javax.swing.JFrame {
         txtPesquisarContrato = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTConsultaContrato = new javax.swing.JTable();
-        btnNovoConsultarContrato = new javax.swing.JButton();
         btnCancelarConsultarContrato = new javax.swing.JButton();
         btnInativarConsultarContrato = new javax.swing.JButton();
         btnEmailConsultarContrato = new javax.swing.JButton();
@@ -120,6 +130,9 @@ public final class TelaConsultarContrato extends javax.swing.JFrame {
         txtPesquisarContrato.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtPesquisarContrato.setToolTipText("Selecione a Opção para Pesquisar!");
         txtPesquisarContrato.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPesquisarContratoKeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtPesquisarContratoKeyReleased(evt);
             }
@@ -140,19 +153,9 @@ public final class TelaConsultarContrato extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTConsultaContrato);
 
-        btnNovoConsultarContrato.setBackground(new java.awt.Color(204, 204, 204));
-        btnNovoConsultarContrato.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        btnNovoConsultarContrato.setText("Novo");
-        btnNovoConsultarContrato.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnNovoConsultarContrato.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNovoConsultarContratoActionPerformed(evt);
-            }
-        });
-
         btnCancelarConsultarContrato.setBackground(new java.awt.Color(204, 204, 204));
         btnCancelarConsultarContrato.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        btnCancelarConsultarContrato.setText("Cancelar");
+        btnCancelarConsultarContrato.setText("Limpar Dados");
         btnCancelarConsultarContrato.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancelarConsultarContrato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -206,9 +209,7 @@ public final class TelaConsultarContrato extends javax.swing.JFrame {
                             .addComponent(txtPesquisarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 168, Short.MAX_VALUE)
-                        .addComponent(btnNovoConsultarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(0, 304, Short.MAX_VALUE)
                         .addComponent(btnCancelarConsultarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnInativarConsultarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -243,7 +244,6 @@ public final class TelaConsultarContrato extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNovoConsultarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelarConsultarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnInativarConsultarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEmailConsultarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -272,28 +272,10 @@ public final class TelaConsultarContrato extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_rbNomeClienteActionPerformed
 
-    private void btnNovoConsultarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoConsultarContratoActionPerformed
-        rbMatriculaImovel.setEnabled(true);
-        rbNomeCliente.setEnabled(true);
-        txtPesquisarContrato.setEnabled(true);
-        btnNovoConsultarContrato.setEnabled(false);
-        btnCancelarConsultarContrato.setEnabled(true);
-        btnInativarConsultarContrato.setEnabled(false);
-        btnEmailConsultarContrato.setEnabled(false);
-        jTConsultaContrato.setEnabled(true);
-        btnEmailConsultarContrato.setEnabled(false);
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnNovoConsultarContratoActionPerformed
-
     private void btnCancelarConsultarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarConsultarContratoActionPerformed
-        rbMatriculaImovel.setEnabled(false);
-        rbNomeCliente.setEnabled(false);
-        txtPesquisarContrato.setEnabled(false);
-        btnNovoConsultarContrato.setEnabled(true);
         btnCancelarConsultarContrato.setEnabled(false);
         btnInativarConsultarContrato.setEnabled(false);
         btnEmailConsultarContrato.setEnabled(false);
-        jTConsultaContrato.setEnabled(false);
         txtPesquisarContrato.setText("");
 
         ArrayList dados = new ArrayList();
@@ -317,6 +299,7 @@ public final class TelaConsultarContrato extends javax.swing.JFrame {
         btnInativarConsultarContrato.setEnabled(true);
         btnImprimirConsultarContrato.setEnabled(true);
         btnEmailConsultarContrato.setEnabled(false);
+        btnCancelarConsultarContrato.setEnabled(true);
 
         idContrato = "" + jTConsultaContrato.getValueAt(jTConsultaContrato.getSelectedRow(), 0);
     }//GEN-LAST:event_jTConsultaContratoMouseClicked
@@ -397,6 +380,11 @@ public final class TelaConsultarContrato extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnImprimirConsultarContratoActionPerformed
 
+    private void txtPesquisarContratoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisarContratoKeyPressed
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPesquisarContratoKeyPressed
+
     public void dadosTabela(String sql) throws ParseException {
         ArrayList dados = new ArrayList();
         String[] colunas = new String[]{"ID Contrato", "Status Contrato", "Data Inicial", "Data Final", "Nome Cliente", "Nome Fantasia", "CPF / CNPJ", "Perfil", "Telefone", "E-mail", "Status Imovel", "Endereço Imovel", "Bairro Imovel", "Alugel Imovel", "Matricula"};
@@ -418,6 +406,7 @@ public final class TelaConsultarContrato extends javax.swing.JFrame {
             } while (conexao.rs.next());
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(rootPane, "Valor na busca Invalido!!\nFavor tentar novamente!");
+            txtPesquisarContrato.setText("");
         }
         ConsultaContratoTabela tabela = new ConsultaContratoTabela(dados, colunas);
 
@@ -514,7 +503,6 @@ public final class TelaConsultarContrato extends javax.swing.JFrame {
     private javax.swing.JButton btnEmailConsultarContrato;
     private javax.swing.JButton btnImprimirConsultarContrato;
     private javax.swing.JButton btnInativarConsultarContrato;
-    private javax.swing.JButton btnNovoConsultarContrato;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -522,6 +510,6 @@ public final class TelaConsultarContrato extends javax.swing.JFrame {
     private javax.swing.JTable jTConsultaContrato;
     private javax.swing.JRadioButton rbMatriculaImovel;
     private javax.swing.JRadioButton rbNomeCliente;
-    private javax.swing.JTextField txtPesquisarContrato;
+    public static javax.swing.JTextField txtPesquisarContrato;
     // End of variables declaration//GEN-END:variables
 }

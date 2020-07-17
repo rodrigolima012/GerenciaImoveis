@@ -7,6 +7,7 @@ package br.com.FRimoveis.dao;
 
 import br.com.FRimoveis.Conexao.ConexaoBD;
 import br.com.FRimoveis.Desenvolvimento.ConsultaContrato;
+import br.com.FRimoveis.telas.TelaConsultarContrato;
 import br.com.FRimoveis.telas.TelaPrincipal;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -155,10 +156,9 @@ public class ConsultaContratoDB {
         connectarBanco.executaSql(sql);
             JRResultSetDataSource ReciboCliente = new JRResultSetDataSource(connectarBanco.rs);
             try (OutputStream saida = new FileOutputStream("Relatorios/ReciboCliente.pdf")) {
-                HashMap id = new HashMap();
-                id.put("id", (idContrato));
-                
-                JasperPrint jP = JasperFillManager.fillReport("Relatorios/ReciboCliente.jasper", id, ReciboCliente);
+                HashMap parametros = new HashMap();
+                parametros.put("id", (idContrato));
+                JasperPrint jP = JasperFillManager.fillReport("Relatorios/ReciboCliente.jasper", parametros, ReciboCliente);
                 
                 JRExporter exporter = new JRPdfExporter();
                 exporter.setParameter(JRExporterParameter.JASPER_PRINT, jP);

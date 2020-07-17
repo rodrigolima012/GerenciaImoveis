@@ -135,13 +135,6 @@ where tbcontratos.idcontrato = $P{id};]]>
 				</textElement>
 				<text><![CDATA[, a importância de R$ ]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="0" y="40" width="36" height="20" uuid="4ac37b9c-9d51-4427-ad7a-fd7f27bb6789"/>
-				<textElement>
-					<font size="11"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{aluguelImovel}]]></textFieldExpression>
-			</textField>
 			<staticText>
 				<reportElement x="36" y="40" width="229" height="20" uuid="0036f32a-1c29-44d3-b6c8-405a0d6140a3"/>
 				<textElement>
@@ -219,6 +212,13 @@ where tbcontratos.idcontrato = $P{id};]]>
 				</textElement>
 				<text><![CDATA[Recebi de]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="0" y="40" width="36" height="20" uuid="d20b5d57-27fd-4e3a-8a1a-d55608235cb7"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{aluguelImovel}]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
 	<detail>

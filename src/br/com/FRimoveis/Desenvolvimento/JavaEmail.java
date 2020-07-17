@@ -33,8 +33,9 @@ public class JavaEmail {
     private String nomePessoa;
     private String anexarArquivo;
     private final String assinaturasemAnexo = "FR Gerenciador de Imoveis\nObrigado pela Contato!";
-
+    
     public boolean enviarEmail() {
+        
         Properties props = new Properties();
 
         props.put("mail.smtp.host", "smtp.gmail.com");
@@ -54,14 +55,14 @@ public class JavaEmail {
         try {
             if (anexarArquivo == null) {
                 Message message = new MimeMessage(session);
-                
+
                 message.setFrom(new InternetAddress("frimoveisroo@gmail.com"));
 
                 Address[] toUser = InternetAddress.parse("rodrigo_limafernandes@hotmail.com");
                 message.setRecipients(Message.RecipientType.TO, toUser);
 
                 message.setSubject(identificar + " - Email: " + emailPessoa);
-                message.setText("De: " + nomePessoa + "\n" + textoemail+"\n"+"\n"+assinaturasemAnexo);
+                message.setText("De: " + nomePessoa + "\n" + textoemail + "\n" + "\n" + assinaturasemAnexo);
 
                 Transport.send(message);
 
